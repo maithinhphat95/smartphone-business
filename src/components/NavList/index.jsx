@@ -7,16 +7,27 @@ NavList.propTypes = {};
 
 function NavList(props) {
   return (
-    <Box sx={{ p: 1 }}>
+    <Box sx={{ p: 1, pb: 3 }}>
       <Box>
         <Title content="Overview" />
         <NavItem content="Home Page" />
         <NavItem content="Admin Dashboard" />
       </Box>
       <Box>
-        <Title content="Overview" />
-        <NavItem content="Home Page" />
-        <NavItem content="Admin Dashboard" />
+        <Title content="Analytic" />
+        <NavItem content="Annual Revenue" />
+        <NavItem content="Sale Rating" />
+      </Box>
+      <Box>
+        <Title content="Management" />
+        <NavItem content="Inventory Manager" />
+        <NavItem content="Customer Manager" />
+      </Box>
+      <Box>
+        <Title content="Account" />
+        <NavItem content="Profile" />
+        <NavItem content="Setting" />
+        <NavItem content="Log out" />
       </Box>
     </Box>
   );

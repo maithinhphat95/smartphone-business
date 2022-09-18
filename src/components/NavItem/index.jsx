@@ -12,15 +12,16 @@ function NavItem(props) {
         sx={{
           width: "100%",
           justifyContent: "flex-start",
-          backgroundColor: "text.secondary",
+          backgroundColor: "#D9D9D9",
           mb: 0.5,
         }}
       >
         <Link
           style={{
             textDecoration: "none",
-            textTransform: "uppercase",
-            color: "white",
+            textTransform: "capitalize",
+            color: "black",
+            fontSize: "16px",
           }}
           to=""
         >
