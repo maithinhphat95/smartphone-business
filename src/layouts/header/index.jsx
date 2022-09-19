@@ -21,9 +21,17 @@ function Header(props) {
   };
   return (
     <div className="header">
-      <Box sx={{ flexGrow: 1, height: 70 }}>
+      <Box
+        sx={{
+          flexGrow: 1,
+          height: 70,
+          width: "100%",
+          position: "fixed",
+          zIndex: 100,
+          bgcolor: "text.primary",
+        }}
+      >
         <AppBar
-          //   position="fixed"
           position="static"
           sx={{ bgcolor: "text.primary", height: "100%" }}
           alignItems="center"

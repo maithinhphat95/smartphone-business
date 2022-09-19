@@ -26,6 +26,7 @@ function AccountShort(props) {
           width: 80,
           height: 80,
           mb: 0.5,
+          zIndex: 0,
         }}
       />
       <Typography

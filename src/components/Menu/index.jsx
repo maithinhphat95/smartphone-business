@@ -7,8 +7,15 @@ import NavList from "../NavList";
 Menu.propTypes = {};
 
 function Menu(props) {
+  const { show } = props;
   return (
-    <div className="menu">
+    <div
+      className="menu"
+      style={{
+        transform: !show && "translateX(-100%)",
+        transition: "transform 0.5s",
+      }}
+    >
       <Box
         sx={{
           width: 250,

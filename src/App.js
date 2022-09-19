@@ -1,12 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Header from "./layouts/Header";
-import Menu from "./components/Menu";
+import Main from "./layouts/Main";
 function App() {
   return (
     <div className="App">
       <Header />
-      <Menu />
+      <Main />
     </div>
   );
 }
