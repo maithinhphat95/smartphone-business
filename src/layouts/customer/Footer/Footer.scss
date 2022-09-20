@@ -1,0 +1,31 @@
+.footer{
+    border: 1px solid rgb(231, 231, 231);
+    background-color: #fff;
+    margin-top: 40px;
+    .content-footer{
+        .content-footer-ul{
+            ul{
+                list-style-type: none;
+            }
+            a{
+                text-decoration: none;
+            }
+        }
+        .content-footer-ask{
+            p{
+                font-weight: bold;
+            }
+            a{
+                font-size: 20px;
+                font-weight: 700;
+                color: #d0021b;
+                text-decoration: none;
+            }
+        }
+        .content-footer-pay{
+            p{
+                font-weight: bold;
+            }
+        }
+    }
+}
