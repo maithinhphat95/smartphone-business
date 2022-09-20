@@ -1,6 +1,6 @@
 import "./App.css";
-import Header from "./layouts/Header";
-import Main from "./layouts/Main";
+import Header from "./layouts/admin/Header";
+import Main from "./layouts/admin/Main";
 function App() {
   return (
     <div className="App">

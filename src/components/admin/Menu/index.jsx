@@ -1,18 +1,25 @@
 import React from "react";
 import { Box } from "@mui/material";
-import AccountShort from "../Account-short";
+import AccountShort from "../AccountShort";
 import NavList from "../NavList";
 Menu.propTypes = {};
-
 function Menu(props) {
   const { show } = props;
   return (
-    <div
+    <Box
       className="menu"
-      style={{
-        transform: !show && "translateX(-100%)",
-        transition: "transform 0.5s",
+      sx={{
+        display: {
+          xs: "none",
+          md: "block",
+        },
       }}
+      // style={{
+      //   transform: "translateX(-100%)",
+      //   transition: "transform 0.5s",
+      //   width: !show && "0",
+      //   overflow: !show && "hidden",
+      // }}
     >
       <Box
         sx={{
@@ -25,7 +32,7 @@ function Menu(props) {
         <AccountShort />
         <NavList />
       </Box>
-    </div>
+    </Box>
   );
 }
 
