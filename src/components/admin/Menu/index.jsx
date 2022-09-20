@@ -1,9 +1,8 @@
 import React from "react";
 import { Box } from "@mui/material";
-import AccountShort from "../Account-short";
+import AccountShort from "../AccountShort";
 import NavList from "../NavList";
 Menu.propTypes = {};
-
 function Menu(props) {
   const { show } = props;
   return (
