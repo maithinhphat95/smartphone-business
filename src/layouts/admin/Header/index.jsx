@@ -20,25 +20,24 @@ function Header(props) {
     console.log("click noti");
   };
   return (
-    <div className="header">
+    <div
+      className="header"
+      style={{ position: "fixed", zIndex: 100, width: "100%" }}
+    >
       <Box
         sx={{
-          flexGrow: 1,
           height: 70,
           width: "100%",
-          position: "fixed",
-          zIndex: 100,
+
           bgcolor: "text.primary",
         }}
       >
         <AppBar
           position="static"
           sx={{ bgcolor: "text.primary", height: "100%" }}
-          alignItems="center"
         >
           <Toolbar sx={{ height: "100%" }}>
             <IconButton
-              textAlign="center"
               edge="start"
               color="inherit"
               aria-label="menu"
@@ -60,8 +59,7 @@ function Header(props) {
             <Typography
               variant="h6"
               component="div"
-              textAlign="right"
-              sx={{ flexGrow: 1, mr: 2 }}
+              sx={{ flexGrow: 1, mr: 2, textAlign: "right" }}
             >
               TPSmartPhone
             </Typography>
