@@ -72,6 +72,7 @@ function RevenueSummary(props) {
         backgroundColor: "white",
         borderRadius: 2,
         boxShadow: "4px 4px 4px #ccc",
+        maxWidth: "800px",
       }}
     >
       {/* Header of chart */}
@@ -187,6 +188,7 @@ function RevenueSummary(props) {
           <Bar options={options} data={data} />
         </Box>
       </Box>
+      <Typography>View detail</Typography>
     </Box>
   );
 }

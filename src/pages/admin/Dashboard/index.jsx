@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import RevenueSummary from "../../../components/admin/RevenueSummary";
+import RevenueSummary from "../../../components/admin/RevenueSummaryChart";
 import { Box, Typography } from "@mui/material";
 import PageTitle from "../../../components/admin/Page-title";
 
