@@ -82,7 +82,7 @@ function RevenueSummary(props) {
           padding: "8px 10px",
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
-          gap: 2,
+          gap: { xs: 0, md: 2 },
         }}
       >
         {/* Sale result */}
@@ -93,7 +93,7 @@ function RevenueSummary(props) {
             justifyContent: "space-evenly",
           }}
         >
-          {/* Target */}
+          {/* Annual Revenue Target */}
           <Box>
             <Typography
               variant="p"
@@ -127,7 +127,7 @@ function RevenueSummary(props) {
               </Typography>
             </Box>
           </Box>
-          {/* Result */}
+          {/* Actual This Year Revenue */}
           <Box>
             <Typography
               variant="p"

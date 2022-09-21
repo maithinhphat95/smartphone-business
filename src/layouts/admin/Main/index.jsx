@@ -4,11 +4,11 @@ import Menu from "../../../components/admin/Menu";
 import { Box } from "@mui/system";
 import { Button } from "@mui/material";
 import Dashboard from "../../../pages/admin/Dashboard";
+import { useSelector } from "react-redux";
 
 Main.propTypes = {};
 
 function Main(props) {
-  const { showMenu } = props;
   return (
     <Box
       sx={{
@@ -18,7 +18,7 @@ function Main(props) {
       }}
     >
       <Box sx={{ display: { xs: "block", md: "flex" } }}>
-        <Menu showMenu={showMenu} />
+        <Menu />
         <Dashboard />
       </Box>
     </Box>

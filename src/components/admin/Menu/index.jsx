@@ -2,29 +2,26 @@ import React from "react";
 import { Box } from "@mui/material";
 import AccountShort from "../AccountShort";
 import NavList from "../NavList";
+import { useSelector } from "react-redux";
 Menu.propTypes = {};
 function Menu(props) {
-  const { showMenu } = props;
+  const showMenu = useSelector((state) => state.admin.showMenu);
   return (
     <Box
       className="menu"
       sx={{
-        display: {
-          xs: "none",
-          md: "block",
+        overflow: {
+          xs: "hidden",
         },
+        transform: showMenu ? "translateX(0)" : "translateX(-100%)",
+        transition: "0.5s",
+        position: showMenu ? "static" : "fixed",
       }}
-      // style={{
-      //   transform: "translateX(-100%)",
-      //   transition: "transform 0.5s",
-      //   width: !show && "0",
-      //   overflow: !show && "hidden",
-      // }}
     >
       <Box
         sx={{
           width: 250,
-          backgroundColor: "inherit",
+          backgroundColor: "#f0f0f0",
           border: 1,
           borderColor: "text.disabled",
         }}

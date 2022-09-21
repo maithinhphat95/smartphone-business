@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { showMenu, toggleMenu } from "../../../redux/admin/adminAction";
 import {
   AppBar,
   Box,
@@ -10,12 +11,15 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import { useDispatch } from "react-redux";
 Header.propTypes = {};
 
 function Header(props) {
-  const { handle } = props;
+  const dispatch = useDispatch();
+
   const handleClickMenu = () => {
     console.log("click menu");
+    dispatch(toggleMenu());
   };
   const handleClickNoti = () => {
     console.log("click noti");
@@ -43,7 +47,7 @@ function Header(props) {
               color="inherit"
               aria-label="menu"
               sx={{ p: 2, mr: 2, height: "100%" }}
-              onClick={handleClickMenu()}
+              onClick={handleClickMenu}
             >
               <MenuIcon sx={{ fontSize: 30 }} />
             </IconButton>
