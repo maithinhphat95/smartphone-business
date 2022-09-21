@@ -14,18 +14,18 @@ import { monthAxis, yearAxis } from "../../common/charts";
 import { Box, Typography } from "@mui/material";
 import CharHeader from "../ChartHeader";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
 RevenueSummary.propTypes = {};
 
 function RevenueSummary(props) {
   const { isViewDetail } = props;
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+  );
   const targetData = [200, 200, 200, 200, 200];
   const actualData = [150, 180, 210, 220, 260];
   const fakeData = {
@@ -188,7 +188,7 @@ function RevenueSummary(props) {
           <Bar options={options} data={data} />
         </Box>
       </Box>
-      <Typography>View detail</Typography>
+      {/* <Typography>View detail</Typography> */}
     </Box>
   );
 }
