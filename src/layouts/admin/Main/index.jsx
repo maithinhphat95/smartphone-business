@@ -21,7 +21,6 @@ function Main(props) {
       <Box sx={{ display: { xs: "block", md: "flex" } }}>
         <Menu />
         <Dashboard />
-        <BrandRatingChart />
       </Box>
     </Box>
   );
