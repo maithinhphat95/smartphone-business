@@ -4,7 +4,7 @@ import AccountShort from "../AccountShort";
 import NavList from "../NavList";
 Menu.propTypes = {};
 function Menu(props) {
-  const { show } = props;
+  const { showMenu } = props;
   return (
     <Box
       className="menu"

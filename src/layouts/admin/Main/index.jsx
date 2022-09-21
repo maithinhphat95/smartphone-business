@@ -8,6 +8,7 @@ import Dashboard from "../../../pages/admin/Dashboard";
 Main.propTypes = {};
 
 function Main(props) {
+  const { showMenu } = props;
   return (
     <Box
       sx={{
@@ -17,7 +18,7 @@ function Main(props) {
       }}
     >
       <Box sx={{ display: { xs: "block", md: "flex" } }}>
-        <Menu />
+        <Menu showMenu={showMenu} />
         <Dashboard />
       </Box>
     </Box>

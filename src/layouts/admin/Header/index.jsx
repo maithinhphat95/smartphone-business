@@ -13,6 +13,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 Header.propTypes = {};
 
 function Header(props) {
+  const { handle } = props;
   const handleClickMenu = () => {
     console.log("click menu");
   };
@@ -42,7 +43,7 @@ function Header(props) {
               color="inherit"
               aria-label="menu"
               sx={{ p: 2, mr: 2, height: "100%" }}
-              onClick={handleClickMenu}
+              onClick={handleClickMenu()}
             >
               <MenuIcon sx={{ fontSize: 30 }} />
             </IconButton>
