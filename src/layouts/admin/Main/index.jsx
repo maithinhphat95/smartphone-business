@@ -5,7 +5,6 @@ import { Box } from "@mui/system";
 import { Button } from "@mui/material";
 import Dashboard from "../../../pages/admin/Dashboard";
 import { useSelector } from "react-redux";
-import BrandRatingChart from "../../../components/admin/BrandRatingChart";
 
 Main.propTypes = {};
 

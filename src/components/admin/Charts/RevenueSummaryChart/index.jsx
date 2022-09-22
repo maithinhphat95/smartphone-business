@@ -10,9 +10,10 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-import { monthAxis, yearAxis } from "../../common/charts";
+import { monthAxis, yearAxis } from "../../../common/charts";
 import { Box, Typography } from "@mui/material";
-import CharHeader from "../ChartHeader";
+import CharHeader from "../../ChartHeader";
+import ChartContainer from "../ChartContainer.js";
 
 RevenueSummary.propTypes = {};
 
@@ -64,17 +65,7 @@ function RevenueSummary(props) {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "white",
-        borderRadius: 2,
-        boxShadow: "4px 4px 4px #ccc",
-        maxWidth: "800px",
-      }}
-    >
+    <ChartContainer maxWidth="800px">
       {/* Header of chart */}
       <CharHeader chartName="Revenue Summary" goalData={goalData} />
       {/* Body of chart */}
@@ -189,7 +180,7 @@ function RevenueSummary(props) {
         </Box>
       </Box>
       {/* <Typography>View detail</Typography> */}
-    </Box>
+    </ChartContainer>
   );
 }
 

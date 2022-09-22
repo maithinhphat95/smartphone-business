@@ -2,6 +2,8 @@ import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { Box } from "@mui/material";
+import ChartHeader from "../../ChartHeader";
+import ChartContainer from "../ChartContainer.js";
 BrandRatingChart.propTypes = {};
 
 function BrandRatingChart(props) {
@@ -10,6 +12,7 @@ function BrandRatingChart(props) {
     labels: ["Apple", "Samsung", "Oppo", "Xiaomi", "Vivo", "Nokia"],
     datasets: [
       {
+        type: "pie",
         label: "# of Votes",
         data: [40, 30, 15, 8, 5, 2],
         backgroundColor: [
@@ -26,9 +29,10 @@ function BrandRatingChart(props) {
     ],
   };
   return (
-    <Box sx={{ maxWidth: "350px" }}>
-      <Pie data={data} />;
-    </Box>
+    <ChartContainer maxWidth="350px">
+      <ChartHeader chartName="Phone Brand Rating" />
+      <Pie data={data} />
+    </ChartContainer>
   );
 }
 

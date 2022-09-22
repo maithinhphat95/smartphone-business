@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import RevenueSummary from "../../../components/admin/RevenueSummaryChart";
 import { Box, Typography } from "@mui/material";
 import PageTitle from "../../../components/admin/Page-title";
-import BrandRatingChart from "../../../components/admin/BrandRatingChart";
+import RevenueSummary from "../../../components/admin/Charts/RevenueSummaryChart";
+import BrandRatingChart from "../../../components/admin/Charts/BrandRatingChart";
 Dashboard.propTypes = {};
 
 function Dashboard(props) {
