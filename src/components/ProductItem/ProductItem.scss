@@ -1,0 +1,52 @@
+  .titleitem{
+        transition: all .5s;
+        .imgmedia{
+            transition: all .5s;
+        }
+        .name-product{
+            text-decoration: none;
+            color: black;
+        }
+        .price{
+                flex-basis: 130px;
+                width: 130px;
+                height: 28px;
+                border-radius: 15px;
+                background-color: #f30810;
+                text-align: center;
+                font-size: 18px;
+                line-height: 28px;
+                font-weight: 500;
+                overflow: hidden;
+                position: relative;
+                z-index: 1;
+                color: #fff;
+            }
+
+            .strike-price{
+                text-align: right;
+                position: relative;
+            }
+        
+
+}
+.name-product:hover{
+    color: #0168fa;
+}
+
+
+.titleitem:hover{
+    // border: 1px solid #ddd;
+    border-radius: 4px;
+    // transition: all .5s;
+    // transition: all 1s ease-in-out;
+    // transition-duration: 2s; 
+    transform: rotate(1deg);
+}
+.titleitem .imgmedia:hover {
+    transform: scale(1.2);
+    // transform: rotate(1deg);
+}
+    // border-radius: 30px;
+    // border: 1px solid black;
+    // background-color: #fff;

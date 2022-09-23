@@ -1,0 +1,67 @@
+.imgbg{
+    overflow: hidden;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    position: relative;
+    padding-top: 0;
+    background-image: url("https://images.fpt.shop/unsafe/fit-in/filters:quality(80):fill(transparent)/fptshop.com.vn/Uploads/Originals/2022/9/15/637988511661565022_bg.png"); 
+    background-color: rgb(248, 249, 250);
+    .fpt-sale{
+        z-index: 2!important;
+
+    }
+    .category-container{
+        overflow: unset;
+        z-index: unset!important;
+    }
+    .sale-cd-tit{
+        padding-top: 208px;
+        position: relative;
+        z-index: 1;
+        img{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            max-width: 1176px;
+        }
+    }
+    // .sale-cd-timer{
+    //     font-family: inherit;
+    // text-shadow: unset;
+    // align-items: center;
+    //     label{
+    //         color: rgb(255, 255, 255);
+    //     font-weight: 400;
+    //     font-size: 18px;
+    //     line-height: 18px;
+    //     // color: #fff;
+    //     position: absolute;
+    //     cursor: auto;
+    //     }
+    //     li{
+    //         margin: 0;
+    //         padding: 0;
+    //         border: 0;
+    //         font-size: 100%;
+    //         font-weight: 400;
+    //         vertical-align: baseline;
+    //         background: 0 0;
+    //     }
+    //    a{
+    //     font-weight: 400;
+    //     font-size: 18px;
+    //     line-height: 18px;
+    //     text-align: center;
+    //     color: #fff;
+    //     position: relative;
+    //     display: inline-block;
+    //     text-decoration: underline;
+    
+    //    }
+    // }
+}

@@ -1,0 +1,14 @@
+.register{
+  section{
+    background-color: #eee;
+    .text-black{
+      margin-top: 30px;
+      border-radius: 25px;
+    }
+  }
+  
+  .p-error {
+    // list-style-position: inside;
+    color: rgb(247, 0, 0);
+  }
+}
