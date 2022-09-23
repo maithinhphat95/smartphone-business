@@ -1,8 +1,10 @@
 import { yearlyRevenue } from "../../constant/admin";
 import * as adminAction from "./adminType";
+
 const initialState = {
   showMenu: false,
   yearlyData: yearlyRevenue,
+  productList: [],
 };
 
 export const adminReducer = (state = initialState, action) => {
@@ -12,6 +14,7 @@ export const adminReducer = (state = initialState, action) => {
         ...state,
         showMenu: true,
       };
+
     case adminAction.TOGGLEMENU:
       return {
         ...state,
