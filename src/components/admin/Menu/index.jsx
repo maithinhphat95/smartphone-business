@@ -15,7 +15,7 @@ function Menu(props) {
         },
         transform: showMenu ? "translateX(0)" : "translateX(-100%)",
         transition: "0.5s",
-        position: showMenu ? "static" : "fixed",
+        position: "fixed",
       }}
     >
       <Box
