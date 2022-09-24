@@ -45,7 +45,7 @@ function Dashboard(props) {
           <BrandRatingChart />
         </Box>
         {/* Nav link list */}
-        <Grid container spacing={3} sx={{ mt: 3 }}>
+        <Grid container spacing={3} sx={{ mt: 0.5 }}>
           <NavLinkCard
             icon={
               <ShoppingBag
