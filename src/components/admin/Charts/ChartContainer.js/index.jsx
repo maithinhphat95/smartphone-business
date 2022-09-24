@@ -15,6 +15,8 @@ function ChartContainer(props) {
         borderRadius: 2,
         boxShadow: "4px 4px 4px #ccc",
         maxWidth: { maxWidth },
+        overflow: "auto",
+        justifyContent: "space-between",
       }}
     >
       {children}

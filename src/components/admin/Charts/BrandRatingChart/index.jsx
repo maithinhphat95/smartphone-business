@@ -1,9 +1,12 @@
 import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import { Box } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import ChartHeader from "../../ChartHeader";
 import ChartContainer from "../ChartContainer.js";
+import ChartCover from "../ChartCover";
+
 BrandRatingChart.propTypes = {};
 
 function BrandRatingChart(props) {
@@ -28,10 +31,50 @@ function BrandRatingChart(props) {
       },
     ],
   };
+  const options = {
+    plugins: {
+      legend: {
+        display: true,
+      },
+      datalabels: {
+        display: true,
+        color: "white",
+        anchor: "end",
+        align: "start",
+        clamp: true,
+      },
+    },
+  };
+  const config = {
+    type: "pie",
+    data: data,
+    options: options,
+  };
+
   return (
     <ChartContainer maxWidth="350px">
       <ChartHeader chartName="Phone Brand Rating" />
-      <Pie data={data} />
+      <ChartCover>
+        <Box
+          sx={{
+            overflow: "auto",
+          }}
+        >
+          <Pie data={data} plugins={[ChartDataLabels]} options={options} />
+        </Box>
+      </ChartCover>
+      <Link
+        href="#"
+        variant={"h6"}
+        sx={{
+          p: 1,
+          textAlign: "center",
+          textDecoration: "underline",
+          color: "inherit",
+        }}
+      >
+        View Details
+      </Link>
     </ChartContainer>
   );
 }

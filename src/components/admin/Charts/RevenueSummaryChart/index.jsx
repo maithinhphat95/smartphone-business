@@ -11,13 +11,15 @@ import {
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
 import { monthAxis, yearAxis } from "../../../common/charts";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Link } from "@mui/material";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 import CharHeader from "../../ChartHeader";
 import ChartContainer from "../ChartContainer.js";
+import ChartCover from "../ChartCover";
 
-RevenueSummary.propTypes = {};
+RevenueSummaryChart.propTypes = {};
 
-function RevenueSummary(props) {
+function RevenueSummaryChart(props) {
   const { isViewDetail } = props;
   ChartJS.register(
     CategoryScale,
@@ -37,6 +39,13 @@ function RevenueSummary(props) {
   // Config option
   const options = {
     responsive: true,
+    scales: {
+      y: {
+        min: 0,
+        max: 300,
+        stepSize: 50,
+      },
+    },
     plugins: {
       legend: {
         position: "top",
@@ -44,6 +53,13 @@ function RevenueSummary(props) {
       title: {
         display: false,
         text: "Annual Revenue Summary",
+      },
+      datalabels: {
+        display: true,
+        color: "white",
+        anchor: "start",
+        align: "end",
+        clamp: true,
       },
     },
   };
@@ -69,19 +85,12 @@ function RevenueSummary(props) {
       {/* Header of chart */}
       <CharHeader chartName="Revenue Summary" goalData={goalData} />
       {/* Body of chart */}
-      <Box
-        sx={{
-          padding: "8px 10px",
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          gap: { xs: 0, md: 2 },
-        }}
-      >
+      <ChartCover>
         {/* Sale result */}
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
+            flexDirection: { xs: "column", sm: "row", lg: "column" },
             justifyContent: "space-evenly",
           }}
         >
@@ -176,12 +185,24 @@ function RevenueSummary(props) {
         </Box>
         {/* Chart of revenue summary */}
         <Box sx={{ flex: 1, overflow: "auto" }}>
-          <Bar options={options} data={data} />
+          <Bar options={options} plugins={[ChartDataLabels]} data={data} />
         </Box>
-      </Box>
+      </ChartCover>
       {/* <Typography>View detail</Typography> */}
+      <Link
+        href="#"
+        variant={"h6"}
+        sx={{
+          p: 1,
+          textAlign: "center",
+          textDecoration: "underline",
+          color: "inherit",
+        }}
+      >
+        View Details
+      </Link>
     </ChartContainer>
   );
 }
 
-export default RevenueSummary;
+export default RevenueSummaryChart;
