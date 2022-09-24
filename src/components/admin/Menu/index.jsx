@@ -10,10 +10,11 @@ function Menu(props) {
     <Box
       className="menu"
       sx={{
-        overflowY: "scroll",
         transform: showMenu ? "translateX(0)" : "translateX(-100%)",
         transition: "0.5s",
         position: { xs: "fixed", lg: showMenu ? "static" : "fixed" },
+        zIndex: "10",
+        height: "max-content",
       }}
     >
       <Box
