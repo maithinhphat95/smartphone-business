@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import Menu from "../../../components/admin/Menu";
 import { Box } from "@mui/system";
-import { Button } from "@mui/material";
-import Dashboard from "../../../pages/admin/Dashboard";
 import { useSelector } from "react-redux";
-
+import Menu from "../../../components/admin/Menu";
+import Dashboard from "../../../pages/admin/Dashboard";
+import PageTitle from "../../../components/admin/Page-title";
 Main.propTypes = {};
 
 function Main(props) {
@@ -17,9 +15,28 @@ function Main(props) {
         minHeight: "100%",
       }}
     >
-      <Box sx={{ display: { xs: "block", md: "flex" } }}>
+      <Box
+        sx={{
+          display: "flex",
+        }}
+      >
         <Menu />
-        <Dashboard />
+        <Box
+          className="dashboard"
+          sx={{
+            p: 2,
+            flex: 1,
+            overflow: "auto",
+            maxWidth: "100%",
+            // minHeight: "min-content",
+          }}
+        >
+          <PageTitle
+            title="Admin Dashboard Overview"
+            description="Sale overview and summary"
+          />
+          <Dashboard />
+        </Box>
       </Box>
     </Box>
   );
