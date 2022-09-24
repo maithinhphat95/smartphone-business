@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { showMenu, toggleMenu } from "../../../redux/admin/adminAction";
 import {
   AppBar,
   Box,
@@ -10,35 +11,38 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import { useDispatch } from "react-redux";
 Header.propTypes = {};
 
 function Header(props) {
+  const dispatch = useDispatch();
+
   const handleClickMenu = () => {
     console.log("click menu");
+    dispatch(toggleMenu());
   };
   const handleClickNoti = () => {
     console.log("click noti");
   };
   return (
-    <div className="header">
+    <div
+      className="header"
+      style={{ position: "fixed", zIndex: 100, width: "100%" }}
+    >
       <Box
         sx={{
-          flexGrow: 1,
           height: 70,
           width: "100%",
-          position: "fixed",
-          zIndex: 100,
+
           bgcolor: "text.primary",
         }}
       >
         <AppBar
           position="static"
           sx={{ bgcolor: "text.primary", height: "100%" }}
-          alignItems="center"
         >
           <Toolbar sx={{ height: "100%" }}>
             <IconButton
-              textAlign="center"
               edge="start"
               color="inherit"
               aria-label="menu"
@@ -60,8 +64,7 @@ function Header(props) {
             <Typography
               variant="h6"
               component="div"
-              textAlign="right"
-              sx={{ flexGrow: 1, mr: 2 }}
+              sx={{ flexGrow: 1, mr: 2, textAlign: "right" }}
             >
               TPSmartPhone
             </Typography>
