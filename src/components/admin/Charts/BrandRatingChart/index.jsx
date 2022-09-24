@@ -4,7 +4,7 @@ import { Pie } from "react-chartjs-2";
 import { Box, Link, Typography } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import ChartHeader from "../../ChartHeader";
-import ChartContainer from "../ChartContainer.js";
+import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
 
 BrandRatingChart.propTypes = {};
@@ -58,6 +58,7 @@ function BrandRatingChart(props) {
         <Box
           sx={{
             overflow: "auto",
+            // justifySelf: "center",
           }}
         >
           <Pie data={data} plugins={[ChartDataLabels]} options={options} />

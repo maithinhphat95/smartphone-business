@@ -14,7 +14,7 @@ import { monthAxis, yearAxis } from "../../../common/charts";
 import { Box, Typography, Link } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import CharHeader from "../../ChartHeader";
-import ChartContainer from "../ChartContainer.js";
+import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
 
 RevenueSummaryChart.propTypes = {};
@@ -188,7 +188,6 @@ function RevenueSummaryChart(props) {
           <Bar options={options} plugins={[ChartDataLabels]} data={data} />
         </Box>
       </ChartCover>
-      {/* <Typography>View detail</Typography> */}
       <Link
         href="#"
         variant={"h6"}
