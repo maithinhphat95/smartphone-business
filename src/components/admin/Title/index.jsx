@@ -12,7 +12,7 @@ function Title(props) {
         fontWeight: "bold",
         textTransform: "capitalize",
         margin: "8px 0",
-        fontSize: "20px",
+        fontSize: "16px",
       }}
     >
       {content}

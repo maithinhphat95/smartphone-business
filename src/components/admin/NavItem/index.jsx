@@ -1,34 +1,40 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 NavItem.propTypes = {};
 
 function NavItem(props) {
-  const { content } = props;
+  const { content, url } = props;
   return (
-    <>
-      <Button
+    <Link
+      style={{
+        color: "black",
+        fontSize: "16px",
+        width: "100%",
+        height: "32px",
+        display: "flex",
+        marginBottom: "2px",
+        textDecoration: "none",
+        textTransform: "capitalize",
+        // justifyContent: "flex-start",
+        alignItems: "center",
+        backgroundColor: "#D9D9D9",
+        borderRadius: "8px",
+        overflow: "hidden",
+      }}
+      to={url}
+    >
+      <Typography
         sx={{
+          padding: "8px",
           width: "100%",
-          justifyContent: "flex-start",
-          backgroundColor: "#D9D9D9",
-          mb: 0.5,
+          "&:hover": { backgroundColor: "#A0A0A0", color: "white" },
         }}
       >
-        <Link
-          style={{
-            textDecoration: "none",
-            textTransform: "capitalize",
-            color: "black",
-            fontSize: "16px",
-          }}
-          to=""
-        >
-          {content}
-        </Link>
-      </Button>
-    </>
+        {content}
+      </Typography>
+    </Link>
   );
 }
 

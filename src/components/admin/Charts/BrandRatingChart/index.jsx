@@ -1,7 +1,7 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import { Box, Link, Typography } from "@mui/material";
+import { Box, Link } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import ChartHeader from "../../ChartHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
@@ -10,6 +10,7 @@ import ChartCover from "../ChartCover";
 BrandRatingChart.propTypes = {};
 
 function BrandRatingChart(props) {
+  const { isViewDetail } = props;
   ChartJS.register(ArcElement, Tooltip, Legend);
   const data = {
     labels: ["Apple", "Samsung", "Oppo", "Xiaomi", "Vivo", "Nokia"],
@@ -64,18 +65,21 @@ function BrandRatingChart(props) {
           <Pie data={data} plugins={[ChartDataLabels]} options={options} />
         </Box>
       </ChartCover>
-      <Link
-        href="#"
-        variant={"h6"}
-        sx={{
-          p: 1,
-          textAlign: "center",
-          textDecoration: "underline",
-          color: "inherit",
-        }}
-      >
-        View Details
-      </Link>
+
+      {isViewDetail && (
+        <Link
+          href="#"
+          variant={"h6"}
+          sx={{
+            p: 1,
+            textAlign: "center",
+            textDecoration: "underline",
+            color: "inherit",
+          }}
+        >
+          View Details
+        </Link>
+      )}
     </ChartContainer>
   );
 }

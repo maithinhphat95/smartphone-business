@@ -188,18 +188,20 @@ function RevenueSummaryChart(props) {
           <Bar options={options} plugins={[ChartDataLabels]} data={data} />
         </Box>
       </ChartCover>
-      <Link
-        href="#"
-        variant={"h6"}
-        sx={{
-          p: 1,
-          textAlign: "center",
-          textDecoration: "underline",
-          color: "inherit",
-        }}
-      >
-        View Details
-      </Link>
+      {isViewDetail && (
+        <Link
+          href="#"
+          variant={"h6"}
+          sx={{
+            p: 1,
+            textAlign: "center",
+            textDecoration: "underline",
+            color: "inherit",
+          }}
+        >
+          View Details
+        </Link>
+      )}
     </ChartContainer>
   );
 }

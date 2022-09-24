@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Title from "../Title";
 import { Box } from "@mui/material";
 import NavItem from "../NavItem";
@@ -7,15 +6,15 @@ NavList.propTypes = {};
 
 function NavList(props) {
   return (
-    <Box sx={{ p: 1, pb: 3 }}>
+    <Box sx={{ p: 1, pt: 0 }}>
       <Box>
         <Title content="Overview" />
-        <NavItem content="Home Page" />
-        <NavItem content="Admin Dashboard" />
+        <NavItem content="Home Page" url="/" />
+        <NavItem content="Admin Dashboard" url="/" />
       </Box>
       <Box>
         <Title content="Analytic" />
-        <NavItem content="Annual Revenue" />
+        <NavItem content="Annual Revenue" url="/revenue" />
         <NavItem content="Sale Rating" />
       </Box>
       <Box>
