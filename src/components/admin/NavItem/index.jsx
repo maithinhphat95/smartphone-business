@@ -17,7 +17,6 @@ function NavItem(props) {
         marginBottom: "2px",
         textDecoration: "none",
         textTransform: "capitalize",
-        // justifyContent: "flex-start",
         alignItems: "center",
         backgroundColor: "#D9D9D9",
         borderRadius: "8px",

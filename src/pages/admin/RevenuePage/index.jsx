@@ -5,6 +5,7 @@ import BrandRatingChart from "../../../components/admin/Charts/BrandRatingChart"
 import { Inventory, Paid, Person, ShoppingBag } from "@mui/icons-material";
 import NavLinkCard from "../../../components/admin/NavLinkCard";
 import PageTitle from "../../../components/admin/PageTitle";
+import MonthlyRevenueChart from "../../../components/admin/Charts/MonthlyRevenueChart";
 
 RevenuePage.propTypes = {};
 
@@ -35,6 +36,7 @@ function RevenuePage(props) {
           }}
         >
           <RevenueSummaryChart isViewDetail={false} />
+          <MonthlyRevenueChart isViewDetail={false} />
         </Box>
       </Box>
     </Box>
