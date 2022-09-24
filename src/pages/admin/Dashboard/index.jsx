@@ -1,16 +1,8 @@
 import React from "react";
-import { Box, Card, Grid, Typography } from "@mui/material";
-import PageTitle from "../../../components/admin/Page-title";
+import { Box, Grid } from "@mui/material";
 import RevenueSummaryChart from "../../../components/admin/Charts/RevenueSummaryChart";
 import BrandRatingChart from "../../../components/admin/Charts/BrandRatingChart";
-import {
-  ArrowDownward,
-  ArrowUpward,
-  Inventory,
-  Paid,
-  Person,
-  ShoppingBag,
-} from "@mui/icons-material";
+import { Inventory, Paid, Person, ShoppingBag } from "@mui/icons-material";
 import NavLinkCard from "../../../components/admin/NavLinkCard";
 Dashboard.propTypes = {};
 function Dashboard(props) {

@@ -12,31 +12,23 @@ function Main(props) {
       sx={{
         position: "relative",
         top: 70,
-        minHeight: "100%",
+        display: "flex",
       }}
     >
+      <Menu />
       <Box
+        className="dashboard"
         sx={{
-          display: "flex",
+          p: 2,
+          flex: 1,
+          overflow: "auto",
         }}
       >
-        <Menu />
-        <Box
-          className="dashboard"
-          sx={{
-            p: 2,
-            flex: 1,
-            overflow: "auto",
-            maxWidth: "100%",
-            // minHeight: "min-content",
-          }}
-        >
-          <PageTitle
-            title="Admin Dashboard Overview"
-            description="Sale overview and summary"
-          />
-          <Dashboard />
-        </Box>
+        <PageTitle
+          title="Admin Dashboard Overview"
+          description="Sale overview and summary"
+        />
+        <Dashboard />
       </Box>
     </Box>
   );
