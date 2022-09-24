@@ -1,13 +1,13 @@
 import { Container } from '@mui/system';
 import React from 'react';
-import ProductItem from '../../components/ProductItem';
-import "./Testt.scss";
+import ProductItem from '../../ProductItem';
+import "./CarouselTwo.scss";
 
-function Testt(props) {
+function CarouselTwo(props) {
     return (
         <div  className="container-fluid profuid">
     <Container className="title-list">
-    <h2>KHUYẾN MÃI HOT</h2>
+    <h2>Hàng Tồn Kho</h2>
         <div className="container">
         <div className="row">
             <div className="col-md-12">
@@ -86,4 +86,4 @@ function Testt(props) {
     );
 }
 
-export default Testt;
+export default CarouselTwo;

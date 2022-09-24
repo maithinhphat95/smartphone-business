@@ -13,7 +13,7 @@ import {
 import React from "react";
 import "./Login.scss";
 import { useForm } from "react-hook-form";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 // import {LockOutlinedIcon,Copyright} from '@mui/icons-material/LockOutlined';
 function Login({ handleClose }) {

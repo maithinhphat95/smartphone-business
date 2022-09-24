@@ -1,18 +1,14 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Breadcrumb from './components/Breadcrumb';
-import Imgbackground from './components/bg';
-import ProductList from './components/ProductList';
-import Footer from './components/Footer';
-import { BrowserRouter,Route,Routes, useRouteMatch } from 'react-router-dom';
-import Home from './features/Home';
-import Register from './pages/Register';
-import Login from './pages/Login';
-import Testt from './pages/Testt';
-import Question from './pages/Question';
-import Security from './pages/AboutSecurity';
+import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import Home from './pages/customer/Home';
+import Register from './pages/customer/Register';
+import Login from './pages/customer/Login';
+import Question from './pages/customer/Question';
+import Security from './pages/customer/AboutSecurity';
+import Header from './layouts/customer/Header';
+import Nav from './components/customer/Nav';
+import Footer from './layouts/customer/Footer';
 
 function App() {
   return (
