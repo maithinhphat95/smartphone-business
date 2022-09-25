@@ -25,3 +25,17 @@ export const yearlyRevenue = [
     actual: 290,
   },
 ];
+
+export const adminColorLight = {
+  primary: "#E0E0E0",
+  secondary: "white",
+  background: "#f0f0f0",
+  shadow: "#ccc",
+  text: "black",
+};
+export const adminColorDark = {
+  primary: "",
+  secondary: "",
+  background: "#252930",
+  text: "white",
+};

@@ -83,7 +83,7 @@ function MonthlyRevenueChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <CharHeader chartName="Revenue Summary" goalData={goalData} />
+      <CharHeader chartName="Revenue Report 2022" />
       {/* Body of chart */}
       <ChartCover>
         {/* Sale result */}
@@ -94,20 +94,20 @@ function MonthlyRevenueChart(props) {
             justifyContent: "space-evenly",
           }}
         >
-          {/* Annual Revenue Target */}
-          <Box>
+          {/* Gross revenue */}
+          <Box sx={{ backgroundColor: "" }}>
             <Typography
               variant="p"
               component="p"
               sx={{
                 fontStyle: "italic",
-                borderBottom: "1px solid black",
+                // borderBottom: "1px solid black",
                 display: "flex",
                 width: "max-content",
                 margin: "0 auto",
               }}
             >
-              Annual Revenue Target
+              Gross Revenue
             </Typography>
             <Box
               sx={{

@@ -3,7 +3,7 @@ import { Box, Grid } from "@mui/material";
 import RevenueSummaryChart from "../../../components/admin/Charts/RevenueSummaryChart";
 import BrandRatingChart from "../../../components/admin/Charts/BrandRatingChart";
 import { Inventory, Paid, Person, ShoppingBag } from "@mui/icons-material";
-import NavLinkCard from "../../../components/admin/NavLinkCard";
+import SummaryCard from "../../../components/admin/SummaryCard";
 import PageTitle from "../../../components/admin/PageTitle";
 DashboardPage.propTypes = {};
 function DashboardPage(props) {
@@ -26,10 +26,8 @@ function DashboardPage(props) {
           sx={{
             display: "flex",
             gap: 2,
-            alignItems: "stretch",
             justifyContent: "center",
             flexDirection: "row",
-
             flexWrap: { xs: "wrap", md: "nowrap" },
           }}
         >
@@ -38,7 +36,7 @@ function DashboardPage(props) {
         </Box>
         {/* Nav link list */}
         <Grid container spacing={3} sx={{ mt: 0.5 }}>
-          <NavLinkCard
+          <SummaryCard
             icon={
               <ShoppingBag
                 sx={{
@@ -51,7 +49,7 @@ function DashboardPage(props) {
             color="blue"
             item={{ name: "Orders", value: 1420 }}
           />
-          <NavLinkCard
+          <SummaryCard
             icon={
               <Person
                 sx={{
@@ -64,7 +62,7 @@ function DashboardPage(props) {
             color="orange"
             item={{ name: "Customers", value: 120 }}
           />
-          <NavLinkCard
+          <SummaryCard
             icon={
               <Inventory
                 sx={{
@@ -77,7 +75,7 @@ function DashboardPage(props) {
             color="green"
             item={{ name: "Stock", value: 12420 }}
           />
-          <NavLinkCard
+          <SummaryCard
             icon={
               <Paid
                 sx={{

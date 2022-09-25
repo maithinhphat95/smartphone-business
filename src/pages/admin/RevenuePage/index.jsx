@@ -3,7 +3,7 @@ import { Box, Grid } from "@mui/material";
 import RevenueSummaryChart from "../../../components/admin/Charts/RevenueSummaryChart";
 import BrandRatingChart from "../../../components/admin/Charts/BrandRatingChart";
 import { Inventory, Paid, Person, ShoppingBag } from "@mui/icons-material";
-import NavLinkCard from "../../../components/admin/NavLinkCard";
+import NavLinkCard from "../../../components/admin/SummaryCard";
 import PageTitle from "../../../components/admin/PageTitle";
 import MonthlyRevenueChart from "../../../components/admin/Charts/MonthlyRevenueChart";
 
@@ -24,19 +24,37 @@ function RevenuePage(props) {
         description="Revenue Overview and Summary"
       />
 
-      <Box sx={{ margin: "0 auto" }}>
+      <Box
+        sx={{
+          margin: "0 auto",
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+        }}
+      >
         <Box
           sx={{
             display: "flex",
             gap: 2,
-            alignItems: "stretch",
             justifyContent: "center",
             flexDirection: "row",
             flexWrap: { xs: "wrap", md: "nowrap" },
           }}
         >
-          <RevenueSummaryChart isViewDetail={false} />
-          <MonthlyRevenueChart isViewDetail={false} />
+          <MonthlyRevenueChart />
+          <RevenueSummaryChart />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 2,
+            justifyContent: "center",
+            flexDirection: "row",
+            flexWrap: { xs: "wrap", md: "nowrap" },
+          }}
+        >
+          <RevenueSummaryChart />
+          <MonthlyRevenueChart />
         </Box>
       </Box>
     </Box>
