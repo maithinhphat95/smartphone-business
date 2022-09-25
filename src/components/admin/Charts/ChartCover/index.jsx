@@ -13,6 +13,7 @@ function ChartCover(props) {
         gap: { xs: 0, md: 2 },
         justifyContent: "Center",
         overflow: "auto",
+        alignItems: "center",
       }}
     >
       {children}

@@ -92,6 +92,7 @@ function RevenueSummaryChart(props) {
             display: "flex",
             flexDirection: { xs: "column", sm: "row", lg: "column" },
             justifyContent: "space-evenly",
+            gap: { xs: 2, lg: 1 },
           }}
         >
           {/* Annual Revenue Target */}
@@ -115,8 +116,6 @@ function RevenueSummaryChart(props) {
                 justifyContent: "center",
                 gap: { xs: 4, md: 0 },
                 flexDirection: { xs: "row", md: "column" },
-                mb: 2,
-                mt: 1,
                 textAlign: "center",
               }}
             >
@@ -150,8 +149,6 @@ function RevenueSummaryChart(props) {
                 justifyContent: "center",
                 gap: { xs: 4, md: 0 },
                 flexDirection: { xs: "row", md: "column" },
-                mb: 2,
-                mt: 1,
                 textAlign: "center",
               }}
             >

@@ -12,7 +12,7 @@ RevenuePage.propTypes = {};
 function RevenuePage(props) {
   return (
     <Box
-      className="dashboard"
+      className=""
       sx={{
         p: 2,
         flex: 1,
