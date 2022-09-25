@@ -16,7 +16,9 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import CharHeader from "../../ChartHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
-
+import { adminColorDark, adminColorLight } from "../../../../constant/admin";
+import RevenueReportCard from "../../RevenueReportCard";
+import ChartBox from "../ChartBox";
 MonthlyRevenueChart.propTypes = {};
 
 function MonthlyRevenueChart(props) {
@@ -52,7 +54,7 @@ function MonthlyRevenueChart(props) {
       },
       title: {
         display: false,
-        text: "Annual Revenue Summary",
+        text: "",
       },
       datalabels: {
         display: true,
@@ -92,101 +94,43 @@ function MonthlyRevenueChart(props) {
             display: "flex",
             flexDirection: { xs: "column", sm: "row", lg: "column" },
             justifyContent: "space-evenly",
+            gap: 0.5,
           }}
         >
           {/* Gross revenue */}
-          <Box sx={{ backgroundColor: "" }}>
-            <Typography
-              variant="p"
-              component="p"
-              sx={{
-                fontStyle: "italic",
-                // borderBottom: "1px solid black",
-                display: "flex",
-                width: "max-content",
-                margin: "0 auto",
-              }}
-            >
-              Gross Revenue
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                gap: { xs: 4, md: 0 },
-                flexDirection: { xs: "row", md: "column" },
-                mb: 2,
-                mt: 1,
-                textAlign: "center",
-              }}
-            >
-              <Typography variant="h6" sx={{ color: "#0842A0" }}>
-                2400 pcs
-              </Typography>
-              <Typography variant="h6" sx={{ color: "#32810D" }}>
-                $ 2500000
-              </Typography>
-            </Box>
-          </Box>
-          {/* Actual This Year Revenue */}
-          <Box>
-            <Typography
-              variant="p"
-              component="p"
-              sx={{
-                fontStyle: "italic",
-                borderBottom: "1px solid black",
-                display: "flex",
-                width: "max-content",
-                margin: "0 auto",
-                textAlign: "center",
-              }}
-            >
-              Actual This Year Revenue
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                gap: { xs: 4, md: 0 },
-                flexDirection: { xs: "row", md: "column" },
-                mb: 2,
-                mt: 1,
-                textAlign: "center",
-              }}
-            >
-              <Typography variant="h6" sx={{ color: "#0842A0" }}>
-                1300 pcs
-              </Typography>
-              <Typography variant="h6" sx={{ color: "#32810D" }}>
-                $ 1500000
-              </Typography>
-            </Box>
-          </Box>
-          {goalData && (
-            <Typography
-              variant="p"
-              component="p"
-              sx={{
-                textAlign: "center",
-                fontStyle: "italic",
-                display: { sm: "none" },
-              }}
-            >
-              Goal this year:{" "}
-              <Typography
-                component="span"
-                sx={{ color: "red", fontWeight: "bold", fontStyle: "normal" }}
-              >
-                {goalData}%
-              </Typography>
-            </Typography>
-          )}
+          <RevenueReportCard
+            reportObj={{
+              name: "Gross Revenue",
+              value: 2400323,
+              type: "year",
+              previous: 2600323,
+            }}
+          />
+
+          {/* Quater Revenue */}
+          <RevenueReportCard
+            reportObj={{
+              name: "4th Quarter Revenue",
+              value: 2400323,
+              type: "quater",
+              previous: 2600323,
+            }}
+          />
+
+          {/* Month Revenue */}
+          <RevenueReportCard
+            reportObj={{
+              name: "October Revenue",
+              value: 2400323,
+              type: "quater",
+              previous: 2600323,
+            }}
+          />
         </Box>
         {/* Chart of revenue summary */}
-        <Box sx={{ flex: 1, overflow: "auto" }}>
+        <ChartBox>
           <Bar options={options} plugins={[ChartDataLabels]} data={data} />
-        </Box>
+        </ChartBox>
       </ChartCover>
       {isViewDetail && (
         <Link
