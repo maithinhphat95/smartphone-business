@@ -10,7 +10,7 @@ function NavList(props) {
       <Box>
         <Title content="Overview" />
         <NavItem content="Home Page" url="/" />
-        <NavItem content="Admin Dashboard" url="/" />
+        <NavItem content="Admin Dashboard" url="/admin" />
       </Box>
       <Box>
         <Title content="Analytic" />
