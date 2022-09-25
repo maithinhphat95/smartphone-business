@@ -1,8 +1,7 @@
 import React from "react";
 import Imgbackground from "../../../components/customer/bg";
 import Breadcrumb from "../../../components/customer/Breadcrumb";
-import CarouselOne from "../../../components/customer/Home-Carousel/Home-CarouselOne";
-import CarouselTwo from "../../../components/customer/Home-Carousel/Home-CarouselTwo";
+// import CraouselOne from "../../../components/customer/Home-Carousel/Home-CarouselOne";
 import CarouselThree from "../../../components/customer/Home-Carousel/Home-CarouselThree";
 
 
@@ -11,9 +10,10 @@ function Home(props) {
     <>
       <Breadcrumb />
       <Imgbackground />
-      <CarouselOne />
-      <CarouselTwo />
-      <CarouselThree />
+      <CarouselThree  title="Khuyến Mãi Hot"/>
+      <CarouselThree title="Sản phẩm bán chạy"/>
+      <CarouselThree title="Apple"/>
+      {/* <CraouselOne /> */}
     </>
   );
 }

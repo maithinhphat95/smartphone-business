@@ -7,8 +7,8 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import "./ProductItem.scss";
 function ProductItem() {
     return (
-        <Card className='titleitem' sx={{ maxWidth: 345 }}>
-        <CardActionArea>
+        <Card  className='titleitem' sx={{ maxWidth: 345}}>
+        <CardActionArea >
           <CardMedia className='imgmedia'
             component="img"
             height="280px"
