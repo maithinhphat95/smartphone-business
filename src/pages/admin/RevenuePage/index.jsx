@@ -41,18 +41,6 @@ function RevenuePage(props) {
             flexWrap: { xs: "wrap", md: "nowrap" },
           }}
         >
-          <MonthlyRevenueChart />
-          <RevenueSummaryChart />
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            gap: 2,
-            justifyContent: "center",
-            flexDirection: "row",
-            flexWrap: { xs: "wrap", md: "nowrap" },
-          }}
-        >
           <RevenueSummaryChart />
           <MonthlyRevenueChart />
         </Box>
