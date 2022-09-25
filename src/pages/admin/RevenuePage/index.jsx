@@ -1,24 +1,15 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import RevenueSummaryChart from "../../../components/admin/Charts/RevenueSummaryChart";
-import BrandRatingChart from "../../../components/admin/Charts/BrandRatingChart";
-import { Inventory, Paid, Person, ShoppingBag } from "@mui/icons-material";
-import NavLinkCard from "../../../components/admin/SummaryCard";
 import PageTitle from "../../../components/admin/PageTitle";
 import MonthlyRevenueChart from "../../../components/admin/Charts/MonthlyRevenueChart";
+import { adminColorLight, adminColorDark } from "../../../constant/admin";
 
 RevenuePage.propTypes = {};
 
 function RevenuePage(props) {
   return (
-    <Box
-      className=""
-      sx={{
-        p: 2,
-        flex: 1,
-        overflow: "auto",
-      }}
-    >
+    <>
       <PageTitle
         title="Revenue Summary"
         description="Revenue Overview and Summary"
@@ -45,7 +36,7 @@ function RevenuePage(props) {
           <MonthlyRevenueChart />
         </Box>
       </Box>
-    </Box>
+    </>
   );
 }
 

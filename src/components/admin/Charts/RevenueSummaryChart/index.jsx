@@ -16,6 +16,7 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import CharHeader from "../../ChartHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
+import ChartBox from "../ChartBox";
 
 RevenueSummaryChart.propTypes = {};
 
@@ -181,9 +182,9 @@ function RevenueSummaryChart(props) {
           )}
         </Box>
         {/* Chart of revenue summary */}
-        <Box sx={{ flex: 1, overflow: "auto" }}>
+        <ChartBox>
           <Bar options={options} plugins={[ChartDataLabels]} data={data} />
-        </Box>
+        </ChartBox>
       </ChartCover>
       {isViewDetail && (
         <Link

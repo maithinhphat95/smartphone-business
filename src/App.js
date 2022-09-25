@@ -7,10 +7,10 @@ import { adminColorDark, adminColorLight } from "./constant/admin";
 function App() {
   return (
     <Box
-      className="App"
       sx={{
         backgroundColor: adminColorLight.background,
         // color: adminColorLight.text,
+        minHeight: "100%",
       }}
     >
       <AdminHome />

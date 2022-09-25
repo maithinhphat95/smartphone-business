@@ -31,8 +31,8 @@ function RevenueReportCard(props) {
         sx={{
           display: "flex",
           justifyContent: "center",
-          gap: { xs: 4, md: 0 },
-          flexDirection: { xs: "row", md: "column" },
+          gap: 0,
+          flexDirection: "column",
           textAlign: "center",
         }}
       >
@@ -48,7 +48,7 @@ function RevenueReportCard(props) {
           component="p"
           sx={{ color: "inherit", fontStyle: "italic", fontSize: "12px" }}
         >
-          Previous {reportObj.type}: $ {reportObj.previous.toLocaleString()}
+          Previous : $ {reportObj.previous.toLocaleString()}
         </Typography>
       </Box>
     </Box>

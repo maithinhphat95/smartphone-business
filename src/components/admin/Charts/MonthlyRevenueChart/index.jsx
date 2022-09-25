@@ -18,6 +18,7 @@ import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
 import { adminColorDark, adminColorLight } from "../../../../constant/admin";
 import RevenueReportCard from "../../RevenueReportCard";
+import ChartBox from "../ChartBox";
 MonthlyRevenueChart.propTypes = {};
 
 function MonthlyRevenueChart(props) {
@@ -93,7 +94,7 @@ function MonthlyRevenueChart(props) {
             display: "flex",
             flexDirection: { xs: "column", sm: "row", lg: "column" },
             justifyContent: "space-evenly",
-            gap: 1,
+            gap: 0.5,
           }}
         >
           {/* Gross revenue */}
@@ -127,9 +128,9 @@ function MonthlyRevenueChart(props) {
           />
         </Box>
         {/* Chart of revenue summary */}
-        <Box sx={{ flex: 1, overflow: "auto" }}>
+        <ChartBox>
           <Bar options={options} plugins={[ChartDataLabels]} data={data} />
-        </Box>
+        </ChartBox>
       </ChartCover>
       {isViewDetail && (
         <Link
