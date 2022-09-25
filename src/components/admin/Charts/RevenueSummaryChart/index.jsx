@@ -26,6 +26,7 @@ function RevenueSummaryChart(props) {
     CategoryScale,
     LinearScale,
     BarElement,
+
     Title,
     Tooltip,
     Legend

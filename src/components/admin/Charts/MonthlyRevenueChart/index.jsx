@@ -3,12 +3,13 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
+  LineElement,
+  PointElement,
   Title,
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
 import { monthAxis, yearAxis } from "../../../common/charts";
 import { Box, Typography, Link } from "@mui/material";
@@ -26,18 +27,18 @@ function MonthlyRevenueChart(props) {
   ChartJS.register(
     CategoryScale,
     LinearScale,
-    BarElement,
+    LineElement,
+    PointElement,
     Title,
     Tooltip,
     Legend
   );
-  const targetData = [200, 200, 200, 200, 200];
-  const actualData = [150, 180, 210, 220, 260];
+
   const fakeData = {
-    target: monthAxis.map(() => faker.datatype.number({ min: 200, max: 220 })),
-    actual: monthAxis.map(() => faker.datatype.number({ min: 150, max: 260 })),
+    target: monthAxis.map(() => faker.datatype.number({ min: 100, max: 220 })),
+    actual: monthAxis.map(() => faker.datatype.number({ min: 50, max: 260 })),
   };
-  const goalData = "64.5";
+
   // Config option
   const options = {
     responsive: true,
@@ -57,8 +58,7 @@ function MonthlyRevenueChart(props) {
         text: "",
       },
       datalabels: {
-        display: true,
-        color: "white",
+        color: "red",
         anchor: "start",
         align: "end",
         clamp: true,
@@ -73,11 +73,13 @@ function MonthlyRevenueChart(props) {
         label: "Target",
         data: fakeData.target,
         backgroundColor: "rgba(255, 99, 132)",
+        borderColor: "rgba(255, 99, 132)",
       },
       {
         label: "Actual",
         data: fakeData.actual,
         backgroundColor: "rgba(53, 162, 235)",
+        borderColor: "rgba(53, 162, 235)",
       },
     ],
   };
@@ -129,7 +131,7 @@ function MonthlyRevenueChart(props) {
         </Box>
         {/* Chart of revenue summary */}
         <ChartBox>
-          <Bar options={options} plugins={[ChartDataLabels]} data={data} />
+          <Line options={options} plugins={[ChartDataLabels]} data={data} />
         </ChartBox>
       </ChartCover>
       {isViewDetail && (
