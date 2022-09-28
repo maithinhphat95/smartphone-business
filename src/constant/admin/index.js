@@ -39,3 +39,8 @@ export const adminColorDark = {
   background: "#252930",
   text: "white",
 };
+export const orderStatus = {
+  prepare: "Preparing",
+  delivery: "Delevering",
+  received: "Received",
+};

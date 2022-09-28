@@ -4,6 +4,7 @@ import RevenueSummaryChart from "../../../components/admin/Charts/RevenueSummary
 import PageTitle from "../../../components/admin/PageTitle";
 import MonthlyRevenueChart from "../../../components/admin/Charts/MonthlyRevenueChart";
 import { adminColorLight, adminColorDark } from "../../../constant/admin";
+import DataTable from "../../../components/admin/Tables/DataTable";
 
 RevenuePage.propTypes = {};
 
@@ -35,6 +36,7 @@ function RevenuePage(props) {
           <RevenueSummaryChart />
           <MonthlyRevenueChart />
         </Box>
+        <DataTable />
       </Box>
     </>
   );

@@ -5,6 +5,7 @@ import DashboardPage from "../../../pages/admin/DashboardPage";
 import { Route, Routes } from "react-router-dom";
 import RevenuePage from "../../../pages/admin/RevenuePage";
 import { adminColorLight } from "../../../constant/admin";
+
 Main.propTypes = {};
 
 function Main(props) {
@@ -14,6 +15,7 @@ function Main(props) {
         position: "relative",
         top: 70,
         display: "flex",
+        backgroundColor: adminColorLight.background,
       }}
     >
       <Menu />
