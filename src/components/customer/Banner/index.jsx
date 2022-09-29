@@ -10,10 +10,6 @@ function Banner() {
           src="https://images.fpt.shop/unsafe/fit-in/1200x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/12/637985917778924694_F-C1_1200x300-2.jpg"
           alt="First slide"
         />
-        {/* <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption> */}
       </Carousel.Item>
       <Carousel.Item>
         <img

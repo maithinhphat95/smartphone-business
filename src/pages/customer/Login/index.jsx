@@ -14,7 +14,7 @@ import React from "react";
 import "./Login.scss";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 // import {LockOutlinedIcon,Copyright} from '@mui/icons-material/LockOutlined';
 function Login({ handleClose }) {
   //history
@@ -39,7 +39,7 @@ function Login({ handleClose }) {
         data.password === element["password"]
     );
     if (checkLogin) {
-      toast.success('Đăng nhập thành công!', {
+      toast.success("Đăng nhập thành công!", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -47,9 +47,9 @@ function Login({ handleClose }) {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
+      });
     } else {
-      toast.error('Đăng nhập thất bại, tài khoản hoặc mật khẩu không đúng!', {
+      toast.error("Đăng nhập thất bại, tài khoản hoặc mật khẩu không đúng!", {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -57,16 +57,16 @@ function Login({ handleClose }) {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
-        return;
+      });
+      return;
     }
-    // fake 
-    return new Promise (resolve =>{
-      setTimeout(() =>{
+    // fake
+    return new Promise((resolve) => {
+      setTimeout(() => {
         history("/");
         resolve(true);
-      },3000)
-    })
+      }, 3000);
+    });
   };
   return (
     <div className="container-fluid login">

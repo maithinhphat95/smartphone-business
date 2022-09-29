@@ -1,37 +1,63 @@
-import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import React from "react";
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 import "./ProductItem.scss";
-function ProductItem() {
-    return (
-        <Card  className='titleitem' sx={{ maxWidth: 345}}>
-        <CardActionArea >
-          <CardMedia className='imgmedia'
+import { Link, useNavigate } from "react-router-dom";
+function ProductItem(props) {
+  const { img, name, priceNew, priceOld } = props;
+  //submit 
+  const history = useNavigate();
+  const onSubmit = () =>{
+    
+    history("/phone/phoneitem/id");
+  }
+  return (
+    <>
+      <Card className="titleitem" sx={{ maxWidth: 345 }}>
+        <CardActionArea>
+        <Link to="/phone/phoneitem/id">
+          <CardMedia
+            className="imgmedia"
             component="img"
             height="280px"
             width="100%"
-            image="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/25/637970354555201931_iphone-13-bh-2nam-dac-quyen.jpg"
+            image={img}
             alt="green iguana"
           />
+          </Link>
           <CardContent>
-          
-            <Typography gutterBottom variant="h6" component="div">	
-            <a href="" className='name-product'>Nokia G21 6GB-128GB</a>
+            <Typography gutterBottom variant="h6" component="div">
+              <a href="" className="name-product">
+                {name}
+              </a>
             </Typography>
-            <Typography className='price' variant="body2" color="text.secondary">
-            7.490.000đ
+            <Typography
+              className="price"
+              variant="body2"
+              color="text.secondary"
+            >
+              {priceNew} đ
             </Typography>
-            <div className="strike-price"><strike>2.990.000 ₫</strike></div>
+            <div className="strike-price">
+              <strike>{priceOld} đ</strike>
+            </div>
           </CardContent>
         </CardActionArea>
         <CardActions>
-        <Button variant="contained" color="success">Mua ngay</Button>
+          <Button variant="contained" color="success" onClick={() => onSubmit()}>
+            Mua ngay 
+          </Button>
         </CardActions>
       </Card>
-    );
+    </>
+  );
 }
 
 export default ProductItem;
