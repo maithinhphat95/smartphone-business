@@ -1,6 +1,7 @@
 .profuid{
+    // background-color: rgb(211, 211, 211);
     margin-top: 40px;
-
+    // padd-top: 40px;
     .title-list {
         background-color: rgb(255, 255, 255);
         border-radius: 10px;
@@ -11,23 +12,4 @@
         border-bottom:1px solid rgb(145, 140, 140) ;
     }
     }
-}
-.slick-next, .slick-prev {
-	width: 30px;
-	height: 30px;
-	// color: #0000;
-}
-.slick-arrow{
-	
-	background: rgb(104, 104, 104);
-}
-.slick-next:before, .slick-prev:before{
-	font-size: 25px;
-}
-.MuiContainer-root{
-	padding-top:  20px ;
-	padding-bottom: 40px ;
-}
-.carousel-list{
-	padding-top: 40px;
 }

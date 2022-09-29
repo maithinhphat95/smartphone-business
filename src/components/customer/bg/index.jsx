@@ -1,8 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./Imgbackground.scss";
 import Banner from "../Banner";
-Imgbackground.propTypes = {};
 
 function Imgbackground(props) {
   return (

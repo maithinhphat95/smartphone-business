@@ -1,49 +1,89 @@
-  .titleitem{
+.titleitem{
+    transition: all .5s;
+    .imgmedia{
         transition: all .5s;
-        .imgmedia{
-            transition: all .5s;
+    }
+    .name-product{
+        text-decoration: none;
+        color: black;
+    }
+    .price{
+            flex-basis: 130px;
+            width: 130px;
+            height: 28px;
+            border-radius: 15px;
+            background-color: #f30810;
+            text-align: center;
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: 500;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            color: #fff;
         }
-        .name-product{
-            text-decoration: none;
-            color: black;
-        }
-        .price{
-                flex-basis: 130px;
-                width: 130px;
-                height: 28px;
-                border-radius: 15px;
-                background-color: #f30810;
-                text-align: center;
-                font-size: 18px;
-                line-height: 28px;
-                font-weight: 500;
-                overflow: hidden;
-                position: relative;
-                z-index: 1;
-                color: #fff;
-            }
 
-            .strike-price{
-                text-align: right;
-                position: relative;
-            }
-        
+        .strike-price{
+            text-align: right;
+            position: relative;
+        }
+    
 
 }
 .name-product:hover{
-    color: #0168fa;
+color: #0168fa;
 }
 
 .titleitem:hover{
-    // border: 1px solid #ddd;
-    border-radius: 4px;
-    // transition: all .5s;
-    // transition: all 1s ease-in-out;
-    // transition-duration: 2s; 
-    // transform: rotate(1deg);
+// border: 1px solid #ddd;
+border-radius: 4px;
+// transition: all .5s;
+// transition: all 1s ease-in-out;
+// transition-duration: 2s; 
+// transform: rotate(1deg);
 }
 .titleitem .imgmedia:hover {
-    transform: scale(1.1);
-    // transform: rotate(1deg);
-    // border-radius: 30px
+transform: scale(1.1);
+// transform: rotate(1deg);
+// border-radius: 30px
+}
+
+.p-style {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+background-color: #dddddd;
+}
+.profuid{
+margin-top: 40px;
+
+.title-list {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 1px solid rgb(231, 231, 231);
+    // background-color: #fff;
+//    margin-top: 40px;
+h2{
+    border-bottom:1px solid rgb(145, 140, 140) ;
+}
+}
+}
+.slick-next, .slick-prev {
+width: 30px;
+height: 30px;
+// color: #0000;
+}
+.slick-arrow{
+
+background: rgb(104, 104, 104);
+}
+.slick-next:before, .slick-prev:before{
+font-size: 25px;
+}
+.MuiContainer-root{
+padding-top:  20px ;
+padding-bottom: 40px ;
+}
+.carousel-list{
+padding-top: 40px;
 }

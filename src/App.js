@@ -9,6 +9,10 @@ import Security from './pages/customer/AboutSecurity';
 import Header from './layouts/customer/Header';
 import Nav from './components/customer/Nav';
 import Footer from './layouts/customer/Footer';
+import ProducitemListSearch from './pages/customer/SearchItem/ProducitemListSearch';
+import PhoneItem from './pages/customer/PhoneItem';
+import CarouselPhone from './pages/customer/Carousel-PhoneItem';
+// import Testt from './features/Account/pages/Register';
 
 function App() {
   return (
@@ -23,6 +27,10 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/question' element={<Question />} />
       <Route path='/aboutSecurity' element={<Security />} />
+      <Route path='/search' element={<ProducitemListSearch />} />
+      <Route path='/phone/phoneitem' element={<PhoneItem />} />
+      <Route path='/phone/phoneitem/id' element={<CarouselPhone />} />
+      
     </Routes>
     </main>
     <Footer />

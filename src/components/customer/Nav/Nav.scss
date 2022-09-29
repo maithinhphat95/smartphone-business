@@ -1,13 +1,13 @@
+
 .nav{
     background-color: #252525 !important ; 
-    
     ul {
         list-style-type: none;
         // text-align: center;
+        // display: flex;
         
         li {
             display: inline-block;
-
             padding-top: 10px;
             padding-right: 30px;
           }
@@ -16,14 +16,6 @@
             text-decoration: none;
           }
 }
-// .mnbox{
-//   width: 100%;
-  
-// }
-// .fs-mntd2 {
-//   width: 15%;
-//   border-right: 1px solid #e3e3e3;
-// }
 .dropdown:hover  .dropdown-menu {
   display: block;
   // width: 100%;

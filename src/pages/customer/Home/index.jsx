@@ -1,18 +1,18 @@
 import React from "react";
 import Imgbackground from "../../../components/customer/bg";
 import Breadcrumb from "../../../components/customer/Breadcrumb";
-// import CraouselOne from "../../../components/customer/Home-Carousel/Home-CarouselOne";
-import CarouselThree from "../../../components/customer/Home-Carousel/Home-CarouselThree";
-
+import HomeListItem from "../../../components/customer/Home-ListItem/Home-ListItemOne";
+import HomeListItemThree from "../../../components/customer/Home-ListItem/Home-ListItemThree";
+import HomeListItemTwo from "../../../components/customer/Home-ListItem/Home-ListItemTwo";
 
 function Home(props) {
   return (
     <>
       <Breadcrumb />
       <Imgbackground />
-      <CarouselThree  title="Khuyến Mãi Hot"/>
-      <CarouselThree title="Sản phẩm bán chạy"/>
-      <CarouselThree title="Apple"/>
+      <HomeListItem title="Khuyến Mãi Hot" />
+      <HomeListItemTwo title="Sản phẩm bán chạy" />
+      <HomeListItemThree title="Apple" />
       {/* <CraouselOne /> */}
     </>
   );
