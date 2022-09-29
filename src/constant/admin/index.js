@@ -32,6 +32,16 @@ export const adminColorLight = {
   background: "#f0f0f0",
   shadow: "#ccc",
   text: "black",
+  //  chartColor1: "#52514f", //Gray
+  //  chartColor2: "#034c9d", //Heavy Blue
+  chartColor1: "#ff6384", //Light Pink
+  chartColor2: "#35a2eb", //Light Blue
+  chartColor3: "#1d9e63", //Green
+  chartColor4: "#ff6700", //Orange
+  chartColor5: "#cd3c99", //Pirple
+  chartColor6: "#f3d522", //Yellow
+  chartColor7: "#35a2eb", //Light Blue
+  chartColor8: "#ff6384", //Light Pink
 };
 export const adminColorDark = {
   primary: "",

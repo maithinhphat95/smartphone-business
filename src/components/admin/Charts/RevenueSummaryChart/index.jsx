@@ -13,10 +13,11 @@ import { faker } from "@faker-js/faker";
 import { monthAxis, yearAxis } from "../../../common/charts";
 import { Box, Typography, Link } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import CharHeader from "../../ChartHeader";
+import ComponentHeader from "../../ComponentHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
 import ChartBox from "../ChartBox";
+import { adminColorLight } from "../../../../constant/admin";
 
 RevenueSummaryChart.propTypes = {};
 
@@ -72,12 +73,14 @@ function RevenueSummaryChart(props) {
       {
         label: "Target",
         data: targetData,
-        backgroundColor: "rgba(255, 99, 132)",
+        backgroundColor: adminColorLight.chartColor1,
+        borderColor: adminColorLight.chartColor1,
       },
       {
         label: "Actual",
         data: actualData,
-        backgroundColor: "rgba(53, 162, 235)",
+        backgroundColor: adminColorLight.chartColor2,
+        borderColor: adminColorLight.chartColor2,
       },
     ],
   };
@@ -85,7 +88,7 @@ function RevenueSummaryChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <CharHeader chartName="Revenue Summary" goalData={goalData} />
+      <ComponentHeader chartName="Revenue Summary" goalData={goalData} />
       {/* Body of chart */}
       <ChartCover>
         {/* Sale result */}

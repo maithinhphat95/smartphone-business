@@ -3,9 +3,10 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { Box, Link } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import ChartHeader from "../../ChartHeader";
+import ComponentHeader from "../../ComponentHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
+import { adminColorLight } from "../../../../constant/admin";
 
 BrandRatingChart.propTypes = {};
 
@@ -20,12 +21,12 @@ function BrandRatingChart(props) {
         label: "# of Votes",
         data: [40, 30, 15, 8, 5, 2],
         backgroundColor: [
-          "#52514f",
-          "#034c9d",
-          "#1d9e63",
-          "#ff6700",
-          "#cd3c99",
-          "#f3d522",
+          adminColorLight.chartColor1,
+          adminColorLight.chartColor2,
+          adminColorLight.chartColor3,
+          adminColorLight.chartColor4,
+          adminColorLight.chartColor5,
+          adminColorLight.chartColor6,
         ],
 
         borderWidth: 0.5,
@@ -54,7 +55,7 @@ function BrandRatingChart(props) {
 
   return (
     <ChartContainer maxWidth="350px">
-      <ChartHeader chartName="Phone Brand Rating" />
+      <ComponentHeader chartName="Phone Brand Rating" />
       <ChartCover>
         <Box
           sx={{

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import RevenueSummaryChart from "../../../components/admin/Charts/RevenueSummaryChart";
 import PageTitle from "../../../components/admin/PageTitle";
 import MonthlyRevenueChart from "../../../components/admin/Charts/MonthlyRevenueChart";
@@ -36,7 +36,9 @@ function RevenuePage(props) {
           <RevenueSummaryChart />
           <MonthlyRevenueChart />
         </Box>
-        <DataTable />
+        <Box>
+          <DataTable />
+        </Box>
       </Box>
     </>
   );
