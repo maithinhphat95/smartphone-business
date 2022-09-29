@@ -353,7 +353,9 @@ export default function DataTable() {
               <TableCell align="center" width="200px">
                 USER
               </TableCell>
-              <TableCell align="center">DATE</TableCell>
+              <TableCell align="center" width="200px">
+                DATE
+              </TableCell>
               <TableCell align="center" width="200px">
                 AMOUNT
               </TableCell>
