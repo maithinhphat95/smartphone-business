@@ -6,9 +6,10 @@ import ComputerOutlinedIcon from "@mui/icons-material/ComputerOutlined";
 import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 import { Container, Grid } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function Nav(props) {
+  let { producer } = useParams();
   return (
     <div  className="container-fuild nav">
       <div className="container">
@@ -39,84 +40,84 @@ function Nav(props) {
                 >
                   <h5>Hãng sản xuất</h5>
                   <Link
-                    to="/phone/phoneitem"
+                    to="/phone/Apple"
                     className="dropdown-item"
-                    href="#"
+                   
                   >
                     Apple (iPhone)
                   </Link>
                   <Link
-                    to="/phone/phoneitem"
+                    to="/phone/SamSung"
                     className="dropdown-item"
-                    href="#"
+                    
                   >
                     Samsung
                   </Link>
                   <Link
-                    to="/phone/phoneitem"
+                    to="/phone/Oppo"
                     className="dropdown-item"
-                    href="#"
+                    
                   >
                     OPPO
                   </Link>
                   <Link
-                    to="/phone/phoneitem"
+                    to="/phone/Xiaomi"
                     className="dropdown-item"
-                    href="#"
+                   
                   >
                     Xiaomi
                   </Link>
                   <Link
-                    to="/phone/phoneitem"
+                    to="/phone/Vivo"
                     className="dropdown-item"
-                    href="#"
+                    
                   >
                     Vivo
                   </Link>
                   <Link
-                    to="/phone/phoneitem"
+                    to="/phone/Nokia"
                     className="dropdown-item"
-                    href="#"
+                    
                   >
                     Nokia
                   </Link>
 
                   <h5>Mức giá</h5>
-                  <a className="dropdown-item" href="#">
+                  <Link to="/phone/duoi-2-trieu" className="dropdown-item">
                     Dưới 2 triệu
-                  </a>
-                  <a className="dropdown-item" href="#">
+                  </Link>
+                  <Link to="/phone/tu-2-4-trieu" className="dropdown-item" href="#">
                     Từ 2 - 4 triệu
-                  </a>
-                  <a className="dropdown-item" href="#">
+                  </Link>
+                  <Link to="/phone/tu-4-7-trieu" className="dropdown-item" >
                     Từ 4 - 7 triệu
-                  </a>
-                  <a className="dropdown-item" href="#">
+                  </Link>
+                  <Link to="/phone/tu-7-13-trieu" className="dropdown-item" href="#">
                     Từ 7 - 13 triệu
-                  </a>
-                  <a className="dropdown-item" href="#">
+                  </Link>
+                  <Link to="/phone/tren-13-trieu" className="dropdown-item" >
                     Trên 13 triệu
-                  </a>
+                  </Link>
                 </div>
                 {/* righ */}
               </li>
               <li>
-                <a href="" className="nav-link">
+                <a href="#" className="nav-link">
                   <LaptopMacOutlinedIcon fontSize="smaill" /> Laptop
                 </a>
               </li>
               <li>
-                <a href="" className="nav-link">
+                <a href="#"  className="nav-link">
                   <ComputerOutlinedIcon fontSize="smaill" /> Máy tính bảng
                 </a>
               </li>
               <li>
-                <a href="" className="nav-link">
+                <a  className="nav-link">
                   <HeadphonesOutlinedIcon fontSize="smaill" /> Phụ kiện
                 </a>
               </li>
               <li>
-                <a href="" className="nav-link">
+                <a href="#" className="nav-link">
                   <AutoAwesomeOutlinedIcon fontSize="smaill" /> KHUYẾN MÃI
                 </a>
               </li>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Button,
   Card,
@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import "./ProductItem.scss";
 import { Link, useNavigate } from "react-router-dom";
+import Fade from 'react-reveal/Fade';
+import ThemeContext from "../Context/ThemeContext";
 function ProductItem(props) {
   const { img, name, priceNew, priceOld } = props;
   //submit 
@@ -20,7 +22,8 @@ function ProductItem(props) {
   }
   return (
     <>
-      <Card className="titleitem" sx={{ maxWidth: 345 }}>
+    <Fade bottom>
+      <Card  className="titleitem" sx={{ maxWidth: 345 }}>
         <CardActionArea>
         <Link to="/phone/phoneitem/id">
           <CardMedia
@@ -56,6 +59,7 @@ function ProductItem(props) {
           </Button>
         </CardActions>
       </Card>
+      </Fade>
     </>
   );
 }
