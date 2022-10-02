@@ -27,10 +27,11 @@ function Header(props) {
   // const onClickSearch = (e) =>{
   //   e.preventdefault();
   //   history("/search");
+  // 
 
   // }
   return (
-    <Container maxWidth="xl" className="header" sx={{ height:{xs:"300px", sm:"250px", md:"150px", lg:"150px"} }}>
+    <Container maxWidth="xl" className="header" sx={{ height:{xs:"300px", sm:"240px", md:"150px", lg:"150px"} }}>
       <Container className="header-container">
         <Grid
           container
