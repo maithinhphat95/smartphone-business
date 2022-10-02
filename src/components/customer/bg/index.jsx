@@ -1,16 +1,18 @@
 import React from "react";
 import "./Imgbackground.scss";
 import Banner from "../Banner";
-
+import Rotate from 'react-reveal/Rotate';
 function Imgbackground(props) {
   return (
     <div className="container-fluid imgbg">
       <div className="fpt-sale">
         <div className="category-container">
           <div className="sale-cd-tit">
+          <Rotate>
             <a href="">
                 <img src="https://images.fpt.shop/unsafe/fit-in/filters:quality(80):fill(transparent)/fptshop.com.vn/Uploads/Originals/2022/9/15/637988511655314952_top-head.png" alt="" />
             </a>
+            </Rotate>
           </div>
           {/* sale */}
           {/* <div className="sale-cd-timer">

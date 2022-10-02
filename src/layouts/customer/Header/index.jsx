@@ -15,6 +15,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import SearchIcon from "@mui/icons-material/Search";
 import { Link, useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
+import Flip from 'react-reveal/Flip';
 function Header(props) {
   // const [open, setOpen] = useState(false);
   // const handleOpen = (e) => {
@@ -26,11 +27,12 @@ function Header(props) {
   // const onClickSearch = (e) =>{
   //   e.preventdefault();
   //   history("/search");
+  // 
 
   // }
   return (
-    <div className="container-fuild header">
-      <div className="container header-container">
+    <Container maxWidth="xl" className="header" sx={{ height:{xs:"300px", sm:"240px", md:"150px", lg:"150px"} }}>
+      <Container className="header-container">
         <Grid
           container
         >
@@ -63,6 +65,7 @@ function Header(props) {
           </Grid>
           <Grid item={true}  sm={12} xs={12} md={5}>
             <Box>
+            <Flip cascade>
               <ul className="header-ul">
                 <li>
                   <a href="#" className="header-link">
@@ -85,6 +88,7 @@ function Header(props) {
                   </a>
                 </li>
               </ul>
+              </Flip>
             </Box>
           </Grid>
         </Grid>
@@ -144,8 +148,8 @@ function Header(props) {
           </Col>
         </Row> */}
         {/* </div> */}
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 }
 

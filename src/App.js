@@ -12,11 +12,16 @@ import Footer from './layouts/customer/Footer';
 import ProducitemListSearch from './pages/customer/SearchItem/ProducitemListSearch';
 import PhoneItem from './pages/customer/PhoneItem';
 import CarouselPhone from './pages/customer/Carousel-PhoneItem';
+import NotFound from './pages/customer/NotFound';
+import DetalPhone from './pages/customer/PhoneItem/DetalPhone';
+import PricePhone from './pages/customer/PhoneItem/PricePhone';
+import ThemeProvider from './components/customer/Context/ThemeProvider';
 // import Testt from './features/Account/pages/Register';
 
 function App() {
   return (
   <>
+  <ThemeProvider >
   <BrowserRouter>
     <Header />
     <Nav />
@@ -28,14 +33,20 @@ function App() {
       <Route path='/question' element={<Question />} />
       <Route path='/aboutSecurity' element={<Security />} />
       <Route path='/search' element={<ProducitemListSearch />} />
-      <Route path='/phone/phoneitem' element={<PhoneItem />} />
+      <Route  exact path='/phone' element={<PhoneItem />} />
+      {/* path={`${url}/:id`}> */}
+      <Route path={`/phone/:producer`} element={<DetalPhone />} />
+      {/* <Route path={`/phone/:producer`} element={<DetalPhone />} /> */}
+      {/* <Route path='/phone/:descriptionPrice' element={<PricePhone />} /> */}
       <Route path='/phone/phoneitem/id' element={<CarouselPhone />} />
+      <Route path='*' element={<NotFound />} />
       
     </Routes>
     </main>
     <Footer />
     {/* <Testt /> */}
      </BrowserRouter>
+     </ThemeProvider>
     </>
   );
 }
