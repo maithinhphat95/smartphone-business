@@ -72,13 +72,13 @@ function RevenueSummaryChart(props) {
     datasets: [
       {
         label: "Target",
-        data: targetData,
+        data: fakeData.target,
         backgroundColor: adminColorLight.chartColor1,
         borderColor: adminColorLight.chartColor1,
       },
       {
         label: "Actual",
-        data: actualData,
+        data: fakeData.actual,
         backgroundColor: adminColorLight.chartColor2,
         borderColor: adminColorLight.chartColor2,
       },

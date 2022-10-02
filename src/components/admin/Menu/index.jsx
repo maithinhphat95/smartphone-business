@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import AccountShort from "../AccountShort";
 import NavList from "../NavList";
 import { useSelector } from "react-redux";
-import { adminColorDark, adminColorLight } from "../../../constant/admin";
+import { adminColorLight } from "../../../constant/admin";
 Menu.propTypes = {};
 function Menu(props) {
   const showMenu = useSelector((state) => state.admin.showMenu);

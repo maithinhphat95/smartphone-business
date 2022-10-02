@@ -1,7 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
-
-Title.propTypes = {};
 
 function Title(props) {
   const { content } = props;

@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker";
+
 export const yearlyRevenue = [
   {
     year: 2018,
@@ -54,3 +56,144 @@ export const orderStatus = {
   delivery: "Delevering",
   received: "Received",
 };
+
+// Create fake order item function
+function fakeOrderItem(no, id, user, date, subtotal, bonus, total, status) {
+  return {
+    no,
+    id,
+    user,
+    date,
+    subtotal,
+    bonus,
+    total,
+    status,
+    purchasedList: [
+      { id: 1, productId: "uysdiu223d", coupon: "abc", quantity: 2 },
+      { id: 2, productId: "uysdi2u223", coupon: "def", quantity: 1 },
+      { id: 3, productId: "uysd4u2223", coupon: "123", quantity: 3 },
+      { id: 4, productId: "uysd2u2223", coupon: "abc", quantity: 1 },
+    ],
+  };
+}
+let i = 1;
+// Init the rows by order list formular, fixed to other table in the future
+export const rows = [
+  fakeOrderItem(
+    i,
+    faker.random.alphaNumeric(10, {
+      casing: "mixed",
+    }),
+    "phat",
+    faker.date.past(2).toLocaleString(),
+    2400,
+    -20,
+    2380,
+    orderStatus.delivery
+  ),
+  fakeOrderItem(
+    ++i,
+    faker.random.alphaNumeric(10, {
+      casing: "mixed",
+    }),
+    "phat",
+    faker.date.past(2).toLocaleString(),
+    2400,
+    -20,
+    2380,
+    orderStatus.prepare
+  ),
+  fakeOrderItem(
+    ++i,
+    faker.random.alphaNumeric(10, {
+      casing: "mixed",
+    }),
+    "phat",
+    faker.date.past(2).toLocaleString(),
+    2400,
+    -20,
+    2380,
+    orderStatus.delivery
+  ),
+  fakeOrderItem(
+    ++i,
+    faker.random.alphaNumeric(10, {
+      casing: "mixed",
+    }),
+    "phat",
+    faker.date.past(2).toLocaleString(),
+    2400,
+    -20,
+    2380,
+    orderStatus.received
+  ),
+  fakeOrderItem(
+    ++i,
+    faker.random.alphaNumeric(10, {
+      casing: "mixed",
+    }),
+    "phat",
+    faker.date.past(2).toLocaleString(),
+    2400,
+    -20,
+    2380,
+    orderStatus.received
+  ),
+  fakeOrderItem(
+    ++i,
+    faker.random.alphaNumeric(10, {
+      casing: "mixed",
+    }),
+    "phat",
+    faker.date.past(2).toLocaleString(),
+    2400,
+    -20,
+    2380,
+    orderStatus.received
+  ),
+  fakeOrderItem(
+    ++i,
+    faker.random.alphaNumeric(10, {
+      casing: "mixed",
+    }),
+    "phat",
+    faker.date.past(2).toLocaleString(),
+    2400,
+    -20,
+    2380,
+    orderStatus.received
+  ),
+  fakeOrderItem(
+    ++i,
+    faker.random.alphaNumeric(10, {
+      casing: "mixed",
+    }),
+    "phat",
+    faker.date.past(2).toLocaleString(),
+    2400,
+    -20,
+    2380,
+    orderStatus.received
+  ),
+];
+
+export const cellHead = {
+  order: ["#", "ID", "USER", "DATE", "SUBTOTAL", "BONUS", "TOTAL", "STATUS"],
+  purchased: [
+    "#",
+    "Product",
+    "Quantity",
+    "Price",
+    "Subtotal",
+    "Coupon",
+    "Bonus",
+    "Total",
+  ],
+};
+
+export const couponList = [
+  { id: 1, name: "abc", type: "direct", value: 20 },
+  { id: 2, name: "def", type: "percent", value: 20 },
+  { id: 3, name: "123", type: "percent", value: 20 },
+  { id: 4, name: "456", type: "percent", value: 20 },
+];

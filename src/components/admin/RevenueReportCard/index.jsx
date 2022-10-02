@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { adminColorDark, adminColorLight } from "../../../constant/admin";
+import { adminColorLight } from "../../../constant/admin";
 RevenueReportCard.propTypes = {};
 
 function RevenueReportCard(props) {

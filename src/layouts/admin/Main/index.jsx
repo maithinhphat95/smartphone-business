@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box } from "@mui/system";
+import { Route, Routes } from "react-router-dom";
+import { adminColorLight } from "../../../constant/admin";
 import Menu from "../../../components/admin/Menu";
 import DashboardPage from "../../../pages/admin/DashboardPage";
-import { Route, Routes } from "react-router-dom";
 import RevenuePage from "../../../pages/admin/RevenuePage";
-import { adminColorLight } from "../../../constant/admin";
 
 Main.propTypes = {};
 

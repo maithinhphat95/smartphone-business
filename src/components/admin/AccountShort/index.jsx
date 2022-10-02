@@ -4,7 +4,6 @@ AccountShort.propTypes = {};
 
 function AccountShort(props) {
   // Props account receive a object contain avatar url, name, phone number
-  const { account } = props;
   return (
     <Box
       sx={{

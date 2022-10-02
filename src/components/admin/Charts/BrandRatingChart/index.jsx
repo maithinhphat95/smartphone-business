@@ -1,5 +1,5 @@
 import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { Box, Link } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
@@ -46,11 +46,6 @@ function BrandRatingChart(props) {
         clamp: true,
       },
     },
-  };
-  const config = {
-    type: "pie",
-    data: data,
-    options: options,
   };
 
   return (
