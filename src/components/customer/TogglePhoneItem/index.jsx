@@ -19,7 +19,7 @@ function TogglePhoneItem(props) {
   const { data: dataProductItem, isLoading, isError } =
     // = useFetch('https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z')
     useFetch("http://localhost:3006/productitem/");
-  console.log(params.producer);
+  // console.log(params.producer);
   // const sortList = ["samsung" a
   // sortList.each(item)
   // if  productList.bran === item,
@@ -51,8 +51,8 @@ function TogglePhoneItem(props) {
             dataProductItem.length > 0 &&
             dataProductItem.map((item) => {
               if (item.producer === params.producer) {
-                console.log(dataProductItem.producer);
-                console.log(params.producer);
+                {/* console.log(dataProductItem.producer);
+                console.log(params.producer); */}
                 return (
                   <Grid key={item.id} item={true} xs={12} sm={6} md={4}>
                     <ProductItem
@@ -65,8 +65,8 @@ function TogglePhoneItem(props) {
                 );
               }
               if (item.descriptionPrice === params.producer) {
-                console.log(dataProductItem.producer);
-                console.log(params.descriptionPrice);
+                {/* console.log(dataProductItem.producer);
+                console.log(params.descriptionPrice); */}
                 return (
                   <Grid key={item.id} item={true} xs={12} sm={6} md={4}>
                     <ProductItem
