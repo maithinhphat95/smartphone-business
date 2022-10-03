@@ -83,10 +83,10 @@ function Header(props) {
                 </li>
                 {/* {open && <Login handleClose={setOpen}/>} */}
                 <li>
-                  <a href="#" className="header-link">
+                  <Link to="/cart"  className="header-link">
                     <ShoppingCartOutlinedIcon color="" fontSize="large" />
                     <p>Giỏ hàng</p>
-                  </a>
+                  </Link>
                 </li>
               </ul>
               </Flip>

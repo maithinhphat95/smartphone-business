@@ -37,9 +37,9 @@ const getPostById = async id => {
     const [myCart,setMycart] = useState([{}]);
     return (
         <ThemeContext.Provider
-        value={{totalTitlePhone,setTotalTitlePhone,myCart,setMycart,getPosts: getPosts,
-        getPostById:getPostById,
-            currentBlogPost: state.currentBlogPost}}
+        value={{myCart,setMycart
+        
+            }}
     >
         {props.children}
     </ThemeContext.Provider>

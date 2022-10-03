@@ -2,26 +2,28 @@ import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../components/customize/fetch";
 // import { useParams } from "react-router-dom";
-// import ThemeContext from "../../../components/customer/Context/ThemeContext";
+import ThemeContext from "../../../components/customer/Context/ThemeContext";
 import "./CarouselPhone.scss";
 
 function CarouselPhone(props) {
   let params = useParams();
+  //Fake API
   const {data: dataProductItem,isLoading,isError,} = useFetch(`http://localhost:3006/productitem/${params.id}`);
-  // const {myCart,setMycart} = useContext(ThemeContext);
-  //   const {themeContext} = useContext(ThemeContext);
-  //   const {
-  //     getPostById,
-  //     currentBlogPost
-  // } = themeContext;
-  // let { postId } = useParams();
-  // useEffect(() => {
-  //   getPostById(postId);
-  // }, []);
-  // console.log(postId)
-  const handleClick = () => {
+  
+  //set add cart
+  const {setMycart} = useContext(ThemeContext);
+  const handleClickCart = () => {
     // add iphone13,12
-    const newItems = {};
+    const newItems = {
+      img: dataProductItem.img,
+      name: dataProductItem.name,
+      priceNew: dataProductItem.priceNew,
+      priceOld: dataProductItem.priceOld
+
+    };
+    // [1,2] arr.push(2);
+    setMycart((item) => [...item, newItems]);
+   console.log(newItems);
   };
   return (
     <div className="container-fluid mt-5">
@@ -204,10 +206,9 @@ function CarouselPhone(props) {
               </button>
               <button
                 className="btn btn-success"
-                type="button"
-                onClick={() => {
-                  handleClick();
-                }}
+                onClick={ 
+                  handleClickCart
+                }
               >
                 Thêm vào giỏ
               </button>
