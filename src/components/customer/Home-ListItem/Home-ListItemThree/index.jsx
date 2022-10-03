@@ -70,7 +70,8 @@ function HomeListItemThree(props) {
       img={item.img}
       name={item.name}
       priceNew={item.priceNew}
-      priceOld={item.priceOld} />
+      priceOld={item.priceOld}
+      id={item.id} />
     );
      }
   })}

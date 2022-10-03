@@ -16,11 +16,13 @@ import useFetch from "../../customize/fetch";
 function ProductItem(props) {
   let  params = useParams();
   const { id,img, name, priceNew, priceOld } = props;
+  console.log(id);
+
   //submit 
   const history = useNavigate();
   const onSubmit = () =>{
     
-    history(`/phone/${params.id}`);
+    history(`/phone/${id}`);
   }
   // const {data: dataProductItem,isLoading,isError,} = useFetch(`http://localhost:3006/productitem/`);
   return (
@@ -28,12 +30,12 @@ function ProductItem(props) {
     <Fade bottom>
       <Card  className="titleitem" sx={{ maxWidth: 345 }}>
         <CardActionArea>
-        <Link to={`/phone/${params.id}`}>
+        <Link to={`/phone/${id}`}>
         {console.log(params.id)}
           <CardMedia
             className="imgmedia"
             component="img"
-            height="210px"
+            height="250px"
             width="210px"
             image={img}
             alt="green iguana"
