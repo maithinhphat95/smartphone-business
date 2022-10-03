@@ -60,6 +60,7 @@ function TogglePhoneItem(props) {
                       name={item.name}
                       priceNew={item.priceNew}
                       priceOld={item.priceOld}
+                      id={item.id}
                     />
                   </Grid>
                 );
@@ -74,6 +75,7 @@ function TogglePhoneItem(props) {
                       name={item.name}
                       priceNew={item.priceNew}
                       priceOld={item.priceOld}
+                      id={item.id}
                     />
                   </Grid>
                 );
