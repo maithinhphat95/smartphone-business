@@ -16,6 +16,7 @@ import NotFound from './pages/customer/NotFound';
 import DetalPhone from './pages/customer/PhoneItem/DetalPhone';
 import PricePhone from './pages/customer/PhoneItem/PricePhone';
 import ThemeProvider from './components/customer/Context/ThemeProvider';
+import CheckDefault from './pages/customer/CheckOder/CheckDefault';
 // import Testt from './features/Account/pages/Register';
 
 function App() {
@@ -35,10 +36,12 @@ function App() {
       <Route path='/search' element={<ProducitemListSearch />} />
       <Route  exact path='/phone' element={<PhoneItem />} />
       {/* path={`${url}/:id`}> */}
-      <Route path={`/phone/:producer`} element={<DetalPhone />} />
+      <Route path={`/phones/:producer`} element={<DetalPhone />} />
       {/* <Route path={`/phone/:producer`} element={<DetalPhone />} /> */}
       {/* <Route path='/phone/:descriptionPrice' element={<PricePhone />} /> */}
-      <Route path='/phone/phoneitem/id' element={<CarouselPhone />} />
+      {/* <Route path={`/phones/b`} element={<CarouselPhone />} /> */}
+      <Route path={`/phone/:id`}  element={<CarouselPhone />} />
+      <Route path="/checkorder"  element={<CheckDefault />} />
       <Route path='*' element={<NotFound />} />
       
     </Routes>

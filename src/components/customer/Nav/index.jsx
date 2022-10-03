@@ -40,42 +40,42 @@ function Nav(props) {
                 >
                   <h5>Hãng sản xuất</h5>
                   <Link
-                    to="/phone/Apple"
+                    to="/phones/Apple"
                     className="dropdown-item"
                    
                   >
                     Apple (iPhone)
                   </Link>
                   <Link
-                    to="/phone/SamSung"
+                    to="/phones/SamSung"
                     className="dropdown-item"
                     
                   >
                     Samsung
                   </Link>
                   <Link
-                    to="/phone/Oppo"
+                    to="/phones/Oppo"
                     className="dropdown-item"
                     
                   >
                     OPPO
                   </Link>
                   <Link
-                    to="/phone/Xiaomi"
+                    to="/phones/Xiaomi"
                     className="dropdown-item"
                    
                   >
                     Xiaomi
                   </Link>
                   <Link
-                    to="/phone/Vivo"
+                    to="/phones/Vivo"
                     className="dropdown-item"
                     
                   >
                     Vivo
                   </Link>
                   <Link
-                    to="/phone/Nokia"
+                    to="/phones/Nokia"
                     className="dropdown-item"
                     
                   >
@@ -83,19 +83,19 @@ function Nav(props) {
                   </Link>
 
                   <h5>Mức giá</h5>
-                  <Link to="/phone/duoi-2-trieu" className="dropdown-item">
+                  <Link to="/phones/duoi-2-trieu" className="dropdown-item">
                     Dưới 2 triệu
                   </Link>
-                  <Link to="/phone/tu-2-4-trieu" className="dropdown-item" href="#">
+                  <Link to="/phones/tu-2-4-trieu" className="dropdown-item" href="#">
                     Từ 2 - 4 triệu
                   </Link>
-                  <Link to="/phone/tu-4-7-trieu" className="dropdown-item" >
+                  <Link to="/phones/tu-4-7-trieu" className="dropdown-item" >
                     Từ 4 - 7 triệu
                   </Link>
-                  <Link to="/phone/tu-7-13-trieu" className="dropdown-item" href="#">
+                  <Link to="/phones/tu-7-13-trieu" className="dropdown-item" href="#">
                     Từ 7 - 13 triệu
                   </Link>
-                  <Link to="/phone/tren-13-trieu" className="dropdown-item" >
+                  <Link to="/phones/tren-13-trieu" className="dropdown-item" >
                     Trên 13 triệu
                   </Link>
                 </div>

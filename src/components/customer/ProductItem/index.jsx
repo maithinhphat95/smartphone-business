@@ -9,28 +9,32 @@ import {
   Typography,
 } from "@mui/material";
 import "./ProductItem.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Fade from 'react-reveal/Fade';
 import ThemeContext from "../Context/ThemeContext";
+import useFetch from "../../customize/fetch";
 function ProductItem(props) {
-  const { img, name, priceNew, priceOld } = props;
+  let  params = useParams();
+  const { id,img, name, priceNew, priceOld } = props;
   //submit 
   const history = useNavigate();
   const onSubmit = () =>{
     
-    history("/phone/phoneitem/id");
+    history(`/phone/${params.id}`);
   }
+  // const {data: dataProductItem,isLoading,isError,} = useFetch(`http://localhost:3006/productitem/`);
   return (
     <>
     <Fade bottom>
       <Card  className="titleitem" sx={{ maxWidth: 345 }}>
         <CardActionArea>
-        <Link to="/phone/phoneitem/id">
+        <Link to={`/phone/${params.id}`}>
+        {console.log(params.id)}
           <CardMedia
             className="imgmedia"
             component="img"
-            height="280px"
-            width="100%"
+            height="210px"
+            width="210px"
             image={img}
             alt="green iguana"
           />

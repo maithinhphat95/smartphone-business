@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 // import {LockOutlinedIcon,Copyright} from '@mui/icons-material/LockOutlined';
+import Zoom from 'react-reveal/Zoom';
 function Login({ handleClose }) {
   //history
   const history = useNavigate();
@@ -74,6 +75,7 @@ function Login({ handleClose }) {
         <section className="">
           <div className="container style-container">
             <div className="card text-black">
+            <Zoom >
               <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
@@ -152,6 +154,7 @@ function Login({ handleClose }) {
                 </Box>
                 {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
               </Container>
+              </Zoom>
             </div>
           </div>
         </section>

@@ -55,6 +55,7 @@ function Header(props) {
                 inputProps={{
                   "aria-label": "Nhập tên điện thoại ... cần tìm",
                 }}
+                type="search"
               />
               <Link to="/search" className="text-link">
                 <IconButton type="submit" aria-label="search">
@@ -68,10 +69,10 @@ function Header(props) {
             <Flip cascade>
               <ul className="header-ul">
                 <li>
-                  <a href="#" className="header-link">
+                  <Link to="/checkorder" href="#" className="header-link">
                     <LocalShippingOutlinedIcon color="" fontSize="large" />{" "}
                     <p>Kiểm tra đơn hàng</p>
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
