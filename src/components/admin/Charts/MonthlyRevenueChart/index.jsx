@@ -11,12 +11,12 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-import { monthAxis, yearAxis } from "../../../common/charts";
-import { Box, Typography, Link } from "@mui/material";
+import { monthAxis } from "../../../common/charts";
+import { Box, Link } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
-import { adminColorDark, adminColorLight } from "../../../../constant/admin";
+import { adminColorLight } from "../../../../constant/admin";
 import RevenueReportCard from "../../RevenueReportCard";
 import ChartBox from "../ChartBox";
 import ComponentHeader from "../../ComponentHeader";

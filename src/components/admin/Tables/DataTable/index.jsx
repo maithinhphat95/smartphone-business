@@ -1,5 +1,9 @@
-import React, { useState } from "react";
-import { adminColorLight, couponList } from "../../../../constant/admin";
+import React, { useEffect, useState } from "react";
+import {
+  adminColorLight,
+  couponList,
+  productList,
+} from "../../../../constant/admin";
 import {
   Box,
   Table,
@@ -21,8 +25,6 @@ import {
   KeyboardArrowUp,
   Search,
 } from "@mui/icons-material";
-
-import { useSelector } from "react-redux";
 
 import CharHeader from "../../ComponentHeader";
 
@@ -71,14 +73,9 @@ const ExtraTable = (props) => {
                 }}
               >
                 {row.purchasedList.map((purchasedItem, index) => {
-                  let product = {
-                    id: "23231123",
-                    name: "Iphone 13 Pro Max",
-                    color: "green",
-                    picture:
-                      "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/1051159192.jpeg",
-                    price: 1000,
-                  };
+                  let currentProduct = productList.find(
+                    (product) => product.id === purchasedItem.productId
+                  );
                   let currentCoupon = couponList.find(
                     (coupon) => coupon.name === purchasedItem.coupon
                   );
@@ -86,11 +83,12 @@ const ExtraTable = (props) => {
                     currentCoupon.type === "direct"
                       ? currentCoupon.value
                       : currentCoupon.type === "percent"
-                      ? (product.price *
+                      ? (currentProduct.price *
                           purchasedItem.quantity *
                           currentCoupon.value) /
                         100
                       : 0;
+
                   return (
                     <TableRow key={purchasedItem.productId}>
                       <TableCell align="center">{index + 1}</TableCell>
@@ -101,21 +99,23 @@ const ExtraTable = (props) => {
                         <CardMedia
                           component="img"
                           // height="100px"
-                          image={product.picture}
-                          alt={product.name}
+                          image={currentProduct.picture}
+                          alt={currentProduct.name}
                           sx={{ width: "40px", marginRight: "10px" }}
                         />
-                        <Typography variant="p">{product.name}</Typography>
+                        <Typography variant="p">
+                          {currentProduct.name}
+                        </Typography>
                       </TableCell>
                       <TableCell align="center">
                         {purchasedItem.quantity.toLocaleString()}
                       </TableCell>
                       <TableCell align="right">
-                        {`$${product.price.toLocaleString()}`}
+                        {`$${currentProduct.price.toLocaleString()}`}
                       </TableCell>
                       <TableCell align="right">
                         {`$${(
-                          product.price * purchasedItem.quantity
+                          currentProduct.price * purchasedItem.quantity
                         ).toLocaleString()}`}
                       </TableCell>
                       <TableCell align="center">
@@ -129,7 +129,7 @@ const ExtraTable = (props) => {
                       <TableCell align="right">{`- $${bonus}`}</TableCell>
                       <TableCell align="right">
                         {`$${(
-                          product.price * purchasedItem.quantity -
+                          currentProduct.price * purchasedItem.quantity -
                           bonus
                         ).toLocaleString()}`}
                       </TableCell>
@@ -147,7 +147,7 @@ const ExtraTable = (props) => {
 
 // Function show each row of tablebody (order item)
 function Row(props) {
-  const { row, extraData } = props;
+  const { row, extraData, index, length, sortDesc } = props;
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -163,14 +163,22 @@ function Row(props) {
             </IconButton>
           </TableCell>
         )}
+        <TableCell align="center">
+          {sortDesc ? length - index : index + 1}
+        </TableCell>
         {Object.keys(row).map((item, index) => {
-          if (item !== "purchasedList") {
+          if (item !== "purchasedList" && item !== "no") {
             return (
               <TableCell key={index} align="center">
-                {row[item].toLocaleString()}
+                {`${
+                  item === "subtotal" || item === "bonus" || item === "total"
+                    ? "$"
+                    : ""
+                } ${row[item].toLocaleString()}`}
               </TableCell>
             );
           }
+          return "";
         })}
       </TableRow>
       {/* The table of purchasing list of order item */}
@@ -183,13 +191,51 @@ function Row(props) {
 
 export default function DataTable(props) {
   const { data } = props;
-  const [sortOrder, setSortOrder] = useState("desc");
-  const [sortBy, setSortBy] = useState("");
-
-  const [dataSorted, setDataSorted] = useState(data.body);
-
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [dec, setDec] = useState(true);
+  // Init sort by DATE
+  // const [sortDesc, setSortDesc] = useState(true);
+  // const [sortBy, setSortBy] = useState("DATE");
+  // const [dataSorted, setDataSorted] = useState([
+  //   ...data.body.sort((a, b) => {
+  //     let aDate = new Date(a.date);
+  //     let bDate = new Date(b.date);
+  //     if (aDate < bDate) {
+  //       return 1;
+  //     } else return -1;
+  //   }),
+  // ]);
+  // Init no sort
+  const [sortDesc, setSortDesc] = useState(false);
+  const [sortBy, setSortBy] = useState("");
+  const [dataSorted, setDataSorted] = useState([...data.body]);
+
+  useEffect(() => {
+    let currentData = [];
+    if (sortBy === "DATE") {
+      currentData = [
+        ...data.body.sort((a, b) => {
+          let aDate = new Date(a.date);
+          let bDate = new Date(b.date);
+          if (aDate < bDate) {
+            return sortDesc ? 1 : -1;
+          } else return sortDesc ? -1 : 1;
+        }),
+      ];
+    } else {
+      if (data.body[0].hasOwnProperty(sortBy.toLocaleLowerCase())) {
+        currentData = [
+          ...data.body.sort((a, b) => {
+            if (a[sortBy.toLowerCase()] < b[sortBy.toLowerCase()]) {
+              return sortDesc ? 1 : -1;
+            } else return sortDesc ? -1 : 1;
+          }),
+        ];
+      } else currentData = [...data.body];
+    }
+    setDataSorted(currentData);
+  }, [dec]);
 
   const handleChangePage = (newPage) => {
     setPage(newPage);
@@ -200,40 +246,14 @@ export default function DataTable(props) {
     setPage(0);
   };
 
-  // const state1 = useSelector((state) => state.admin);
-  // console.log(state1);
-
-  const handleSortTable = (category) => {
-    let newData = [];
-    if (category === "DATE") {
-      newData = [
-        ...data.body.sort((a, b) => {
-          let aDate = new Date(a.date);
-          let bDate = new Date(b.date);
-          if (aDate < bDate) {
-            return sortOrder === "desc" ? 1 : -1;
-          } else return sortOrder === "desc" ? -1 : 1;
-        }),
-      ];
-    } else {
-      newData = [
-        ...data.body.sort((a, b) => {
-          if (a[category.toLowerCase()] < b[category.toLowerCase()]) {
-            return 1;
-          } else return -1;
-        }),
-      ];
-    }
-    setDataSorted(newData);
-  };
   const requestSort = (category) => {
-    if (sortBy !== category || sortOrder === "asc") {
-      setSortOrder("desc");
+    if (sortBy === category) {
+      setSortDesc(!sortDesc);
     } else {
-      setSortOrder("asc");
+      setSortDesc(true);
+      setSortBy(category);
     }
-    setSortBy(category);
-    handleSortTable(category);
+    setDec(!dec);
   };
 
   return (
@@ -281,8 +301,15 @@ export default function DataTable(props) {
           </TableHead>
 
           <TableBody>
-            {dataSorted.map((row) => (
-              <Row key={row.id} row={row} extraData={data.extra} />
+            {dataSorted.map((row, index) => (
+              <Row
+                key={row.id}
+                row={row}
+                extraData={data.extra}
+                index={index}
+                sortDesc={sortDesc}
+                length={dataSorted.length}
+              />
             ))}
           </TableBody>
         </Table>

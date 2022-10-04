@@ -69,10 +69,10 @@ function fakeOrderItem(no, id, user, date, subtotal, bonus, total, status) {
     total,
     status,
     purchasedList: [
-      { id: 1, productId: "uysdiu223d", coupon: "abc", quantity: 2 },
-      { id: 2, productId: "uysdi2u223", coupon: "def", quantity: 1 },
-      { id: 3, productId: "uysd4u2223", coupon: "123", quantity: 3 },
-      { id: 4, productId: "uysd2u2223", coupon: "abc", quantity: 1 },
+      { id: 1, productId: "1", coupon: "abc", quantity: 2 },
+      { id: 2, productId: "2", coupon: "def", quantity: 1 },
+      { id: 3, productId: "3", coupon: "123", quantity: 3 },
+      { id: 4, productId: "4", coupon: "abc", quantity: 1 },
     ],
   };
 }
@@ -178,9 +178,9 @@ export const rows = [
 ];
 
 export const cellHead = {
-  order: ["#", "ID", "USER", "DATE", "SUBTOTAL", "BONUS", "TOTAL", "STATUS"],
+  order: ["NO", "ID", "USER", "DATE", "SUBTOTAL", "BONUS", "TOTAL", "STATUS"],
   purchased: [
-    "#",
+    "No",
     "Product",
     "Quantity",
     "Price",
@@ -196,4 +196,39 @@ export const couponList = [
   { id: 2, name: "def", type: "percent", value: 20 },
   { id: 3, name: "123", type: "percent", value: 20 },
   { id: 4, name: "456", type: "percent", value: 20 },
+];
+
+export const productList = [
+  {
+    id: "1",
+    name: "Iphone 13 Pro Max",
+    color: "green",
+    picture:
+      "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/1051159192.jpeg",
+    price: 1000,
+  },
+  {
+    id: "2",
+    name: "Iphone 14 Pro Max",
+    color: "purple",
+    picture:
+      "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/iPhone_14_Pro_Max-Pur1.jpg",
+    price: 1000,
+  },
+  {
+    id: "3",
+    name: "Iphone 12 Pro Max",
+    color: "yellow",
+    picture:
+      "https://cdn01.dienmaycholon.vn/filewebdmclnew/DMCL21/Picture/Apro/Apro_product_26647/iphone-12-pro-m_main_368_450.png.webp",
+    price: 1000,
+  },
+  {
+    id: "4",
+    name: "Iphone 11",
+    color: "purple green",
+    picture:
+      "https://cdn.tgdd.vn/Products/Images/42/210644/iphone-11-xanhla-200x200.jpg",
+    price: 1000,
+  },
 ];

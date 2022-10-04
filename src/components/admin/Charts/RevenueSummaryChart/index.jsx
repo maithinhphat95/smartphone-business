@@ -10,7 +10,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-import { monthAxis, yearAxis } from "../../../common/charts";
+import { yearAxis } from "../../../common/charts";
 import { Box, Typography, Link } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import ComponentHeader from "../../ComponentHeader";
@@ -27,13 +27,10 @@ function RevenueSummaryChart(props) {
     CategoryScale,
     LinearScale,
     BarElement,
-
     Title,
     Tooltip,
     Legend
   );
-  const targetData = [200, 200, 200, 200, 200];
-  const actualData = [150, 180, 210, 220, 260];
   const fakeData = {
     target: yearAxis.map(() => faker.datatype.number({ min: 200, max: 220 })),
     actual: yearAxis.map(() => faker.datatype.number({ min: 150, max: 260 })),
