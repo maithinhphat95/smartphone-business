@@ -19,6 +19,7 @@ import {
   TablePagination,
   CardMedia,
   TextField,
+  TableSortLabel,
 } from "@mui/material";
 import {
   KeyboardArrowDown,
@@ -202,14 +203,25 @@ export default function DataTable(props) {
   //     let aDate = new Date(a.date);
   //     let bDate = new Date(b.date);
   //     if (aDate < bDate) {
-  //       return 1;
-  //     } else return -1;
+  //       return sortDesc ? 1 : -1;
+  //     } else if (aDate > bDate) {
+  //       return sortDesc ? -1 : 1;
+  //     }
   //   }),
   // ]);
   // Init no sort
   const [sortDesc, setSortDesc] = useState(false);
   const [sortBy, setSortBy] = useState("");
   const [dataSorted, setDataSorted] = useState([...data.body]);
+
+  const handleChangePage = (newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   useEffect(() => {
     let currentData = [];
@@ -220,7 +232,9 @@ export default function DataTable(props) {
           let bDate = new Date(b.date);
           if (aDate < bDate) {
             return sortDesc ? 1 : -1;
-          } else return sortDesc ? -1 : 1;
+          } else if (aDate > bDate) {
+            return sortDesc ? -1 : 1;
+          }
         }),
       ];
     } else {
@@ -229,22 +243,15 @@ export default function DataTable(props) {
           ...data.body.sort((a, b) => {
             if (a[sortBy.toLowerCase()] < b[sortBy.toLowerCase()]) {
               return sortDesc ? 1 : -1;
-            } else return sortDesc ? -1 : 1;
+            } else if (a[sortBy.toLowerCase()] > b[sortBy.toLowerCase()]) {
+              return sortDesc ? -1 : 1;
+            }
           }),
         ];
       } else currentData = [...data.body];
     }
     setDataSorted(currentData);
   }, [dec]);
-
-  const handleChangePage = (newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
 
   const requestSort = (category) => {
     if (sortBy === category) {
@@ -290,11 +297,21 @@ export default function DataTable(props) {
                   align="center"
                   onClick={() => {
                     requestSort(item);
-                    // handleSortTable(item);
                   }}
                   sx={{ cursor: "pointer" }}
                 >
-                  {item}
+                  <TableSortLabel
+                    active={sortBy == item.toLocaleString()}
+                    direction={
+                      sortBy == item.toLocaleString()
+                        ? sortDesc
+                          ? "desc"
+                          : "asc"
+                        : "none"
+                    }
+                  >
+                    {item}
+                  </TableSortLabel>
                 </TableCell>
               ))}
             </TableRow>
