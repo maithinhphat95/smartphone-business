@@ -12,12 +12,12 @@ function Nav(props) {
   return (
     <div className="container-fuild nav">
       <div className="container">
-        <nav class="navbar navbar-expand-lg">
-          <a class="navbar-brand" href="#">
+        <nav className="navbar navbar-expand-lg">
+          {/* <a class="navbar-brand" href="#">
             Navbar
-          </a>
+          </a> */}
           <button
-            class="navbar-toggler btn btn-secondary"
+            className="navbar-toggler btn btn-secondary"
             type="button"
             data-toggle="collapse"
             data-target="#navbarNavDropdown"
@@ -25,13 +25,13 @@ function Nav(props) {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
+          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav">
+              <li className="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle"
                   href="#"
                   id="navbarDropdownMenuLink"
                   role="button"
@@ -42,7 +42,7 @@ function Nav(props) {
                   <PhoneIphoneOutlinedIcon fontSize="smaill" /> Điện thoại
                 </a>
                 <div
-                  class="dropdown-menu"
+                  className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
                   <h5>Hãng sản xuất</h5>
