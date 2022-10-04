@@ -86,7 +86,7 @@ export const rows = [
     }),
     "phat",
     faker.date.past(2).toLocaleString(),
-    2400,
+    2450,
     -20,
     2380,
     orderStatus.delivery
@@ -98,7 +98,7 @@ export const rows = [
     }),
     "phat",
     faker.date.past(2).toLocaleString(),
-    2400,
+    2200,
     -20,
     2380,
     orderStatus.prepare
@@ -110,7 +110,7 @@ export const rows = [
     }),
     "phat",
     faker.date.past(2).toLocaleString(),
-    2400,
+    2410,
     -20,
     2380,
     orderStatus.delivery
@@ -122,9 +122,9 @@ export const rows = [
     }),
     "phat",
     faker.date.past(2).toLocaleString(),
-    2400,
+    2120,
     -20,
-    2380,
+    2480,
     orderStatus.received
   ),
   fakeOrderItem(
@@ -134,9 +134,9 @@ export const rows = [
     }),
     "phat",
     faker.date.past(2).toLocaleString(),
-    2400,
+    2420,
     -20,
-    2380,
+    2280,
     orderStatus.received
   ),
   fakeOrderItem(
@@ -146,9 +146,9 @@ export const rows = [
     }),
     "phat",
     faker.date.past(2).toLocaleString(),
-    2400,
+    2402,
     -20,
-    2380,
+    2220,
     orderStatus.received
   ),
   fakeOrderItem(
@@ -158,8 +158,8 @@ export const rows = [
     }),
     "phat",
     faker.date.past(2).toLocaleString(),
-    2400,
-    -20,
+    2440,
+    -10,
     2380,
     orderStatus.received
   ),

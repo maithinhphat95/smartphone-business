@@ -167,7 +167,7 @@ function Row(props) {
           if (item !== "purchasedList") {
             return (
               <TableCell key={index} align="center">
-                {row[item]}
+                {row[item].toLocaleString()}
               </TableCell>
             );
           }
@@ -184,7 +184,7 @@ function Row(props) {
 export default function DataTable(props) {
   const { data } = props;
   const [sortOrder, setSortOrder] = useState("desc");
-  const [sortBy, setSortBy] = useState("date");
+  const [sortBy, setSortBy] = useState("");
 
   const [dataSorted, setDataSorted] = useState(data.body);
 
@@ -205,28 +205,35 @@ export default function DataTable(props) {
 
   const handleSortTable = (category) => {
     let newData = [];
-    switch (category) {
-      case "DATE":
-        newData = [
-          ...data.body.sort((a, b) => {
-            let aDate = new Date(a.date);
-            let bDate = new Date(b.date);
-            if (aDate < bDate) {
-              return 1;
-            } else return -1;
-          }),
-        ].map((item, index) => {
-          return { ...item, no: index + 1 };
-        });
-        break;
-      case "":
-        break;
-      default:
-        newData = [...data.body];
-        break;
+    if (category === "DATE") {
+      newData = [
+        ...data.body.sort((a, b) => {
+          let aDate = new Date(a.date);
+          let bDate = new Date(b.date);
+          if (aDate < bDate) {
+            return sortOrder === "desc" ? 1 : -1;
+          } else return sortOrder === "desc" ? -1 : 1;
+        }),
+      ];
+    } else {
+      newData = [
+        ...data.body.sort((a, b) => {
+          if (a[category.toLowerCase()] < b[category.toLowerCase()]) {
+            return 1;
+          } else return -1;
+        }),
+      ];
     }
-    console.log(newData);
     setDataSorted(newData);
+  };
+  const requestSort = (category) => {
+    if (sortBy !== category || sortOrder === "asc") {
+      setSortOrder("desc");
+    } else {
+      setSortOrder("asc");
+    }
+    setSortBy(category);
+    handleSortTable(category);
   };
 
   return (
@@ -262,7 +269,8 @@ export default function DataTable(props) {
                   key={index}
                   align="center"
                   onClick={() => {
-                    handleSortTable(item);
+                    requestSort(item);
+                    // handleSortTable(item);
                   }}
                   sx={{ cursor: "pointer" }}
                 >
