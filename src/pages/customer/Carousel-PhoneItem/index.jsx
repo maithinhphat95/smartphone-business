@@ -95,9 +95,9 @@ function CarouselPhone(props) {
             <div className="price">
               <span className="mr-2 font-weight-bold">
                 <i className="fa fa-rupee text-success"></i>&nbsp;
-                {dataProductItem.priceNew} VNĐ
+                {dataProductItem.priceNew.toLocaleString()} VNĐ
               </span>
-              <span className="mr-2 cut">{dataProductItem.priceOld} VNĐ</span>
+              <span className="mr-2 cut">{dataProductItem.priceOld.toLocaleString()} VNĐ</span>
               <span className="text-success">25% OFF</span>
             </div>
             <div className="d-flex flex-row">

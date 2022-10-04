@@ -52,10 +52,10 @@ function ProductItem(props) {
               variant="body2"
               color="text.secondary"
             >
-              {priceNew} đ
+              {priceNew.toLocaleString()} đ
             </Typography>
             <div className="strike-price">
-              <strike>{priceOld} đ</strike>
+              <strike>{priceOld.toLocaleString()} đ</strike>
             </div>
           </CardContent>
         </CardActionArea>

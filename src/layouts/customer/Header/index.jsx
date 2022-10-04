@@ -31,11 +31,9 @@ function Header(props) {
 
   // }
   return (
-    <Container maxWidth="xl" className="header" sx={{ height:{xs:"300px", sm:"240px", md:"150px", lg:"150px"} }}>
+    <Container maxWidth="xl" className="header" sx={{ height:{xs:"320px", sm:"250px", md:"200px", lg:"150px"} }}>
       <Container className="header-container">
-        <Grid
-          container
-        >
+        <Grid container>
           <Grid item={true} sm={12} xs={12} md={2}>
             <Link to="/" className="text-link">
               <Typography className="logo" variant="h6">
@@ -44,10 +42,8 @@ function Header(props) {
             </Link>
           </Grid>
           <Grid item={true} sm={12} xs={12} md={5}>
-            <Paper
-              component="form"
-              sx={{ display: "flex", width: 300, marginTop: 2.5 }}
-            >
+            <Paper component="form"
+              sx={{ display: "flex", width: 300, marginTop: 2.5 }} >
               {" "}
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
@@ -93,6 +89,57 @@ function Header(props) {
             </Box>
           </Grid>
         </Grid>
+</Container>
+  
+    {/* <Container>
+    <nav className="navbar navbar-expand-lg">
+    <Grid container>
+    <Grid item={true}  sm={12} xs={12} md={12}>
+  <a className="navbar-brand" href="#">Navbar</a>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+  <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav">
+      <li className="nav-item active">
+        <a className="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="#">Features</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link" href="#">Pricing</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+  </div>
+ </Grid>
+ <Grid item={true} sm={12} xs={12} md={5}>
+            <Paper component="form"
+              sx={{ display: "flex", width: 300, marginTop: 2.5 }} >
+              {" "}
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                placeholder="Nhập tên điện thoại ... cần tìm"
+                inputProps={{
+                  "aria-label": "Nhập tên điện thoại ... cần tìm",
+                }}
+                type="search"
+              />
+              <Link to="/search" className="text-link">
+                <IconButton type="submit" aria-label="search">
+                  <SearchIcon fontSize="medium" />
+                </IconButton>
+              </Link>
+            </Paper>
+          </Grid>
+ </Grid>
+</nav>
+      </Container> */}
+
+    
         {/* <div className="container">
         <Row>
           <Col md={12} sm={12} xs={12}>
@@ -149,7 +196,6 @@ function Header(props) {
           </Col>
         </Row> */}
         {/* </div> */}
-      </Container>
     </Container>
   );
 }

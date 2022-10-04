@@ -5,28 +5,35 @@ import LaptopMacOutlinedIcon from "@mui/icons-material/LaptopMacOutlined";
 import ComputerOutlinedIcon from "@mui/icons-material/ComputerOutlined";
 import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
-import { Container, Grid } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 
 function Nav(props) {
   let { producer } = useParams();
   return (
-    <div  className="container-fuild nav">
+    <div className="container-fuild nav">
       <div className="container">
-        <Grid container>
-          <Grid item={true} md={12} sm={12} xs={12}>
-            <ul className="nav-ul">
-              {/* <li>
-            <a className="navbar-brand nav-link" href="#">Trang chủ</a>
-            </li> */}
-              {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button> */}
-              <li className="dropdown">
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand" href="#">
+            Navbar
+          </a>
+          <button
+            class="navbar-toggler btn btn-secondary"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
                 <a
-                  href=""
-                  className="dropdown-toggle nav-link"
-                  id="navbarDropdown"
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
                   role="button"
                   data-toggle="dropdown"
                   aria-haspopup="true"
@@ -35,71 +42,54 @@ function Nav(props) {
                   <PhoneIphoneOutlinedIcon fontSize="smaill" /> Điện thoại
                 </a>
                 <div
-                  className="dropdown-menu"
+                  class="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
                   <h5>Hãng sản xuất</h5>
-                  <Link
-                    to="/phones/Apple"
-                    className="dropdown-item"
-                   
-                  >
+                  <Link to="/phones/Apple" className="dropdown-item">
                     Apple (iPhone)
                   </Link>
-                  <Link
-                    to="/phones/SamSung"
-                    className="dropdown-item"
-                    
-                  >
+                  <Link to="/phones/SamSung" className="dropdown-item">
                     Samsung
                   </Link>
-                  <Link
-                    to="/phones/Oppo"
-                    className="dropdown-item"
-                    
-                  >
-                    OPPO
+                  <Link to="/phones/Oppo" className="dropdown-item">
+                    {" "}
+                    OPP
                   </Link>
-                  <Link
-                    to="/phones/Xiaomi"
-                    className="dropdown-item"
-                   
-                  >
+                  <Link to="/phones/Xiaomi" className="dropdown-item">
                     Xiaomi
                   </Link>
-                  <Link
-                    to="/phones/Vivo"
-                    className="dropdown-item"
-                    
-                  >
+                  <Link to="/phones/Vivo" className="dropdown-item">
                     Vivo
                   </Link>
-                  <Link
-                    to="/phones/Nokia"
-                    className="dropdown-item"
-                    
-                  >
+                  <Link to="/phones/Nokia" className="dropdown-item">
                     Nokia
                   </Link>
-
                   <h5>Mức giá</h5>
                   <Link to="/phones/duoi-2-trieu" className="dropdown-item">
                     Dưới 2 triệu
                   </Link>
-                  <Link to="/phones/tu-2-4-trieu" className="dropdown-item" href="#">
+                  <Link
+                    to="/phones/tu-2-4-trieu"
+                    className="dropdown-item"
+                    href="#"
+                  >
                     Từ 2 - 4 triệu
                   </Link>
-                  <Link to="/phones/tu-4-7-trieu" className="dropdown-item" >
+                  <Link to="/phones/tu-4-7-trieu" className="dropdown-item">
                     Từ 4 - 7 triệu
                   </Link>
-                  <Link to="/phones/tu-7-13-trieu" className="dropdown-item" href="#">
+                  <Link
+                    to="/phones/tu-7-13-trieu"
+                    className="dropdown-item"
+                    href="#"
+                  >
                     Từ 7 - 13 triệu
                   </Link>
-                  <Link to="/phones/tren-13-trieu" className="dropdown-item" >
+                  <Link to="/phones/tren-13-trieu" className="dropdown-item">
                     Trên 13 triệu
                   </Link>
                 </div>
-                {/* righ */}
               </li>
               <li>
                 <a href="#" className="nav-link">
@@ -107,12 +97,12 @@ function Nav(props) {
                 </a>
               </li>
               <li>
-                <a href="#"  className="nav-link">
+                <a href="#" className="nav-link">
                   <ComputerOutlinedIcon fontSize="smaill" /> Máy tính bảng
                 </a>
               </li>
               <li>
-                <a  className="nav-link">
+                <a className="nav-link">
                   <HeadphonesOutlinedIcon fontSize="smaill" /> Phụ kiện
                 </a>
               </li>
@@ -122,8 +112,8 @@ function Nav(props) {
                 </a>
               </li>
             </ul>
-          </Grid>
-        </Grid>
+          </div>
+        </nav>
       </div>
     </div>
   );

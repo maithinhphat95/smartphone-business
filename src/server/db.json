@@ -46,7 +46,7 @@
         "priceOld": 11000000,
         "memoryIn":128,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tu-7-13-trieu"
+        "descriptionPrice":"tren-13-trieu"
       },
       {
         "id": 4,
@@ -226,7 +226,9 @@
         "priceOld": 6190000,
         "memoryIn":null,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tu-4-7-trieu"
+        "descriptionPrice":"tu-4-7-trieu",
+        "Stock":10,
+        "Sold":50
       },
       {
         "id": 19,
