@@ -1,4 +1,4 @@
-import { React, Component } from "react";
+import { React} from "react";
 import Slider from "react-slick";
 import { Container } from "@mui/system";
 import "./HomeListItem.scss";
@@ -57,6 +57,8 @@ function HomeListItem(props) {
                 dataProductItem &&
                 dataProductItem.length > 0 &&
                 dataProductItem.map((item) => {
+                  if ('sale' in item) {
+
                   return (
                     <ProductItem key={item.id}
                       img={item.img}
@@ -66,6 +68,8 @@ function HomeListItem(props) {
                       id={item.id}
                     />
                   );
+            
+}
                 })}
               {/* loading */}
               {isLoading === true && (

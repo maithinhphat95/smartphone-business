@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import React from "react";
 import "./Footer.scss";
 import { FaCcPaypal, FaCcVisa } from "react-icons/fa";
@@ -34,35 +34,34 @@ function Footer(props) {
           </Grid>
           <Grid item xs={12} sm={6} md={5}>
             <div className="content-footer-ask">
-              <p variant="" >
+              <Typography>
                 Tư vấn mua hàng (Miễn phí)
-              </p>
+              </Typography>
               <a href="">1800 6601</a>
               <span>(Nhánh 1)</span>
-              <p variant="h4" >
-                Hỗ trợ kỹ thuật Góp ý, khiếu nại dịch vụ (8h00-22h00)
-              </p>
+              <Typography>
+                Hỗ trợ kỹ thuật (8h00-22h00)
+              </Typography>
               <a href="">1800 6601</a>
               <span>(Nhánh 2)</span>
-              <p variant="h4" >
+              <Typography>
                 Góp ý, khiếu nại dịch vụ (8h00-22h00)
-              </p>
+              </Typography>
               <a href="">1800 6616</a>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <div className="content-footer-pay">
-              <p variant="h4" >
+              <Typography>
                 Hỗ trợ thanh toán:
-              </p>
+              </Typography>
               <a title="" style={{ cursor: "none" }}>
                 <FaCcVisa fontSize="50" />
               </a>
               <a title="" style={{ cursor: "none" }}>
                 <FaCcPaypal fontSize="50" />
               </a>
-            
-             <p variant="h4" > Chứng nhận:</p>
+             <Typography> Chứng nhận:</Typography>
             <a href="" style={{ cursor: "none" }}>
               <WorkspacePremiumIcon fontSize="large" />
             </a>

@@ -1,8 +1,9 @@
-import { React, Component } from "react";
+import { React } from "react";
 import Slider from "react-slick";
 import { Container } from "@mui/system";
 import useFetch from "../../../customize/fetch";
 import ProductItem from "../../ProductItem";
+
 var settings = {
   dots: true,
   infinite: false,
@@ -43,6 +44,7 @@ function HomeListItemTwo(props) {
   const { data: dataProductItem, isLoading, isError } =
     // = useFetch('https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z')
     useFetch("http://localhost:3006/productitem");
+    let sortedProducts = dataProductItem.sort((a,b)=>b.sold-a.sold )
   return (
     <>
       <div className="container-fluid profuid">
@@ -51,12 +53,13 @@ function HomeListItemTwo(props) {
           <div className="container carousel-list">
             <Slider {...settings}>
               {/* {console.log("checkData>>>", dataProductItem)} */}
+             
               {isError === false &&
                 isLoading === false &&
                 dataProductItem &&
                 dataProductItem.length > 0 &&
-                dataProductItem.map((item) => {
-                  if (item["producer"] === "Nokia") {
+                sortedProducts.map((item) => {
+                  if(item.sold >=50)
                     return (
                       <ProductItem  key={item.id}
                         img={item.img}
@@ -66,7 +69,7 @@ function HomeListItemTwo(props) {
                         id={item.id}
                       />
                     );
-                  }
+                
                 })}
               {/* loading */}
               {isLoading === true && (

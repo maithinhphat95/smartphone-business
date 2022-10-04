@@ -3,14 +3,16 @@
       {
         "id": 0,
         "producer": "Apple",
-        "name": "iPhone14",
+        "name": "iPhone14 Pro Max 256GB",
         "color":["Vàng","Đen","Tím"],
-        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/9/637983354942524545_iphone-14-dd.jpg",
-        "priceNew": 24000000 ,
-        "priceOld": 30000000,
-        "memoryIn":128,
+        "img": "https://cdn.tgdd.vn/Products/Images/42/289700/iphone-14-pro-max-vang-thumb-600x600.jpg",
+        "priceNew": 36000000 ,
+        "priceOld": 40000000,
+        "memoryIn":256,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tren-13-trieu"
+        "descriptionPrice":"tren-13-trieu",
+        "stock":10,
+        "sold":10
       },
       {
         "id": 1,
@@ -22,7 +24,9 @@
         "priceOld": 30000000,
         "memoryIn":128,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tren-13-trieu"
+        "descriptionPrice":"tren-13-trieu",
+        "stock":20,
+        "sold":60
       },
       {
         "id": 2,
@@ -30,11 +34,14 @@
         "name": "iPhone12",
         "color":["Vàng","Đen","Tím"],
         "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/1/637686973775896947_ip-12-dd.jpg",
-        "priceNew": 24000000 ,
-        "priceOld": 30000000,
+        "priceNew": 16000000 ,
+        "priceOld": 19000000,
         "memoryIn":128,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tren-13-trieu"
+        "descriptionPrice":"tren-13-trieu",
+        "sale":15,
+        "stock":10,
+        "sold":80
       },
       {
         "id": 3,
@@ -42,11 +49,13 @@
         "name": "iPhone11",
         "color":["Vàng","Đen","Tím"],
         "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/10/26/637393169370871358_ip-11-dd.png",
-        "priceNew": 14000000 ,
-        "priceOld": 11000000,
+        "priceNew": 11490000 ,
+        "priceOld": 14900000,
         "memoryIn":128,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tren-13-trieu"
+        "descriptionPrice":"tu-7-13-trieu",
+        "stock":10,
+        "sold":60
       },
       {
         "id": 4,
@@ -58,7 +67,10 @@
         "priceOld": 12900000,
         "memoryIn":128,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tu-7-13-trieu"
+        "descriptionPrice":"tu-7-13-trieu",
+        "sale":20,
+        "stock":10,
+        "sold":30
       },
       {
         "id": 5,
@@ -70,19 +82,25 @@
         "priceOld": 3600000,
         "memoryIn":128,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tu-2-4-trieu"
+        "descriptionPrice":"tu-2-4-trieu",
+        "sale":20,
+        "stock":20,
+        "sold":30
       },
       {
         "id": 6,
         "producer": "SamSung",
-        "name": "Samsung Galaxy S22",
-        "color":"Đen",
-        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/10/637957287880226317_oppo-reno8-z-dd-icon.jpg",
-        "priceNew": 2700000 ,
-        "priceOld": 3000000,
+        "name": "Samsung Galaxy S22 Bora Purple",
+        "color":"Tím",
+        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/22/637994555957667673_samsung-galaxy-s22-bora-purple-dd-docquyen.jpg",
+        "priceNew": 15900000 ,
+        "priceOld": 21900000,
         "memoryIn":128,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tu-2-4-trieu"
+        "descriptionPrice":"tren-13-trieu",
+        "sale":25,
+        "stock":15,
+        "sold":40
       },
       {
         "id": 7,
@@ -94,19 +112,23 @@
         "priceOld": 3000000,
         "memoryIn":128,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tu-2-4-trieu"
+        "descriptionPrice":"tu-2-4-trieu",
+        "stock":30,
+        "sold":67
       },
       {
         "id": 8,
         "producer": "Oppo",
-        "name": "OPPO Reno8 Z 5G",
+        "name": "OPPO Reno8 Z 5G 8GB - 256GB",
         "color":"Vàng",
-        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/4/25/637864982144816513_iphone-13-pro-max-dd-2-128-256-512-1tb.jpg",
-        "priceNew": 1049000 ,
-        "priceOld": 1249000,
+        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/10/637957287880226317_oppo-reno8-z-dd-icon.jpg",
+        "priceNew": 10049000 ,
+        "priceOld": 12490000,
         "memoryIn":256,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"duoi-2-trieu"
+        "descriptionPrice":"tu-7-13-trieu",
+        "stock":10,
+        "sold":20
       },
       {
         "id": 9,
@@ -118,7 +140,9 @@
         "priceOld": 850000,
         "memoryIn":256,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"duoi-2-trieu"
+        "descriptionPrice":"duoi-2-trieu",
+        "stock":10,
+        "sold":10
       },
       {
         "id": 10,
@@ -130,7 +154,9 @@
         "priceOld": 690000,
         "memoryIn":256,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"duoi-2-trieu"
+        "descriptionPrice":"duoi-2-trieu",
+        "stock":10,
+        "sold":10
       },
       {
         "id": 11,
@@ -138,83 +164,99 @@
         "name": "Nokia C30 3GB-32GB",
         "color":["Vàng","Đen","Tím"],
         "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/8/18/637649063877578070_nokia-c30-xanh-dd.jpg",
-        "priceNew": 290000 ,
-        "priceOld": 490000,
+        "priceNew": 2900000 ,
+        "priceOld": 4900000,
         "memoryIn":null,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"duoi-2-trieu"
+        "descriptionPrice":"tu-2-4-trieu",
+        "stock":10,
+        "sold":10
       },
       {
         "id": 12,
-        "producer": "Nokia",
-        "name": "Nokia G11 Plus 3GB-32GB ",
+        "producer": "Oppo",
+        "name": "OPPO Find X Series ",
         "color":"Đen",
-        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/2/637950481043726592_nokia-g11-plus-dd.jpg",
-        "priceNew": 290000 ,
-        "priceOld": 490000,
+        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/8/637982295034143124_oppo-find-x5-pro-dd.jpg",
+        "priceNew": 27900000 ,
+        "priceOld": 30000000,
         "memoryIn":null,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"duoi-2-trieu"
+        "descriptionPrice":"tren-13-trieu",
+        "stock":10,
+        "sold":35
       },
       {
         "id": 13,
         "producer": "Nokia",
         "name": "Nokia G11 Plus 3GB-32GB ",
         "color":"Đen",
-        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/12/637538183203070135_nokia-c20-dd.jpg",
-        "priceNew": 190000 ,
-        "priceOld": 290000,
+        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/5/4/637872590554647546_oppo-reno7-4g-dd.jpg",
+        "priceNew": 7490000 ,
+        "priceOld": 7990000,
         "memoryIn":null,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"duoi-2-trieu"
+        "descriptionPrice":"tu-7-13-trieu",
+        "stock":10,
+        "sold":52
       },
       {
         "id": 14,
         "producer": "Oppo",
-        "name": "Oppo Reno8 4G 8GB-256GB ",
+        "name": "Oppo Reno7 5G 8GB-128GB ",
         "color":"Đen",
         "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/10/637957287880226317_oppo-reno8-4g-dd-icon.jpg",
-        "priceNew": 8990000 ,
-        "priceOld": 9900000,
+        "priceNew": 6990000 ,
+        "priceOld": 7990000,
         "memoryIn":null,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tu-7-13-trieu"
+        "descriptionPrice":"tu-4-7-trieu",
+        "sale":20,
+        "stock":10,
+        "sold":70
       },
       {
         "id": 15,
         "producer": "Nokia",
-        "name": "Nokia 5.4 4GB -128GB ",
+        "name": "Nokia 215 DS 4G",
         "color":"Đen",
         "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/11/13/637408832230600670_nokia-215-xanh-dd.png",
-        "priceNew": 90000 ,
-        "priceOld": 100000,
+        "priceNew": 950000 ,
+        "priceOld": 1000000,
         "memoryIn":null,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"duoi-2-trieu"
+        "descriptionPrice":"duoi-2-trieu",
+        "stock":10,
+        "sold":10
       },
       {
         "id": 16,
-        "producer": "Nokia",
-        "name": "Nokia C30 3GB-32GB",
+        "producer": "Vivo",
+        "name": "Vivo Y33s 8GB - 128GB",
         "color":"Vàng",
-        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/8/18/637649063877578070_nokia-c30-xanh-dd.jpg",
-        "priceNew": 290000 ,
-        "priceOld": 490000,
+        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/3/15/637829405985657624_vivo-y33s-vang-dd.jpg",
+        "priceNew": 2900000 ,
+        "priceOld": 4900000,
         "memoryIn":null,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"duoi-2-trieu"
+        "descriptionPrice":"tu-2-4-trieu",
+        "sale":20,
+        "stock":10,
+        "sold":60
       },
       {
         "id": 17,
         "producer": "Oppo",
-        "name": "Oppo Reno 7 8GB-128GB",
+        "name": "OPPO A57",
         "color":"Vàng",
-        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/5/4/637872590554647546_oppo-reno7-4g-dd.jpg",
+        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/6/27/637919434798579438_oppo-a57-dd.jpg",
         "priceNew": 6900000 ,
         "priceOld": 7900000,
         "memoryIn":null,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tu-4-7-trieu"
+        "descriptionPrice":"tu-4-7-trieu",
+        "stock":10,
+        "sold":69
       },
       {
         "id": 18,
@@ -227,20 +269,23 @@
         "memoryIn":null,
         "description": "Sang xịn mịn",
         "descriptionPrice":"tu-4-7-trieu",
-        "Stock":10,
-        "Sold":50
+        "stock":10,
+        "sold":50
       },
       {
         "id": 19,
         "producer": "Vivo",
-        "name": "Vivo",
+        "name": "Vivo Y15s",
         "color":"Vàng",
         "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/25/637707822857432352_00779950-vivo-y15s-trang-xanh-dd.jpg",
-        "priceNew": 290000 ,
-        "priceOld": 490000,
+        "priceNew": 2900000 ,
+        "priceOld": 3900000,
         "memoryIn":null,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"duoi-2-trieu"
+        "descriptionPrice":"tu-2-4-trieu",
+        "sale":15,
+        "stock":10,
+        "sold":56
       },
       {
         "id": 20,
@@ -252,7 +297,51 @@
         "priceOld": 6900000,
         "memoryIn":null,
         "description": "Sang xịn mịn",
-        "descriptionPrice":"tu-4-7-trieu"
+        "descriptionPrice":"tu-4-7-trieu",
+        "stock":10,
+        "sold":50
+      },
+      {
+        "id": 21,
+        "producer": "SamSung",
+        "name": "Samsung Galaxy Z Fold4 5G 256GB",
+        "color":["Xanh","Xanh đen"],
+        "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/12/637985736585000612_samsung-galaxy-z-fold4-kem-dd-tra-gop.jpg",
+        "priceNew": 3700000 ,
+        "priceOld": 4000000,
+        "memoryIn":null,
+        "description": "Sang xịn mịn",
+        "descriptionPrice":"tren-13-trieu",
+        "stock":10,
+        "sold":60
+      },
+      {
+        "id": 22,
+        "producer": "Apple",
+        "name": "Iphone 13 mini 128GB",
+        "color":["Xanh","Xanh đen"],
+        "img": "https://cdn.tgdd.vn/Products/Images/42/236780/iphone-13-mini-midnight-1-600x600.jpg",
+        "priceNew": 16990000,
+        "priceOld": 21990000,
+        "memoryIn":null,
+        "description": "Sang xịn mịn",
+        "descriptionPrice":"tren-13-trieu",
+        "stock":10,
+        "sold":57
+      },
+      {
+        "id": 23,
+        "producer": "Apple",
+        "name": "Iphone 14 Plus 512GB",
+        "color":["Xanh","Xanh đen"],
+        "img": "https://cdn.tgdd.vn/Products/Images/42/289712/iPhone-14-thumb-trang-600x600.jpg",
+        "priceNew": 36990000,
+        "priceOld": 38990000,
+        "memoryIn":null,
+        "description": "Sang xịn mịn",
+        "descriptionPrice":"tren-13-trieu",
+        "stock":10,
+        "sold":20
       }
       
     ],

@@ -1,18 +1,8 @@
-import React, { useContext } from "react";
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import React from "react";
+import {Button,Card,CardActionArea,CardActions,CardContent,CardMedia,Typography,} from "@mui/material";
 import "./ProductItem.scss";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Fade from 'react-reveal/Fade';
-import ThemeContext from "../Context/ThemeContext";
-import useFetch from "../../customize/fetch";
 function ProductItem(props) {
   let  params = useParams();
   const { id,img, name, priceNew, priceOld } = props;
