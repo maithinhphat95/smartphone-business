@@ -6,7 +6,7 @@ import Fade from 'react-reveal/Fade';
 function ProductItem(props) {
   let  params = useParams();
   const { id,img, name, priceNew, priceOld } = props;
-  console.log(id);
+  // console.log(id);
 
   //submit 
   const history = useNavigate();
@@ -21,7 +21,7 @@ function ProductItem(props) {
       <Card  className="titleitem" sx={{ maxWidth: 345 }}>
         <CardActionArea>
         <Link to={`/phone/${id}`}>
-        {console.log(params.id)}
+        {/* {console.log(params.id)} */}
           <CardMedia
             className="imgmedia"
             component="img"

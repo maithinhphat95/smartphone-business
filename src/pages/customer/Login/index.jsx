@@ -10,16 +10,27 @@ import {
   Typography,
   FormControlLabel,
 } from "@mui/material";
-import React from "react";
+import React, { useContext} from "react";
 import "./Login.scss";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 // import {LockOutlinedIcon,Copyright} from '@mui/icons-material/LockOutlined';
 import Zoom from 'react-reveal/Zoom';
+import useFetch from "../../../components/customize/fetch";
+import ThemeContext from "../../../components/customer/Context/ThemeContext";
 function Login({ handleClose }) {
+  // let params = useParams();
+   //API
+  //
+  const { data: dataProductItem} =
+    useFetch(`http://localhost:3006/user/`);
   //history
   const history = useNavigate();
+//set
+const {setMylogin} = useContext(ThemeContext);
+//account
+// const {myAccount,setMyAccount} = useContext(ThemeContext);
 
   //useForm
   const {
@@ -27,19 +38,29 @@ function Login({ handleClose }) {
     handleSubmit,
     formState: { errors },
   } = useForm();
+//local storage
   let arrays = JSON.parse(localStorage.getItem("user")) || [];
   //trả data là object ={}
   const onSubmit = (data) => {
-    // console.log(data);
-    // e.preventdefault()
-    // console.log(arrays["account"]);
-    // console.log(data.password);
-    const checkLogin = arrays.some(
+   
+    const checkLogin = dataProductItem.some(
       (element) =>
+      
         data.account === element["account"] &&
         data.password === element["password"]
+        
     );
-    if (checkLogin) {
+    //local
+    const checkLoginLocal = arrays.some(
+      (element) =>
+      
+        data.account === element["account"] &&
+        data.password === element["password"]
+        
+    );
+    //  data changel in account
+    
+    if (checkLogin || checkLoginLocal) {
       toast.success("Đăng nhập thành công!", {
         position: "top-right",
         autoClose: 2000,
@@ -49,6 +70,10 @@ function Login({ handleClose }) {
         draggable: true,
         progress: undefined,
       });
+      setTimeout(() => {
+        setMylogin(true)
+      }, 3000);
+     
     } else {
       toast.error("Đăng nhập thất bại, tài khoản hoặc mật khẩu không đúng!", {
         position: "top-right",

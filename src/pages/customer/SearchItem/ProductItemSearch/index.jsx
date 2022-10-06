@@ -20,7 +20,7 @@ function ProductItemSearch(props) {
     <>
    
   
-    {console.log("checkData>>>", dataProductItem)}
+    {/* {console.log("checkData>>>", dataProductItem)} */}
     
   {isError === false &&
     isLoading === false &&

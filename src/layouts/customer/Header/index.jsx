@@ -1,5 +1,13 @@
-import {Container,Grid,IconButton,InputBase,Paper,Typography,} from "@mui/material";
-import React from "react";
+import {
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  InputBase,
+  Paper,
+  Typography,
+} from "@mui/material";
+import React, { useContext } from "react";
 import "./Header.scss";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -8,20 +16,49 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 import Flip from "react-reveal/Flip";
+import ThemeContext from "../../../components/customer/Context/ThemeContext";
+import useFetch from "../../../components/customize/fetch";
+import LogoutIcon from '@mui/icons-material/Logout';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 function Header(props) {
+  // API
+  // let params = useParams();
+  const { data: dataProductItem} =
+  useFetch(`http://localhost:3006/user/`);
+ 
+
+  //dropdown tài khoản
+  // const [anchorEl, setAnchorEl] = useState(null);
+  // const open = Boolean(anchorEl);
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
+  // const { profile, setProfile } = useState(false);
+  const {mylogin,setMylogin} = useContext(ThemeContext);
+ //account
+//  const {myAccount,setMyAccount} = useContext(ThemeContext);
   // const [open, setOpen] = useState(false);
   // const handleOpen = (e) => {
 
   //   setOpen(true);
   // }
   // const handleClose = () => setOpen(false);
-  // const history = useNavigate();
+  
   // const onClickSearch = (e) =>{
   //   e.preventdefault();
   //   history("/search");
   //
 
   // }
+  // const history = useNavigate();
+  const handLogout = () =>{
+    // alert("đã thoát")
+    setMylogin(false);
+    // history("/");
+  }
   return (
     <Container
       maxWidth="xl"
@@ -65,12 +102,48 @@ function Header(props) {
                       <p className="d-none d-sm-block">Kiểm tra đơn hàng</p>
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/login" className="header-link">
-                      <AccountCircleOutlinedIcon color="" fontSize="large" />
-                      <p className="d-none d-sm-block">Tài khoản của tôi</p>
-                    </Link>
-                  </li>
+                  {!mylogin ? (
+                    <li>
+                      <Link to="/login" className="header-link">
+                        <AccountCircleOutlinedIcon color="" fontSize="large" />
+                        <p className="d-none d-sm-block">Tài khoản của tôi</p>
+                      </Link>
+                    </li>
+                  ) : (
+                    <div className="dropdown">
+                     
+                        {dataProductItem.map((item) => {
+                        
+                    return(
+                        <li key={item.id}  className="nav-item dropdown">
+                   
+                          <a 
+                            className=" dropdown-toggle"
+                            href="#"
+                            role="button"
+                            id="dropdownMenuLink"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                             <img src={item.img} color=""  style={{height:"50px",borderRadius:"180px"}}/> {item.account}
+                          </a>
+                          <div
+                            className="dropdown-menu"
+                            aria-labelledby="dropdownMenuLink"
+                          >
+                            <Button className="dropdown-item item-color" href="#" endIcon={<AccountBoxIcon />}>
+                              Profile
+                            </Button>
+                            <Button   onClick={()=>handLogout()} className="dropdown-item item-color"  endIcon={<LogoutIcon />}>
+                             Log out
+                            </Button>
+                          </div>
+                        </li>
+                        )
+                        })}
+                    </div>
+                  )}
                   {/* {open && <Login handleClose={setOpen}/>} */}
                   <li>
                     <Link to="/cart" className="header-link">
