@@ -35,9 +35,12 @@ const getPostById = async id => {
     // 
     const [totalTitlePhone,setTotalTitlePhone] = useState(0);
     const [myCart,setMycart] = useState([{}]);
+    const [mylogin,setMylogin] = useState(false);
+    const [myAccount,setMyAccount] = useState([{}]);
+
     return (
         <ThemeContext.Provider
-        value={{myCart,setMycart
+        value={{myCart,setMycart,mylogin,setMylogin,myAccount,setMyAccount
         
             }}
     >

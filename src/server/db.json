@@ -345,5 +345,18 @@
       }
       
     ],
-    "editTodo": {}
+    "user": [
+      {
+        "id":1,
+        "account": "thien",
+        "password":"123",
+        "img":"https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-profile-glyph-black-icon-png-image_691589.jpg",
+        "name": "Thanh Thien",
+        "email": "thien@gmail.com",
+        "gender": "male",
+        "dateOfBirth": "31/03/1996",
+        "address": "Quang Tri",
+        "oderId":1
+      }
+    ]
   }
