@@ -164,11 +164,9 @@ function Row(props) {
             </IconButton>
           </TableCell>
         )}
-        <TableCell align="center">
-          {sortDesc ? length - index : index + 1}
-        </TableCell>
+        {/* <TableCell align="center">{index + 1}</TableCell> */}
         {Object.keys(row).map((item, index) => {
-          if (item !== "purchasedList" && item !== "no") {
+          if (item !== "purchasedList") {
             return (
               <TableCell key={index} align="center">
                 {`${
@@ -195,26 +193,11 @@ export default function DataTable(props) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [dec, setDec] = useState(true);
-  // Init sort by DATE
-  // const [sortDesc, setSortDesc] = useState(true);
-  // const [sortBy, setSortBy] = useState("DATE");
-  // const [dataSorted, setDataSorted] = useState([
-  //   ...data.body.sort((a, b) => {
-  //     let aDate = new Date(a.date);
-  //     let bDate = new Date(b.date);
-  //     if (aDate < bDate) {
-  //       return sortDesc ? 1 : -1;
-  //     } else if (aDate > bDate) {
-  //       return sortDesc ? -1 : 1;
-  //     }
-  //   }),
-  // ]);
-  // Init no sort
   const [sortDesc, setSortDesc] = useState(false);
   const [sortBy, setSortBy] = useState("");
   const [dataSorted, setDataSorted] = useState([...data.body]);
 
-  const handleChangePage = (newPage) => {
+  const handleChangePage = (e, newPage) => {
     setPage(newPage);
   };
 
@@ -235,6 +218,7 @@ export default function DataTable(props) {
           } else if (aDate > bDate) {
             return sortDesc ? -1 : 1;
           }
+          return 0;
         }),
       ];
     } else {
@@ -246,11 +230,16 @@ export default function DataTable(props) {
             } else if (a[sortBy.toLowerCase()] > b[sortBy.toLowerCase()]) {
               return sortDesc ? -1 : 1;
             }
+            return 0;
           }),
         ];
       } else currentData = [...data.body];
     }
-    setDataSorted(currentData);
+    let updateData = currentData.map((e, index) => {
+      return { ...e, no: index + 1 };
+    });
+    console.log(updateData);
+    setDataSorted(updateData);
   }, [dec]);
 
   const requestSort = (category) => {
@@ -301,9 +290,9 @@ export default function DataTable(props) {
                   sx={{ cursor: "pointer" }}
                 >
                   <TableSortLabel
-                    active={sortBy == item.toLocaleString()}
+                    active={sortBy === item.toLocaleString()}
                     direction={
-                      sortBy == item.toLocaleString()
+                      sortBy === item.toLocaleString()
                         ? sortDesc
                           ? "desc"
                           : "asc"
@@ -318,22 +307,24 @@ export default function DataTable(props) {
           </TableHead>
 
           <TableBody>
-            {dataSorted.map((row, index) => (
-              <Row
-                key={row.id}
-                row={row}
-                extraData={data.extra}
-                index={index}
-                sortDesc={sortDesc}
-                length={dataSorted.length}
-              />
-            ))}
+            {dataSorted
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row, index) => (
+                <Row
+                  key={row.id}
+                  row={row}
+                  extraData={data.extra}
+                  index={index}
+                  sortDesc={sortDesc}
+                  length={dataSorted.length}
+                />
+              ))}
           </TableBody>
         </Table>
       </TableContainer>
 
       <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[5, 10, 15]}
         component="div"
         count={data.body.length}
         rowsPerPage={rowsPerPage}
