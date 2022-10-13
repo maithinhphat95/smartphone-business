@@ -18,6 +18,7 @@ import PricePhone from './pages/customer/PhoneItem/PricePhone';
 import ThemeProvider from './components/customer/Context/ThemeProvider';
 import CheckDefault from './pages/customer/CheckOder/CheckDefault';
 import Cart from './pages/customer/Cart';
+import ProductItemSearch from './pages/customer/SearchItem/ProductItemSearch';
 // import Testt from './features/Account/pages/Register';
 
 function App() {

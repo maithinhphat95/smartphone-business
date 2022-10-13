@@ -13,7 +13,7 @@ function Cart(props) {
                 <Box className="cart-header-items text-center">
                 <Typography variant='h4'>Sản phẩm trong giỏ hàng:</Typography>
                 {myCart.slice(1).map((item) => {
-                    {console.log(myCart)}
+                    {/* {console.log(myCart)} */}
                     return(
                         <Box key={item.id} className="cart-items">
                             <img src={item.img} />
