@@ -7,13 +7,13 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext} from "react";
 import "./Header.scss";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import Flip from "react-reveal/Flip";
 import ThemeContext from "../../../components/customer/Context/ThemeContext";
@@ -26,7 +26,17 @@ function Header(props) {
   const { data: dataProductItem} =
   useFetch(`http://localhost:3006/user/`);
  
-
+  //search   ,login
+  const history = useNavigate();
+  const {setSearchTerm,mylogin,setMylogin} = useContext(ThemeContext);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history("/search");
+  };
+  const handelChangel = (e) =>{
+    setSearchTerm(e.target.value)
+    history("/search");
+  }
   //dropdown tài khoản
   // const [anchorEl, setAnchorEl] = useState(null);
   // const open = Boolean(anchorEl);
@@ -37,7 +47,6 @@ function Header(props) {
   //   setAnchorEl(null);
   // };
   // const { profile, setProfile } = useState(false);
-  const {mylogin,setMylogin} = useContext(ThemeContext);
  //account
 //  const {myAccount,setMyAccount} = useContext(ThemeContext);
   // const [open, setOpen] = useState(false);
@@ -53,7 +62,6 @@ function Header(props) {
   //
 
   // }
-  // const history = useNavigate();
   const handLogout = () =>{
     // alert("đã thoát")
     setMylogin(false);
@@ -75,22 +83,16 @@ function Header(props) {
             </Link>
           </Grid>
           <Grid item={true} sm={12} xs={12} md={5}>
+          {/* <form className='search-form' > */}
             <Paper component="form" sx={{ display: "flex", marginTop: 2.5 }}>
               {" "}
-              <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                placeholder="Nhập tên điện thoại ... cần tìm"
-                inputProps={{
-                  "aria-label": "Nhập tên điện thoại ... cần tìm",
-                }}
-                type="search"
-              />
-              <Link to="/search" className="text-link">
-                <IconButton type="submit" aria-label="search">
-                  <SearchIcon fontSize="medium" />
-                </IconButton>
-              </Link>
+              <InputBase  sx={{ ml: 1, flex: 1 }} type = "search"  placeholder="Nhập tên điện thoại ... cần tìm" onChange={(e)=>{handelChangel(e)}} 
+             />
+              <IconButton  type = "submit" aria-label="search" onClick={(e) =>handleSubmit(e)}>
+              <SearchIcon fontSize="medium" />
+              </IconButton>
             </Paper>
+            {/* </form> */}
           </Grid>
           <Grid item={true} sm={12} xs={12} md={5}>
             <Box>
