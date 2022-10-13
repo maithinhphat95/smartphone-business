@@ -16,10 +16,14 @@ import {
   Collapse,
   Typography,
   Paper,
-  TablePagination,
   CardMedia,
   TextField,
   TableSortLabel,
+  Pagination,
+  Stack,
+  Select,
+  FormControl,
+  MenuItem,
 } from "@mui/material";
 import {
   KeyboardArrowDown,
@@ -148,7 +152,7 @@ const ExtraTable = (props) => {
 
 // Function show each row of tablebody (order item)
 function Row(props) {
-  const { row, extraData, index, length, sortDesc } = props;
+  const { row, extraData } = props;
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -190,27 +194,37 @@ function Row(props) {
 
 export default function DataTable(props) {
   const { data } = props;
-  const [page, setPage] = useState(0);
+  const [page, setPageIndex] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [dec, setDec] = useState(true);
   const [sortDesc, setSortDesc] = useState(false);
   const [sortBy, setSortBy] = useState("");
   const [dataSorted, setDataSorted] = useState([...data.body]);
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedData, setSelectedData] = useState(data.body);
 
-  const handleChangePage = (e, newPage) => {
-    setPage(newPage);
+  // Set max page for pagination
+  const maxPage =
+    selectedData.length % rowsPerPage === 0
+      ? parseInt(selectedData.length / rowsPerPage)
+      : parseInt(selectedData.length / rowsPerPage + 1);
+
+  // Handle pagination change page
+  const handleChangePage = (event, value) => {
+    setPageIndex(value - 1);
   };
 
+  // Handle change rows per page
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
+    setPageIndex(0);
   };
-
+  // Use Effect Sort page
   useEffect(() => {
     let currentData = [];
     if (sortBy === "DATE") {
       currentData = [
-        ...data.body.sort((a, b) => {
+        ...selectedData.sort((a, b) => {
           let aDate = new Date(a.date);
           let bDate = new Date(b.date);
           if (aDate < bDate) {
@@ -222,9 +236,12 @@ export default function DataTable(props) {
         }),
       ];
     } else {
-      if (data.body[0].hasOwnProperty(sortBy.toLocaleLowerCase())) {
+      if (
+        selectedData.length > 0 &&
+        selectedData[0].hasOwnProperty(sortBy.toLocaleLowerCase())
+      ) {
         currentData = [
-          ...data.body.sort((a, b) => {
+          ...selectedData.sort((a, b) => {
             if (a[sortBy.toLowerCase()] < b[sortBy.toLowerCase()]) {
               return sortDesc ? 1 : -1;
             } else if (a[sortBy.toLowerCase()] > b[sortBy.toLowerCase()]) {
@@ -233,15 +250,15 @@ export default function DataTable(props) {
             return 0;
           }),
         ];
-      } else currentData = [...data.body];
+      } else currentData = [...selectedData];
     }
     let updateData = currentData.map((e, index) => {
       return { ...e, no: index + 1 };
     });
-    console.log(updateData);
     setDataSorted(updateData);
   }, [dec]);
 
+  // Handle request sort by category
   const requestSort = (category) => {
     if (sortBy === category) {
       setSortDesc(!sortDesc);
@@ -252,24 +269,62 @@ export default function DataTable(props) {
     setDec(!dec);
   };
 
+  // Handle Input Search
+  const handleInputSearch = (value) => {
+    setSearchValue(value);
+  };
+
+  // Handle Search
+  const handleSubmitSearch = () => {
+    let searchArray = [];
+    searchArray =
+      searchValue.trim().length === 0
+        ? data.body
+        : data.body.filter((element) => {
+            return element.id.includes(searchValue.trim().toLocaleLowerCase());
+          });
+    setSelectedData(searchArray);
+    setDec(!dec);
+  };
+
   return (
     <Paper sx={{ borderRadius: 2, boxShadow: "4px 4px 4px #ccc" }}>
-      <Box sx={{ display: "flex" }}>
-        <CharHeader chartName="Order List" />
-        {/* Serach Box */}
-        <Box sx={{ m: 2 }}>
-          <TextField id="outlined-search" label="Search field" type="search" />
+      <Stack
+        direction={"row"}
+        justifyContent="space-between"
+        borderBottom={"1px solid black"}
+        alignItems="center"
+        paddingLeft={2}
+      >
+        <Typography variant="h6">Order List</Typography>
+        <Box
+          component={"form"}
+          sx={{ m: 1, display: "flex", alignItems: "center" }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmitSearch();
+          }}
+        >
+          <TextField
+            id="standard-basic"
+            variant="standard"
+            placeholder="Search By ID"
+            onChange={(e) => {
+              handleInputSearch(e.target.value);
+            }}
+          />
           <IconButton
-            size="large"
+            size="medium"
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 2 }}
+            sx={{ mr: 2, ml: 1 }}
+            type="submit"
           >
             <Search />
           </IconButton>
         </Box>
-      </Box>
+      </Stack>
       <TableContainer component={Paper}>
         <Table>
           <TableHead
@@ -296,7 +351,7 @@ export default function DataTable(props) {
                         ? sortDesc
                           ? "desc"
                           : "asc"
-                        : "none"
+                        : "desc"
                     }
                   >
                     {item}
@@ -322,16 +377,40 @@ export default function DataTable(props) {
           </TableBody>
         </Table>
       </TableContainer>
-
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 15]}
-        component="div"
-        count={data.body.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      <Stack
+        direction={"row"}
+        justifyContent="space-between"
+        alignItems="center"
+        marginTop={2}
+        paddingBottom={2}
+      >
+        <Stack direction={"row"} alignItems="center" ml={2}>
+          <Typography>Rows per page:</Typography>
+          <FormControl variant="standard" sx={{ ml: 2, minWidth: 50 }}>
+            {/* <InputLabel id="rows-per-page"></InputLabel> */}
+            <Select
+              labelId="rows-per-page"
+              defaultValue={5}
+              onChange={handleChangeRowsPerPage}
+            >
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={15}>15</MenuItem>
+            </Select>
+          </FormControl>
+        </Stack>
+        <Stack sx={{ flex: 1 }} direction="row" justifyContent={"center"}>
+          <Pagination
+            count={maxPage}
+            size="large"
+            siblingCount={2}
+            boundaryCount={2}
+            showFirstButton
+            showLastButton
+            onChange={handleChangePage}
+          />
+        </Stack>
+      </Stack>
     </Paper>
   );
 }

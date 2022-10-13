@@ -12,6 +12,7 @@ function ComponentHeader(props) {
         padding: "8px 10px",
         borderBottom: "1px solid black",
         alignItems: "center",
+        flex: 1,
       }}
     >
       <Typography
