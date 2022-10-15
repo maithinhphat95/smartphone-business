@@ -10,6 +10,7 @@ RevenuePage.propTypes = {};
 
 function RevenuePage(props) {
   const tableData = {
+    title: "Order List",
     category: "order",
     head: cellHead.order,
     body: rows,

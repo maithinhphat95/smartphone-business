@@ -31,8 +31,6 @@ import {
   Search,
 } from "@mui/icons-material";
 
-import CharHeader from "../../ComponentHeader";
-
 const ExtraTable = (props) => {
   const { row, extraData, isOpen } = props;
   return (
