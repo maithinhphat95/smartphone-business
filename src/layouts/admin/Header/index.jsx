@@ -1,14 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { showMenu, toggleMenu } from "../../../redux/admin/adminAction";
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  Typography,
-  Button,
-  IconButton,
-} from "@mui/material";
+import { toggleMenu } from "../../../redux/admin/adminAction";
+import { AppBar, Box, Toolbar, Typography, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useDispatch } from "react-redux";

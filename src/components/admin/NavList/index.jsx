@@ -2,15 +2,24 @@ import React from "react";
 import Title from "../Title";
 import { Box } from "@mui/material";
 import NavItem from "../NavItem";
+import "./style.css";
 NavList.propTypes = {};
 
 function NavList(props) {
   return (
-    <Box sx={{ p: 1, pt: 0 }}>
+    <Box
+      sx={{
+        p: 1,
+        pt: 0,
+        overflowY: "scroll",
+        height: "calc(100vh - 220px",
+      }}
+      className="nav-list"
+    >
       <Box>
         <Title content="Overview" />
         <NavItem content="Home Page" url="/" />
-        <NavItem content="Admin Dashboard" url="/" />
+        <NavItem content="Admin Dashboard" url="/admin" />
       </Box>
       <Box>
         <Title content="Analytic" />

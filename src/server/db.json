@@ -1,0 +1,29 @@
+{
+  "orderList": [
+    {
+      "id": 1,
+      "purchasedList": [
+        {
+          "producId": 1,
+          "quantity": 3
+        },
+        {
+          "producId": 2,
+          "quantity": 3
+        },
+        {
+          "producId": 4,
+          "quantity": 3
+        },
+        {
+          "producId": 5,
+          "quantity": 1
+        }
+      ],
+      "orderDate": {
+        "date": "19-09-2022",
+        "time": ""
+      }
+    }
+  ]
+}

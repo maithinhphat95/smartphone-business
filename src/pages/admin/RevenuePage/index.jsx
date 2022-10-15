@@ -1,43 +1,56 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import RevenueSummaryChart from "../../../components/admin/Charts/RevenueSummaryChart";
-import BrandRatingChart from "../../../components/admin/Charts/BrandRatingChart";
-import { Inventory, Paid, Person, ShoppingBag } from "@mui/icons-material";
-import NavLinkCard from "../../../components/admin/NavLinkCard";
 import PageTitle from "../../../components/admin/PageTitle";
+import MonthlyRevenueChart from "../../../components/admin/Charts/MonthlyRevenueChart";
+import DataTable from "../../../components/admin/Tables/DataTable";
+import { cellHead, rows } from "../../../constant/admin";
 
 RevenuePage.propTypes = {};
 
 function RevenuePage(props) {
+  const tableData = {
+    title: "Order List",
+    category: "order",
+    head: cellHead.order,
+    body: rows,
+    extra: {
+      isExtra: true,
+      extraHead: cellHead.purchased,
+    },
+  };
   return (
-    <Box
-      className="dashboard"
-      sx={{
-        p: 2,
-        flex: 1,
-        overflow: "auto",
-      }}
-    >
+    <>
       <PageTitle
         title="Revenue Summary"
         description="Revenue Overview and Summary"
       />
 
-      <Box sx={{ margin: "0 auto" }}>
+      <Box
+        sx={{
+          margin: "0 auto",
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+        }}
+      >
         <Box
           sx={{
             display: "flex",
             gap: 2,
-            alignItems: "stretch",
             justifyContent: "center",
             flexDirection: "row",
             flexWrap: { xs: "wrap", md: "nowrap" },
           }}
         >
-          <RevenueSummaryChart isViewDetail={false} />
+          <RevenueSummaryChart />
+          <MonthlyRevenueChart />
+        </Box>
+        <Box>
+          <DataTable data={tableData} />
         </Box>
       </Box>
-    </Box>
+    </>
   );
 }
 

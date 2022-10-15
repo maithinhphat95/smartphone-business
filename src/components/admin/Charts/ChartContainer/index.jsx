@@ -1,5 +1,4 @@
-import React, { Children } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { Box } from "@mui/material";
 
 ChartContainer.propTypes = {};

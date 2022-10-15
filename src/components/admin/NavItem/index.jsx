@@ -1,6 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 NavItem.propTypes = {};
 
@@ -17,7 +16,6 @@ function NavItem(props) {
         marginBottom: "2px",
         textDecoration: "none",
         textTransform: "capitalize",
-        // justifyContent: "flex-start",
         alignItems: "center",
         backgroundColor: "#D9D9D9",
         borderRadius: "8px",

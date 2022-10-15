@@ -10,12 +10,14 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-import { monthAxis, yearAxis } from "../../../common/charts";
+import { yearAxis } from "../../../common/charts";
 import { Box, Typography, Link } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import CharHeader from "../../ChartHeader";
+import ComponentHeader from "../../ComponentHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
+import ChartBox from "../ChartBox";
+import { adminColorLight } from "../../../../constant/admin";
 
 RevenueSummaryChart.propTypes = {};
 
@@ -29,8 +31,6 @@ function RevenueSummaryChart(props) {
     Tooltip,
     Legend
   );
-  const targetData = [200, 200, 200, 200, 200];
-  const actualData = [150, 180, 210, 220, 260];
   const fakeData = {
     target: yearAxis.map(() => faker.datatype.number({ min: 200, max: 220 })),
     actual: yearAxis.map(() => faker.datatype.number({ min: 150, max: 260 })),
@@ -69,13 +69,15 @@ function RevenueSummaryChart(props) {
     datasets: [
       {
         label: "Target",
-        data: targetData,
-        backgroundColor: "rgba(255, 99, 132)",
+        data: fakeData.target,
+        backgroundColor: adminColorLight.chartColor1,
+        borderColor: adminColorLight.chartColor1,
       },
       {
         label: "Actual",
-        data: actualData,
-        backgroundColor: "rgba(53, 162, 235)",
+        data: fakeData.actual,
+        backgroundColor: adminColorLight.chartColor2,
+        borderColor: adminColorLight.chartColor2,
       },
     ],
   };
@@ -83,7 +85,7 @@ function RevenueSummaryChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <CharHeader chartName="Revenue Summary" goalData={goalData} />
+      <ComponentHeader chartName="Revenue Summary" goalData={goalData} />
       {/* Body of chart */}
       <ChartCover>
         {/* Sale result */}
@@ -92,6 +94,7 @@ function RevenueSummaryChart(props) {
             display: "flex",
             flexDirection: { xs: "column", sm: "row", lg: "column" },
             justifyContent: "space-evenly",
+            gap: { xs: 2, lg: 1 },
           }}
         >
           {/* Annual Revenue Target */}
@@ -115,8 +118,6 @@ function RevenueSummaryChart(props) {
                 justifyContent: "center",
                 gap: { xs: 4, md: 0 },
                 flexDirection: { xs: "row", md: "column" },
-                mb: 2,
-                mt: 1,
                 textAlign: "center",
               }}
             >
@@ -150,8 +151,6 @@ function RevenueSummaryChart(props) {
                 justifyContent: "center",
                 gap: { xs: 4, md: 0 },
                 flexDirection: { xs: "row", md: "column" },
-                mb: 2,
-                mt: 1,
                 textAlign: "center",
               }}
             >
@@ -184,9 +183,9 @@ function RevenueSummaryChart(props) {
           )}
         </Box>
         {/* Chart of revenue summary */}
-        <Box sx={{ flex: 1, overflow: "auto" }}>
+        <ChartBox>
           <Bar options={options} plugins={[ChartDataLabels]} data={data} />
-        </Box>
+        </ChartBox>
       </ChartCover>
       {isViewDetail && (
         <Link

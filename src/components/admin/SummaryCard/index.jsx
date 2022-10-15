@@ -1,27 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Box, Typography, Card, Grid } from "@mui/material";
-import { ArrowUpward, ArrowDownward, ShoppingBag } from "@mui/icons-material";
-NavLinkCard.propTypes = {};
+import { ArrowUpward } from "@mui/icons-material";
+SummaryCard.propTypes = {};
 
-function NavLinkCard(props) {
+function SummaryCard(props) {
   const { icon, color, item } = props;
-  const handleClickNavLinkCard = () => {
-    console.log("click");
-  };
   return (
     <Grid item xs={12} sm={6} lg={3}>
       <Card
         sx={{
-          width: "250px",
           borderLeft: 4,
           borderRadius: 1,
           borderColor: color,
           p: 2,
-          cursor: "pointer",
           width: "100%",
         }}
-        onClick={handleClickNavLinkCard}
       >
         <Box
           sx={{
@@ -38,13 +31,18 @@ function NavLinkCard(props) {
           {icon}
         </Box>
 
-        <Typography variant="p" component="h3">
+        <Typography variant="p" component="h3" color={"inherit"}>
           {item.value}
         </Typography>
-        <Typography variant="p" component="p">
+        <Typography variant="p" component="p" color={"inherit"}>
           {item.name}
         </Typography>
-        <Typography variant="p" component="p" sx={{ textAlign: "start" }}>
+        <Typography
+          variant="p"
+          component="p"
+          color={"inherit"}
+          sx={{ textAlign: "start" }}
+        >
           <ArrowUpward sx={{ color: "green", transform: "translateY(25%)" }} />{" "}
           12% from last month
         </Typography>
@@ -53,4 +51,4 @@ function NavLinkCard(props) {
   );
 }
 
-export default NavLinkCard;
+export default SummaryCard;

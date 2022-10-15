@@ -1,12 +1,20 @@
 import "./App.css";
 import React from "react";
 import AdminHome from "./pages/admin/AdminHome";
+import { Box } from "@mui/material";
+import { adminColorLight } from "./constant/admin";
 
 function App() {
   return (
-    <div className="App">
+    <Box
+      sx={{
+        backgroundColor: adminColorLight.background,
+        // color: adminColorLight.text,
+        minHeight: "100%",
+      }}
+    >
       <AdminHome />
-    </div>
+    </Box>
   );
 }
 export default App;

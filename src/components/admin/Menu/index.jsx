@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import AccountShort from "../AccountShort";
 import NavList from "../NavList";
 import { useSelector } from "react-redux";
+import { adminColorLight } from "../../../constant/admin";
 Menu.propTypes = {};
 function Menu(props) {
   const showMenu = useSelector((state) => state.admin.showMenu);
@@ -14,13 +15,13 @@ function Menu(props) {
         transition: "0.5s",
         position: { xs: "fixed", lg: showMenu ? "static" : "fixed" },
         zIndex: "10",
-        height: "max-content",
+        // backgroundColor: adminColorLight.background,
       }}
     >
       <Box
         sx={{
           width: 250,
-          backgroundColor: "#f0f0f0",
+          backgroundColor: adminColorLight.secondary,
           border: 1,
           borderColor: "text.disabled",
         }}
