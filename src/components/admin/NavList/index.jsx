@@ -24,7 +24,7 @@ function NavList(props) {
       <Box>
         <Title content="Analytic" />
         <NavItem content="Annual Revenue" url="/revenue" />
-        <NavItem content="Sale Rating" />
+        <NavItem content="Sale Rating" url="/sale" />
       </Box>
       <Box>
         <Title content="Management" />
