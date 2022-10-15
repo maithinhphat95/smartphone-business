@@ -11,15 +11,15 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-import { monthAxis, yearAxis } from "../../../common/charts";
-import { Box, Typography, Link } from "@mui/material";
+import { monthAxis } from "../../../common/charts";
+import { Box, Link } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import CharHeader from "../../ChartHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
-import { adminColorDark, adminColorLight } from "../../../../constant/admin";
+import { adminColorLight } from "../../../../constant/admin";
 import RevenueReportCard from "../../RevenueReportCard";
 import ChartBox from "../ChartBox";
+import ComponentHeader from "../../ComponentHeader";
 MonthlyRevenueChart.propTypes = {};
 
 function MonthlyRevenueChart(props) {
@@ -72,14 +72,14 @@ function MonthlyRevenueChart(props) {
       {
         label: "Target",
         data: fakeData.target,
-        backgroundColor: "rgba(255, 99, 132)",
-        borderColor: "rgba(255, 99, 132)",
+        backgroundColor: adminColorLight.chartColor1,
+        borderColor: adminColorLight.chartColor1,
       },
       {
         label: "Actual",
         data: fakeData.actual,
-        backgroundColor: "rgba(53, 162, 235)",
-        borderColor: "rgba(53, 162, 235)",
+        backgroundColor: adminColorLight.chartColor2,
+        borderColor: adminColorLight.chartColor2,
       },
     ],
   };
@@ -87,7 +87,7 @@ function MonthlyRevenueChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <CharHeader chartName="Revenue Report 2022" />
+      <ComponentHeader chartName="Revenue Report 2022" />
       {/* Body of chart */}
       <ChartCover>
         {/* Sale result */}

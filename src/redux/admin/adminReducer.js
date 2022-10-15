@@ -5,6 +5,8 @@ const initialState = {
   showMenu: false,
   yearlyData: yearlyRevenue,
   productList: [],
+  sortCategory: "date",
+  sortOrder: "desc",
 };
 
 export const adminReducer = (state = initialState, action) => {

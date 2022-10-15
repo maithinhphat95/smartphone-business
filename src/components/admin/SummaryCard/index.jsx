@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Box, Typography, Card, Grid } from "@mui/material";
-import { ArrowUpward, ArrowDownward, ShoppingBag } from "@mui/icons-material";
+import { ArrowUpward } from "@mui/icons-material";
 SummaryCard.propTypes = {};
 
 function SummaryCard(props) {
@@ -10,7 +9,6 @@ function SummaryCard(props) {
     <Grid item xs={12} sm={6} lg={3}>
       <Card
         sx={{
-          width: "250px",
           borderLeft: 4,
           borderRadius: 1,
           borderColor: color,

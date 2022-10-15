@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-CharHeader.propTypes = {};
+ComponentHeader.propTypes = {};
 
-function CharHeader(props) {
+function ComponentHeader(props) {
   const { chartName, goalData } = props;
   return (
     <Box
@@ -12,6 +12,7 @@ function CharHeader(props) {
         padding: "8px 10px",
         borderBottom: "1px solid black",
         alignItems: "center",
+        flex: 1,
       }}
     >
       <Typography
@@ -44,4 +45,4 @@ function CharHeader(props) {
   );
 }
 
-export default CharHeader;
+export default ComponentHeader;

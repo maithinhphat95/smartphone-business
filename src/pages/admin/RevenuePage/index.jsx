@@ -3,11 +3,22 @@ import { Box } from "@mui/material";
 import RevenueSummaryChart from "../../../components/admin/Charts/RevenueSummaryChart";
 import PageTitle from "../../../components/admin/PageTitle";
 import MonthlyRevenueChart from "../../../components/admin/Charts/MonthlyRevenueChart";
-import { adminColorLight, adminColorDark } from "../../../constant/admin";
+import DataTable from "../../../components/admin/Tables/DataTable";
+import { cellHead, rows } from "../../../constant/admin";
 
 RevenuePage.propTypes = {};
 
 function RevenuePage(props) {
+  const tableData = {
+    title: "Order List",
+    category: "order",
+    head: cellHead.order,
+    body: rows,
+    extra: {
+      isExtra: true,
+      extraHead: cellHead.purchased,
+    },
+  };
   return (
     <>
       <PageTitle
@@ -34,6 +45,9 @@ function RevenuePage(props) {
         >
           <RevenueSummaryChart />
           <MonthlyRevenueChart />
+        </Box>
+        <Box>
+          <DataTable data={tableData} />
         </Box>
       </Box>
     </>
