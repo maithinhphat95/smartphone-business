@@ -5,6 +5,7 @@ import { adminColorLight } from "../../../constant/admin";
 import Menu from "../../../components/admin/Menu";
 import DashboardPage from "../../../pages/admin/DashboardPage";
 import RevenuePage from "../../../pages/admin/RevenuePage";
+import SaleRatingPage from "../../../pages/admin/SaleRatingPage";
 
 Main.propTypes = {};
 
@@ -32,6 +33,7 @@ function Main(props) {
         <Routes>
           <Route path="/admin" element={<DashboardPage />} />
           <Route path="/revenue" element={<RevenuePage />} />
+          <Route path="/sale" element={<SaleRatingPage />} />
         </Routes>
       </Box>
     </Box>

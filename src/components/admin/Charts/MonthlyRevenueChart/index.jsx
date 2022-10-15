@@ -11,9 +11,9 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-import { monthAxis } from "../../../common/charts";
-import { Box, Link } from "@mui/material";
+import { Box } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import { monthAxis } from "../../../common/charts";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
 import { adminColorLight } from "../../../../constant/admin";
@@ -23,7 +23,6 @@ import ComponentHeader from "../../ComponentHeader";
 MonthlyRevenueChart.propTypes = {};
 
 function MonthlyRevenueChart(props) {
-  const { isViewDetail } = props;
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -134,20 +133,6 @@ function MonthlyRevenueChart(props) {
           <Line options={options} plugins={[ChartDataLabels]} data={data} />
         </ChartBox>
       </ChartCover>
-      {isViewDetail && (
-        <Link
-          href="#"
-          variant={"h6"}
-          sx={{
-            p: 1,
-            textAlign: "center",
-            textDecoration: "underline",
-            color: "inherit",
-          }}
-        >
-          View Details
-        </Link>
-      )}
     </ChartContainer>
   );
 }

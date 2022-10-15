@@ -11,13 +11,14 @@ import {
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
 import { yearAxis } from "../../../common/charts";
-import { Box, Typography, Link } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import ComponentHeader from "../../ComponentHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
 import ChartBox from "../ChartBox";
 import { adminColorLight } from "../../../../constant/admin";
+import { Link } from "react-router-dom";
 
 RevenueSummaryChart.propTypes = {};
 
@@ -188,17 +189,18 @@ function RevenueSummaryChart(props) {
         </ChartBox>
       </ChartCover>
       {isViewDetail && (
-        <Link
-          href="#"
-          variant={"h6"}
-          sx={{
-            p: 1,
-            textAlign: "center",
-            textDecoration: "underline",
-            color: "inherit",
-          }}
-        >
-          View Details
+        <Link to="/revenue">
+          <Typography
+            variant={"h6"}
+            sx={{
+              p: 1,
+              textAlign: "center",
+              textDecoration: "underline",
+              color: "black",
+            }}
+          >
+            View Details
+          </Typography>
         </Link>
       )}
     </ChartContainer>

@@ -1,13 +1,13 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import { Box, Link } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import ComponentHeader from "../../ComponentHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
 import { adminColorLight } from "../../../../constant/admin";
-
+import { Link } from "react-router-dom";
 BrandRatingChart.propTypes = {};
 
 function BrandRatingChart(props) {
@@ -63,17 +63,18 @@ function BrandRatingChart(props) {
       </ChartCover>
 
       {isViewDetail && (
-        <Link
-          href="#"
-          variant={"h6"}
-          sx={{
-            p: 1,
-            textAlign: "center",
-            textDecoration: "underline",
-            color: "inherit",
-          }}
-        >
-          View Details
+        <Link to="/sale">
+          <Typography
+            variant={"h6"}
+            sx={{
+              p: 1,
+              textAlign: "center",
+              textDecoration: "underline",
+              color: "black",
+            }}
+          >
+            View Details
+          </Typography>
         </Link>
       )}
     </ChartContainer>
