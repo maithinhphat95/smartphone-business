@@ -28,7 +28,7 @@ function NavList(props) {
       </Box>
       <Box>
         <Title content="Management" />
-        <NavItem content="Inventory Manager" />
+        <NavItem content="Inventory Manager" url="/inventory" />
         <NavItem content="Customer Manager" />
       </Box>
       <Box>
