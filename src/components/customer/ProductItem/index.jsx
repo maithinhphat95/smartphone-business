@@ -32,10 +32,8 @@ function ProductItem(props) {
           />
           </Link>
           <CardContent>
-            <Typography gutterBottom variant="h6" component="div">
-              <a href="" className="name-product">
+            <Typography className="name-product" gutterBottom variant="h6" component="div">    
                 {name}
-              </a>
             </Typography>
             <Typography
               className="price"

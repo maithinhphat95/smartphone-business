@@ -32,12 +32,15 @@ function ThemeProvider(props) {
   // };
   //
   // const [totalTitlePhone,setTotalTitlePhone] = useState(0);
-  const [myCart, setMycart] = useState([{}]);
+  const [myCart, setMycart] = useState([]);
   const [mylogin, setMylogin] = useState(false);
   const [myAccount, setMyAccount] = useState([{}]);
   const [myRegister, setMyRegister] = useState([{}]);
   const [searchTerm, setSearchTerm] =  useState("");
   const [resultTitle, setResultTitle] = useState("");
+  const [totalCart,setTotalCart] = useState(0);
+  const [countCart,setCountCart] = useState(0);
+
    
   return (
     <ThemeContext.Provider
@@ -52,6 +55,8 @@ function ThemeProvider(props) {
         setMyRegister,
         searchTerm, setSearchTerm,
        resultTitle, setResultTitle,
+       totalCart,setTotalCart,
+       countCart,setCountCart
       
       }}
     >

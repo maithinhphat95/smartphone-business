@@ -9,16 +9,14 @@ import Security from './pages/customer/AboutSecurity';
 import Header from './layouts/customer/Header';
 import Nav from './components/customer/Nav';
 import Footer from './layouts/customer/Footer';
-import ProducitemListSearch from './pages/customer/SearchItem/ProducitemListSearch';
 import PhoneItem from './pages/customer/PhoneItem';
 import CarouselPhone from './pages/customer/Carousel-PhoneItem';
 import NotFound from './pages/customer/NotFound';
 import DetalPhone from './pages/customer/PhoneItem/DetalPhone';
-import PricePhone from './pages/customer/PhoneItem/PricePhone';
 import ThemeProvider from './components/customer/Context/ThemeProvider';
 import CheckDefault from './pages/customer/CheckOder/CheckDefault';
 import Cart from './pages/customer/Cart';
-import ProductItemSearch from './pages/customer/SearchItem/ProductItemSearch';
+import ProductitemListSearch from './pages/customer/SearchItem/ProductitemListSearch';
 // import Testt from './features/Account/pages/Register';
 
 function App() {
@@ -35,7 +33,7 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/question' element={<Question />} />
       <Route path='/aboutSecurity' element={<Security />} />
-      <Route path='/search' element={<ProducitemListSearch />} />
+      <Route path='/search' element={<ProductitemListSearch />} />
       <Route  exact path='/phone' element={<PhoneItem />} />
       {/* path={`${url}/:id`}> */}
       <Route path={`/phones/:producer`} element={<DetalPhone />} />

@@ -1,4 +1,5 @@
 import {
+  Badge,
   Button,
   Container,
   Grid,
@@ -28,7 +29,7 @@ function Header(props) {
  
   //search   ,login
   const history = useNavigate();
-  const {setSearchTerm,mylogin,setMylogin} = useContext(ThemeContext);
+  const {setSearchTerm,mylogin,setMylogin,myCart} = useContext(ThemeContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     history("/search");
@@ -150,6 +151,7 @@ function Header(props) {
                   <li>
                     <Link to="/cart" className="header-link">
                       <ShoppingCartOutlinedIcon color="" fontSize="large" />
+                      <Badge>{myCart.length}</Badge>
                       <p className="d-none d-sm-block">Giỏ hàng</p>
                     </Link>
                   </li>

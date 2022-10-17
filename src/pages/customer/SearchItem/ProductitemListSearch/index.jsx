@@ -5,7 +5,7 @@ import ThemeContext from "../../../../components/customer/Context/ThemeContext";
 import ProductItem from "../../../../components/customer/ProductItem";
 import useFetch from "../../../../components/customize/fetch";
 // import "./ProducitemListSearch.scss";
-function ProducitemListSearch(props) {
+function ProductitemListSearch(props) {
     //componentDidMount
     const { data: dataProductItem } =
     // // = useFetch('https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z')
@@ -62,4 +62,4 @@ function ProducitemListSearch(props) {
   );
 }
 
-export default ProducitemListSearch;
+export default ProductitemListSearch;

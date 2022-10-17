@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../components/customize/fetch";
 // import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import ThemeContext from "../../../components/customer/Context/ThemeContext";
 import "./CarouselPhone.scss";
 
@@ -9,22 +10,37 @@ function CarouselPhone(props) {
   let params = useParams();
   //Fake API
   const {data: dataProductItem,isLoading,isError,} = useFetch(`http://localhost:3006/productitem/${params.id}`);
-  
+  const [added,setAdded]= useState(false);
   //set add cart
-  const {setMycart} = useContext(ThemeContext);
+  const {myCart,setMycart,setTotalCart,countCart,setCountCart} = useContext(ThemeContext);
   const handleClickCart = () => {
+    setAdded(true);
     // add iphone13,12
     const newItems = {
+      id: dataProductItem.id,
       img: dataProductItem.img,
       name: dataProductItem.name,
       priceNew: dataProductItem.priceNew,
       priceOld: dataProductItem.priceOld
 
     };
+    //tost thêm thành công
+    toast.success("Đã thêm vào giỏ hàng!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     // [1,2] arr.push(2);
     setMycart((item) => [...item, newItems]);
-   console.log(newItems);
+    setTotalCart((total) =>(total += Number(dataProductItem.priceNew)));
+    setCountCart(() =>( Number(countCart+1)));
+  //  console.log(newItems);
   };
+  //delete item cart
   return (
     <div className="container-fluid mt-5">
       {isError === false && isLoading === false && (
@@ -111,7 +127,14 @@ function CarouselPhone(props) {
               <span>1200 ratings &amp; 564 reviews</span>
             </div>
             <div className="d-flex list-color-item">
-              <div className="color-item">
+            {dataProductItem.color.map((item,index) =>{
+              return(
+              <div key={index} className="color-item">
+              <a className=""><p>{item}</p></a>
+              </div>
+              )
+            })}
+              {/* <div className="color-item">
               <a className=""><p>Xanh</p></a>
               </div>
               <div className="color-item">
@@ -122,7 +145,7 @@ function CarouselPhone(props) {
               </div>
               <div className="color-item">
               <a className=""><p>Đen</p></a>
-              </div>
+              </div> */}
                
               
             </div>
@@ -204,7 +227,16 @@ function CarouselPhone(props) {
               <button className="btn btn-dark mr-2" type="button">
                 Mua ngay
               </button>
-              <button
+              {added ? (
+                <button
+                className="btn btn-danger"
+                disabled
+              >
+                Đã Thêm
+              </button>
+           
+              ) : (
+                <button
                 className="btn btn-success"
                 onClick={ 
                   handleClickCart
@@ -212,6 +244,9 @@ function CarouselPhone(props) {
               >
                 Thêm vào giỏ
               </button>
+              )}
+             
+              <ToastContainer />
             </div>
           </div>
         </div>
