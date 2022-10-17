@@ -294,7 +294,7 @@ export default function DataTable(props) {
         alignItems="center"
         paddingLeft={2}
       >
-        <Typography variant="h6">Order List</Typography>
+        <Typography variant="h6">{data.title}</Typography>
         <Box
           component={"form"}
           sx={{ m: 1, display: "flex", alignItems: "center" }}

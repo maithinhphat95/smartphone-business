@@ -78,106 +78,143 @@ function fakeOrderItem(no, id, user, date, subtotal, bonus, total, status) {
 }
 let i = 1;
 // Init the rows by order list formular, fixed to other table in the future
-export const rows = [
-  fakeOrderItem(
-    i,
-    faker.random.alphaNumeric(10, {
-      casing: "mixed",
-    }),
-    "phat",
-    faker.date.past(2).toLocaleString(),
-    2450,
-    -20,
-    2380,
-    orderStatus.delivery
-  ),
-  fakeOrderItem(
-    ++i,
-    faker.random.alphaNumeric(10, {
-      casing: "mixed",
-    }),
-    "phat",
-    faker.date.past(2).toLocaleString(),
-    2200,
-    -20,
-    2380,
-    orderStatus.prepare
-  ),
-  fakeOrderItem(
-    ++i,
-    faker.random.alphaNumeric(10, {
-      casing: "mixed",
-    }),
-    "phat",
-    faker.date.past(2).toLocaleString(),
-    2410,
-    -20,
-    2380,
-    orderStatus.delivery
-  ),
-  fakeOrderItem(
-    ++i,
-    faker.random.alphaNumeric(10, {
-      casing: "mixed",
-    }),
-    "phat",
-    faker.date.past(2).toLocaleString(),
-    2120,
-    -20,
-    2480,
-    orderStatus.received
-  ),
-  fakeOrderItem(
-    ++i,
-    faker.random.alphaNumeric(10, {
-      casing: "mixed",
-    }),
-    "phat",
-    faker.date.past(2).toLocaleString(),
-    2420,
-    -20,
-    2280,
-    orderStatus.received
-  ),
-  fakeOrderItem(
-    ++i,
-    faker.random.alphaNumeric(10, {
-      casing: "mixed",
-    }),
-    "phat",
-    faker.date.past(2).toLocaleString(),
-    2402,
-    -20,
-    2220,
-    orderStatus.received
-  ),
-  fakeOrderItem(
-    ++i,
-    faker.random.alphaNumeric(10, {
-      casing: "mixed",
-    }),
-    "phat",
-    faker.date.past(2).toLocaleString(),
-    2440,
-    -10,
-    2380,
-    orderStatus.received
-  ),
-  fakeOrderItem(
-    ++i,
-    faker.random.alphaNumeric(10, {
-      casing: "mixed",
-    }),
-    "phat",
-    faker.date.past(2).toLocaleString(),
-    2400,
-    -20,
-    2380,
-    orderStatus.received
-  ),
-];
-
-export const cellHead = {
+export const tableRows = {
+  order: [
+    fakeOrderItem(
+      i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2450,
+      -20,
+      2380,
+      orderStatus.delivery
+    ),
+    fakeOrderItem(
+      ++i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2200,
+      -20,
+      2380,
+      orderStatus.prepare
+    ),
+    fakeOrderItem(
+      ++i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2410,
+      -20,
+      2380,
+      orderStatus.delivery
+    ),
+    fakeOrderItem(
+      ++i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2120,
+      -20,
+      2480,
+      orderStatus.received
+    ),
+    fakeOrderItem(
+      ++i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2420,
+      -20,
+      2280,
+      orderStatus.received
+    ),
+    fakeOrderItem(
+      ++i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2402,
+      -20,
+      2220,
+      orderStatus.received
+    ),
+    fakeOrderItem(
+      ++i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2440,
+      -10,
+      2380,
+      orderStatus.received
+    ),
+    fakeOrderItem(
+      ++i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2400,
+      -20,
+      2380,
+      orderStatus.received
+    ),
+    fakeOrderItem(
+      ++i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2400,
+      -20,
+      2380,
+      orderStatus.received
+    ),
+    fakeOrderItem(
+      ++i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2400,
+      -20,
+      2380,
+      orderStatus.received
+    ),
+    fakeOrderItem(
+      ++i,
+      faker.random.alphaNumeric(10, {
+        casing: "mixed",
+      }),
+      "phat",
+      faker.date.past(2).toLocaleString(),
+      2400,
+      -20,
+      2380,
+      orderStatus.received
+    ),
+  ],
+};
+export const tableHead = {
   order: ["NO", "ID", "USER", "DATE", "SUBTOTAL", "BONUS", "TOTAL", "STATUS"],
   purchased: [
     "No",
@@ -188,6 +225,17 @@ export const cellHead = {
     "Coupon",
     "Bonus",
     "Total",
+  ],
+  product: [
+    "NO",
+    "ID",
+    "NAME",
+    "COLOR",
+    "PRICE",
+    "MEMORY",
+    "STOCKING",
+    "SOLD",
+    "ACTION",
   ],
 };
 
