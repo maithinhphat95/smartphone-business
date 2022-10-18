@@ -17,7 +17,7 @@ import Banner from "../../../../components/customer/Banner";
 import SideBar from "../../../../components/customer/SideBar";
 import TitleTogglePhone from "../../../../components/customer/TitleTogglePhone";
 import TogglePhoneItem from "../../../../components/customer/TogglePhoneItem";
-function DetalPhone(props) {
+function PhoneItems(props) {
   return (
     <>
       <Banner />
@@ -37,4 +37,4 @@ function DetalPhone(props) {
   );
 }
 
-export default DetalPhone;
+export default PhoneItems;

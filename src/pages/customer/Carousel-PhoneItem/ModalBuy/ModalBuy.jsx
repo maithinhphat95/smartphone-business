@@ -1,23 +1,25 @@
 import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
-import { Container } from "@mui/system";
-import React, { useContext, useState } from "react";
-import ThemeContext from "../../../components/customer/Context/ThemeContext";
-import AddIcon from '@mui/icons-material/Add';
-import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
-import { ToastContainer, toast } from "react-toastify";
-import "./Cart.scss";
-import { useNavigate } from "react-router-dom";
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-function Cart(props) {
-  const { myCart,setMycart,totalCart,setTotalCart,countCart,setCountCart } = useContext(ThemeContext);
+    Box,
+    Button,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    Typography,
+  } from "@mui/material";
+  import { Container } from "@mui/system";
+  import React, { useContext, useState } from "react";
+  import AddIcon from '@mui/icons-material/Add';
+  import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
+  import { ToastContainer, toast } from "react-toastify";
+  import { useNavigate } from "react-router-dom";
+  import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ThemeContext from "../../../../components/customer/Context/ThemeContext";
+
+
+
+function ModalBuy(props) {
+    const { myCart,setMycart,totalCart,setTotalCart,countCart,setCountCart,myModalBuy, setMyModalBuy,  totalModal,setTotalModal } = useContext(ThemeContext);
    //history
    const [countItem,setCountItem] = useState(1);
    const history = useNavigate();
@@ -57,8 +59,8 @@ const handleChange = (event) => {
      setCountItem(countItem - 1);
     }
   const handlePay = () =>{
-    setMycart([]);
-    setTotalCart(0);
+    setMyModalBuy([]);
+    // setTotalModal(0);
 
     toast.success("Đã đặt hàng thành công!", {
       position: "top-right",
@@ -76,20 +78,27 @@ const handleChange = (event) => {
       }, 3000);
     });
   }
-  return (
-    <Container maxWidth="xl">
+    return (
+        // <!-- Modal -->
+        // tabIndex={-1}
+<div className="modal fade" id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog" role="document">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 className="modal-title" id="exampleModalLabel">Sản phẩm thanh toán</h5>
+        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div className="modal-body">
+        {/* body */}
+        <Container maxWidth="xl">
       <Container>
         <Box className="cart-header-items ">
-         {
-          myCart.length === 0 ? (
-            <Typography variant="h4">Sản phẩm trong giỏ không có:</Typography>
-          ) : (
-            <Typography variant="h4">Có {countCart} sản phẩm trong giỏ hàng:</Typography>     
-            )
-          }
+        
          
          {/* <Typography variant="h4">Sản phẩm trong giỏ hàng:</Typography> */}
-          {myCart.length >=1 && myCart.slice(0).map((item, index) => {
+          {myModalBuy.length >=1 && myModalBuy.slice(0).map((item, index) => {
             return (
               <Box key={index} className="cart-items">
                 <div className="row">
@@ -100,7 +109,7 @@ const handleChange = (event) => {
                     <h4>{item.name}</h4>
                     <p className="text-danger font-weight-bold">{item.priceNew.toLocaleString()} VNĐ</p>
                     <div className="d-flex list-color-item">
-              <Box key={index} sx={{ minWidth: 80 }}>
+              <Box sx={{ minWidth: 80 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Color</InputLabel>
         <Select
@@ -112,7 +121,7 @@ const handleChange = (event) => {
         >
             {item.color.map((item2,index) =>{
               return(
-          <MenuItem value={item2}>{item2}</MenuItem>  
+          <MenuItem key={index} value={item2}>{item2}</MenuItem>  
               )
             })}
         </Select>
@@ -138,46 +147,36 @@ const handleChange = (event) => {
                    
                   </div>
                 </div>
-
-                {/* <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Age</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={age}
-                    // label="Age"
-                    // onChange={handleChange}
-                  >
-                    <MenuItem value={item.color}>{item.color}</MenuItem>
-                    <MenuItem value={item.color}>{item.color}</MenuItem>
-                    <MenuItem value={item.color}>{item.color}</MenuItem>
-                  </Select>
-                </FormControl> */}
               </Box>
             );
         
           })}
         </Box>
         <Box className="totalItem text-center">
-        <Typography variant="h6">Tổng giá tiền thanh toán:<p className="text-danger ">{totalCart.toLocaleString()} VNĐ</p></Typography>
-       {
+        <Typography variant="h6">Tổng giá tiền thanh toán:<p className="text-danger ">{totalModal.toLocaleString()} VNĐ</p></Typography>
+       {/* {
         myCart.length === 0 ? (
           <Button variant="contained" color="success" disabled
         >
         Hoàn tất thanh toán
       </Button>
         ) : (
-          <Button variant="contained" color="success" onClick={() => handlePay()}
-        >
-        Hoàn tất thanh toán
-      </Button>
+         ""
         )
-       }
+       } */}
       <ToastContainer />
         </Box>
       </Container>
     </Container>
-  );
+      </div>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary" data-dismiss="modal">Hủy</button>
+        <button type="button" className="btn btn-primary" onClick={() => handlePay()}>Thanh toán</button>
+      </div>
+    </div>
+  </div>
+</div>
+    );
 }
 
-export default Cart;
+export default ModalBuy;
