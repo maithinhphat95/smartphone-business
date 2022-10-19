@@ -24,8 +24,11 @@ import {
   Select,
   FormControl,
   MenuItem,
+  Button,
 } from "@mui/material";
 import {
+  Delete,
+  Edit,
   KeyboardArrowDown,
   KeyboardArrowUp,
   Search,
@@ -150,11 +153,15 @@ const ExtraTable = (props) => {
 
 // Function show each row of tablebody (order item)
 function Row(props) {
-  const { row, extraData } = props;
+  const { row, extraData, isControl, category } = props;
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+      <TableRow
+        sx={{
+          "& > *": { borderBottom: "unset", "& td": { borderBottom: "none" } },
+        }}
+      >
         {extraData.isExtra && (
           <TableCell>
             <IconButton
@@ -167,20 +174,68 @@ function Row(props) {
           </TableCell>
         )}
         {/* <TableCell align="center">{index + 1}</TableCell> */}
-        {Object.keys(row).map((item, index) => {
-          if (item !== "purchasedList") {
-            return (
-              <TableCell key={index} align="center">
-                {`${
-                  item === "subtotal" || item === "bonus" || item === "total"
-                    ? "$"
-                    : ""
-                } ${row[item].toLocaleString()}`}
-              </TableCell>
-            );
-          }
-          return "";
-        })}
+        {category === "order" &&
+          Object.keys(row).map((item, index) => {
+            if (item !== "purchasedList") {
+              return (
+                <TableCell key={index} align="center">
+                  {`${
+                    item === "subtotal" || item === "bonus" || item === "total"
+                      ? "$"
+                      : ""
+                  } ${row[item].toLocaleString()}`}
+                </TableCell>
+              );
+            }
+            return "";
+          })}
+        {category === "product" && (
+          <>
+            <TableCell align="center">{1}</TableCell>
+            <TableCell align="center">{row.id}</TableCell>
+            <TableCell
+              align="left"
+              sx={{ display: "flex", alignItems: "center" }}
+            >
+              <CardMedia
+                component="img"
+                // height="100px"
+                image={row.picture}
+                alt={row.name}
+                sx={{ maxWidth: "50px", marginRight: "10px", height: "100%" }}
+              />
+              <Typography variant="p">{row.name}</Typography>
+            </TableCell>
+            <TableCell align="center">
+              <Stack spacing={1} direction="row">
+                {row.color.map((e) => (
+                  <Typography variant="p">{e}</Typography>
+                ))}
+              </Stack>
+            </TableCell>
+            <TableCell>
+              <Box>
+                <Typography>{`${row.priceOld.toLocaleString()} VND`}</Typography>
+                <Typography>{`${row.priceNew.toLocaleString()} VND`}</Typography>
+              </Box>
+            </TableCell>
+            <TableCell>{`${row.memory} GB`}</TableCell>
+            <TableCell>{`${row.stock} pcs`}</TableCell>
+            <TableCell>{`${row.sold} pcs`}</TableCell>
+          </>
+        )}
+        {isControl && (
+          <TableCell>
+            <Stack direction="row" spacing={1}>
+              <Button variant="contained" color="info" startIcon={<Edit />}>
+                Edit
+              </Button>
+              <Button variant="outlined" color="error" startIcon={<Delete />}>
+                Delete
+              </Button>
+            </Stack>
+          </TableCell>
+        )}
       </TableRow>
       {/* The table of purchasing list of order item */}
       {extraData.isExtra && (
@@ -279,7 +334,9 @@ export default function DataTable(props) {
       searchValue.trim().length === 0
         ? data.body
         : data.body.filter((element) => {
-            return element.id.includes(searchValue.trim().toLocaleLowerCase());
+            return element[data.searchBy].includes(
+              searchValue.trim().toLocaleLowerCase()
+            );
           });
     setSelectedData(searchArray);
     setDec(!dec);
@@ -306,7 +363,7 @@ export default function DataTable(props) {
           <TextField
             id="standard-basic"
             variant="standard"
-            placeholder="Search By ID"
+            placeholder={`Search by ${data.searchBy}`}
             onChange={(e) => {
               handleInputSearch(e.target.value);
             }}
@@ -362,14 +419,13 @@ export default function DataTable(props) {
           <TableBody>
             {dataSorted
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, index) => (
+              .map((row) => (
                 <Row
                   key={row.id}
                   row={row}
                   extraData={data.extra}
-                  index={index}
-                  sortDesc={sortDesc}
-                  length={dataSorted.length}
+                  isControl={data.isControl}
+                  category={data.category}
                 />
               ))}
           </TableBody>

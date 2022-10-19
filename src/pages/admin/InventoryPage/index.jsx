@@ -12,10 +12,12 @@ function InventoryPage(props) {
     title: "Product List",
     category: "product",
     head: tableHead.product,
-    body: tableRows.order,
+    body: tableRows.product,
     extra: {
       isExtra: false,
     },
+    isControl: true,
+    searchBy: "name",
   };
   return (
     <>

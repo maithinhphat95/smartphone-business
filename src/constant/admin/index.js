@@ -213,6 +213,32 @@ export const tableRows = {
       orderStatus.received
     ),
   ],
+  product: [
+    {
+      id: "1",
+      name: "Iphone 13 Pro Max",
+      picture:
+        "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/1051159192.jpeg",
+      color: ["red", "green"],
+      priceOld: 24000000,
+      priceNew: 20000000,
+      memory: 250,
+      stock: 10,
+      sold: 20,
+    },
+    {
+      id: "2",
+      name: "Iphone 13 Pro Max",
+      picture:
+        "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/1051159192.jpeg",
+      color: ["red", "green"],
+      priceOld: 24000000,
+      priceNew: 20000000,
+      memory: 128,
+      stock: 10,
+      sold: 20,
+    },
+  ],
 };
 export const tableHead = {
   order: ["NO", "ID", "USER", "DATE", "SUBTOTAL", "BONUS", "TOTAL", "STATUS"],

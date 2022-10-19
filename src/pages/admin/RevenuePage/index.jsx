@@ -18,6 +18,9 @@ function RevenuePage(props) {
       isExtra: true,
       extraHead: tableHead.purchased,
     },
+
+    isControl: false,
+    searchBy: "id",
   };
   return (
     <>
