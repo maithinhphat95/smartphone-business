@@ -4,7 +4,7 @@ import RevenueSummaryChart from "../../../components/admin/Charts/RevenueSummary
 import PageTitle from "../../../components/admin/PageTitle";
 import MonthlyRevenueChart from "../../../components/admin/Charts/MonthlyRevenueChart";
 import DataTable from "../../../components/admin/Tables/DataTable";
-import { cellHead, rows } from "../../../constant/admin";
+import { tableHead, tableRows } from "../../../constant/admin";
 
 RevenuePage.propTypes = {};
 
@@ -12,12 +12,15 @@ function RevenuePage(props) {
   const tableData = {
     title: "Order List",
     category: "order",
-    head: cellHead.order,
-    body: rows,
+    head: tableHead.order,
+    body: tableRows.order,
     extra: {
       isExtra: true,
-      extraHead: cellHead.purchased,
+      extraHead: tableHead.purchased,
     },
+
+    isControl: false,
+    searchBy: "id",
   };
   return (
     <>

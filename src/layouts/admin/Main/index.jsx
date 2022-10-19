@@ -6,6 +6,7 @@ import Menu from "../../../components/admin/Menu";
 import DashboardPage from "../../../pages/admin/DashboardPage";
 import RevenuePage from "../../../pages/admin/RevenuePage";
 import SaleRatingPage from "../../../pages/admin/SaleRatingPage";
+import InventoryPage from "../../../pages/admin/InventoryPage";
 
 Main.propTypes = {};
 
@@ -34,6 +35,7 @@ function Main(props) {
           <Route path="/admin" element={<DashboardPage />} />
           <Route path="/revenue" element={<RevenuePage />} />
           <Route path="/sale" element={<SaleRatingPage />} />
+          <Route path="/inventory" element={<InventoryPage />} />
         </Routes>
       </Box>
     </Box>
