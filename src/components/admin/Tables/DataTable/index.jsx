@@ -173,7 +173,6 @@ function Row(props) {
             </IconButton>
           </TableCell>
         )}
-        {/* <TableCell align="center">{index + 1}</TableCell> */}
         {category === "order" &&
           Object.keys(row).map((item, index) => {
             if (item !== "purchasedList") {
@@ -193,18 +192,18 @@ function Row(props) {
           <>
             <TableCell align="center">{1}</TableCell>
             <TableCell align="center">{row.id}</TableCell>
-            <TableCell
-              align="left"
-              sx={{ display: "flex", alignItems: "center" }}
-            >
-              <CardMedia
-                component="img"
-                // height="100px"
-                image={row.picture}
-                alt={row.name}
-                sx={{ maxWidth: "50px", marginRight: "10px", height: "100%" }}
-              />
-              <Typography variant="p">{row.name}</Typography>
+            <TableCell align="left">
+              <Stack direction={"row"} alignItems="center">
+                <CardMedia
+                  component="img"
+                  image={row.picture}
+                  alt={row.name}
+                  sx={{ width: "40px" }}
+                />
+                <Typography variant="p" minWidth={"100px"}>
+                  {row.name}
+                </Typography>
+              </Stack>
             </TableCell>
             <TableCell align="center">
               <Stack spacing={1} direction="row">
