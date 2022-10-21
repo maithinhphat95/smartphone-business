@@ -23,10 +23,12 @@ function DetalPhone(props) {
       img: dataProductItem.img,
       name: dataProductItem.name,
       priceNew: dataProductItem.priceNew,
+      price: dataProductItem.priceNew,
       priceOld: dataProductItem.priceOld,
-      color: dataProductItem.color
-
+      color: dataProductItem.color,
+      quantity: 1,
     };
+
     //tost thêm thành công
     toast.success("Đã thêm vào giỏ hàng!", {
       position: "top-right",
@@ -38,6 +40,7 @@ function DetalPhone(props) {
       progress: undefined,
     });
     // [1,2] arr.push(2);
+    
     setMycart((item) => [...item, newItems]);
     setTotalCart((total) =>(total += Number(dataProductItem.priceNew)));
     setCountCart(() =>( Number(countCart+1)));
@@ -53,7 +56,8 @@ function DetalPhone(props) {
       name: dataProductItem.name,
       priceNew: dataProductItem.priceNew,
       priceOld: dataProductItem.priceOld,
-      color: dataProductItem.color
+      color: dataProductItem.color,
+      quantity: 1,
 
     };
     setMyModalBuy(() => [newItems]);

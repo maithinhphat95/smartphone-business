@@ -47,11 +47,7 @@ const handleChange = (event) => {
           setCountItem(countItem + 1);
         }
        })
-       
-     
-      
      }
-    
     
     const handleClickSub = (id) =>{
     //   let data2 = myCart;
@@ -81,7 +77,7 @@ const handleChange = (event) => {
     return (
         // <!-- Modal -->
         // tabIndex={-1}
-<div className="modal fade" id="exampleModal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div className="modal fade" id="exampleModal" role="dialog" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog" role="document">
     <div className="modal-content">
       <div className="modal-header">
@@ -154,16 +150,6 @@ const handleChange = (event) => {
         </Box>
         <Box className="totalItem text-center">
         <Typography variant="h6">Tổng giá tiền thanh toán:<p className="text-danger ">{totalModal.toLocaleString()} VNĐ</p></Typography>
-       {/* {
-        myCart.length === 0 ? (
-          <Button variant="contained" color="success" disabled
-        >
-        Hoàn tất thanh toán
-      </Button>
-        ) : (
-         ""
-        )
-       } */}
       <ToastContainer />
         </Box>
       </Container>
@@ -171,7 +157,7 @@ const handleChange = (event) => {
       </div>
       <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-dismiss="modal">Hủy</button>
-        <button type="button" className="btn btn-primary" onClick={() => handlePay()}>Thanh toán</button>
+        <button type="submit" className="btn btn-primary" data-dismiss="modal" onClick={() => handlePay()}>Thanh toán</button>
       </div>
     </div>
   </div>

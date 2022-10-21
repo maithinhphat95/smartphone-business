@@ -42,6 +42,7 @@ function ThemeProvider(props) {
   const [totalCart,setTotalCart] = useState(0);
   const [totalModal,setTotalModal] = useState(0);
   const [countCart,setCountCart] = useState(0);
+  const [checkedBox,setCheckBox] = useState([])
    
   return (
     <ThemeContext.Provider
@@ -59,7 +60,8 @@ function ThemeProvider(props) {
        totalCart,setTotalCart,
        countCart,setCountCart,
        myModalBuy, setMyModalBuy,
-       totalModal,setTotalModal
+       totalModal,setTotalModal,
+       checkedBox,setCheckBox
       }}
     >
       {props.children}

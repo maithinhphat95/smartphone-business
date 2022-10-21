@@ -452,18 +452,33 @@
       "dateOfBirth": "31/03/1996",
       "address": "Quang Tri",
       "oderId": 1
+    }
+   
+  ],
+  "branch": [
+    {
+      "id":1,
+      "producer": "Apple"
     },
     {
-      "id": 1,
-      "account": "phat",
-      "password": "123",
-      "img": "https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-profile-glyph-black-icon-png-image_691589.jpg",
-      "name": "phat",
-      "email": "thien@gmail.com",
-      "gender": "male",
-      "dateOfBirth": "12/02/1995",
-      "address": "Quang Nam",
-      "oderId": 2
+      "id":2,
+      "producer": "SamSung"
+    },
+    {
+      "id":3,
+      "producer": "Oppo"
+    },
+    {
+      "id":4,
+      "producer": "Vivo"
+    },
+    {
+      "id":5,
+      "producer": "Xiaomi"
+    },
+    {
+      "id":6,
+      "producer": "Nokia"
     }
   ]
 }
