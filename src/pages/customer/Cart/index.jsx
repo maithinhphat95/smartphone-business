@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Container } from "@mui/system";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import ThemeContext from "../../../components/customer/Context/ThemeContext";
 import AddIcon from "@mui/icons-material/Add";
 import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
@@ -20,7 +20,6 @@ function Cart(props) {
   const {
     myCart,
     setMycart,
-    totalCart,
     setTotalCart,
     countCart,
     setCountCart,
@@ -41,6 +40,17 @@ function Cart(props) {
     data = data.filter((item) => item.id !== id);
     setMycart(data);
     setCountCart(() => Number(countCart - 1));
+    toast.error('Đã xóa 1 sản phẩm trong giỏ!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
+   
   };
 
 const handleEditQuatity = (id,price,action) =>{
@@ -53,7 +63,6 @@ const handleEditQuatity = (id,price,action) =>{
     setMycart([...myCart]);
   }else if(action === "sub"){
     if( myCart[currentindex].quantity >1){
-      // setClickSub(false)
       myCart[currentindex].quantity--;
       myCart[currentindex].priceNew  -= price ;
     }else{
@@ -64,10 +73,7 @@ const handleEditQuatity = (id,price,action) =>{
   }
 }
 
-   
-
-
-
+// đặt hàng
   const handlePay = () => {
     setMycart([]);
     setTotalCart(0);
@@ -101,7 +107,6 @@ const handleEditQuatity = (id,price,action) =>{
             </Typography>
           )}
 
-          {/* <Typography variant="h4">Sản phẩm trong giỏ hàng:</Typography> */}
           {myCart.length >= 1 &&
             myCart.slice(0).map((item, index) => {
               totalPrice += item.price*item.quantity;

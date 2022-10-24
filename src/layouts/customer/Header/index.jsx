@@ -116,6 +116,8 @@ function Header(props) {
                     <div className="dropdown">
                      
                         {dataProductItem.map((item) => {
+                          {/* if(dataProductItem.account === item.account){
+                            console.log(item.account) */}
                         
                     return(
                         <li key={item.id}  className="nav-item dropdown">
@@ -144,6 +146,7 @@ function Header(props) {
                           </div>
                         </li>
                         )
+                          {/* } */}
                         })}
                     </div>
                   )}

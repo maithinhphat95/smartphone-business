@@ -23,9 +23,15 @@ function ProductitemListSearch(props) {
                 if(searchTerm === ""){
                   setResultTitle("No Search Result Found!");
                   
-                }else if( val.name.toLowerCase().includes(searchTerm.toLowerCase())){
+                }else if(val.name.toLowerCase().includes(searchTerm.toLowerCase())){
+        {/* console.log(dataProductItem.name) */}
                   setResultTitle("Kết quả tìm kiếm!");
                   return val;
+                }else if(val.length === 0 ){
+                    {/* console.log(dataProductItem.length) */}
+                  setResultTitle("Kết quả tìm kiếm không có!");
+                  return val;
+
                 } 
                 
               })

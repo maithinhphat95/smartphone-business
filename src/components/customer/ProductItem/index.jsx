@@ -18,7 +18,7 @@ function ProductItem(props) {
   return (
     <>
     <Fade bottom>
-      <Card  className="titleitem" sx={{ maxWidth: 345 }}>
+      <Card  className="titleitem align-self-stretch" sx={{ maxWidth: 345, height:460 }}>
         <CardActionArea>
         <Link to={`/phone/${id}`}>
         {/* {console.log(params.id)} */}
@@ -31,10 +31,13 @@ function ProductItem(props) {
             alt="green iguana"
           />
           </Link>
-          <CardContent>
+          <CardContent className=" align-self-stretch">
             <Typography className="name-product" gutterBottom variant="h6" component="div">    
                 {name}
             </Typography>
+            <div className="strike-price">
+              <strike>{priceOld.toLocaleString()} đ</strike>
+            </div>
             <Typography
               className="price"
               variant="body2"
@@ -42,9 +45,7 @@ function ProductItem(props) {
             >
               {priceNew.toLocaleString()} đ
             </Typography>
-            <div className="strike-price">
-              <strike>{priceOld.toLocaleString()} đ</strike>
-            </div>
+           
           </CardContent>
         </CardActionArea>
         <CardActions>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../components/customize/fetch";
 // import { useParams } from "react-router-dom";
@@ -55,6 +55,7 @@ function DetalPhone(props) {
       img: dataProductItem.img,
       name: dataProductItem.name,
       priceNew: dataProductItem.priceNew,
+      price: dataProductItem.priceNew,
       priceOld: dataProductItem.priceOld,
       color: dataProductItem.color,
       quantity: 1,
@@ -165,23 +166,9 @@ function DetalPhone(props) {
                 <span>{item}</span>{" "}
               </label>{" "}
           
-            {/* </div> */}
-              {/* <a className=""><p>{item}</p></a>  */}
               </div>
               )
             })}
-              {/* <div className="color-item">
-              <a className=""><p>Xanh</p></a>
-              </div>
-              <div className="color-item">
-              <a className=""><p>Vàng</p></a>
-              </div>
-              <div className="color-item">
-              <a className=""><p>Trắng</p></a>
-              </div>
-              <div className="color-item">
-              <a className=""><p>Đen</p></a>
-              </div> */}
                
               
             </div>
@@ -265,18 +252,16 @@ function DetalPhone(props) {
               ) : (
           <ModalBuy />
               )}
-
+                {/* modal display */}
               <button className="btn btn-dark mr-2" type="button" data-toggle="modal" data-target="#exampleModal" onClick={() => handClickBuy()}>
                 Mua ngay
               </button>
-
-
               {added ? (
                 <button
                 className="btn btn-danger"
                 disabled
               >
-                Đã Thêm
+                Đã Thêm vào giỏ
               </button>
            
               ) : (

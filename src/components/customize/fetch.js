@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 // import moment from 'moment';
 
-const useFetch = (url, isDataElement) => {
+const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
