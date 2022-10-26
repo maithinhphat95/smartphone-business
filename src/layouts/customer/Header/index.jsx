@@ -69,21 +69,21 @@ function Header(props) {
     // history("/");
   }
   return (
-    <Container
-      maxWidth="xl"
-      className="header"
-      sx={{ height: { xs: "250px", sm: "250px", md: "200px", lg: "150px" } }}
+    <div
+    //       sx={{ height: { xs: "250px", sm: "250px", md: "200px", lg: "150px" } }}
+      className="container-fuild header"
+
     >
-      <Container className="header-container">
+      <div className=" container header-container">
         <Grid container>
-          <Grid item={true} sm={12} xs={12} md={2}>
+          <Grid item={true} sm={12} xs={12} md={3}>
             <Link to="/" className="text-link">
               <Typography className="logo" variant="h6">
                 TPSmartPhone
               </Typography>
             </Link>
           </Grid>
-          <Grid item={true} sm={12} xs={12} md={5}>
+          <Grid item={true} sm={12} xs={12} md={4}>
           {/* <form className='search-form' > */}
             <Paper component="form" sx={{ display: "flex", marginTop: 2.5 }}>
               {" "}
@@ -115,9 +115,9 @@ function Header(props) {
                   ) : (
                     <div className="dropdown">
                      
-                        {dataProductItem.map((item) => {
-                          {/* if(dataProductItem.account === item.account){
-                            console.log(item.account) */}
+                        {  dataProductItem.map((item) => {
+                          {/* if(dataProductItem.account === item.account ){ */}
+                            {/* console.log(item.account) */}
                         
                     return(
                         <li key={item.id}  className="nav-item dropdown">
@@ -137,9 +137,9 @@ function Header(props) {
                             className="dropdown-menu"
                             aria-labelledby="dropdownMenuLink"
                           >
-                            <Button className="dropdown-item item-color" href="#" endIcon={<AccountBoxIcon />}>
+                            <Link to="/profile" className="dropdown-item item-color" href="#" endIcon={<AccountBoxIcon />}>
                               Profile
-                            </Button>
+                            </Link>
                             <Button   onClick={()=>handLogout()} className="dropdown-item item-color"  endIcon={<LogoutIcon />}>
                              Log out
                             </Button>
@@ -163,8 +163,8 @@ function Header(props) {
             </Box>
           </Grid>
         </Grid>
-      </Container>
-    </Container>
+      </div>
+    </div>
   );
 }
 

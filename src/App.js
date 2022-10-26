@@ -17,6 +17,7 @@ import Cart from './pages/customer/Cart';
 import ProductitemListSearch from './pages/customer/SearchItem/ProductitemListSearch';
 import PhoneItems from './pages/customer/PhoneItem/PhoneItems';
 import DetalPhone from './pages/customer/Carousel-PhoneItem';
+import Profile from './pages/customer/Profile/Profile';
 // import Testt from './features/Account/pages/Register';
 
 function App() {
@@ -42,7 +43,9 @@ function App() {
       {/* <Route path={`/phones/b`} element={<CarouselPhone />} /> */}
       <Route path={`/phone/:id`}  element={<DetalPhone />} />
       <Route path="/checkorder"  element={<CheckDefault />} />
+      <Route path="/profile"  element={<Profile />} />
       <Route path="/cart"  element={<Cart />} />
+
       <Route path='*' element={<NotFound />} />
       
     </Routes>

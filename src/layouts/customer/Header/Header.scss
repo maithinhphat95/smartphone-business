@@ -5,7 +5,8 @@
   background-color: #cd1818 !important ;
   // padding-top: 10px;
   .header-container {
-    display: flex;
+  padding-top: 20px;
+    // display: flex;
     justify-content: space-between;
     .text-link {
       text-decoration: none;
@@ -22,8 +23,8 @@
       li {
         text-align: center;
         // display: inline-block;
-        padding: 20px;
-        padding-top: 10px;
+        padding: 0px 10px;
+        // padding-top: 10px;
       }
       a {
         color: aliceblue;
