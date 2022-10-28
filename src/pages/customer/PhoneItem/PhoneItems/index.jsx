@@ -69,7 +69,7 @@ const updateArray = () =>{
             {/* <SideBar  handleFilters = {filters => handleFilters(filters, "branch")}/> */}
             <SideBar  requestSort = { requestSort}/>
             <Grid item={true} xs={12} sm={6} md={9}>
-              <TitleTogglePhone />
+              {/* <TitleTogglePhone /> */}
               <TogglePhoneItem />
             </Grid>
           </Grid>

@@ -49,7 +49,7 @@ function ProductItem(props) {
         </CardActionArea>
         <CardActions>
           <Button variant="contained" color="success" onClick={() => onSubmit()}>
-            Mua ngay 
+            Xem chi tiết 
           </Button>
         </CardActions>
       </Card>

@@ -464,55 +464,8 @@
       "date": "2022-10-03",
       "address": "Tòa nhà FPT, Khu công nghiệp Đà Nẵng, Đường số 1, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
       "id": 1
-    },
-    {
-      "account": "b",
-      "password": "12345678",
-      "repassword": "12345678",
-      "name": "Lê Thanh Thiên",
-      "email": "thanhthienctvq@gmail.com",
-      "phone": "0367865500",
-      "gender": "male",
-      "date": "2022-09-27",
-      "address": "Tòa nhà FPT, Khu công nghiệp Đà Nẵng, Đường số 1, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
-      "id": 2
-    },
-    {
-      "account": "bn",
-      "password": "12345678",
-      "repassword": "12345678",
-      "name": "df",
-      "email": "thanhthienctvq@gmail.com",
-      "phone": "0367865500",
-      "gender": "male",
-      "date": "2022-10-06",
-      "address": "Tòa nhà FPT, Khu công nghiệp Đà Nẵng, Đường số 1, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
-      "id": 3
-    },
-    {
-      "account": "vb",
-      "password": "12345678",
-      "repassword": "12345678",
-      "name": "fđ454",
-      "email": "thanhthienctvq@gmail.com",
-      "phone": "0367865500",
-      "gender": "male",
-      "date": "2022-10-12",
-      "address": "Tòa nhà FPT, Khu công nghiệp Đà Nẵng, Đường số 1, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
-      "id": 4
-    },
-    {
-      "account": "nb",
-      "password": "12345678",
-      "repassword": "12345678",
-      "name": "fđ454",
-      "email": "thanhthienctvq@gmail.com",
-      "phone": "0367865500",
-      "gender": "male",
-      "date": "2022-10-05",
-      "address": "Tòa nhà FPT, Khu công nghiệp Đà Nẵng, Đường số 1, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
-      "id": 5
     }
+   
   ],
   "branch": [
     {

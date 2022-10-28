@@ -14,6 +14,7 @@ import {
 import React, { useState } from "react";
 import Banner from "../../../components/customer/Banner";
 import ProductItem from "../../../components/customer/ProductItem";
+import SideBar from "../../../components/customer/SideBar";
 import useFetch from "../../../components/customize/fetch";
 function PhoneItem(props) {
   //set Choose input
@@ -33,65 +34,7 @@ function PhoneItem(props) {
       <div className="container-fluid profuid">
         <div className="container">
           <Grid container>
-            <Grid item={true} xs={12} sm={6} md={3}>
-              <Typography variant="h5" gutterBottom>
-                Hãng sản xuất
-              </Typography>
-              <Grid container>
-                <Grid item={true} md={6} xs={12} sm={12}>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={<Checkbox defaultChecked />}
-                      label="Tất cả"
-                    />
-                    <FormControlLabel control={<Checkbox />} label="Sam sung" />
-                    <FormControlLabel control={<Checkbox />} label="Vivo" />
-                    <FormControlLabel control={<Checkbox />} label="Xiaomi" />
-                  </FormGroup>
-                </Grid>
-                <Grid item={true} md={6} xs={12} sm={12}>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="Apple(Iphone)"
-                    />
-                    <FormControlLabel control={<Checkbox />} label="Oppo" />
-                    <FormControlLabel control={<Checkbox />} label="Nokia" />
-                  </FormGroup>
-                </Grid>
-                <Grid container>
-                  <FormGroup>
-                    <Typography variant="h5" gutterBottom>
-                      Mức giá
-                    </Typography>
-                    <FormControlLabel
-                      control={<Checkbox defaultChecked />}
-                      label="Tất cả"
-                    />
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="Dưới 2 triệu"
-                    />
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="Từ 2-4 triệu"
-                    />
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="Từ 4-7 triệu"
-                    />
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="Từ 7-13 triệu"
-                    />
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="Trên 13 triệu"
-                    />
-                  </FormGroup>
-                </Grid>
-              </Grid>
-            </Grid>
+         <SideBar />
             <Grid item={true} xs={12} sm={6} md={9}>
               <Container className="title-list" sx={{ marginBottom: 4 }}>
                 <Typography variant="h5" gutterBottom>
@@ -99,7 +42,7 @@ function PhoneItem(props) {
                 </Typography>
               </Container>
               <Container className="title-list">
-                <Box sx={{ paddingBottom: 4 }}>
+                {/* <Box sx={{ paddingBottom: 4 }}>
                   <FormControl sx={{ width: 120}}>
                     <InputLabel id="demo-simple-select-label">
                       Chosse
@@ -116,7 +59,7 @@ function PhoneItem(props) {
                       <MenuItem value={30}>Giá cao</MenuItem>
                     </Select>
                   </FormControl>
-                </Box>
+                </Box> */}
                 <Box>
                   <Grid container spacing={3}>
                     {isError === false &&

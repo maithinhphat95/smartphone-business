@@ -64,7 +64,7 @@ function Header(props) {
   const handLogout = () =>{
     // alert("đã thoát")
     setMylogin(false);
-    // history("/");
+    history("/");
   }
   return (
     <div

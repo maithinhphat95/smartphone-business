@@ -43,9 +43,9 @@ function EditProfile(props) {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          {checkLogin.map((item) => {
+          {checkLogin.map((item,index) => {
             return (
-              <div key={item.id} className="modal-body">
+              <div key={index} className="modal-body">
                 <div className="row">
                   <div className="col-sm-3">
                     <p className="mb-0">Tài khoản:</p>

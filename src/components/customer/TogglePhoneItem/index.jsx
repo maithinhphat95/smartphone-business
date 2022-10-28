@@ -27,7 +27,7 @@ function TogglePhoneItem(props) {
   // link = sortList .tostring()
   return (
     <Container className="title-list">
-      <Box sx={{ paddingBottom: 4 }}>
+      {/* <Box sx={{ paddingBottom: 4 }}>
         <FormControl sx={{ width: 120 }}>
           <InputLabel id="demo-simple-select-label">Chosse</InputLabel>
           <Select
@@ -42,7 +42,7 @@ function TogglePhoneItem(props) {
             <MenuItem value={30}>Giá cao</MenuItem>
           </Select>
         </FormControl>
-      </Box>
+      </Box> */}
       <Box>
         <Grid container spacing={3}>
           {isError === false &&
