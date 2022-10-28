@@ -1,7 +1,6 @@
 import {
   Badge,
   Button,
-  Container,
   Grid,
   IconButton,
   InputBase,
@@ -14,22 +13,21 @@ import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchIcon from "@mui/icons-material/Search";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Box } from "@mui/system";
 import Flip from "react-reveal/Flip";
 import ThemeContext from "../../../components/customer/Context/ThemeContext";
 import useFetch from "../../../components/customize/fetch";
-import LogoutIcon from '@mui/icons-material/Logout';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
 function Header(props) {
   // API
   // let params = useParams();
-  const { data: dataProductItem} =
-  useFetch(`http://localhost:3006/user/`);
+  // const { data: dataProductItem} =
+  // useFetch(`http://localhost:3006/user/${params.account}`);
+  // console.log(dataProductItem);
  
   //search   ,login
   const history = useNavigate();
-  const {setSearchTerm,mylogin,setMylogin,myCart} = useContext(ThemeContext);
+  const {setSearchTerm,mylogin,setMylogin,myCart,checkLogin} = useContext(ThemeContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     history("/search");
@@ -114,13 +112,13 @@ function Header(props) {
                     </li>
                   ) : (
                     <div className="dropdown">
-                     
-                        {  dataProductItem.map((item) => {
+                      {/* nhan mang [] setCheckLogin  */}
+                        {  checkLogin.map((item,index) => {
                           {/* if(dataProductItem.account === item.account ){ */}
                             {/* console.log(item.account) */}
                         
                     return(
-                        <li key={item.id}  className="nav-item dropdown">
+                        <li key={index}  className="nav-item dropdown">
                    
                           <a 
                             className=" dropdown-toggle"
@@ -131,16 +129,16 @@ function Header(props) {
                             aria-haspopup="true"
                             aria-expanded="false"
                           >
-                             <img src={item.img} color=""  style={{height:"50px",borderRadius:"180px"}}/> {item.account}
+                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" color=""  style={{height:"50px",borderRadius:"180px"}}/> {item.account}
                           </a>
                           <div
                             className="dropdown-menu"
                             aria-labelledby="dropdownMenuLink"
                           >
-                            <Link to="/profile" className="dropdown-item item-color" href="#" endIcon={<AccountBoxIcon />}>
+                            <Link to={`/profile`} className="dropdown-item item-color" >
                               Profile
                             </Link>
-                            <Button   onClick={()=>handLogout()} className="dropdown-item item-color"  endIcon={<LogoutIcon />}>
+                            <Button className="dropdown-item item-color"   onClick={()=>handLogout()}   >
                              Log out
                             </Button>
                           </div>

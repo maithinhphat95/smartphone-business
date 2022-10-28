@@ -19,12 +19,7 @@ import "./ModalBuy.scss";
 
 
 function ModalBuy(props) {
-    const { myCart,
-      setMycart,
-      totalCart,
-      setTotalCart,
-      countCart,
-      setCountCart,myModalBuy, setMyModalBuy,  totalModal,setTotalModal } = useContext(ThemeContext);
+    const { myModalBuy, setMyModalBuy,  totalModal,setTotalModal } = useContext(ThemeContext);
    //history
    const [countItem,setCountItem] = useState(1);
    const history = useNavigate();
@@ -145,7 +140,7 @@ const handleEditQuatity = (id,price,action) =>{
                       <p className="text-danger font-weight-bold">
                         {item.priceNew.toLocaleString()} VNĐ
                       </p>
-                      <div className="d-flex list-color-item">
+                      {/* <div className="d-flex list-color-item">
                         <Box  sx={{ minWidth: 80 }}>
                           <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">
@@ -166,7 +161,7 @@ const handleEditQuatity = (id,price,action) =>{
                             </Select>
                           </FormControl>
                         </Box>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="col-md-3">
                       <Button

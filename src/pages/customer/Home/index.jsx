@@ -13,7 +13,6 @@ function Home(props) {
       <HomeListItem title="Khuyến Mãi Hot" />
       <HomeListItemTwo title="Sản phẩm bán chạy" />
       <HomeListItemThree title="Apple" />
-      {/* <CraouselOne /> */}
     </>
   );
 }

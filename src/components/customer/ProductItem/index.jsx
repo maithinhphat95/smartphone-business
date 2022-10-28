@@ -1,10 +1,9 @@
 import React from "react";
 import {Button,Card,CardActionArea,CardActions,CardContent,CardMedia,Typography,} from "@mui/material";
 import "./ProductItem.scss";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Fade from 'react-reveal/Fade';
 function ProductItem(props) {
-  let  params = useParams();
   const { id,img, name, priceNew, priceOld } = props;
   // console.log(id);
 
@@ -14,7 +13,7 @@ function ProductItem(props) {
     
     history(`/phone/${id}`);
   }
-  // const {data: dataProductItem,isLoading,isError,} = useFetch(`http://localhost:3006/productitem/`);
+  // const {data: dataProductItem,isLoading,isError,} = useFetch(`http://localhost:3006/phoneItem/`);
   return (
     <>
     <Fade bottom>
@@ -36,14 +35,14 @@ function ProductItem(props) {
                 {name}
             </Typography>
             <div className="strike-price">
-              <strike>{priceOld.toLocaleString()} đ</strike>
+              <strike>{priceOld.toLocaleString()} VNĐ</strike>
             </div>
             <Typography
               className="price"
               variant="body2"
               color="text.secondary"
             >
-              {priceNew.toLocaleString()} đ
+              {priceNew.toLocaleString()} VNĐ
             </Typography>
            
           </CardContent>

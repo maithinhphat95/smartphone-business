@@ -1,9 +1,9 @@
 {
-  "productitem": [
+  "phoneItem": [
     {
       "id": 0,
       "producer": "Apple",
-      "name": "iPhone14 Pro Max 256GB",
+      "name": "iPhone 14 Pro Max",
       "color": [
         "Trắng",
         "Đen",
@@ -21,7 +21,7 @@
     {
       "id": 1,
       "producer": "Apple",
-      "name": "iPhone13",
+      "name": "iPhone 13",
       "color": [
         "Trắng",
         "Đen",
@@ -39,7 +39,7 @@
     {
       "id": 2,
       "producer": "Apple",
-      "name": "iPhone12",
+      "name": "iPhone 12",
       "color": [
         "Trắng",
         "Đen",
@@ -58,7 +58,7 @@
     {
       "id": 3,
       "producer": "Apple",
-      "name": "iPhone11",
+      "name": "iPhone 11",
       "color": [
         "Trắng",
         "Đen",
@@ -151,7 +151,7 @@
     {
       "id": 8,
       "producer": "Oppo",
-      "name": "OPPO Reno8 Z 5G 8GB - 256GB",
+      "name": "OPPO Reno8 Z 5G",
       "color": [
         "Trắng",
         "Đen",
@@ -188,7 +188,7 @@
       "id": 10,
       "producer": "Nokia",
       "name": "Nokia G21",
-      "color":[
+      "color": [
         "Trắng",
         "Đen",
         "Tím"
@@ -205,7 +205,7 @@
     {
       "id": 11,
       "producer": "Nokia",
-      "name": "Nokia C30 3GB-32GB",
+      "name": "Nokia C30",
       "color": [
         "Trắng",
         "Đen",
@@ -223,7 +223,7 @@
     {
       "id": 12,
       "producer": "Oppo",
-      "name": "OPPO Find X Series ",
+      "name": "OPPO Find X Series",
       "color": [
         "Trắng",
         "Đen",
@@ -241,7 +241,7 @@
     {
       "id": 13,
       "producer": "Nokia",
-      "name": "Nokia G11 Plus 3GB-32GB ",
+      "name": "Nokia G11 Plus",
       "color": [
         "Trắng",
         "Đen",
@@ -259,7 +259,7 @@
     {
       "id": 14,
       "producer": "Oppo",
-      "name": "Oppo Reno7 5G 8GB-128GB ",
+      "name": "Oppo Reno7 5G",
       "color": [
         "Trắng",
         "Đen",
@@ -296,7 +296,7 @@
     {
       "id": 16,
       "producer": "Vivo",
-      "name": "Vivo Y33s 8GB - 128GB",
+      "name": "Vivo Y33s",
       "color": [
         "Trắng",
         "Đen",
@@ -388,8 +388,8 @@
     {
       "id": 21,
       "producer": "SamSung",
-      "name": "Samsung Galaxy Z Fold4 5G 256GB",
-      "color":[
+      "name": "Samsung Galaxy Z Fold4 5G",
+      "color": [
         "Trắng",
         "Đen",
         "Tím"
@@ -406,7 +406,7 @@
     {
       "id": 22,
       "producer": "Apple",
-      "name": "Iphone 13 mini 128GB",
+      "name": "Iphone 13 mini",
       "color": [
         "Trắng",
         "Đen",
@@ -424,8 +424,8 @@
     {
       "id": 23,
       "producer": "Apple",
-      "name": "Iphone 14 Plus 512GB",
-      "color":[
+      "name": "Iphone 14 Plus",
+      "color": [
         "Trắng",
         "Đen",
         "Tím"
@@ -443,7 +443,7 @@
   "user": [
     {
       "id": 0,
-      "account": "thien",
+      "account": "lu",
       "password": "123",
       "img": "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp",
       "name": "Thanh Thien",
@@ -454,42 +454,89 @@
       "oderId": 1
     },
     {
-      "id": 1,
-      "account": "phat",
-      "password": "123",
-      "img": "https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-profile-glyph-black-icon-png-image_691589.jpg",
-      "name": "phat",
-      "email": "thien@gmail.com",
+      "account": "za",
+      "password": "12345678",
+      "repassword": "12345678",
+      "name": "Lê Thanh Thiên",
+      "email": "thanhthienctvq@gmail.com",
+      "phone": "0367865500",
       "gender": "male",
-      "dateOfBirth": "12/02/1995",
-      "address": "Quang Nam",
-      "oderId": 2
+      "date": "2022-10-03",
+      "address": "Tòa nhà FPT, Khu công nghiệp Đà Nẵng, Đường số 1, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
+      "id": 1
+    },
+    {
+      "account": "b",
+      "password": "12345678",
+      "repassword": "12345678",
+      "name": "Lê Thanh Thiên",
+      "email": "thanhthienctvq@gmail.com",
+      "phone": "0367865500",
+      "gender": "male",
+      "date": "2022-09-27",
+      "address": "Tòa nhà FPT, Khu công nghiệp Đà Nẵng, Đường số 1, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
+      "id": 2
+    },
+    {
+      "account": "bn",
+      "password": "12345678",
+      "repassword": "12345678",
+      "name": "df",
+      "email": "thanhthienctvq@gmail.com",
+      "phone": "0367865500",
+      "gender": "male",
+      "date": "2022-10-06",
+      "address": "Tòa nhà FPT, Khu công nghiệp Đà Nẵng, Đường số 1, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
+      "id": 3
+    },
+    {
+      "account": "vb",
+      "password": "12345678",
+      "repassword": "12345678",
+      "name": "fđ454",
+      "email": "thanhthienctvq@gmail.com",
+      "phone": "0367865500",
+      "gender": "male",
+      "date": "2022-10-12",
+      "address": "Tòa nhà FPT, Khu công nghiệp Đà Nẵng, Đường số 1, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
+      "id": 4
+    },
+    {
+      "account": "nb",
+      "password": "12345678",
+      "repassword": "12345678",
+      "name": "fđ454",
+      "email": "thanhthienctvq@gmail.com",
+      "phone": "0367865500",
+      "gender": "male",
+      "date": "2022-10-05",
+      "address": "Tòa nhà FPT, Khu công nghiệp Đà Nẵng, Đường số 1, Phường An Hải Bắc, Quận Sơn Trà, Đà Nẵng",
+      "id": 5
     }
-   
   ],
   "branch": [
     {
-      "id":1,
+      "id": 1,
       "producer": "Apple"
     },
     {
-      "id":2,
+      "id": 2,
       "producer": "SamSung"
     },
     {
-      "id":3,
+      "id": 3,
       "producer": "Oppo"
     },
     {
-      "id":4,
+      "id": 4,
       "producer": "Vivo"
     },
     {
-      "id":5,
+      "id": 5,
       "producer": "Xiaomi"
     },
     {
-      "id":6,
+      "id": 6,
       "producer": "Nokia"
     }
   ]

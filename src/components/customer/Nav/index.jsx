@@ -8,7 +8,7 @@ import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
 import { Link, useParams } from "react-router-dom";
 
 function Nav(props) {
-  let { producer } = useParams();
+  // let { producer } = useParams();
   return (
     <div className="container-fuild nav">
       <div className="container">

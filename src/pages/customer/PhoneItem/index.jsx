@@ -26,7 +26,7 @@ function PhoneItem(props) {
   //componentDidMount
   const { data: dataProductItem, isLoading, isError } =
     // = useFetch('https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z')
-    useFetch("http://localhost:3006/productitem");
+    useFetch("http://localhost:3006/phoneItem");
   return (
     <>
       <Banner />
@@ -95,7 +95,7 @@ function PhoneItem(props) {
             <Grid item={true} xs={12} sm={6} md={9}>
               <Container className="title-list" sx={{ marginBottom: 4 }}>
                 <Typography variant="h5" gutterBottom>
-                  Điện thoại (327 sản phẩm)
+                  Điện thoại ({dataProductItem.length} sản phẩm)
                 </Typography>
               </Container>
               <Container className="title-list">

@@ -1,17 +1,7 @@
 import {
-  Box,
-  Checkbox,
-  Container,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
   Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography,
 } from "@mui/material";
-import React, { useEffect, useInsertionEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../../../../components/customer/Banner";
 
 import SideBar from "../../../../components/customer/SideBar";
@@ -20,7 +10,7 @@ import TogglePhoneItem from "../../../../components/customer/TogglePhoneItem";
 import useFetch from "../../../../components/customize/fetch";
 function PhoneItems(props) {
   const { data: dataProductItem} =
-  useFetch(`http://localhost:3006/productitem/`);
+  useFetch(`http://localhost:3006/phoneItem/`);
   const [filters,setFilters] = useState({
     branch: [],
     producer: []
@@ -45,10 +35,10 @@ let newList= [];
 const requestSort = (type,value) =>{
   setSortArray([...sortArray, {type: type, value: value}]);
   updateArray();
-  console.log(newList);
+  // console.log(newList);
 
   }
-console.log(sortArray);
+
 
 const updateArray = () =>{
   sortArray.forEach((item,index)=>{

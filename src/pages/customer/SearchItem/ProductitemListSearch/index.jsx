@@ -9,7 +9,7 @@ function ProductitemListSearch(props) {
     //componentDidMount
     const { data: dataProductItem } =
     // // = useFetch('https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z')
-    useFetch("http://localhost:3006/productitem");
+    useFetch("http://localhost:3006/phoneItem");
     const {setResultTitle,resultTitle,searchTerm} = useContext(ThemeContext);
   return (
     <div  className="container-fluid profuid">

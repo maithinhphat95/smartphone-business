@@ -10,13 +10,6 @@ function Breadcrumb(props) {
           <Link underline="hover" color="inherit" href="/">
             Trang chủ
           </Link>
-          {/* <Link
-            underline="hover"
-            color="inherit"
-            href="/material-ui/getting-started/installation/"
-          >
-            Core
-          </Link> */}
           <Typography color="text.primary">Điện thoại</Typography>
         </Breadcrumbs>
       </div>

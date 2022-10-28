@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import KeyIcon from "@mui/icons-material/Key";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from '@mui/icons-material/Phone';
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import BusinessIcon from "@mui/icons-material/Business";
 import { useNavigate } from "react-router-dom";
@@ -19,12 +20,13 @@ import { useForm } from "react-hook-form";
 import "./Register.scss";
 // import useFetch from "../../../components/customize/fetch";
 import axios from "axios";
+import ThemeContext from "../../../components/customer/Context/ThemeContext";
 // import ThemeContext from "../../../components/customer/Context/ThemeContext";
 function Register(props) {
   // API
   // const { data: dataProductItem } = useFetch(`http://localhost:3006/user/`);
   //object
-  // const {setMyRegister} = useContext(ThemeContext);
+  const {setCheckRegister} = useContext(ThemeContext);
 
   //history
   const history = useNavigate();
@@ -72,6 +74,14 @@ function Register(props) {
       });
       accounts.push(data);
       localStorage.setItem("user", JSON.stringify(accounts));
+      //json
+      let res = await axios.post('http://localhost:3006/user', data);
+        if (res && res.data) {
+            let newUser = res.data;
+            // mang rỗng [ ] đăng ký 
+            setCheckRegister(newUser); //user
+            // console.log(newUser);
+        }
     }
     // await axios.post("http://localhost:3006/user/", dataProductItem);
     // if (res && res.dataProductItem) {
@@ -112,10 +122,11 @@ function Register(props) {
                 <div className="card text-black">
                   <div className="card-body p-md-5">
                     <div className="row justify-content-center">
-                      <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                    <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
                           Đăng ký tài khoản
                         </p>
+                      <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                        
 
                         <form
                           className="mx-1 mx-md-4"
@@ -220,7 +231,7 @@ function Register(props) {
                             <div className="form-outline flex-fill mb-0">
                               <TextField
                                 type="text"
-                                id="form3Example4cd"
+                                id="form3Example5cd"
                                 fullWidth
                                 label="Email"
                                 name="email"
@@ -236,6 +247,30 @@ function Register(props) {
                               {errors.email?.type === "pattern" && (
                                 <p className="p-error">
                                   Email chưa đúng định dạng
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                          
+                          <div className="d-flex flex-row align-items-center mb-4">
+                            <PhoneIcon fontSize="large" />
+                            <div className="form-outline flex-fill mb-0">
+                              <TextField
+                                type="text"
+                                id="form3Example8cd"
+                                fullWidth
+                                label="Số Điện Thoại"
+                                name="phone"
+                                {...register("phone", { required: true,
+                                  pattern:
+                                  /^[0-9]{10}$/, })}
+                              />
+                              {errors.phone?.type === "required" && (
+                                <p className="p-error">Mời bạn nhập số điện thoại</p>
+                              )}
+                              {errors.phone?.type === "pattern" && (
+                                <p className="p-error">
+                                  Số điện thoại chưa đúng định dạng
                                 </p>
                               )}
                             </div>
@@ -280,7 +315,7 @@ function Register(props) {
                             <div className="form-outline flex-fill mb-0">
                               <TextField
                                 type="date"
-                                id="form3Example4cd"
+                                id="form3Example6cd"
                                 fullWidth
                                 name="date"
                                 {...register("date", { required: true })}
@@ -297,7 +332,7 @@ function Register(props) {
                             <div className="form-outline flex-fill mb-0">
                               <TextField
                                 type="text"
-                                id="form3Example4cd"
+                                id="form3Example7cd"
                                 fullWidth
                                 label="Địa chỉ"
                                 name="address"

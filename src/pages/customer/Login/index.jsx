@@ -24,12 +24,14 @@ function Login({ handleClose }) {
    //API
   //
   const { data: dataProductItem} =
-    useFetch(`http://localhost:3006/user/`);
+  useFetch(`http://localhost:3006/user/`);
+    // console.log(dataProductItem);
   //history
   const history = useNavigate();
 //set
-const {setMylogin} = useContext(ThemeContext);
+const {setMylogin,checkLogin,setCheckLogin,checkRegister} = useContext(ThemeContext);
 //account
+
 // const {myAccount,setMyAccount} = useContext(ThemeContext);
 
   //useForm
@@ -45,21 +47,20 @@ const {setMylogin} = useContext(ThemeContext);
    
     const checkLogin = dataProductItem.some(
       (element) =>
-      
         data.account === element["account"] &&
         data.password === element["password"]
         
+      
     );
     //local
     const checkLoginLocal = arrays.some(
       (element) =>
-      
         data.account === element["account"] &&
         data.password === element["password"]
         
     );
     //  data changel in account
-    
+  
     if (checkLogin || checkLoginLocal) {
       toast.success("Đăng nhập thành công!", {
         position: "top-right",
@@ -70,6 +71,40 @@ const {setMylogin} = useContext(ThemeContext);
         draggable: true,
         progress: undefined,
       });
+      //khi dang ky thanh cong 
+      const newItems = {
+        id: checkRegister.id,
+        account: checkRegister.account,
+        password: checkRegister.password,
+        // img: checkRegister.img,
+        name: checkRegister.name,
+        email: checkRegister.email,
+        gender: checkRegister.gender,
+        date: checkRegister.date,
+        address:checkRegister.address,
+        phone: checkRegister.phone
+      
+      };
+      //lay json có sẵn 
+      setCheckLogin(() => [newItems]);
+      // console.log(newItems)
+
+        //khi dang ky thanh cong 
+        // const newItems2 = {
+        //   id: data.id,
+        //   account: data.account,
+        //   password: data.password,
+        //   // img: dataProductItem.img,
+        //   name: data.name,
+        //   email: data.email,
+        //   gender: data.gender,
+        //   date: data.date,
+        //   address:data.address,
+        //   phone: data.phone
+        
+        // };
+        // setCheckLogin(() => [newItems2]);
+        // console.log(newItems2)
       setTimeout(() => {
         setMylogin(true)
       }, 3000);

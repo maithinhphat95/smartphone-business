@@ -31,27 +31,21 @@ function App() {
      <Routes>
       <Route exact path='/' element={<Home />} />
       <Route path='/register' element={<Register />} />
-      <Route path='/login' element={<Login />} />
+      <Route  path={`/login`} element={<Login />} />
       <Route path='/question' element={<Question />} />
       <Route path='/aboutSecurity' element={<Security />} />
       <Route path='/search' element={<ProductitemListSearch />} />
-      <Route  exact path='/phone' element={<PhoneItem />} />
-      {/* path={`${url}/:id`}> */}
+      <Route  exact path='/phones' element={<PhoneItem />} />
       <Route path={`/phones/:producer`} element={<PhoneItems />} />
-      {/* <Route path={`/phone/:producer`} element={<DetalPhone />} /> */}
-      {/* <Route path='/phone/:descriptionPrice' element={<PricePhone />} /> */}
-      {/* <Route path={`/phones/b`} element={<CarouselPhone />} /> */}
       <Route path={`/phone/:id`}  element={<DetalPhone />} />
       <Route path="/checkorder"  element={<CheckDefault />} />
-      <Route path="/profile"  element={<Profile />} />
+      {/* <Route exact path={`/profile`}  element={<AccountLogin />} /> */}
+      <Route path={`/profile`}  element={<Profile />} />
       <Route path="/cart"  element={<Cart />} />
-
       <Route path='*' element={<NotFound />} />
-      
     </Routes>
     </main>
     <Footer />
-    {/* <Testt /> */}
      </BrowserRouter>
      </ThemeProvider>
     </>

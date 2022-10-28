@@ -10,13 +10,13 @@ import ModalBuy from "./ModalBuy/ModalBuy";
 function DetalPhone(props) {
   let params = useParams();
   //Fake API
-  const {data: dataProductItem,isLoading,isError,} = useFetch(`http://localhost:3006/productitem/${params.id}`);
-  const [added,setAdded]= useState(false);
+  const {data: dataProductItem,isLoading,isError,} = useFetch(`http://localhost:3006/phoneItem/${params.id}`);
+  // const [added,setAdded]= useState(false);
   const [buy,setBuy]= useState(false);
   //set add cart
   const {setMycart,setTotalCart,countCart,setCountCart, setMyModalBuy,setTotalModal} = useContext(ThemeContext);
   const handleClickCart = () => {
-    setAdded(true);
+    // setAdded(true);
     // add iphone13,12
     const newItems = {
       id: dataProductItem.id,
@@ -44,7 +44,6 @@ function DetalPhone(props) {
     setMycart((item) => [...item, newItems]);
     setTotalCart((total) =>(total += Number(dataProductItem.priceNew)));
     setCountCart(() =>( Number(countCart+1)));
-  //  console.log(newItems);
   };
   //modal mua
   const handClickBuy = () =>{
@@ -256,7 +255,7 @@ function DetalPhone(props) {
               <button className="btn btn-dark mr-2" type="button" data-toggle="modal" data-target="#exampleModal" onClick={() => handClickBuy()}>
                 Mua ngay
               </button>
-              {added ? (
+              {/* {added ? (
                 <button
                 className="btn btn-danger"
                 disabled
@@ -264,7 +263,7 @@ function DetalPhone(props) {
                 Đã Thêm vào giỏ
               </button>
            
-              ) : (
+              ) : ( */}
                 <button
                 className="btn btn-success"
                 onClick={ 
@@ -273,7 +272,7 @@ function DetalPhone(props) {
               >
                 Thêm vào giỏ
               </button>
-              )}
+              {/* )} */}
              
               <ToastContainer />
             </div>

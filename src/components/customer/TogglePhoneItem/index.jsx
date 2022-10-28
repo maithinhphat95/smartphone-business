@@ -18,7 +18,7 @@ function TogglePhoneItem(props) {
   //componentDidMount
   const { data: dataProductItem, isLoading, isError } =
     // = useFetch('https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z')
-    useFetch("http://localhost:3006/productitem/");
+    useFetch("http://localhost:3006/phoneItem/");
   // console.log(params.producer);
   // const sortList = ["samsung" a
   // sortList.each(item)
