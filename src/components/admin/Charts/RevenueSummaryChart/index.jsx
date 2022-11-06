@@ -13,7 +13,7 @@ import { faker } from "@faker-js/faker";
 import { yearAxis } from "../../../common/charts";
 import { Box, Typography } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import ComponentHeader from "../../ComponentHeader";
+import ChartHeader from "../../ChartHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
 import ChartBox from "../ChartBox";
@@ -86,7 +86,7 @@ function RevenueSummaryChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <ComponentHeader chartName="Revenue Summary" goalData={goalData} />
+      <ChartHeader chartName="Revenue Summary" goalData={goalData} />
       {/* Body of chart */}
       <ChartCover>
         {/* Sale result */}
@@ -111,7 +111,7 @@ function RevenueSummaryChart(props) {
                 margin: "0 auto",
               }}
             >
-              Annual Revenue Target
+              Annual Target
             </Typography>
             <Box
               sx={{
@@ -123,10 +123,10 @@ function RevenueSummaryChart(props) {
               }}
             >
               <Typography variant="h6" sx={{ color: "#0842A0" }}>
-                2400 pcs
+                {Number(2400).toLocaleString()} pcs
               </Typography>
               <Typography variant="h6" sx={{ color: "#32810D" }}>
-                $ 2500000
+                $ {Number(2500000).toLocaleString()}
               </Typography>
             </Box>
           </Box>
@@ -144,7 +144,7 @@ function RevenueSummaryChart(props) {
                 textAlign: "center",
               }}
             >
-              Actual This Year Revenue
+              Actual 2022
             </Typography>
             <Box
               sx={{
@@ -156,10 +156,10 @@ function RevenueSummaryChart(props) {
               }}
             >
               <Typography variant="h6" sx={{ color: "#0842A0" }}>
-                1300 pcs
+                {Number(1300).toLocaleString()} pcs
               </Typography>
               <Typography variant="h6" sx={{ color: "#32810D" }}>
-                $ 1500000
+                $ {Number(1500000).toLocaleString()}
               </Typography>
             </Box>
           </Box>

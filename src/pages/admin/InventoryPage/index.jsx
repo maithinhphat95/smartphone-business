@@ -4,6 +4,7 @@ import PageTitle from "../../../components/admin/PageTitle";
 import { Box } from "@mui/material";
 import DataTable from "../../../components/admin/Tables/DataTable";
 import { tableHead, tableRows } from "../../../constant/admin";
+import ProductList from "../../../components/admin/ProductList";
 
 InventoryPage.propTypes = {};
 
@@ -32,11 +33,12 @@ function InventoryPage(props) {
             display: "flex",
             gap: 2,
             justifyContent: "center",
-            flexDirection: "row",
+            flexDirection: "column",
             flexWrap: { xs: "wrap", md: "nowrap" },
           }}
         >
           <DataTable data={inventoryData} />
+          <ProductList />
         </Box>
       </Box>
     </>

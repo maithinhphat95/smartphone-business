@@ -18,18 +18,23 @@ function NavList(props) {
     >
       <Box>
         <Title content="Overview" />
-        <NavItem content="Home Page" url="/" />
-        <NavItem content="Admin Dashboard" url="/admin" />
+        <NavItem
+          content="Shopping Page"
+          blank={true}
+          icon="Store"
+          url="https://fptshop.com.vn/"
+        />
+        <NavItem content="Dashboard" icon="LeaderBoard" url="" />
       </Box>
       <Box>
         <Title content="Analytic" />
-        <NavItem content="Annual Revenue" url="/revenue" />
-        <NavItem content="Sale Rating" url="/sale" />
+        <NavItem content="Revenue Summary" icon="Paid" url="/revenue" />
+        <NavItem content="Sale Percent" icon="PieChart" url="/sale" />
       </Box>
       <Box>
         <Title content="Management" />
-        <NavItem content="Inventory Manager" url="/inventory" />
-        <NavItem content="Customer Manager" />
+        <NavItem content="Inventory Manager" icon="ViewList" url="/inventory" />
+        <NavItem content="Customer Manager" icon="AccountBox" />
       </Box>
       <Box>
         <Title content="Account" />

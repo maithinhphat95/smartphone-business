@@ -1,38 +1,65 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { SvgIcon, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import {
+  Store,
+  PieChart,
+  Leaderboard,
+  Paid,
+  AccountBox,
+  ViewList,
+} from "@mui/icons-material";
+import "./style.scss";
 NavItem.propTypes = {};
 
 function NavItem(props) {
-  const { content, url } = props;
+  const { content, url, blank, icon } = props;
+  function renderIcon() {
+    switch (icon) {
+      case "LeaderBoard":
+        return (
+          <Leaderboard sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />
+        );
+      case "Paid":
+        return <Paid sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />;
+      case "PieChart":
+        return (
+          <PieChart sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />
+        );
+      case "AccountBox":
+        return (
+          <AccountBox sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />
+        );
+      case "ViewList":
+        return (
+          <ViewList sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />
+        );
+      default:
+        return;
+    }
+  }
   return (
-    <Link
-      style={{
-        color: "black",
-        fontSize: "16px",
-        width: "100%",
-        height: "32px",
-        display: "flex",
-        marginBottom: "2px",
-        textDecoration: "none",
-        textTransform: "capitalize",
-        alignItems: "center",
-        backgroundColor: "#D9D9D9",
-        borderRadius: "8px",
-        overflow: "hidden",
-      }}
-      to={url}
-    >
-      <Typography
-        sx={{
-          padding: "8px",
-          width: "100%",
-          "&:hover": { backgroundColor: "#A0A0A0", color: "white" },
-        }}
-      >
-        {content}
-      </Typography>
-    </Link>
+    <>
+      {blank ? (
+        <a className="nav-link" href={url} target="_blank">
+          <Store sx={{ padding: 0, marginLeft: 1 }} />
+          <Typography>{content}</Typography>
+        </a>
+      ) : (
+        <Link className="nav-link" to={url}>
+          {renderIcon()}
+          <Typography
+            sx={{
+              padding: "8px",
+              width: "100%",
+              "&:hover": { backgroundColor: "#A0A0A0", color: "white" },
+            }}
+          >
+            {content}
+          </Typography>
+        </Link>
+      )}
+    </>
   );
 }
 

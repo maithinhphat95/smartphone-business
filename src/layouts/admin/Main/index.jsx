@@ -32,7 +32,7 @@ function Main(props) {
         }}
       >
         <Routes>
-          <Route path="/admin" element={<DashboardPage />} />
+          <Route path="" element={<DashboardPage />} />
           <Route path="/revenue" element={<RevenuePage />} />
           <Route path="/sale" element={<SaleRatingPage />} />
           <Route path="/inventory" element={<InventoryPage />} />

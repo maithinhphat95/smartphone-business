@@ -17,7 +17,7 @@ import ChartCover from "../ChartCover";
 import { adminColorLight } from "../../../../constant/admin";
 import RevenueReportCard from "../../RevenueReportCard";
 import ChartBox from "../ChartBox";
-import ComponentHeader from "../../ComponentHeader";
+import ChartHeader from "../../ChartHeader";
 SaleRatingChart.propTypes = {};
 
 function SaleRatingChart(props) {
@@ -101,7 +101,7 @@ function SaleRatingChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <ComponentHeader chartName="Sale Rating 2022" />
+      <ChartHeader chartName="Sale Rating 2022" />
       {/* Body of chart */}
       <ChartCover>
         {/* Chart of revenue summary */}

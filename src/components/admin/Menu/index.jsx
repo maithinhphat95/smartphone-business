@@ -11,16 +11,21 @@ function Menu(props) {
     <Box
       className="menu"
       sx={{
-        transform: showMenu ? "translateX(0)" : "translateX(-100%)",
+        transform: {
+          xs: showMenu ? "translateX(0)" : "translateX(-100%)",
+          lg: "translateX(0)",
+        },
+
         transition: "0.5s",
-        position: { xs: "fixed", lg: showMenu ? "static" : "fixed" },
+        position: { xs: "fixed", lg: "static" },
         zIndex: "10",
+
         // backgroundColor: adminColorLight.background,
       }}
     >
       <Box
         sx={{
-          width: 250,
+          width: 220,
           backgroundColor: adminColorLight.secondary,
           border: 1,
           borderColor: "text.disabled",

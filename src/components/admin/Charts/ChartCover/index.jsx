@@ -14,6 +14,7 @@ function ChartCover(props) {
         justifyContent: "Center",
         overflow: "auto",
         alignItems: "center",
+        flex: 1,
       }}
     >
       {children}

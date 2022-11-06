@@ -3,7 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { Box, Typography } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import ComponentHeader from "../../ComponentHeader";
+import ChartHeader from "../../ChartHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
 import { adminColorLight } from "../../../../constant/admin";
@@ -50,12 +50,11 @@ function BrandRatingChart(props) {
 
   return (
     <ChartContainer maxWidth="350px">
-      <ComponentHeader chartName="Phone Brand Rating" />
+      <ChartHeader chartName="Brands Sold Percentage 2022 (%)" />
       <ChartCover>
         <Box
           sx={{
             overflow: "auto",
-            // justifySelf: "center",
           }}
         >
           <Pie data={data} plugins={[ChartDataLabels]} options={options} />

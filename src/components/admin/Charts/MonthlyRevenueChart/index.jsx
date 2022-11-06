@@ -19,7 +19,7 @@ import ChartCover from "../ChartCover";
 import { adminColorLight } from "../../../../constant/admin";
 import RevenueReportCard from "../../RevenueReportCard";
 import ChartBox from "../ChartBox";
-import ComponentHeader from "../../ComponentHeader";
+import ChartHeader from "../../ChartHeader";
 MonthlyRevenueChart.propTypes = {};
 
 function MonthlyRevenueChart(props) {
@@ -48,21 +48,21 @@ function MonthlyRevenueChart(props) {
         stepSize: 50,
       },
     },
-    plugins: {
-      legend: {
-        position: "top",
-      },
-      title: {
-        display: false,
-        text: "",
-      },
-      datalabels: {
-        color: "red",
-        anchor: "start",
-        align: "end",
-        clamp: true,
-      },
-    },
+    // plugins: {
+    //   legend: {
+    //     position: "top",
+    //   },
+    //   title: {
+    //     display: false,
+    //     text: "",
+    //   },
+    //   datalabels: {
+    //     color: "red",
+    //     anchor: "start",
+    //     align: "end",
+    //     clamp: true,
+    //   },
+    // },
   };
   // Get the data of chart: include 2 column target and actual
   const data = {
@@ -86,7 +86,7 @@ function MonthlyRevenueChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <ComponentHeader chartName="Revenue Report 2022" />
+      <ChartHeader chartName="Revenue Report 2022" />
       {/* Body of chart */}
       <ChartCover>
         {/* Sale result */}

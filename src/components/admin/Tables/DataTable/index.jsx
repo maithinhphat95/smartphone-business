@@ -33,7 +33,7 @@ import {
   KeyboardArrowUp,
   Search,
 } from "@mui/icons-material";
-
+import "./style.scss";
 const ExtraTable = (props) => {
   const { row, extraData, isOpen } = props;
   return (
@@ -207,8 +207,10 @@ function Row(props) {
             </TableCell>
             <TableCell align="center">
               <Stack spacing={1} direction="row">
-                {row.color.map((e) => (
-                  <Typography variant="p">{e}</Typography>
+                {row.color.map((e, index) => (
+                  <Typography key={index} variant="p">
+                    {e}
+                  </Typography>
                 ))}
               </Stack>
             </TableCell>
@@ -225,11 +227,29 @@ function Row(props) {
         )}
         {isControl && (
           <TableCell>
-            <Stack direction="row" spacing={1}>
-              <Button variant="contained" color="info" startIcon={<Edit />}>
+            <Stack
+              sx={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                flexWrap: "wrap",
+                gap: 1,
+              }}
+            >
+              <Button
+                className="action-button"
+                variant="contained"
+                color="info"
+                startIcon={<Edit />}
+              >
                 Edit
               </Button>
-              <Button variant="outlined" color="error" startIcon={<Delete />}>
+              <Button
+                className="action-button"
+                variant="outlined"
+                color="error"
+                startIcon={<Delete />}
+              >
                 Delete
               </Button>
             </Stack>
@@ -342,7 +362,9 @@ export default function DataTable(props) {
   };
 
   return (
-    <Paper sx={{ borderRadius: 2, boxShadow: "4px 4px 4px #ccc" }}>
+    <Paper
+      sx={{ borderRadius: 2, boxShadow: "4px 4px 4px #ccc", width: "100%" }}
+    >
       <Stack
         direction={"row"}
         justifyContent="space-between"
@@ -391,6 +413,7 @@ export default function DataTable(props) {
               {data.extra.isExtra && <TableCell align="center" width="10px" />}
               {data.head.map((item, index) => (
                 <TableCell
+                  style={{ minWidth: "50px", overflow: "visible" }}
                   key={index}
                   align="center"
                   onClick={() => {
