@@ -1,4 +1,14 @@
 {
+  "productList": [
+    {
+      "id": "lc0ET1BMKU",
+      "productName": "Iphone 13 Pro Max",
+      "priceOld": 24000000,
+      "priceNew": 20000000
+    }
+  ]
+}
+{
   "productitem": [
     {
       "id": 0,

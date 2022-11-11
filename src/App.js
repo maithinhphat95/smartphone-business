@@ -18,6 +18,7 @@ import ThemeProvider from "./components/customer/Context/ThemeProvider";
 import CheckDefault from "./pages/customer/CheckOder/CheckDefault";
 import Cart from "./pages/customer/Cart";
 import ProductitemListSearch from "./pages/customer/SearchItem/ProductitemListSearch";
+import AdminHome from "./pages/admin/AdminHome";
 // import Testt from './features/Account/pages/Register';
 
 function App() {
@@ -48,11 +49,21 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <>
+            <Box
+              sx={{
+                backgroundColor: adminColorLight.background,
+                // color: adminColorLight.text,
+                minHeight: "100%",
+              }}
+            >
+              <AdminHome />
+            </Box>
+          </>
           {/* <Testt /> */}
         </BrowserRouter>
       </ThemeProvider>
     </>
   );
 }
-
 export default App;
