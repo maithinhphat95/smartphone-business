@@ -2,24 +2,21 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import Nav from "../../../components/customer/Nav";
 import Footer from "../../../layouts/customer/Footer";
 import Header from "../../../layouts/customer/Header";
-import {
-  getUserList,
-  getUserListRequest,
-} from "../../../redux/common/userReducer";
-import { getProductList } from "../../../redux/common/productReducer";
+import { getUserListRequest } from "../../../redux/common/userReducer";
+import { getProductListRequest } from "../../../redux/common/productReducer";
+import { getOrderListRequest } from "../../../redux/common/orderReducer";
 CustomerSite.propTypes = {};
 function CustomerSite(props) {
   const dispatch = useDispatch();
-  // fetch user list
+  // Fetch Data
   useEffect(() => {
     dispatch(getUserListRequest());
-    dispatch(getProductList());
-    // dispatch(getOrderRequest());
+    dispatch(getProductListRequest());
+    dispatch(getOrderListRequest);
   }, []);
 
   return (

@@ -1,3 +1,7 @@
+import React, { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import Flip from "react-reveal/Flip";
 import {
   Badge,
   Button,
@@ -7,67 +11,47 @@ import {
   InputBase,
   Paper,
   Typography,
+  Box,
 } from "@mui/material";
-import React, { useContext} from "react";
-import "./Header.scss";
-import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import SearchIcon from "@mui/icons-material/Search";
-import { Link, useNavigate } from "react-router-dom";
-import { Box } from "@mui/system";
-import Flip from "react-reveal/Flip";
-import ThemeContext from "../../../components/customer/Context/ThemeContext";
+
+import {
+  LocalShippingOutlined,
+  ShoppingCartOutlined,
+  AccountCircleOutlined,
+  Search,
+  Logout,
+  AccountBox,
+} from "@mui/icons-material";
 import useFetch from "../../../components/customize/fetch";
-import LogoutIcon from '@mui/icons-material/Logout';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import ThemeContext from "../../../components/customer/Context/ThemeContext";
+import { login, logout } from "../../../redux/common/userReducer";
+import "./Header.scss";
 function Header(props) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isLogin, currentUser, userList } = useSelector((state) => state.user);
+
   // API
-  // let params = useParams();
-  const { data: dataProductItem} =
-  useFetch(`http://localhost:3006/user/`);
- 
-  //search   ,login
-  const history = useNavigate();
-  const {setSearchTerm,mylogin,setMylogin,myCart} = useContext(ThemeContext);
-  const handleSubmit = (e) => {
+  const { data: dataProductItem } = useFetch(`http://localhost:3006/userList/`);
+
+  const { setSearchTerm, mylogin, setMylogin, myCart } =
+    useContext(ThemeContext);
+
+  const handleSearch = (e) => {
     e.preventDefault();
-    history("/search");
+    navigate("/search");
   };
-  const handelChangel = (e) =>{
-    setSearchTerm(e.target.value)
-    history("/search");
-  }
-  //dropdown tài khoản
-  // const [anchorEl, setAnchorEl] = useState(null);
-  // const open = Boolean(anchorEl);
-  // const handleClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-  // const { profile, setProfile } = useState(false);
- //account
-//  const {myAccount,setMyAccount} = useContext(ThemeContext);
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = (e) => {
 
-  //   setOpen(true);
-  // }
-  // const handleClose = () => setOpen(false);
-  
-  // const onClickSearch = (e) =>{
-  //   e.preventdefault();
-  //   history("/search");
-  //
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+    navigate("/search");
+  };
 
-  // }
-  const handLogout = () =>{
-    // alert("đã thoát")
-    setMylogin(false);
-    // history("/");
-  }
+  const handleLogout = () => {
+    setMylogin(false); //useContext
+    dispatch(logout());
+    navigate("/");
+  };
   return (
     <Container
       maxWidth="xl"
@@ -84,79 +68,98 @@ function Header(props) {
             </Link>
           </Grid>
           <Grid item={true} sm={12} xs={12} md={5}>
-          {/* <form className='search-form' > */}
+            {/* <form className='search-form' > */}
             <Paper component="form" sx={{ display: "flex", marginTop: 2.5 }}>
               {" "}
-              <InputBase  sx={{ ml: 1, flex: 1 }} type = "search"  placeholder="Nhập tên điện thoại ... cần tìm" onChange={(e)=>{handelChangel(e)}} 
-             />
-              <IconButton  type = "submit" aria-label="search" onClick={(e) =>handleSubmit(e)}>
-              <SearchIcon fontSize="medium" />
+              <InputBase
+                sx={{ ml: 1, flex: 1 }}
+                type="search"
+                placeholder="Nhập tên điện thoại ... cần tìm"
+                onChange={(e) => {
+                  handleChange(e);
+                }}
+              />
+              <IconButton
+                type="submit"
+                aria-label="search"
+                onClick={(e) => handleSearch(e)}
+              >
+                <Search fontSize="medium" />
               </IconButton>
             </Paper>
             {/* </form> */}
           </Grid>
           <Grid item={true} sm={12} xs={12} md={5}>
             <Box>
-              <Flip cascade>
+              <div>
                 <ul className="header-ul ">
                   <li>
                     <Link to="/checkorder" href="#" className="header-link">
-                      <LocalShippingOutlinedIcon color="" fontSize="large" />{" "}
+                      <LocalShippingOutlined color="" fontSize="large" />{" "}
                       <p className="d-none d-sm-block">Kiểm tra đơn hàng</p>
                     </Link>
                   </li>
-                  {!mylogin ? (
+                  {!isLogin ? (
                     <li>
                       <Link to="/login" className="header-link">
-                        <AccountCircleOutlinedIcon color="" fontSize="large" />
+                        <AccountCircleOutlined color="" fontSize="large" />
                         <p className="d-none d-sm-block">Tài khoản của tôi</p>
                       </Link>
                     </li>
                   ) : (
                     <div className="dropdown">
-                     
-                        {dataProductItem.map((item) => {
-                        
-                    return(
-                        <li key={item.id}  className="nav-item dropdown">
-                   
-                          <a 
-                            className=" dropdown-toggle"
+                      <div className="nav-item dropdown">
+                        <a
+                          className=" dropdown-toggle"
+                          href="#"
+                          role="button"
+                          id="dropdownMenuLink"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <img
+                            src={currentUser.img}
+                            color=""
+                            style={{
+                              height: "50px",
+                              borderRadius: "180px",
+                            }}
+                          />{" "}
+                          {currentUser.account}
+                        </a>
+                        <div
+                          className="dropdown-menu"
+                          aria-labelledby="dropdownMenuLink"
+                        >
+                          <Button
+                            className="dropdown-item item-color"
                             href="#"
-                            role="button"
-                            id="dropdownMenuLink"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
+                            endIcon={<AccountBox />}
                           >
-                             <img src={item.img} color=""  style={{height:"50px",borderRadius:"180px"}}/> {item.account}
-                          </a>
-                          <div
-                            className="dropdown-menu"
-                            aria-labelledby="dropdownMenuLink"
+                            Profile
+                          </Button>
+                          <Button
+                            onClick={() => handleLogout()}
+                            className="dropdown-item item-color"
+                            endIcon={<Logout />}
                           >
-                            <Button className="dropdown-item item-color" href="#" endIcon={<AccountBoxIcon />}>
-                              Profile
-                            </Button>
-                            <Button   onClick={()=>handLogout()} className="dropdown-item item-color"  endIcon={<LogoutIcon />}>
-                             Log out
-                            </Button>
-                          </div>
-                        </li>
-                        )
-                        })}
+                            Log out
+                          </Button>
+                        </div>
+                      </div>
                     </div>
                   )}
                   {/* {open && <Login handleClose={setOpen}/>} */}
                   <li>
                     <Link to="/cart" className="header-link">
-                      <ShoppingCartOutlinedIcon color="" fontSize="large" />
+                      <ShoppingCartOutlined color="" fontSize="large" />
                       <Badge>{myCart.length}</Badge>
                       <p className="d-none d-sm-block">Giỏ hàng</p>
                     </Link>
                   </li>
                 </ul>
-              </Flip>
+              </div>
             </Box>
           </Grid>
         </Grid>

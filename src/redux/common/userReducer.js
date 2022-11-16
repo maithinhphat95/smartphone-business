@@ -34,6 +34,12 @@ export const login = (data) => {
     payload: data,
   };
 };
+// Logout
+export const logout = () => {
+  return {
+    type: "LOGOUT",
+  };
+};
 // Register
 export const addUser = (data) => {
   return {
@@ -93,6 +99,7 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isLogin: false,
+        currentUser: {},
       };
     case "ADD_USER":
       return {

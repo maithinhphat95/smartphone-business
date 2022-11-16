@@ -67,8 +67,29 @@ export const addProductRequest = (data) => {
   };
 };
 
-// customer Reducer
-export const orderReducer = (state = initialState, action) => {
+// Delete product
+export const deleteProduct = (id) => {
+  return {
+    type: "DELETE_PRODUCT",
+    payload: id,
+  };
+};
+// Delete Product Item Request
+export const deletesProductRequest = (id) => {
+  return (dispatch) => {
+    (async () => {
+      try {
+        const response = await productApi.delete(id);
+        dispatch(deleteProduct(id));
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+};
+
+// Product Reducer --------------------------------------------------
+export const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_PRODUCT_LIST":
       return {

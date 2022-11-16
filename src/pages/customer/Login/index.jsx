@@ -16,56 +16,43 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import Zoom from "react-reveal/Zoom";
-import useFetch from "../../../components/customize/fetch";
-import ThemeContext from "../../../components/customer/Context/ThemeContext";
 import "./Login.scss";
+import { login } from "../../../redux/common/userReducer";
 function Login() {
-  const { data: dataProductItem } = useFetch(`http://localhost:3006/userList/`);
-  const dispatch = useDispatch();
-  //navigate
+  // Navigate
   const navigate = useNavigate();
-  const userList = useSelector((state) => state.user.userList);
-  console.log(userList);
-  //set
-  const { setMylogin } = useContext(ThemeContext);
-  //useForm
+  // Redux
+  const dispatch = useDispatch();
+  const { userList } = useSelector((state) => state.user);
+
+  // useForm
   const {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm();
 
-  //local storage
-  let arrays = JSON.parse(localStorage.getItem("user")) || [];
-  //trả data là object ={}
-  const onSubmit = (data) => {
-    const checkLogin = dataProductItem.some(
+  const onHandleSubmit = (data) => {
+    // Check login and find index
+    const userIndex = userList.findIndex(
       (element) =>
-        data.account === element["account"] &&
-        data.password === element["password"]
+        data.account === element.account && data.password === element.password
     );
-    //local
-    const checkLoginLocal = arrays.some(
-      (element) =>
-        data.account === element["account"] &&
-        data.password === element["password"]
-    );
-    //  data changel in account
-
-    if (checkLogin || checkLoginLocal) {
+    // Noti
+    if (userIndex > -1) {
+      // Login data Redux
+      dispatch(login(userList[userIndex]));
+      // Toast
       toast.success("Đăng nhập thành công!", {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
       });
-      setTimeout(() => {
-        setMylogin(true);
-      }, 3000);
+      navigate("/");
     } else {
       toast.error("Đăng nhập thất bại, tài khoản hoặc mật khẩu không đúng!", {
         position: "top-right",
@@ -78,13 +65,14 @@ function Login() {
       });
       return;
     }
+
     // fake
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        navigate("/");
-        resolve(true);
-      }, 3000);
-    });
+    // return new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     navigate("/");
+    //     resolve(true);
+    //   }, 3000);
+    // });
   };
   return (
     <div className="container-fluid login">
@@ -110,7 +98,7 @@ function Login() {
                       Sign in
                     </Typography>
                     {/* component="form" */}
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit(onHandleSubmit)}>
                       <Box noValidate sx={{ mt: 1 }}>
                         <TextField
                           margin="normal"
