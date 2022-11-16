@@ -9,13 +9,10 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { Box } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import { monthAxis } from "../../../common/charts";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
-import { adminColorLight } from "../../../../constant/admin";
-import RevenueReportCard from "../../RevenueReportCard";
+import { monthAxis, adminColorLight } from "../../../../constant/admin";
 import ChartBox from "../ChartBox";
 import ChartHeader from "../../ChartHeader";
 SaleRatingChart.propTypes = {};

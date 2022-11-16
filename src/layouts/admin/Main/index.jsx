@@ -1,16 +1,12 @@
 import React from "react";
 import { Box } from "@mui/system";
-import { Route, Routes } from "react-router-dom";
 import { adminColorLight } from "../../../constant/admin";
 import Menu from "../../../components/admin/Menu";
-import DashboardPage from "../../../pages/admin/DashboardPage";
-import RevenuePage from "../../../pages/admin/RevenuePage";
-import SaleRatingPage from "../../../pages/admin/SaleRatingPage";
-import InventoryPage from "../../../pages/admin/InventoryPage";
 
 Main.propTypes = {};
 
 function Main(props) {
+  const { children } = props;
   return (
     <Box
       sx={{
@@ -31,12 +27,7 @@ function Main(props) {
           minHeight: "calc(100vh - 70px)",
         }}
       >
-        <Routes>
-          <Route path="" element={<DashboardPage />} />
-          <Route path="/revenue" element={<RevenuePage />} />
-          <Route path="/sale" element={<SaleRatingPage />} />
-          <Route path="/inventory" element={<InventoryPage />} />
-        </Routes>
+        {children}
       </Box>
     </Box>
   );

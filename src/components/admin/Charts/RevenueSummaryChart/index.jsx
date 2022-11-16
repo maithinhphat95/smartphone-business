@@ -8,17 +8,16 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { Link } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
-import { yearAxis } from "../../../common/charts";
 import { Box, Typography } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import ChartHeader from "../../ChartHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
 import ChartBox from "../ChartBox";
-import { adminColorLight } from "../../../../constant/admin";
-import { Link } from "react-router-dom";
+import { yearAxis, adminColorLight } from "../../../../constant/admin";
 
 RevenueSummaryChart.propTypes = {};
 

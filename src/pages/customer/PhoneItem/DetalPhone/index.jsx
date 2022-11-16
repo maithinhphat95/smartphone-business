@@ -1,16 +1,4 @@
-import {
-  Box,
-  Checkbox,
-  Container,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import Banner from "../../../../components/customer/Banner";
 

@@ -1,5 +1,19 @@
 import { faker } from "@faker-js/faker";
-
+export const yearAxis = [2018, 2019, 2020, 2021, 2022];
+export const monthAxis = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 export const yearlyRevenue = [
   {
     year: 2018,
@@ -34,8 +48,6 @@ export const adminColorLight = {
   background: "#f0f0f0",
   shadow: "#ccc",
   text: "black",
-  //  chartColor1: "#52514f", //Gray
-  //  chartColor2: "#034c9d", //Heavy Blue
   chartColor1: "#ff6384", //Light Pink
   chartColor2: "#35a2eb", //Light Blue
   chartColor3: "#1d9e63", //Green
@@ -44,12 +56,25 @@ export const adminColorLight = {
   chartColor6: "#f3d522", //Yellow
   chartColor7: "#35a2eb", //Light Blue
   chartColor8: "#ff6384", //Light Pink
+  chartColor9: "#52514f", //Gray
+  chartColor10: "#034c9d", //Heavy Blue
 };
 export const adminColorDark = {
-  primary: "",
-  secondary: "",
-  background: "#252930",
-  text: "white",
+  primary: "#E0E0E0",
+  secondary: "white",
+  background: "#9999",
+  shadow: "#cccc",
+  text: "#ffff",
+  chartColor1: "#ff6384", //Light Pink
+  chartColor2: "#35a2eb", //Light Blue
+  chartColor3: "#1d9e63", //Green
+  chartColor4: "#ff6700", //Orange
+  chartColor5: "#cd3c99", //Pirple
+  chartColor6: "#f3d522", //Yellow
+  chartColor7: "#35a2eb", //Light Blue
+  chartColor8: "#ff6384", //Light Pink
+  chartColor9: "#52514f", //Gray
+  chartColor10: "#034c9d", //Heavy Blue
 };
 export const orderStatus = {
   prepare: "Preparing",
@@ -58,7 +83,7 @@ export const orderStatus = {
 };
 
 // Create fake order item function
-function fakeOrderItem(no, id, user, date, subtotal, bonus, total, status) {
+function FakeOrderItem(no, id, user, date, subtotal, bonus, total, status) {
   return {
     no,
     id,
@@ -80,7 +105,7 @@ let i = 1;
 // Init the rows by order list formular, fixed to other table in the future
 export const tableRows = {
   order: [
-    fakeOrderItem(
+    FakeOrderItem(
       i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",
@@ -92,7 +117,7 @@ export const tableRows = {
       2380,
       orderStatus.delivery
     ),
-    fakeOrderItem(
+    FakeOrderItem(
       ++i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",
@@ -104,7 +129,7 @@ export const tableRows = {
       2380,
       orderStatus.prepare
     ),
-    fakeOrderItem(
+    FakeOrderItem(
       ++i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",
@@ -116,7 +141,7 @@ export const tableRows = {
       2380,
       orderStatus.delivery
     ),
-    fakeOrderItem(
+    FakeOrderItem(
       ++i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",
@@ -128,7 +153,7 @@ export const tableRows = {
       2480,
       orderStatus.received
     ),
-    fakeOrderItem(
+    FakeOrderItem(
       ++i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",
@@ -140,7 +165,7 @@ export const tableRows = {
       2280,
       orderStatus.received
     ),
-    fakeOrderItem(
+    FakeOrderItem(
       ++i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",
@@ -152,7 +177,7 @@ export const tableRows = {
       2220,
       orderStatus.received
     ),
-    fakeOrderItem(
+    FakeOrderItem(
       ++i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",
@@ -164,7 +189,7 @@ export const tableRows = {
       2380,
       orderStatus.received
     ),
-    fakeOrderItem(
+    FakeOrderItem(
       ++i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",
@@ -176,7 +201,7 @@ export const tableRows = {
       2380,
       orderStatus.received
     ),
-    fakeOrderItem(
+    FakeOrderItem(
       ++i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",
@@ -188,7 +213,7 @@ export const tableRows = {
       2380,
       orderStatus.received
     ),
-    fakeOrderItem(
+    FakeOrderItem(
       ++i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",
@@ -200,7 +225,7 @@ export const tableRows = {
       2380,
       orderStatus.received
     ),
-    fakeOrderItem(
+    FakeOrderItem(
       ++i,
       faker.random.alphaNumeric(10, {
         casing: "mixed",

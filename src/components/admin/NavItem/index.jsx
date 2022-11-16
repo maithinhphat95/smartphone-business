@@ -40,25 +40,18 @@ function NavItem(props) {
   }
   return (
     <>
-      {blank ? (
-        <a className="nav-link" href={url} target="_blank">
-          <Store sx={{ padding: 0, marginLeft: 1 }} />
-          <Typography>{content}</Typography>
-        </a>
-      ) : (
-        <Link className="nav-link" to={url}>
-          {renderIcon()}
-          <Typography
-            sx={{
-              padding: "8px",
-              width: "100%",
-              "&:hover": { backgroundColor: "#A0A0A0", color: "white" },
-            }}
-          >
-            {content}
-          </Typography>
-        </Link>
-      )}
+      <Link className="nav-link" to={url} target={blank && "_blank"}>
+        {renderIcon()}
+        <Typography
+          sx={{
+            padding: "8px",
+            width: "100%",
+            "&:hover": { backgroundColor: "#A0A0A0", color: "white" },
+          }}
+        >
+          {content}
+        </Typography>
+      </Link>
     </>
   );
 }

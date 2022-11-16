@@ -18,12 +18,7 @@ function NavList(props) {
     >
       <Box>
         <Title content="Overview" />
-        <NavItem
-          content="Shopping Page"
-          blank={true}
-          icon="Store"
-          url="https://fptshop.com.vn/"
-        />
+        <NavItem content="Shopping Page" blank={true} icon="Store" url="/" />
         <NavItem content="Dashboard" icon="LeaderBoard" url="" />
       </Box>
       <Box>

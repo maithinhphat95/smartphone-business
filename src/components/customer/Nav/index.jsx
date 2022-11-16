@@ -39,7 +39,11 @@ function Nav(props) {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <PhoneIphoneOutlinedIcon fontSize="smaill" /> Điện thoại
+                  <PhoneIphoneOutlinedIcon
+                    sx={{ padding: 0, marginRight: 1 }}
+                    fontSize="small"
+                  />{" "}
+                  Điện thoại
                 </a>
                 <div
                   className="dropdown-menu"
@@ -93,22 +97,38 @@ function Nav(props) {
               </li>
               <li>
                 <a href="#" className="nav-link">
-                  <LaptopMacOutlinedIcon fontSize="smaill" /> Laptop
+                  <LaptopMacOutlinedIcon
+                    sx={{ padding: 0, marginRight: 1 }}
+                    fontSize="small"
+                  />{" "}
+                  Laptop
                 </a>
               </li>
               <li>
                 <a href="#" className="nav-link">
-                  <ComputerOutlinedIcon fontSize="smaill" /> Máy tính bảng
+                  <ComputerOutlinedIcon
+                    sx={{ padding: 0, marginRight: 1 }}
+                    fontSize="small"
+                  />{" "}
+                  Máy tính bảng
                 </a>
               </li>
               <li>
                 <a className="nav-link">
-                  <HeadphonesOutlinedIcon fontSize="smaill" /> Phụ kiện
+                  <HeadphonesOutlinedIcon
+                    sx={{ padding: 0, marginRight: 1 }}
+                    fontSize="small"
+                  />{" "}
+                  Phụ kiện
                 </a>
               </li>
               <li>
                 <a href="#" className="nav-link">
-                  <AutoAwesomeOutlinedIcon fontSize="smaill" /> KHUYẾN MÃI
+                  <AutoAwesomeOutlinedIcon
+                    sx={{ padding: 0, marginRight: 1 }}
+                    fontSize="small"
+                  />{" "}
+                  KHUYẾN MÃI
                 </a>
               </li>
             </ul>

@@ -17,17 +17,8 @@ import {
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import "./Register.scss";
-// import useFetch from "../../../components/customize/fetch";
-import axios from "axios";
-// import ThemeContext from "../../../components/customer/Context/ThemeContext";
+import { useDispatch } from "react-redux";
 function Register(props) {
-  // API
-  // const { data: dataProductItem } = useFetch(`http://localhost:3006/user/`);
-  //object
-  // const {setMyRegister} = useContext(ThemeContext);
-
-  //history
-  const history = useNavigate();
   //useForm
   const {
     register,
@@ -35,17 +26,14 @@ function Register(props) {
     formState: { errors },
     getValues,
   } = useForm();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  //[] array user
-  // let accountUser = [];
-  // console.log(localStorage.getItem('user'))
-  // if (localStorage.getItem('user')) {
-  //       accountUser.push(JSON.parse(localStorage.getItem('user')));
-  // }
   let accounts = JSON.parse(localStorage.getItem("user")) || [];
-  //trả data là object ={}
-  //thêm toast
-  const onSubmit = async (data) => {
+
+  //Toast noti
+  const onHandleSubmit = async (data) => {
+    // console.log(data);
     const checkRegister = accounts.some(
       (element) => element["account"] === data.account
     );
@@ -73,33 +61,11 @@ function Register(props) {
       accounts.push(data);
       localStorage.setItem("user", JSON.stringify(accounts));
     }
-    // await axios.post("http://localhost:3006/user/", dataProductItem);
-    // if (res && res.dataProductItem) {
-    // let newBlog = res.dataProductItem;
-    // newBlog.push(...newBlog);
-    // const newItems = {
-    //   // id: 0,
-    //   account: data.account,
-    //   password: data.password,
-    //   // img: "https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-profile-glyph-black-icon-png-image_691589.jpg",
-    //   name: data.name,
-    //   email: data.email,
-    //   gender: data.gender,
-    //   dateOfBirth: data.date,
-    //   address: data.address,
-    // };
-    // dataProductItem.push(newItems);
-    // console.log(newItems);
-    // }
     return new Promise((resolve) => {
       setTimeout(() => {
-        // console.log(data);
-        // console.log(accounts);
-
-        history("/login");
+        navigate("/login");
         resolve(true);
-        // }else alert("trùng tài khoản")
-      }, 3000);
+      }, 2000);
     });
   };
   return (
@@ -119,8 +85,9 @@ function Register(props) {
 
                         <form
                           className="mx-1 mx-md-4"
-                          onSubmit={handleSubmit(onSubmit)}
+                          onSubmit={handleSubmit(onHandleSubmit)}
                         >
+                          {/* Account */}
                           <div className="d-flex flex-row align-items-center mb-4">
                             <AccountCircleIcon fontSize="large" />
                             <div className="form-outline flex-fill mb-0">
@@ -139,7 +106,7 @@ function Register(props) {
                               )}
                             </div>
                           </div>
-
+                          {/* Password */}
                           <div className="d-flex flex-row align-items-center mb-4">
                             <KeyIcon fontSize="large" />
                             <div className="form-outline flex-fill mb-0">
@@ -166,6 +133,7 @@ function Register(props) {
                               )}
                             </div>
                           </div>
+                          {/* Re password */}
                           <div className="d-flex flex-row align-items-center mb-4">
                             <KeyIcon fontSize="large" />
                             <div className="form-outline flex-fill mb-0">
@@ -184,7 +152,7 @@ function Register(props) {
                                       "Mật khẩu không khớp nhau!"
                                     );
                                     // pattern:
-                                  }, // /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/,
+                                  },
                                 })}
                               />
                               {errors.repassword?.type === "required" && (
@@ -198,7 +166,7 @@ function Register(props) {
                               )}
                             </div>
                           </div>
-
+                          {/* Name */}
                           <div className="d-flex flex-row align-items-center mb-4">
                             <DriveFileRenameOutlineIcon fontSize="large" />
                             <div className="form-outline flex-fill mb-0">
@@ -215,6 +183,7 @@ function Register(props) {
                               )}
                             </div>
                           </div>
+                          {/* Email */}
                           <div className="d-flex flex-row align-items-center mb-4">
                             <EmailIcon fontSize="large" />
                             <div className="form-outline flex-fill mb-0">
@@ -227,7 +196,7 @@ function Register(props) {
                                 {...register("email", {
                                   required: true,
                                   pattern:
-                                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i,
                                 })}
                               />
                               {errors.email?.type === "required" && (
@@ -240,6 +209,7 @@ function Register(props) {
                               )}
                             </div>
                           </div>
+                          {/* Gender */}
                           <FormLabel id="demo-radio-buttons-group-label">
                             Gender:
                           </FormLabel>
@@ -275,6 +245,7 @@ function Register(props) {
                               </RadioGroup>
                             </div>
                           </div>
+                          {/* Birthday */}
                           <div className="d-flex flex-row align-items-center mb-4">
                             <CalendarMonthIcon fontSize="large" />
                             <div className="form-outline flex-fill mb-0">
@@ -292,6 +263,7 @@ function Register(props) {
                               )}
                             </div>
                           </div>
+                          {/* Address */}
                           <div className="d-flex flex-row align-items-center mb-4">
                             <BusinessIcon fontSize="large" />
                             <div className="form-outline flex-fill mb-0">
@@ -308,34 +280,28 @@ function Register(props) {
                               )}
                             </div>
                           </div>
-                          {/* <div className="form-check d-flex justify-content-center mb-5">
-                            <input
-                              className="form-check-input me-2"
-                              type="checkbox"
-                              value=""
-                              id="form2Example3c"
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor="form2Example3"
-                            >
-                              I agree all statements in{" "}
-                              <a href="#!">Terms of service</a>
-                            </label>
-                          </div> */}
+                          {/* Admin Secret Code for Admin Register*/}
+                          <div className="d-flex flex-row align-items-center mb-4">
+                            <BusinessIcon fontSize="large" />
+                            <div className="form-outline flex-fill mb-0">
+                              <TextField
+                                type="password"
+                                id="form3Example4cd"
+                                fullWidth
+                                label="Admin Code"
+                                name="adminCode"
+                                {...register("adminCode", {
+                                  required: false,
+                                  pattern: /^admin123$/,
+                                })}
+                              />
+                              {errors.adminCode?.type === "pattern" && (
+                                <p className="p-error">Không phải admin</p>
+                              )}
+                            </div>
+                          </div>
 
                           <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                            {/* {Object.keys(errors).length !== 0 && (
-                              <ul className="error-container">
-                                {errors.account?.type === "required" && (
-                                  <li>Name bỏ trống</li>
-                                )}
-                                {errors.password?.type ==="required" && <li>Name is required</li>}
-          {errors.password?.type ==="minLength" && <li>Password nhỏ is required</li>}
-          {errors.email?.type ==="required" && <li>bỏ trống</li>}
-          {errors.email?.type ==="pattern" && <li>Chưa đúng validate</li>}
-                              </ul>
-                            )} */}
                             <button
                               type="submit"
                               className="btn btn-primary btn-lg"
@@ -344,6 +310,36 @@ function Register(props) {
                             </button>
                             <ToastContainer />
                           </div>
+                          {Object.keys(errors).length !== 0 && (
+                            <ul className="error-container">
+                              {errors.account?.type === "required" && (
+                                <li>Mục "Tài Khoản" không được bỏ trống</li>
+                              )}
+                              {errors.password?.type === "required" && (
+                                <li>Mục "Mật Khẩu" không được bỏ trống</li>
+                              )}
+                              {errors.repassword?.type === "required" && (
+                                <li>
+                                  Mục "Nhập Lại Mật Khẩu" không được bỏ trống
+                                </li>
+                              )}
+                              {errors.name?.type === "required" && (
+                                <li>Mục "Họ Tên" không được bỏ trống</li>
+                              )}
+                              {errors.email?.type === "required" && (
+                                <li>Mục "Email" không được bỏ trống</li>
+                              )}
+                              {errors.email?.type === "pattern" && (
+                                <li>Email chưa nhập đúng định dạng</li>
+                              )}
+                              {errors.date?.type === "required" && (
+                                <li>Mục "Ngày Sinh" không được bỏ trống</li>
+                              )}
+                              {errors.address?.type === "required" && (
+                                <li>Mục "Địa Chỉ" không được bỏ trống</li>
+                              )}
+                            </ul>
+                          )}
                         </form>
                       </div>
                       <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
