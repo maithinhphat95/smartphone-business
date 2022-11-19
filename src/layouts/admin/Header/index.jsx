@@ -1,5 +1,5 @@
 import React from "react";
-import { toggleMenu } from "../../../redux/admin/adminAction";
+import { toggleMenu } from "../../../redux/admin/adminReducer";
 import { AppBar, Box, Toolbar, Typography, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -10,11 +10,10 @@ function Header(props) {
   const dispatch = useDispatch();
 
   const handleClickMenu = () => {
-    console.log("click menu");
     dispatch(toggleMenu());
   };
   const handleClickNoti = () => {
-    console.log("click noti");
+    alert("There's no notification");
   };
   return (
     <div
@@ -43,6 +42,7 @@ function Header(props) {
             >
               <MenuIcon sx={{ fontSize: 30 }} />
             </IconButton>
+
             <IconButton
               edge="start"
               color="inherit"

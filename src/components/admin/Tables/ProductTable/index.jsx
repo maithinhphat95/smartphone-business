@@ -34,177 +34,40 @@ import {
   Search,
 } from "@mui/icons-material";
 import "./style.scss";
-const ExtraTable = (props) => {
-  const { row, extraData, isOpen } = props;
-  return (
-    <TableRow>
-      <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={9}>
-        <Collapse in={isOpen} timeout="auto" unmountOnExit>
-          <Box
-            sx={{
-              margin: 1,
-              padding: 1,
-            }}
-          >
-            <Typography variant="h6" gutterBottom component="div">
-              Purchased list
-            </Typography>
-            <Table
-              size="small"
-              sx={{
-                backgroundColor: adminColorLight.primary,
-                borderRadius: 2,
-                "& td, th": { padding: "8px 16px" },
-                margin: "8px",
-              }}
-            >
-              <TableHead
-                sx={{
-                  borderBottom: "1px solid black",
-                  "& th": { borderBottom: "none", fontWeight: "bold" },
-                }}
-              >
-                <TableRow>
-                  {extraData.extraHead.map((item, index) => (
-                    <TableCell key={index} align="center">
-                      {item}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody
-                sx={{
-                  "& tr": { borderBottom: "1px solid white" },
-                  "& td": { border: "none" },
-                }}
-              >
-                {row.purchasedList.map((purchasedItem, index) => {
-                  let currentProduct = productList.find(
-                    (product) => product.id === purchasedItem.productId
-                  );
-                  let currentCoupon = couponList.find(
-                    (coupon) => coupon.name === purchasedItem.coupon
-                  );
-                  const bonus =
-                    currentCoupon.type === "direct"
-                      ? currentCoupon.value
-                      : currentCoupon.type === "percent"
-                      ? (currentProduct.price *
-                          purchasedItem.quantity *
-                          currentCoupon.value) /
-                        100
-                      : 0;
-
-                  return (
-                    <TableRow key={purchasedItem.productId}>
-                      <TableCell align="center">{index + 1}</TableCell>
-                      <TableCell
-                        align="left"
-                        sx={{ display: "flex", alignItems: "center" }}
-                      >
-                        <CardMedia
-                          component="img"
-                          // height="100px"
-                          image={currentProduct.picture}
-                          alt={currentProduct.name}
-                          sx={{ width: "40px", marginRight: "10px" }}
-                        />
-                        <Typography variant="p">
-                          {currentProduct.name}
-                        </Typography>
-                      </TableCell>
-                      <TableCell align="center">
-                        {purchasedItem.quantity.toLocaleString()}
-                      </TableCell>
-                      <TableCell align="right">
-                        {`$${currentProduct.price.toLocaleString()}`}
-                      </TableCell>
-                      <TableCell align="right">
-                        {`$${(
-                          currentProduct.price * purchasedItem.quantity
-                        ).toLocaleString()}`}
-                      </TableCell>
-                      <TableCell align="center">
-                        {purchasedItem.coupon}{" "}
-                        {currentCoupon.type === "direct"
-                          ? `($${currentCoupon.value.toLocaleString()})`
-                          : currentCoupon.type === "percent"
-                          ? `(${currentCoupon.value.toLocaleString()}%)`
-                          : ""}
-                      </TableCell>
-                      <TableCell align="right">{`- $${bonus}`}</TableCell>
-                      <TableCell align="right">
-                        {`$${(
-                          currentProduct.price * purchasedItem.quantity -
-                          bonus
-                        ).toLocaleString()}`}
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </Box>
-        </Collapse>
-      </TableCell>
-    </TableRow>
-  );
-};
 
 // Function show each row of tablebody (order item)
 function Row(props) {
-  const { row, extraData, isControl, category } = props;
-  const [isOpen, setIsOpen] = useState(false);
+  const { row, isControl, category, index } = props;
+  console.log(row);
   return (
     <>
       <TableRow
         sx={{
-          "& > *": { borderBottom: "unset", "& td": { borderBottom: "none" } },
+          "& > *": {
+            padding: 1,
+            borderBottom: "unset",
+            "& td": { borderBottom: "none" },
+          },
         }}
       >
-        {extraData.isExtra && (
-          <TableCell>
-            <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-            </IconButton>
-          </TableCell>
-        )}
-        {category === "order" &&
-          Object.keys(row).map((item, index) => {
-            if (item !== "purchasedList") {
-              return (
-                <TableCell key={index} align="center">
-                  {`${
-                    item === "subtotal" || item === "bonus" || item === "total"
-                      ? "$"
-                      : ""
-                  } ${row[item].toLocaleString()}`}
-                </TableCell>
-              );
-            }
-            return "";
-          })}
         {category === "product" && (
           <>
-            <TableCell align="center">{1}</TableCell>
+            <TableCell align="center">{index}</TableCell>
             <TableCell align="center">{row.id}</TableCell>
             <TableCell align="left">
               <Stack direction={"row"} alignItems="center">
                 <CardMedia
                   component="img"
-                  image={row.picture}
+                  image={row.img}
                   alt={row.name}
-                  sx={{ width: "40px" }}
+                  sx={{ width: "40px", marginRight: 1 }}
                 />
                 <Typography variant="p" minWidth={"100px"}>
                   {row.name}
                 </Typography>
               </Stack>
             </TableCell>
+            <TableCell>{`${row.brand}`}</TableCell>
             <TableCell align="center">
               <Stack spacing={1} direction="row">
                 {row.color.map((e, index) => (
@@ -216,11 +79,11 @@ function Row(props) {
             </TableCell>
             <TableCell>
               <Box>
-                <Typography>{`${row.priceOld.toLocaleString()} VND`}</Typography>
+                {/* <Typography>{`${row.priceOld.toLocaleString()} VND`}</Typography> */}
                 <Typography>{`${row.priceNew.toLocaleString()} VND`}</Typography>
               </Box>
             </TableCell>
-            <TableCell>{`${row.memory} GB`}</TableCell>
+            <TableCell>{`${row.memoryIn} GB`}</TableCell>
             <TableCell>{`${row.stock} pcs`}</TableCell>
             <TableCell>{`${row.sold} pcs`}</TableCell>
           </>
@@ -256,25 +119,20 @@ function Row(props) {
           </TableCell>
         )}
       </TableRow>
-      {/* The table of purchasing list of order item */}
-      {extraData.isExtra && (
-        <ExtraTable row={row} extraData={extraData} isOpen={isOpen} />
-      )}
     </>
   );
 }
 
-export default function DataTable(props) {
+export default function ProductTable(props) {
   const { data } = props;
   const [page, setPageIndex] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [dec, setDec] = useState(true);
   const [sortDesc, setSortDesc] = useState(false);
   const [sortBy, setSortBy] = useState("");
-  const [dataSorted, setDataSorted] = useState([...data.body]);
+  const [dataSorted, setDataSorted] = useState(data.body);
   const [searchValue, setSearchValue] = useState("");
-  const [selectedData, setSelectedData] = useState(data.body);
-
+  const [selectedData, setSelectedData] = useState(data?.body || []);
   // Set max page for pagination
   const maxPage =
     selectedData.length % rowsPerPage === 0
@@ -294,36 +152,23 @@ export default function DataTable(props) {
   // Use Effect Sort page
   useEffect(() => {
     let currentData = [];
-    if (sortBy === "DATE") {
+
+    if (
+      selectedData.length > 0 &&
+      selectedData[0].hasOwnProperty(sortBy.toLocaleLowerCase())
+    ) {
       currentData = [
         ...selectedData.sort((a, b) => {
-          let aDate = new Date(a.date);
-          let bDate = new Date(b.date);
-          if (aDate < bDate) {
+          if (a[sortBy.toLowerCase()] < b[sortBy.toLowerCase()]) {
             return sortDesc ? 1 : -1;
-          } else if (aDate > bDate) {
+          } else if (a[sortBy.toLowerCase()] > b[sortBy.toLowerCase()]) {
             return sortDesc ? -1 : 1;
           }
           return 0;
         }),
       ];
-    } else {
-      if (
-        selectedData.length > 0 &&
-        selectedData[0].hasOwnProperty(sortBy.toLocaleLowerCase())
-      ) {
-        currentData = [
-          ...selectedData.sort((a, b) => {
-            if (a[sortBy.toLowerCase()] < b[sortBy.toLowerCase()]) {
-              return sortDesc ? 1 : -1;
-            } else if (a[sortBy.toLowerCase()] > b[sortBy.toLowerCase()]) {
-              return sortDesc ? -1 : 1;
-            }
-            return 0;
-          }),
-        ];
-      } else currentData = [...selectedData];
-    }
+    } else currentData = [...selectedData];
+
     let updateData = currentData.map((e, index) => {
       return { ...e, no: index + 1 };
     });
@@ -401,7 +246,7 @@ export default function DataTable(props) {
           </IconButton>
         </Box>
       </Stack>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} width={"100%"} sx={{ borderRadius: 0 }}>
         <Table>
           <TableHead
             sx={{
@@ -409,11 +254,10 @@ export default function DataTable(props) {
               "& th": { borderBottom: "none", fontWeight: "bold" },
             }}
           >
-            <TableRow>
-              {data.extra.isExtra && <TableCell align="center" width="10px" />}
+            <TableRow sx={{ "& th": { padding: 1.5 } }}>
               {data.head.map((item, index) => (
                 <TableCell
-                  style={{ minWidth: "50px", overflow: "visible" }}
+                  style={{ minWidth: "20px" }}
                   key={index}
                   align="center"
                   onClick={() => {
@@ -437,17 +281,17 @@ export default function DataTable(props) {
               ))}
             </TableRow>
           </TableHead>
-
+          {/* Body of table */}
           <TableBody>
             {dataSorted
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => (
+              .map((row, index) => (
                 <Row
                   key={row.id}
                   row={row}
-                  extraData={data.extra}
                   isControl={data.isControl}
                   category={data.category}
+                  index={index + 1}
                 />
               ))}
           </TableBody>

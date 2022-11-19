@@ -5,7 +5,7 @@ const userApi = {
     const response = await axiosClient.get("/userList/");
     return response;
   },
-  async get(id) {
+  async getUser(id) {
     const response = await axiosClient.get(`/userList/${id}`);
     return response;
   },

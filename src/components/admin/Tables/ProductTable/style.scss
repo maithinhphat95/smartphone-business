@@ -1,0 +1,15 @@
+.action-button {
+  margin: 0 !important;
+}
+.table-product {
+  font-size: 14px;
+  & thead {
+    background-color: #ccc;
+  }
+  & tbody > tr:nth-child(odd) {
+    background-color: "#0df0a970";
+  }
+  & tbody > tr:nth-child(even) {
+    background-color: "#0df0a920";
+  }
+}

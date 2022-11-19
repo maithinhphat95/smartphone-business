@@ -1,10 +1,16 @@
-import { Box, Container, FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
+import {
+  Box,
+  Container,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../customize/fetch";
 import ProductItem from "../ProductItem";
-
-
 
 function TogglePhoneItem(props) {
   let params = useParams();
@@ -16,15 +22,12 @@ function TogglePhoneItem(props) {
   };
   //API
   //componentDidMount
-  const { data: dataProductItem, isLoading, isError } =
-    // = useFetch('https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z')
-    useFetch("http://localhost:3006/productitem/");
-  // console.log(params.producer);
-  // const sortList = ["samsung" a
-  // sortList.each(item)
-  // if  productList.bran === item,
-  // displayList.push
-  // link = sortList .tostring()
+  const {
+    data: dataProductItem,
+    isLoading,
+    isError,
+  } = useFetch("http://localhost:3006/productList/");
+
   return (
     <Container className="title-list">
       <Box sx={{ paddingBottom: 4 }}>
@@ -50,9 +53,11 @@ function TogglePhoneItem(props) {
             dataProductItem &&
             dataProductItem.length > 0 &&
             dataProductItem.map((item) => {
-              if (item.producer === params.producer) {
-                {/* console.log(dataProductItem.producer);
-                console.log(params.producer); */}
+              if (item.brand === params.producer) {
+                {
+                  /* console.log(dataProductItem.producer);
+                console.log(params.producer); */
+                }
                 return (
                   <Grid key={item.id} item={true} xs={12} sm={6} md={4}>
                     <ProductItem
@@ -66,8 +71,10 @@ function TogglePhoneItem(props) {
                 );
               }
               if (item.descriptionPrice === params.producer) {
-                {/* console.log(dataProductItem.producer);
-                console.log(params.descriptionPrice); */}
+                {
+                  /* console.log(dataProductItem.producer);
+                console.log(params.descriptionPrice); */
+                }
                 return (
                   <Grid key={item.id} item={true} xs={12} sm={6} md={4}>
                     <ProductItem

@@ -5,7 +5,7 @@ const orderApi = {
     const response = await axiosClient.get("/orderList/");
     return response.data || [];
   },
-  async get(id) {
+  async getOrder(id) {
     const response = await axiosClient.get(`/orderList/${id}`);
     return response.data || {};
   },

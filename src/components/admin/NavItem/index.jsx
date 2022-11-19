@@ -6,16 +6,22 @@ import {
   PieChart,
   Leaderboard,
   Paid,
-  AccountBox,
   ViewList,
+  PersonAdd,
+  AccountCircle,
+  Settings,
+  Logout,
+  OpenInNew,
 } from "@mui/icons-material";
 import "./style.scss";
 NavItem.propTypes = {};
 
 function NavItem(props) {
   const { content, url, blank, icon } = props;
-  function renderIcon() {
-    switch (icon) {
+  function renderIcon(data) {
+    switch (data) {
+      case "Store":
+        return <Store sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />;
       case "LeaderBoard":
         return (
           <Leaderboard sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />
@@ -28,11 +34,32 @@ function NavItem(props) {
         );
       case "AccountBox":
         return (
-          <AccountBox sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />
+          <PersonAdd sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />
         );
       case "ViewList":
         return (
           <ViewList sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />
+        );
+      case "Personal":
+        return (
+          <AccountCircle sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />
+        );
+      case "Setting":
+        return (
+          <Settings sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />
+        );
+      case "Logout":
+        return <Logout sx={{ padding: 0, marginLeft: 1, fontSize: "20px" }} />;
+      case "NewTab":
+        return (
+          <OpenInNew
+            sx={{
+              padding: 0,
+              marginLeft: "auto",
+              marginRight: 1,
+              fontSize: "14px",
+            }}
+          />
         );
       default:
         return;
@@ -41,7 +68,7 @@ function NavItem(props) {
   return (
     <>
       <Link className="nav-link" to={url} target={blank && "_blank"}>
-        {renderIcon()}
+        {renderIcon(icon)}
         <Typography
           sx={{
             padding: "8px",
@@ -51,6 +78,7 @@ function NavItem(props) {
         >
           {content}
         </Typography>
+        {blank && renderIcon("NewTab")}
       </Link>
     </>
   );

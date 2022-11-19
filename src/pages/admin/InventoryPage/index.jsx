@@ -1,25 +1,43 @@
-import React from "react";
-import PropTypes from "prop-types";
-import PageTitle from "../../../components/admin/PageTitle";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Box } from "@mui/material";
-import DataTable from "../../../components/admin/Tables/DataTable";
-import { tableHead, tableRows } from "../../../constant/admin";
-import ProductList from "../../../components/admin/ProductList";
+import { tableHead } from "../../../constant/admin";
+import PageTitle from "../../../components/admin/PageTitle";
+import {
+  getProductList,
+  getProductListRequest,
+} from "../../../redux/common/productReducer";
+import ProductTable from "../../../components/admin/Tables/ProductTable";
+import { useCallback } from "react";
+import axiosClient from "../../../apis/axiosClient";
 
 InventoryPage.propTypes = {};
 
 function InventoryPage(props) {
+  const dispatch = useDispatch();
+  const [isLoading, setLoading] = useState(false);
+
+  // Get productList from LocalStorage
+  const localData = JSON.parse(localStorage.getItem("productList"));
+
+  // Get productList from Redux State
+  const productList =
+    useSelector((state) => state.product.productList) || localData;
+  // Init the data for table Product List
   const inventoryData = {
     title: "Product List",
     category: "product",
     head: tableHead.product,
-    body: tableRows.product,
-    extra: {
-      isExtra: false,
-    },
+    body: productList,
     isControl: true,
     searchBy: "name",
   };
+
+  useEffect(() => {
+    dispatch(getProductListRequest());
+  }, []);
+
+  console.log(productList);
   return (
     <>
       <PageTitle
@@ -37,8 +55,7 @@ function InventoryPage(props) {
             flexWrap: { xs: "wrap", md: "nowrap" },
           }}
         >
-          <DataTable data={inventoryData} />
-          <ProductList />
+          <ProductTable data={inventoryData} />
         </Box>
       </Box>
     </>

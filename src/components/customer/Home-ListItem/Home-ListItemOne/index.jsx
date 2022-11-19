@@ -1,4 +1,4 @@
-import { React} from "react";
+import { React } from "react";
 import Slider from "react-slick";
 import { Container } from "@mui/system";
 import "./HomeListItem.scss";
@@ -41,9 +41,11 @@ var settings = {
 function HomeListItem(props) {
   //API
   //componentDidMount
-  const { data: dataProductItem, isLoading, isError } =
-    // = useFetch('https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z')
-    useFetch("http://localhost:3006/productitem/");
+  const {
+    data: dataProductItem,
+    isLoading,
+    isError,
+  } = useFetch("http://localhost:3006/productList/");
   return (
     <>
       <div className="container-fluid profuid">
@@ -57,19 +59,18 @@ function HomeListItem(props) {
                 dataProductItem &&
                 dataProductItem.length > 0 &&
                 dataProductItem.map((item) => {
-                  if ('sale' in item) {
-
-                  return (
-                    <ProductItem key={item.id}
-                      img={item.img}
-                      name={item.name}
-                      priceNew={item.priceNew}
-                      priceOld={item.priceOld}
-                      id={item.id}
-                    />
-                  );
-            
-}
+                  if ("sale" in item) {
+                    return (
+                      <ProductItem
+                        key={item.id}
+                        img={item.img}
+                        name={item.name}
+                        priceNew={item.priceNew}
+                        priceOld={item.priceOld}
+                        id={item.id}
+                      />
+                    );
+                  }
                 })}
               {/* loading */}
               {isLoading === true && (

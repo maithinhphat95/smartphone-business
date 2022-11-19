@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import Flip from "react-reveal/Flip";
 import {
   Badge,
   Button,
@@ -12,6 +11,7 @@ import {
   Paper,
   Typography,
   Box,
+  Icon,
 } from "@mui/material";
 
 import {
@@ -21,21 +21,26 @@ import {
   Search,
   Logout,
   AccountBox,
+  Leaderboard,
 } from "@mui/icons-material";
-import useFetch from "../../../components/customize/fetch";
 import ThemeContext from "../../../components/customer/Context/ThemeContext";
 import { login, logout } from "../../../redux/common/userReducer";
 import "./Header.scss";
+import { useEffect } from "react";
 function Header(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLogin, currentUser, userList } = useSelector((state) => state.user);
+  const { isLogin, currentUser } = useSelector((state) => state.user);
+  const localLogin = JSON.parse(localStorage.getItem("userData")) || {};
 
-  // API
-  const { data: dataProductItem } = useFetch(`http://localhost:3006/userList/`);
-
-  const { setSearchTerm, mylogin, setMylogin, myCart } =
-    useContext(ThemeContext);
+  const { setSearchTerm, myCart } = useContext(ThemeContext);
+  // Check login from local
+  useEffect(() => {
+    if (localLogin?.isLogin) {
+      dispatch(login(localLogin.currentUser));
+      navigate("/");
+    }
+  }, [localLogin.isLogin]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -48,10 +53,11 @@ function Header(props) {
   };
 
   const handleLogout = () => {
-    setMylogin(false); //useContext
     dispatch(logout());
+    localStorage.clear();
     navigate("/");
   };
+
   return (
     <Container
       maxWidth="xl"
@@ -129,28 +135,31 @@ function Header(props) {
                           {currentUser.account}
                         </a>
                         <div
-                          className="dropdown-menu"
+                          className="dropdown-menu account-action"
                           aria-labelledby="dropdownMenuLink"
                         >
-                          <Button
-                            className="dropdown-item item-color"
-                            href="#"
-                            endIcon={<AccountBox />}
-                          >
-                            Profile
+                          <Button className="dropdown-item item-color" href="#">
+                            <AccountBox /> Profile
                           </Button>
+                          {currentUser.isAdmin && (
+                            <Link
+                              to={"/admin/dashboard"}
+                              target="_blank"
+                              className="dropdown-item item-color"
+                            >
+                              <Leaderboard /> Admin Dashboard
+                            </Link>
+                          )}
                           <Button
                             onClick={() => handleLogout()}
                             className="dropdown-item item-color"
-                            endIcon={<Logout />}
                           >
-                            Log out
+                            <Logout /> Log out
                           </Button>
                         </div>
                       </div>
                     </div>
                   )}
-                  {/* {open && <Login handleClose={setOpen}/>} */}
                   <li>
                     <Link to="/cart" className="header-link">
                       <ShoppingCartOutlined color="" fontSize="large" />

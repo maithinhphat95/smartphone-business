@@ -30,7 +30,6 @@
         text-decoration: none;
       }
     }
-    
   }
   .header-link:hover {
     color: #000000;
@@ -41,11 +40,25 @@
       text-decoration: none;
     }
   }
- 
+  .account-action {
+    flex-direction: column;
+    align-items: flex-start;
+    & > * {
+      display: block;
+      // justify-content: flex-start;
+      padding: 8px;
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: uppercase;
+      &:hover {
+        background-color: rgb(245, 245, 245);
+        color: red !important;
+      }
+    }
+  }
 }
-.item-color{
- color:    rgb(0, 0, 0)   !important;
+.item-color {
+  color: rgb(0, 0, 0) !important;
   text-decoration: none;
   padding: 10px;
 }
-

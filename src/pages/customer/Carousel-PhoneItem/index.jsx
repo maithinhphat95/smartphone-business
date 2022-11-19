@@ -9,10 +9,15 @@ import "./CarouselPhone.scss";
 function CarouselPhone(props) {
   let params = useParams();
   //Fake API
-  const {data: dataProductItem,isLoading,isError,} = useFetch(`http://localhost:3006/productitem/${params.id}`);
-  const [added,setAdded]= useState(false);
+  const {
+    data: dataProductItem,
+    isLoading,
+    isError,
+  } = useFetch(`http://localhost:3006/productList/${params.id}`);
+  const [added, setAdded] = useState(false);
   //set add cart
-  const {myCart,setMycart,setTotalCart,countCart,setCountCart} = useContext(ThemeContext);
+  const { myCart, setMycart, setTotalCart, countCart, setCountCart } =
+    useContext(ThemeContext);
   const handleClickCart = () => {
     setAdded(true);
     // add iphone13,12
@@ -21,8 +26,7 @@ function CarouselPhone(props) {
       img: dataProductItem.img,
       name: dataProductItem.name,
       priceNew: dataProductItem.priceNew,
-      priceOld: dataProductItem.priceOld
-
+      priceOld: dataProductItem.priceOld,
     };
     //tost thêm thành công
     toast.success("Đã thêm vào giỏ hàng!", {
@@ -36,9 +40,9 @@ function CarouselPhone(props) {
     });
     // [1,2] arr.push(2);
     setMycart((item) => [...item, newItems]);
-    setTotalCart((total) =>(total += Number(dataProductItem.priceNew)));
-    setCountCart(() =>( Number(countCart+1)));
-  //  console.log(newItems);
+    setTotalCart((total) => (total += Number(dataProductItem.priceNew)));
+    setCountCart(() => Number(countCart + 1));
+    //  console.log(newItems);
   };
   //delete item cart
   return (
@@ -113,7 +117,9 @@ function CarouselPhone(props) {
                 <i className="fa fa-rupee text-success"></i>&nbsp;
                 {dataProductItem.priceNew.toLocaleString()} VNĐ
               </span>
-              <span className="mr-2 cut">{dataProductItem.priceOld.toLocaleString()} VNĐ</span>
+              <span className="mr-2 cut">
+                {dataProductItem.priceOld.toLocaleString()} VNĐ
+              </span>
               <span className="text-success">25% OFF</span>
             </div>
             <div className="d-flex flex-row">
@@ -127,13 +133,15 @@ function CarouselPhone(props) {
               <span>1200 ratings &amp; 564 reviews</span>
             </div>
             <div className="d-flex list-color-item">
-            {dataProductItem.color.map((item,index) =>{
-              return(
-              <div key={index} className="color-item">
-              <a className=""><p>{item}</p></a>
-              </div>
-              )
-            })}
+              {dataProductItem.color.map((item, index) => {
+                return (
+                  <div key={index} className="color-item">
+                    <a className="">
+                      <p>{item}</p>
+                    </a>
+                  </div>
+                );
+              })}
               {/* <div className="color-item">
               <a className=""><p>Xanh</p></a>
               </div>
@@ -146,8 +154,6 @@ function CarouselPhone(props) {
               <div className="color-item">
               <a className=""><p>Đen</p></a>
               </div> */}
-               
-              
             </div>
             <div className="d-flex align-items-center mt-4 offers mb-1">
               <i className="fa fa-check-square-o mt-1"></i>
@@ -228,24 +234,15 @@ function CarouselPhone(props) {
                 Mua ngay
               </button>
               {added ? (
-                <button
-                className="btn btn-danger"
-                disabled
-              >
-                Đã Thêm
-              </button>
-           
+                <button className="btn btn-danger" disabled>
+                  Đã Thêm
+                </button>
               ) : (
-                <button
-                className="btn btn-success"
-                onClick={ 
-                  handleClickCart
-                }
-              >
-                Thêm vào giỏ
-              </button>
+                <button className="btn btn-success" onClick={handleClickCart}>
+                  Thêm vào giỏ
+                </button>
               )}
-             
+
               <ToastContainer />
             </div>
           </div>

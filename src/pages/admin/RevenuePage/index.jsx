@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import RevenueSummaryChart from "../../../components/admin/Charts/RevenueSummaryChart";
 import PageTitle from "../../../components/admin/PageTitle";
 import MonthlyRevenueChart from "../../../components/admin/Charts/MonthlyRevenueChart";
-import DataTable from "../../../components/admin/Tables/DataTable";
+import OrderTable from "../../../components/admin/Tables/OrderTable";
 import { tableHead, tableRows } from "../../../constant/admin";
 
 RevenuePage.propTypes = {};
@@ -50,7 +50,7 @@ function RevenuePage(props) {
           <MonthlyRevenueChart />
         </Box>
         <Box>
-          <DataTable data={tableData} />
+          <OrderTable data={tableData} />
         </Box>
       </Box>
     </>

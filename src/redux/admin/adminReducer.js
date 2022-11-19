@@ -1,35 +1,51 @@
 import { yearlyRevenue } from "../../constant/admin";
-import * as adminAction from "./adminType";
 
 const initialState = {
   showMenu: false,
   yearlyData: yearlyRevenue,
-  productList: [],
-  // sortCategory: "date",
-  // sortOrder: "desc",
+  // showEditProduct: false,
+  // showAddProduct: false,
 };
 // Admin action
 export const showMenu = () => {
   return {
-    type: adminAction.SHOWMENU,
+    type: "SHOW_MENU",
+  };
+};
+export const hideMenu = () => {
+  return {
+    type: "HIDE_MENU",
   };
 };
 export const toggleMenu = () => {
   return {
-    type: adminAction.TOGGLEMENU,
+    type: "TOGGLE_MENU",
   };
 };
-
+// export const showEditProduct = () => {
+//   return {
+//     type: "SHOW_EDIT_PRODUCT",
+//   };
+// };
+// export const hideEditProduct = () => {
+//   return {
+//     type: "HIDE_EDIT_PRODUCT",
+//   };
+// };
 // Acmin Reducer
 export const adminReducer = (state = initialState, action) => {
   switch (action.type) {
-    case adminAction.SHOWMENU:
+    case "SHOW_MENU":
       return {
         ...state,
         showMenu: true,
       };
-
-    case adminAction.TOGGLEMENU:
+    case "HIDE_MENU":
+      return {
+        ...state,
+        showMenu: false,
+      };
+    case "TOGGLE_MENU":
       return {
         ...state,
         showMenu: !state.showMenu,

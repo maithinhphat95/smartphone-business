@@ -1,9 +1,11 @@
 import React from "react";
 import { Box, Typography, Avatar } from "@mui/material";
+import { useSelector } from "react-redux";
 AccountShort.propTypes = {};
 
 function AccountShort(props) {
   // Props account receive a object contain avatar url, name, phone number
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <Box
       sx={{
@@ -19,7 +21,7 @@ function AccountShort(props) {
     >
       <Avatar
         alt="Remy Sharp"
-        src="https://mui.com/static/images/avatar/1.jpg"
+        src={currentUser.img || "https://mui.com/static/images/avatar/1.jpg"}
         sx={{
           width: 80,
           height: 80,
@@ -31,10 +33,10 @@ function AccountShort(props) {
         component="h3"
         sx={{ m: 0, fontWeight: "bold", color: "white" }}
       >
-        Mai Thịnh Phát
+        {currentUser.name || "No Data"}
       </Typography>
       <Typography component="p" sx={{ m: 0, fontSize: "14px", color: "white" }}>
-        SDT: 0964084330
+        SDT: {currentUser.phone || "No Data"}
       </Typography>
     </Box>
   );

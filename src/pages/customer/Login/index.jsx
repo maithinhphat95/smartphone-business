@@ -15,16 +15,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
+import { login } from "../../../redux/common/userReducer";
 import Zoom from "react-reveal/Zoom";
 import "./Login.scss";
-import { login } from "../../../redux/common/userReducer";
 function Login() {
   // Navigate
   const navigate = useNavigate();
   // Redux
   const dispatch = useDispatch();
-  const { userList } = useSelector((state) => state.user);
-
+  const userData = useSelector((state) => state.user);
+  const { userList } = userData;
   // useForm
   const {
     register,
@@ -32,6 +32,7 @@ function Login() {
     formState: { errors },
   } = useForm();
 
+  // Handle Submit login
   const onHandleSubmit = (data) => {
     // Check login and find index
     const userIndex = userList.findIndex(
@@ -42,17 +43,22 @@ function Login() {
     if (userIndex > -1) {
       // Login data Redux
       dispatch(login(userList[userIndex]));
+      userIndex > -1 &&
+        localStorage.setItem(
+          "userData",
+          JSON.stringify({ currentUser: userList[userIndex], isLogin: true })
+        );
+
       // Toast
       toast.success("Đăng nhập thành công!", {
         position: "top-right",
-        autoClose: 1000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
       });
-      navigate("/");
     } else {
       toast.error("Đăng nhập thất bại, tài khoản hoặc mật khẩu không đúng!", {
         position: "top-right",
@@ -65,15 +71,14 @@ function Login() {
       });
       return;
     }
-
-    // fake
-    // return new Promise((resolve) => {
-    //   setTimeout(() => {
-    //     navigate("/");
-    //     resolve(true);
-    //   }, 3000);
-    // });
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        navigate("/");
+        resolve(true);
+      }, 3000);
+    });
   };
+
   return (
     <div className="container-fluid login">
       <div className="container">

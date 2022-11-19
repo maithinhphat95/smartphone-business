@@ -43,7 +43,7 @@ function HomeListItemTwo(props) {
   //componentDidMount
   const { data: dataProductItem, isLoading, isError } =
     // = useFetch('https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z')
-    useFetch("http://localhost:3006/productitem");
+    useFetch("http://localhost:3006/productList");
   return (
     <>
       <div className="container-fluid profuid">
@@ -59,7 +59,8 @@ function HomeListItemTwo(props) {
                 dataProductItem.map((item) => {
                   if (item["producer"] === "Apple") {
                     return (
-                      <ProductItem  key={item.id}
+                      <ProductItem
+                        key={item.id}
                         img={item.img}
                         name={item.name}
                         priceNew={item.priceNew}

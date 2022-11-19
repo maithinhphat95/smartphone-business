@@ -26,7 +26,7 @@ function PhoneItem(props) {
   //componentDidMount
   const { data: dataProductItem, isLoading, isError } =
     // = useFetch('https://api.covid19api.com/country/vietnam?from=2021-10-01T00:00:00Z&to=2021-10-20T00:00:00Z')
-    useFetch("http://localhost:3006/productitem");
+    useFetch("http://localhost:3006/productList");
   return (
     <>
       <Banner />
@@ -100,7 +100,7 @@ function PhoneItem(props) {
               </Container>
               <Container className="title-list">
                 <Box sx={{ paddingBottom: 4 }}>
-                  <FormControl sx={{ width: 120}}>
+                  <FormControl sx={{ width: 120 }}>
                     <InputLabel id="demo-simple-select-label">
                       Chosse
                     </InputLabel>
@@ -131,7 +131,7 @@ function PhoneItem(props) {
                               name={item.name}
                               priceNew={item.priceNew}
                               priceOld={item.priceOld}
-                              id= {item.id}
+                              id={item.id}
                             />
                           </Grid>
                         );

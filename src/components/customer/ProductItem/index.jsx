@@ -21,7 +21,6 @@ function ProductItem(props) {
   const onSubmit = () => {
     history(`/phone/${id}`);
   };
-  // const {data: dataProductItem,isLoading,isError,} = useFetch(`http://localhost:3006/productitem/`);
   return (
     <>
       <Fade bottom>

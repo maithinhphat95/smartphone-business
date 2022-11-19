@@ -1,7 +1,10 @@
-import React from "react";
-import "./App.css";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getUserListRequest } from "../src/redux/common/userReducer";
+import { getProductListRequest } from "../src/redux/common/productReducer";
+import { getOrderListRequest } from "../src/redux/common/orderReducer";
 import Home from "./pages/customer/Home";
 import Register from "./pages/customer/Register";
 import Login from "./pages/customer/Login";
@@ -21,7 +24,19 @@ import RevenuePage from "./pages/admin/RevenuePage";
 import SaleRatingPage from "./pages/admin/SaleRatingPage";
 import InventoryPage from "./pages/admin/InventoryPage";
 
+import "./App.css";
+import ProductDetail from "./pages/admin/ProductDetail";
+
 function App() {
+  const dispatch = useDispatch();
+
+  // Fetch Data
+  useEffect(() => {
+    dispatch(getUserListRequest());
+    dispatch(getProductListRequest());
+    dispatch(getOrderListRequest());
+  }, []);
+
   return (
     <>
       <Routes>
@@ -39,11 +54,16 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Route>
-        <Route element={<AdminSite />}>
-          <Route path="/admin" element={<DashboardPage />} />
-          <Route path="/revenue" element={<RevenuePage />} />
-          <Route path="/sale" element={<SaleRatingPage />} />
-          <Route path="/inventory" element={<InventoryPage />} />
+
+        <Route path="/admin" element={<AdminSite />}>
+          <Route path="/admin/dashboard" element={<DashboardPage />} />
+          <Route path="/admin/revenue" element={<RevenuePage />} />
+          <Route path="/admin/sale" element={<SaleRatingPage />} />
+          <Route path="/admin/inventory" element={<InventoryPage />} />
+          <Route
+            path="/admin/product/:brand/:productId"
+            element={<ProductDetail />}
+          />
         </Route>
       </Routes>
     </>

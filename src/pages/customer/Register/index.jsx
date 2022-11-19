@@ -1,13 +1,8 @@
 import React from "react";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import KeyIcon from "@mui/icons-material/Key";
-import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
-import EmailIcon from "@mui/icons-material/Email";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import BusinessIcon from "@mui/icons-material/Business";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   FormControlLabel,
   FormLabel,
@@ -15,9 +10,16 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { useForm } from "react-hook-form";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import KeyIcon from "@mui/icons-material/Key";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import EmailIcon from "@mui/icons-material/Email";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import BusinessIcon from "@mui/icons-material/Business";
+import { Face, Phone } from "@mui/icons-material";
+import "react-toastify/dist/ReactToastify.css";
 import "./Register.scss";
-import { useDispatch } from "react-redux";
+import { addUserRequest } from "../../../redux/common/userReducer";
 function Register(props) {
   //useForm
   const {
@@ -26,18 +28,48 @@ function Register(props) {
     formState: { errors },
     getValues,
   } = useForm();
+  // hook
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  let accounts = JSON.parse(localStorage.getItem("user")) || [];
+  const userList = useSelector((state) => state.user.userList);
+  const today = new Date().toLocaleString();
+  const registerUser = ({
+    account,
+    password,
+    name,
+    email,
+    phone,
+    gender,
+    birthday,
+    address,
+    adminCode,
+    avatar,
+  }) => {
+    return {
+      account: account,
+      password: password,
+      name: name,
+      email: email,
+      phone: phone,
+      gender: gender,
+      birthday: birthday,
+      address: address,
+      img:
+        avatar ||
+        "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/599e3b95636919.5eb96c0445ea7.jpg",
+      isAdmin: adminCode === "admin123",
+      registerDate: today,
+    };
+  };
 
   //Toast noti
   const onHandleSubmit = async (data) => {
-    // console.log(data);
-    const checkRegister = accounts.some(
-      (element) => element["account"] === data.account
+    // Check existing account
+    const checkExist = userList.some(
+      (element) => element.account === data.account
     );
-    if (checkRegister) {
+
+    if (checkExist) {
       toast.error("Tài khoản tồn tại,đăng ký không thành công!", {
         position: "top-right",
         autoClose: 2000,
@@ -58,14 +90,13 @@ function Register(props) {
         draggable: true,
         progress: undefined,
       });
-      accounts.push(data);
-      localStorage.setItem("user", JSON.stringify(accounts));
+      dispatch(addUserRequest(registerUser(data)));
     }
     return new Promise((resolve) => {
       setTimeout(() => {
         navigate("/login");
         resolve(true);
-      }, 2000);
+      }, 3000);
     });
   };
   return (
@@ -118,7 +149,7 @@ function Register(props) {
                                 name="password"
                                 {...register("password", {
                                   required: true,
-                                  minLength: 8,
+                                  minLength: 3,
                                   // pattern:
                                   // /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/,
                                 })}
@@ -172,7 +203,7 @@ function Register(props) {
                             <div className="form-outline flex-fill mb-0">
                               <TextField
                                 type="text"
-                                id="form3Example4cd"
+                                // id="form3Example4cd"
                                 fullWidth
                                 label="Họ tên"
                                 name="name"
@@ -189,7 +220,7 @@ function Register(props) {
                             <div className="form-outline flex-fill mb-0">
                               <TextField
                                 type="text"
-                                id="form3Example4cd"
+                                // id="form3Example4cd"
                                 fullWidth
                                 label="Email"
                                 name="email"
@@ -205,6 +236,33 @@ function Register(props) {
                               {errors.email?.type === "pattern" && (
                                 <p className="p-error">
                                   Email chưa đúng định dạng
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                          {/* Phone Number */}
+                          <div className="d-flex flex-row align-items-center mb-4">
+                            <Phone fontSize="large" />
+                            <div className="form-outline flex-fill mb-0">
+                              <TextField
+                                type="number"
+                                // id="form3Example4cd"
+                                fullWidth
+                                label="Phone Number"
+                                name="phone"
+                                {...register("phone", {
+                                  required: true,
+                                  pattern: /^[0-9]{10}$/i,
+                                })}
+                              />
+                              {errors.phone?.type === "required" && (
+                                <p className="p-error">
+                                  Mời bạn nhập phone number
+                                </p>
+                              )}
+                              {errors.phone?.type === "pattern" && (
+                                <p className="p-error">
+                                  Phone number chưa đúng định dạng hoặc số ký tự
                                 </p>
                               )}
                             </div>
@@ -251,12 +309,13 @@ function Register(props) {
                             <div className="form-outline flex-fill mb-0">
                               <TextField
                                 type="date"
-                                id="form3Example4cd"
+                                // id="form3Example4cd"
                                 fullWidth
-                                name="date"
-                                {...register("date", { required: true })}
+                                name="birthday"
+                                {...register("birthday", { required: true })}
+                                onChange={(e) => {}}
                               />
-                              {errors.date?.type === "required" && (
+                              {errors.birthday?.type === "required" && (
                                 <p className="p-error">
                                   Mời bạn chọn ngày sinh
                                 </p>
@@ -269,7 +328,7 @@ function Register(props) {
                             <div className="form-outline flex-fill mb-0">
                               <TextField
                                 type="text"
-                                id="form3Example4cd"
+                                // id="form3Example4cd"
                                 fullWidth
                                 label="Địa chỉ"
                                 name="address"
@@ -280,13 +339,29 @@ function Register(props) {
                               )}
                             </div>
                           </div>
+                          {/* Avatar for user*/}
+                          <div className="d-flex flex-row align-items-center mb-4">
+                            <Face fontSize="large" />
+                            <div className="form-outline flex-fill mb-0">
+                              <TextField
+                                type="text"
+                                // id="form3Example4cd"
+                                fullWidth
+                                label="Avatar"
+                                name="avatar"
+                                {...register("avatar", {
+                                  required: false,
+                                })}
+                              />
+                            </div>
+                          </div>
                           {/* Admin Secret Code for Admin Register*/}
                           <div className="d-flex flex-row align-items-center mb-4">
                             <BusinessIcon fontSize="large" />
                             <div className="form-outline flex-fill mb-0">
                               <TextField
                                 type="password"
-                                id="form3Example4cd"
+                                // id="form3Example4cd"
                                 fullWidth
                                 label="Admin Code"
                                 name="adminCode"

@@ -16,8 +16,8 @@ export const getProductListRequest = (data) => {
   return (dispatch) => {
     (async () => {
       try {
-        const response = await productApi.getAll();
-        dispatch(getProductList(response.data));
+        const data = await productApi.getAll();
+        dispatch(getProductList(data));
       } catch (error) {
         console.log(error);
       }
@@ -37,8 +37,8 @@ export const getProductRequest = (id) => {
   return (dispatch) => {
     (async () => {
       try {
-        const response = await productApi.get(id);
-        dispatch(getProduct(response.data));
+        const data = await productApi.get(id);
+        dispatch(getProduct(data));
       } catch (error) {
         console.log(error);
       }
@@ -92,14 +92,15 @@ export const deletesProductRequest = (id) => {
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_PRODUCT_LIST":
+      localStorage.setItem("productList", JSON.stringify(action.payload));
       return {
         ...state,
-        orderList: action.payload,
+        productList: action.payload,
       };
     case "ADD_PRODUCT":
       return {
         ...state,
-        orderList: [...state.orderList, action.payload],
+        productList: [...state.productList, action.payload],
       };
     default:
       return { ...state };

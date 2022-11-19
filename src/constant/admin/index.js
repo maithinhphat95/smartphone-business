@@ -281,6 +281,7 @@ export const tableHead = {
     "NO",
     "ID",
     "NAME",
+    "BRAND",
     "COLOR",
     "PRICE",
     "MEMORY",

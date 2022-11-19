@@ -7,6 +7,7 @@ import { adminColorLight } from "../../../constant/admin";
 Menu.propTypes = {};
 function Menu(props) {
   const showMenu = useSelector((state) => state.admin.showMenu);
+
   return (
     <Box
       className="menu"
