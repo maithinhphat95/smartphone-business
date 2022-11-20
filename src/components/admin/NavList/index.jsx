@@ -28,7 +28,6 @@ function NavList(props) {
         p: 1,
         pt: 0,
         overflowY: "scroll",
-        height: "calc(100vh - 220px",
       }}
       className="nav-list"
     >
@@ -53,12 +52,16 @@ function NavList(props) {
           icon="ViewList"
           url="/admin/inventory"
         />
-        <NavItem content="Customer Manager" icon="AccountBox" />
+        <NavItem
+          content="Customer Manager"
+          icon="AccountBox"
+          url="/admin/customers"
+        />
       </Box>
       <Box>
         <Title content="Account" />
-        <NavItem content="Profile" icon="Personal" />
-        <NavItem content="Setting" icon="Setting" />
+        <NavItem content="Profile" icon="Personal" url="/admin/profile" />
+        <NavItem content="Setting" icon="Setting" url="/admin/setting" />
         <div onClick={handleLogout}>
           <NavItem content="Logout" icon="Logout" />
         </div>

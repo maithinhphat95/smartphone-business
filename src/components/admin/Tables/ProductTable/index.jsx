@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  adminColorLight,
-  couponList,
-  productList,
-} from "../../../../constant/admin";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   Box,
   Table,
@@ -13,7 +10,6 @@ import {
   TableHead,
   TableRow,
   IconButton,
-  Collapse,
   Typography,
   Paper,
   CardMedia,
@@ -26,113 +22,123 @@ import {
   MenuItem,
   Button,
 } from "@mui/material";
-import {
-  Delete,
-  Edit,
-  KeyboardArrowDown,
-  KeyboardArrowUp,
-  Search,
-} from "@mui/icons-material";
+import { Delete, Edit, Search, ViewList } from "@mui/icons-material";
+import { adminColorLight, tableHead } from "../../../../constant/admin";
 import "./style.scss";
 
 // Function show each row of tablebody (order item)
 function Row(props) {
-  const { row, isControl, category, index } = props;
-  console.log(row);
+  const { row, index } = props;
   return (
     <>
-      <TableRow
-        sx={{
-          "& > *": {
-            padding: 1,
-            borderBottom: "unset",
-            "& td": { borderBottom: "none" },
-          },
-        }}
-      >
-        {category === "product" && (
-          <>
-            <TableCell align="center">{index}</TableCell>
-            <TableCell align="center">{row.id}</TableCell>
-            <TableCell align="left">
-              <Stack direction={"row"} alignItems="center">
-                <CardMedia
-                  component="img"
-                  image={row.img}
-                  alt={row.name}
-                  sx={{ width: "40px", marginRight: 1 }}
-                />
-                <Typography variant="p" minWidth={"100px"}>
-                  {row.name}
-                </Typography>
-              </Stack>
-            </TableCell>
-            <TableCell>{`${row.brand}`}</TableCell>
-            <TableCell align="center">
-              <Stack spacing={1} direction="row">
-                {row.color.map((e, index) => (
-                  <Typography key={index} variant="p">
-                    {e}
-                  </Typography>
-                ))}
-              </Stack>
-            </TableCell>
-            <TableCell>
-              <Box>
-                {/* <Typography>{`${row.priceOld.toLocaleString()} VND`}</Typography> */}
-                <Typography>{`${row.priceNew.toLocaleString()} VND`}</Typography>
-              </Box>
-            </TableCell>
-            <TableCell>{`${row.memoryIn} GB`}</TableCell>
-            <TableCell>{`${row.stock} pcs`}</TableCell>
-            <TableCell>{`${row.sold} pcs`}</TableCell>
-          </>
-        )}
-        {isControl && (
+      <TableRow className="product-table-row">
+        <>
+          <TableCell align="center">{row.no}</TableCell>
+          <TableCell align="center">{row.id}</TableCell>
+          <TableCell align="left">
+            <Stack direction={"row"} alignItems="center">
+              <CardMedia
+                component="img"
+                image={row.img}
+                alt={row.name}
+                sx={{ width: "40px", marginRight: 1 }}
+              />
+              <Typography variant="p" minWidth={"100px"}>
+                {row.name}
+              </Typography>
+            </Stack>
+          </TableCell>
           <TableCell>
-            <Stack
-              sx={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                gap: 1,
-              }}
-            >
+            <Box
+              className="label"
+              backgroundColor="primary"
+              // sx={{ backgroundColor: "primary" }}
+            >{`${row.brand}`}</Box>
+          </TableCell>
+          <TableCell align="center">
+            <Stack spacing={1} direction="row">
+              {row.color?.map((e, index) => (
+                <Typography key={index} variant="p">
+                  {e}
+                </Typography>
+              ))}
+            </Stack>
+          </TableCell>
+          <TableCell>
+            <Box>
+              {/* <Typography>{`${row.priceOld.toLocaleString()} VND`}</Typography> */}
+              <Typography>{`${row.priceNew.toLocaleString()} VND`}</Typography>
+            </Box>
+          </TableCell>
+          <TableCell>{row.memory ? `${row.memory} GB` : "No Data"}</TableCell>
+          <TableCell>{`${row.stock} pcs`}</TableCell>
+          <TableCell>{`${row.sold} pcs`}</TableCell>
+        </>
+
+        <TableCell>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              // flexWrap: "wrap",
+              gap: 1,
+            }}
+          >
+            <Link to={`/admin/product/${row.brand}/${row.id}`}>
               <Button
+                title="Edit Product"
                 className="action-button"
                 variant="contained"
                 color="info"
-                startIcon={<Edit />}
+                sx={{ padding: 0.5, minWidth: 0 }}
               >
-                Edit
+                <Edit />
               </Button>
-              <Button
-                className="action-button"
-                variant="outlined"
-                color="error"
-                startIcon={<Delete />}
-              >
-                Delete
-              </Button>
-            </Stack>
-          </TableCell>
-        )}
+            </Link>
+            <Button
+              title="Delete Product"
+              className="action-button"
+              variant="outlined"
+              color="error"
+              sx={{ padding: 0.5, minWidth: 0, width: "50%" }}
+            >
+              <Delete />
+            </Button>
+          </Stack>
+        </TableCell>
       </TableRow>
     </>
   );
 }
+// -------------------------------------------------------------------------------------------------------
+// Component Product Table
 
 export default function ProductTable(props) {
-  const { data } = props;
   const [page, setPageIndex] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [dec, setDec] = useState(true);
   const [sortDesc, setSortDesc] = useState(false);
   const [sortBy, setSortBy] = useState("");
+  const [sortArrow, setSortArrow] = useState(false);
+  const productList = useSelector((state) => state.product.productList);
+
+  const [data, setData] = useState({
+    title: "Product List",
+    head: tableHead.product,
+    body: productList,
+    searchBy: "name",
+  });
+
   const [dataSorted, setDataSorted] = useState(data.body);
   const [searchValue, setSearchValue] = useState("");
   const [selectedData, setSelectedData] = useState(data?.body || []);
+
+  // Update the product list
+  useEffect(() => {
+    setData({ ...data, body: productList });
+  }, [productList]);
+
   // Set max page for pagination
   const maxPage =
     selectedData.length % rowsPerPage === 0
@@ -149,10 +155,10 @@ export default function ProductTable(props) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPageIndex(0);
   };
+
   // Use Effect Sort page
   useEffect(() => {
     let currentData = [];
-
     if (
       selectedData.length > 0 &&
       selectedData[0].hasOwnProperty(sortBy.toLocaleLowerCase())
@@ -169,14 +175,16 @@ export default function ProductTable(props) {
       ];
     } else currentData = [...selectedData];
 
-    let updateData = currentData.map((e, index) => {
-      return { ...e, no: index + 1 };
-    });
-    setDataSorted(updateData);
+    setDataSorted(
+      currentData?.map((e, index) => {
+        return { ...e, no: index + 1 };
+      })
+    );
   }, [dec]);
 
   // Handle request sort by category
   const requestSort = (category) => {
+    setSortArrow(true);
     if (sortBy === category) {
       setSortDesc(!sortDesc);
     } else {
@@ -198,9 +206,9 @@ export default function ProductTable(props) {
       searchValue.trim().length === 0
         ? data.body
         : data.body.filter((element) => {
-            return element[data.searchBy].includes(
-              searchValue.trim().toLocaleLowerCase()
-            );
+            return element[data.searchBy]
+              .toLocaleLowerCase()
+              .includes(searchValue.trim().toLocaleLowerCase());
           });
     setSelectedData(searchArray);
     setDec(!dec);
@@ -217,7 +225,16 @@ export default function ProductTable(props) {
         alignItems="center"
         paddingLeft={2}
       >
-        <Typography variant="h6">{data.title}</Typography>
+        <Typography
+          variant="h6"
+          component="h6"
+          fontWeight="600"
+          fontSize="20px"
+        >
+          <ViewList /> {data.title}
+        </Typography>
+
+        {/* Search Box */}
         <Box
           component={"form"}
           sx={{ m: 1, display: "flex", alignItems: "center" }}
@@ -246,6 +263,7 @@ export default function ProductTable(props) {
           </IconButton>
         </Box>
       </Stack>
+      {/* Table */}
       <TableContainer component={Paper} width={"100%"} sx={{ borderRadius: 0 }}>
         <Table>
           <TableHead
@@ -255,7 +273,7 @@ export default function ProductTable(props) {
             }}
           >
             <TableRow sx={{ "& th": { padding: 1.5 } }}>
-              {data.head.map((item, index) => (
+              {data.head?.map((item, index) => (
                 <TableCell
                   style={{ minWidth: "20px" }}
                   key={index}
@@ -265,18 +283,22 @@ export default function ProductTable(props) {
                   }}
                   sx={{ cursor: "pointer" }}
                 >
-                  <TableSortLabel
-                    active={sortBy === item.toLocaleString()}
-                    direction={
-                      sortBy === item.toLocaleString()
-                        ? sortDesc
-                          ? "desc"
-                          : "asc"
-                        : "desc"
-                    }
-                  >
-                    {item}
-                  </TableSortLabel>
+                  {sortArrow ? (
+                    <TableSortLabel
+                      active={sortBy === item.toLocaleString()}
+                      direction={
+                        sortBy === item.toLocaleString()
+                          ? sortDesc
+                            ? "desc"
+                            : "asc"
+                          : "desc"
+                      }
+                    >
+                      {item}
+                    </TableSortLabel>
+                  ) : (
+                    item
+                  )}
                 </TableCell>
               ))}
             </TableRow>
@@ -284,15 +306,9 @@ export default function ProductTable(props) {
           {/* Body of table */}
           <TableBody>
             {dataSorted
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, index) => (
-                <Row
-                  key={row.id}
-                  row={row}
-                  isControl={data.isControl}
-                  category={data.category}
-                  index={index + 1}
-                />
+              ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              ?.map((row, index) => (
+                <Row key={row.id} row={row} index={index + 1} />
               ))}
           </TableBody>
         </Table>

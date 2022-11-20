@@ -1,63 +1,55 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Box } from "@mui/material";
-import { tableHead } from "../../../constant/admin";
+import { Box, CircularProgress, Stack } from "@mui/material";
 import PageTitle from "../../../components/admin/PageTitle";
-import {
-  getProductList,
-  getProductListRequest,
-} from "../../../redux/common/productReducer";
 import ProductTable from "../../../components/admin/Tables/ProductTable";
-import { useCallback } from "react";
-import axiosClient from "../../../apis/axiosClient";
 
 InventoryPage.propTypes = {};
 
 function InventoryPage(props) {
-  const dispatch = useDispatch();
-  const [isLoading, setLoading] = useState(false);
-
-  // Get productList from LocalStorage
-  const localData = JSON.parse(localStorage.getItem("productList"));
-
-  // Get productList from Redux State
-  const productList =
-    useSelector((state) => state.product.productList) || localData;
-  // Init the data for table Product List
-  const inventoryData = {
-    title: "Product List",
-    category: "product",
-    head: tableHead.product,
-    body: productList,
-    isControl: true,
-    searchBy: "name",
-  };
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getProductListRequest());
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return clearTimeout();
   }, []);
 
-  console.log(productList);
   return (
     <>
       <PageTitle
         title="Inventory Manager"
         description="Inventory And Product Manager"
       />
-
-      <Box sx={{ margin: "0 auto" }}>
-        <Box
+      {isLoading ? (
+        <Stack
           sx={{
-            display: "flex",
-            gap: 2,
+            width: "100%",
             justifyContent: "center",
-            flexDirection: "column",
-            flexWrap: { xs: "wrap", md: "nowrap" },
+            alignItem: "center",
           }}
+          spacing={2}
+          direction="row"
         >
-          <ProductTable data={inventoryData} />
+          <CircularProgress color="primary" />
+          <CircularProgress color="primary" />
+          <CircularProgress color="primary" />
+        </Stack>
+      ) : (
+        <Box sx={{ margin: "0 auto" }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+              justifyContent: "center",
+              flexDirection: "column",
+              flexWrap: { xs: "wrap", md: "nowrap" },
+            }}
+          >
+            <ProductTable />
+          </Box>
         </Box>
-      </Box>
+      )}
     </>
   );
 }

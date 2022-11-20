@@ -57,7 +57,7 @@ function HomeListItemTwo(props) {
                 dataProductItem &&
                 dataProductItem.length > 0 &&
                 dataProductItem.map((item) => {
-                  if (item["producer"] === "Apple") {
+                  if (item["brand"] === "Apple") {
                     return (
                       <ProductItem
                         key={item.id}

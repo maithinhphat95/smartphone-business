@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -15,10 +15,15 @@ import { Box } from "@mui/material";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
-import { monthAxis, adminColorLight } from "../../../../constant/admin";
+import {
+  monthAxis,
+  adminColorLight,
+  adminColorDark,
+} from "../../../../constant/admin";
 import RevenueReportCard from "../../RevenueReportCard";
 import ChartBox from "../ChartBox";
 import ChartHeader from "../../ChartHeader";
+import { useSelector } from "react-redux";
 MonthlyRevenueChart.propTypes = {};
 
 function MonthlyRevenueChart(props) {
@@ -31,7 +36,24 @@ function MonthlyRevenueChart(props) {
     Tooltip,
     Legend
   );
+  const [theme, setTheme] = useState(adminColorLight);
+  const themeSeleted = useSelector((state) => state.admin.theme);
+  // Update themse color
+  useEffect(() => {
+    switch (themeSeleted) {
+      case "light":
+        setTheme(adminColorLight);
+        break;
+      case "dark":
+        setTheme(adminColorDark);
+        break;
+      default:
+        setTheme(theme);
+        break;
+    }
+  }, [themeSeleted]);
 
+  // Fake Data
   const fakeData = {
     target: monthAxis.map(() => faker.datatype.number({ min: 100, max: 220 })),
     actual: monthAxis.map(() => faker.datatype.number({ min: 50, max: 260 })),
@@ -41,27 +63,28 @@ function MonthlyRevenueChart(props) {
   const options = {
     responsive: true,
     scales: {
+      x: {
+        grid: { color: theme.primary },
+        ticks: { color: theme.primary },
+      },
       y: {
         min: 0,
         max: 300,
-        stepSize: 50,
+        stepSize: 100,
+        grid: { color: theme.primary },
+        ticks: { color: theme.primary },
       },
     },
-    // plugins: {
-    //   legend: {
-    //     position: "top",
-    //   },
-    //   title: {
-    //     display: false,
-    //     text: "",
-    //   },
-    //   datalabels: {
-    //     color: "red",
-    //     anchor: "start",
-    //     align: "end",
-    //     clamp: true,
-    //   },
-    // },
+    plugins: {
+      datalabels: {
+        display: true,
+        color: themeSeleted == "dark" ? "white" : "black",
+      },
+      legend: {
+        position: "top",
+        labels: { color: theme.primary },
+      },
+    },
   };
   // Get the data of chart: include 2 column target and actual
   const data = {
@@ -70,14 +93,14 @@ function MonthlyRevenueChart(props) {
       {
         label: "Target",
         data: fakeData.target,
-        backgroundColor: adminColorLight.chartColor1,
-        borderColor: adminColorLight.chartColor1,
+        backgroundColor: theme.chartColor1,
+        borderColor: theme.chartColor1,
       },
       {
         label: "Actual",
         data: fakeData.actual,
-        backgroundColor: adminColorLight.chartColor2,
-        borderColor: adminColorLight.chartColor2,
+        backgroundColor: theme.chartColor2,
+        borderColor: theme.chartColor2,
       },
     ],
   };

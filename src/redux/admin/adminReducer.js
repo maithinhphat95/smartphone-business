@@ -3,8 +3,7 @@ import { yearlyRevenue } from "../../constant/admin";
 const initialState = {
   showMenu: false,
   yearlyData: yearlyRevenue,
-  // showEditProduct: false,
-  // showAddProduct: false,
+  theme: "dark",
 };
 // Admin action
 export const showMenu = () => {
@@ -22,16 +21,13 @@ export const toggleMenu = () => {
     type: "TOGGLE_MENU",
   };
 };
-// export const showEditProduct = () => {
-//   return {
-//     type: "SHOW_EDIT_PRODUCT",
-//   };
-// };
-// export const hideEditProduct = () => {
-//   return {
-//     type: "HIDE_EDIT_PRODUCT",
-//   };
-// };
+export const themeSelect = (theme) => {
+  return {
+    type: "THEME_SELECT",
+    payload: theme,
+  };
+};
+
 // Acmin Reducer
 export const adminReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -50,7 +46,11 @@ export const adminReducer = (state = initialState, action) => {
         ...state,
         showMenu: !state.showMenu,
       };
-
+    case "THEME_SELECT":
+      return {
+        ...state,
+        theme: action.payload,
+      };
     default:
       return state;
   }

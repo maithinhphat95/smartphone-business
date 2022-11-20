@@ -6,27 +6,47 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import ChartHeader from "../../ChartHeader";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
-import { adminColorLight } from "../../../../constant/admin";
+import { adminColorDark, adminColorLight } from "../../../../constant/admin";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 BrandRatingChart.propTypes = {};
 
 function BrandRatingChart(props) {
   const { isViewDetail } = props;
   ChartJS.register(ArcElement, Tooltip, Legend);
+  const [theme, setTheme] = useState(adminColorLight);
+  const themeSeleted = useSelector((state) => state.admin.theme);
+  // Update themse color
+  useEffect(() => {
+    switch (themeSeleted) {
+      case "light":
+        setTheme(adminColorLight);
+        break;
+      case "dark":
+        setTheme(adminColorDark);
+        break;
+      default:
+        setTheme(theme);
+        break;
+    }
+  }, [themeSeleted]);
+  // Chart Data
   const data = {
     labels: ["Apple", "Samsung", "Oppo", "Xiaomi", "Vivo", "Nokia"],
     datasets: [
       {
         type: "pie",
-        label: "# of Votes",
+        label: "",
         data: [40, 30, 15, 8, 5, 2],
         backgroundColor: [
-          adminColorLight.chartColor1,
-          adminColorLight.chartColor2,
-          adminColorLight.chartColor3,
-          adminColorLight.chartColor4,
-          adminColorLight.chartColor5,
-          adminColorLight.chartColor6,
+          theme.chartColor1,
+          theme.chartColor2,
+          theme.chartColor3,
+          theme.chartColor4,
+          theme.chartColor5,
+          theme.chartColor6,
         ],
 
         borderWidth: 0.5,
@@ -35,15 +55,16 @@ function BrandRatingChart(props) {
   };
   const options = {
     plugins: {
-      legend: {
-        display: true,
-      },
       datalabels: {
         display: true,
         color: "white",
         anchor: "end",
         align: "start",
         clamp: true,
+      },
+      legend: {
+        position: "top",
+        labels: { color: theme.primary },
       },
     },
   };
@@ -62,7 +83,7 @@ function BrandRatingChart(props) {
       </ChartCover>
 
       {isViewDetail && (
-        <Link to="/sale">
+        <Link to="/admin/sale">
           <Typography
             variant={"h6"}
             sx={{

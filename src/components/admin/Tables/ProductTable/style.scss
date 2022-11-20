@@ -13,3 +13,15 @@
     background-color: "#0df0a920";
   }
 }
+.product-table-row {
+  & td {
+    padding: 1;
+    border-bottom: 1px solid #ccc;
+    margin: 0;
+    height: 80px;
+    overflow: hidden;
+  }
+}
+.label {
+  border: 1px solid;
+}

@@ -317,9 +317,9 @@ export default function OrderTable(props) {
       searchValue.trim().length === 0
         ? data.body
         : data.body.filter((element) => {
-            return element[data.searchBy].includes(
-              searchValue.trim().toLocaleLowerCase()
-            );
+            return element[data.searchBy]
+              .toLocaleLowerCase()
+              .includes(searchValue.trim().toLocaleLowerCase());
           });
     setSelectedData(searchArray);
     setDec(!dec);

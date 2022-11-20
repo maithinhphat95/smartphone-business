@@ -1,9 +1,17 @@
 import React from "react";
 import { toggleMenu } from "../../../redux/admin/adminReducer";
-import { AppBar, Box, Toolbar, Typography, IconButton } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  Typography,
+  IconButton,
+  Badge,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useDispatch } from "react-redux";
+import SwitchMode from "../../../components/admin/SwitchMode";
 Header.propTypes = {};
 
 function Header(props) {
@@ -13,7 +21,7 @@ function Header(props) {
     dispatch(toggleMenu());
   };
   const handleClickNoti = () => {
-    alert("There's no notification");
+    alert("There are 12 notifications");
   };
   return (
     <div
@@ -47,12 +55,14 @@ function Header(props) {
               edge="start"
               color="inherit"
               aria-label="menu"
-              sx={{ p: 2, height: "100%" }}
+              sx={{ p: 2, mr: 2, height: "100%" }}
               onClick={handleClickNoti}
             >
-              <NotificationsIcon sx={{ fontSize: 30 }} />
+              <Badge color="warning" badgeContent={12} max={99}>
+                <NotificationsIcon sx={{ fontSize: 30 }} />
+              </Badge>
             </IconButton>
-
+            <SwitchMode />
             <Typography
               variant="h6"
               component="div"

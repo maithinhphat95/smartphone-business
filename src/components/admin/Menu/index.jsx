@@ -3,11 +3,29 @@ import { Box } from "@mui/material";
 import AccountShort from "../AccountShort";
 import NavList from "../NavList";
 import { useSelector } from "react-redux";
-import { adminColorLight } from "../../../constant/admin";
+import { adminColorDark, adminColorLight } from "../../../constant/admin";
+import { useState } from "react";
+import { useEffect } from "react";
 Menu.propTypes = {};
 function Menu(props) {
   const showMenu = useSelector((state) => state.admin.showMenu);
-
+  // Theme
+  const [theme, setTheme] = useState(adminColorLight);
+  const themeSeleted = useSelector((state) => state.admin.theme);
+  // Update themse color
+  useEffect(() => {
+    switch (themeSeleted) {
+      case "light":
+        setTheme(adminColorLight);
+        break;
+      case "dark":
+        setTheme(adminColorDark);
+        break;
+      default:
+        setTheme(theme);
+        break;
+    }
+  }, [themeSeleted]);
   return (
     <Box
       className="menu"
@@ -27,7 +45,7 @@ function Menu(props) {
       <Box
         sx={{
           width: 220,
-          backgroundColor: adminColorLight.secondary,
+          backgroundColor: theme.itemBackground,
           border: 1,
           borderColor: "text.disabled",
         }}

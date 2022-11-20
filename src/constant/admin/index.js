@@ -43,11 +43,12 @@ export const yearlyRevenue = [
 ];
 
 export const adminColorLight = {
-  primary: "#E0E0E0",
-  secondary: "white",
+  primary: "#919090",
+  secondary: "#d9d9d9",
   background: "#f0f0f0",
+  itemBackground: "white",
   shadow: "#ccc",
-  text: "black",
+  textColor: "black",
   chartColor1: "#ff6384", //Light Pink
   chartColor2: "#35a2eb", //Light Blue
   chartColor3: "#1d9e63", //Green
@@ -58,13 +59,23 @@ export const adminColorLight = {
   chartColor8: "#ff6384", //Light Pink
   chartColor9: "#52514f", //Gray
   chartColor10: "#034c9d", //Heavy Blue
+  apple: "#52514f",
+  samsung: "#034c9d",
+  xiaomi: "#ff6700",
+  oppo: "#1d9e63",
+  vivo: "#cd3c99",
+  nokia: "#f3d522",
+  // highlight1: "#0842A0",
+  highlight1: "#ff6800",
+  highlight2: "#2e6713",
 };
 export const adminColorDark = {
   primary: "#E0E0E0",
-  secondary: "white",
-  background: "#9999",
-  shadow: "#cccc",
-  text: "#ffff",
+  secondary: "#343942",
+  background: "#212529",
+  itemBackground: "#63686c",
+  shadow: "#212529",
+  textColor: "#f8f9fa",
   chartColor1: "#ff6384", //Light Pink
   chartColor2: "#35a2eb", //Light Blue
   chartColor3: "#1d9e63", //Green
@@ -75,6 +86,15 @@ export const adminColorDark = {
   chartColor8: "#ff6384", //Light Pink
   chartColor9: "#52514f", //Gray
   chartColor10: "#034c9d", //Heavy Blue
+  apple: "#52514f",
+  samsung: "#034c9d",
+  xiaomi: "#ff6700",
+  oppo: "#1d9e63",
+  vivo: "#cd3c99",
+  nokia: "#f3d522",
+  // highlight1: "#78acff",
+  highlight1: "orange",
+  highlight2: "#93ff60",
 };
 export const orderStatus = {
   prepare: "Preparing",

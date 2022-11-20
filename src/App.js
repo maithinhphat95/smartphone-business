@@ -23,9 +23,11 @@ import DashboardPage from "./pages/admin/DashboardPage";
 import RevenuePage from "./pages/admin/RevenuePage";
 import SaleRatingPage from "./pages/admin/SaleRatingPage";
 import InventoryPage from "./pages/admin/InventoryPage";
-
-import "./App.css";
+import CustomerManager from "./pages/admin/CustomerManager";
 import ProductDetail from "./pages/admin/ProductDetail";
+import Profile from "./pages/admin/Profile";
+import SettingPage from "./pages/admin/SettingPage";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +66,9 @@ function App() {
             path="/admin/product/:brand/:productId"
             element={<ProductDetail />}
           />
+          <Route path="/admin/customers" element={<CustomerManager />} />
+          <Route path="/admin/profile" element={<Profile />} />
+          <Route path="/admin/setting" element={<SettingPage />} />
         </Route>
       </Routes>
     </>

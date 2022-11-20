@@ -12,9 +12,16 @@ import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import ChartContainer from "../ChartContainer/index.jsx";
 import ChartCover from "../ChartCover";
-import { monthAxis, adminColorLight } from "../../../../constant/admin";
+import {
+  monthAxis,
+  adminColorLight,
+  adminColorDark,
+} from "../../../../constant/admin";
 import ChartBox from "../ChartBox";
 import ChartHeader from "../../ChartHeader";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 SaleRatingChart.propTypes = {};
 
 function SaleRatingChart(props) {
@@ -26,7 +33,23 @@ function SaleRatingChart(props) {
     Tooltip,
     Legend
   );
-
+  const [theme, setTheme] = useState(adminColorLight);
+  const themeSeleted = useSelector((state) => state.admin.theme);
+  // Update themse color
+  useEffect(() => {
+    switch (themeSeleted) {
+      case "light":
+        setTheme(adminColorLight);
+        break;
+      case "dark":
+        setTheme(adminColorDark);
+        break;
+      default:
+        setTheme(theme);
+        break;
+    }
+  }, [themeSeleted]);
+  // Fake Data
   const fakeData = {
     apple: [20, 25, 25, 32, 33, 30, 20, 25, 25, 32, 33, 30],
     samsung: [20, 25, 25, 32, 33, 30, 20, 25, 25, 32, 33, 30],
@@ -65,32 +88,32 @@ function SaleRatingChart(props) {
       {
         label: "Apple",
         data: fakeData.apple,
-        backgroundColor: adminColorLight.chartColor1,
+        backgroundColor: theme.chartColor1,
       },
       {
         label: "Samsung",
         data: fakeData.samsung,
-        backgroundColor: adminColorLight.chartColor2,
+        backgroundColor: theme.chartColor2,
       },
       {
         label: "Oppo",
         data: fakeData.oppo,
-        backgroundColor: adminColorLight.chartColor3,
+        backgroundColor: theme.chartColor3,
       },
       {
         label: "Xiaomi",
         data: fakeData.vivo,
-        backgroundColor: adminColorLight.chartColor4,
+        backgroundColor: theme.chartColor4,
       },
       {
         label: "Vivo",
         data: fakeData.vivo,
-        backgroundColor: adminColorLight.chartColor5,
+        backgroundColor: theme.chartColor5,
       },
       {
         label: "Nokia",
         data: fakeData.vivo,
-        backgroundColor: adminColorLight.chartColor6,
+        backgroundColor: theme.chartColor6,
       },
     ],
   };
@@ -98,7 +121,7 @@ function SaleRatingChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <ChartHeader chartName="Sale Rating 2022" />
+      <ChartHeader chartName="Monthly Sold Percentage 2022 (%)" />
       {/* Body of chart */}
       <ChartCover>
         {/* Chart of revenue summary */}
