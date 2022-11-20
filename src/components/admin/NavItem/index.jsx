@@ -1,6 +1,6 @@
 import React from "react";
 import { SvgIcon, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   Store,
   PieChart,
@@ -65,6 +65,9 @@ function NavItem(props) {
         return;
     }
   }
+  // Active Show
+  const params = useParams();
+  console.log(params);
   return (
     <>
       <Link className="nav-link" to={url} target={blank && "_blank"}>

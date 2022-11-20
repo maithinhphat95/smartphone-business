@@ -27,6 +27,7 @@ import CustomerManager from "./pages/admin/CustomerManager";
 import ProductDetail from "./pages/admin/ProductDetail";
 import Profile from "./pages/admin/Profile";
 import SettingPage from "./pages/admin/SettingPage";
+import AdminPages from "./pages/admin/AdminPages";
 import "./App.css";
 
 function App() {
@@ -58,17 +59,11 @@ function App() {
         </Route>
 
         <Route path="/admin" element={<AdminSite />}>
-          <Route path="/admin/dashboard" element={<DashboardPage />} />
-          <Route path="/admin/revenue" element={<RevenuePage />} />
-          <Route path="/admin/sale" element={<SaleRatingPage />} />
-          <Route path="/admin/inventory" element={<InventoryPage />} />
+          <Route path="/admin/:page" element={<AdminPages />} />
           <Route
             path="/admin/product/:brand/:productId"
             element={<ProductDetail />}
           />
-          <Route path="/admin/customers" element={<CustomerManager />} />
-          <Route path="/admin/profile" element={<Profile />} />
-          <Route path="/admin/setting" element={<SettingPage />} />
         </Route>
       </Routes>
     </>
