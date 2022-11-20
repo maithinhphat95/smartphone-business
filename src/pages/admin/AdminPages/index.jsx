@@ -14,9 +14,8 @@ AdminPages.propTypes = {};
 
 function AdminPages(props) {
   const params = useParams();
-  console.log(params.page);
   const renderPage = (page) => {
-    switch (params.page) {
+    switch (page) {
       case "dashboard":
         return <DashboardPage />;
       case "revenue":

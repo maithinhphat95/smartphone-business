@@ -10,20 +10,8 @@ RevenuePage.propTypes = {};
 
 function RevenuePage(props) {
   const [isLoading, setLoading] = useState(true);
-  const tableData = {
-    title: "Order List",
-    category: "order",
-    head: tableHead.order,
-    body: tableRows.order,
-    extra: {
-      isExtra: true,
-      extraHead: tableHead.purchased,
-    },
 
-    isControl: false,
-    searchBy: "id",
-  };
-
+  // Fake loading
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -72,7 +60,7 @@ function RevenuePage(props) {
             <MonthlyRevenueChart />
           </Box>
           <Box>
-            <OrderTable data={tableData} />
+            <OrderTable />
           </Box>
         </Box>
       )}

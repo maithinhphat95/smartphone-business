@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
+  adminColorDark,
   adminColorLight,
   couponList,
   productList,
+  tableHead,
+  tableRows,
 } from "../../../../constant/admin";
 import {
   Box,
@@ -34,6 +37,7 @@ import {
   Search,
 } from "@mui/icons-material";
 import "./style.scss";
+import { useSelector } from "react-redux";
 const ExtraTable = (props) => {
   const { row, extraData, isOpen } = props;
   return (
@@ -229,10 +233,25 @@ function Row(props) {
 }
 
 export default function OrderTable(props) {
-  const { data } = props;
+  // Fake Data
+  const data = {
+    title: "Order List",
+    category: "order",
+    head: tableHead.order,
+    body: tableRows.order,
+    extra: {
+      isExtra: true,
+      extraHead: tableHead.purchased,
+    },
+    isControl: false,
+    searchBy: "id",
+  };
+  const [theme, setTheme] = useState(adminColorLight);
+  const themeSeleted = useSelector((state) => state.admin.theme);
   const [page, setPageIndex] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [dec, setDec] = useState(true);
+  const [sortArrow, setSortArrow] = useState(false);
   const [sortDesc, setSortDesc] = useState(false);
   const [sortBy, setSortBy] = useState("");
   const [dataSorted, setDataSorted] = useState([...data.body]);
@@ -296,10 +315,11 @@ export default function OrderTable(props) {
 
   // Handle request sort by category
   const requestSort = (category) => {
+    setSortArrow(true);
     if (sortBy === category) {
       setSortDesc(!sortDesc);
     } else {
-      setSortDesc(true);
+      setSortDesc(false);
       setSortBy(category);
     }
     setDec(!dec);
@@ -325,9 +345,32 @@ export default function OrderTable(props) {
     setDec(!dec);
   };
 
+  // Update themse color
+  useEffect(() => {
+    switch (themeSeleted) {
+      case "light":
+        setTheme(adminColorLight);
+        break;
+      case "dark":
+        setTheme(adminColorDark);
+        break;
+      default:
+        setTheme(theme);
+        break;
+    }
+  }, [themeSeleted]);
+
   return (
     <Paper
-      sx={{ borderRadius: 2, boxShadow: "4px 4px 4px #ccc", width: "100%" }}
+      sx={{
+        borderRadius: 2,
+        boxShadow: `4px 4px 4px ${theme.shadow}`,
+        width: "100%",
+        backgroundColor: theme.itemBackground,
+        "& *": {
+          color: theme.textColor,
+        },
+      }}
     >
       <Stack
         direction={"row"}
@@ -365,7 +408,14 @@ export default function OrderTable(props) {
           </IconButton>
         </Box>
       </Stack>
-      <TableContainer component={Paper}>
+      {/* Table Order */}
+      <TableContainer
+        component={Paper}
+        sx={{
+          borderRadius: 0,
+          backgroundColor: "transparent",
+        }}
+      >
         <Table>
           <TableHead
             sx={{
@@ -385,18 +435,23 @@ export default function OrderTable(props) {
                   }}
                   sx={{ cursor: "pointer" }}
                 >
-                  <TableSortLabel
-                    active={sortBy === item.toLocaleString()}
-                    direction={
-                      sortBy === item.toLocaleString()
-                        ? sortDesc
-                          ? "desc"
-                          : "asc"
-                        : "desc"
-                    }
-                  >
-                    {item}
-                  </TableSortLabel>
+                  {sortArrow ? (
+                    <TableSortLabel
+                      active={sortBy === item.toLocaleString()}
+                      direction={
+                        sortBy === item.toLocaleString()
+                          ? sortDesc
+                            ? "desc"
+                            : "asc"
+                          : "desc"
+                      }
+                      sx={{ color: theme.textColor }}
+                    >
+                      {item}
+                    </TableSortLabel>
+                  ) : (
+                    item
+                  )}
                 </TableCell>
               ))}
             </TableRow>

@@ -23,12 +23,33 @@ import {
   Button,
 } from "@mui/material";
 import { Delete, Edit, Search, ViewList } from "@mui/icons-material";
-import { adminColorLight, tableHead } from "../../../../constant/admin";
+import {
+  adminColorDark,
+  adminColorLight,
+  tableHead,
+} from "../../../../constant/admin";
 import "./style.scss";
+import Label from "../../Label";
 
 // Function show each row of tablebody (order item)
 function Row(props) {
-  const { row, index } = props;
+  const { row } = props;
+  const [theme, setTheme] = useState(adminColorLight);
+  const themeSeleted = useSelector((state) => state.admin.theme);
+  // Update themse color
+  useEffect(() => {
+    switch (themeSeleted) {
+      case "light":
+        setTheme(adminColorLight);
+        break;
+      case "dark":
+        setTheme(adminColorDark);
+        break;
+      default:
+        setTheme(theme);
+        break;
+    }
+  }, [themeSeleted]);
   return (
     <>
       <TableRow className="product-table-row">
@@ -49,11 +70,11 @@ function Row(props) {
             </Stack>
           </TableCell>
           <TableCell>
-            <Box
-              className="label"
-              backgroundColor="primary"
-              // sx={{ backgroundColor: "primary" }}
-            >{`${row.brand}`}</Box>
+            <Label
+              content={row.brand}
+              textColor={theme.textColor}
+              backgroundColor={theme[`${row.brand.toLocaleLowerCase()}`]}
+            />
           </TableCell>
           <TableCell align="center">
             <Stack spacing={1} direction="row">
@@ -188,7 +209,7 @@ export default function ProductTable(props) {
     if (sortBy === category) {
       setSortDesc(!sortDesc);
     } else {
-      setSortDesc(true);
+      setSortDesc(false);
       setSortBy(category);
     }
     setDec(!dec);
@@ -308,7 +329,7 @@ export default function ProductTable(props) {
             {dataSorted
               ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               ?.map((row, index) => (
-                <Row key={row.id} row={row} index={index + 1} />
+                <Row key={row.id} row={row} />
               ))}
           </TableBody>
         </Table>
