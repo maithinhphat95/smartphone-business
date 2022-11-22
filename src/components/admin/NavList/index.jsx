@@ -63,7 +63,7 @@ function NavList(props) {
         <NavItem content="Profile" icon="Personal" url="/admin/profile" />
         <NavItem content="Setting" icon="Setting" url="/admin/setting" />
         <div onClick={handleLogout}>
-          <NavItem content="Logout" icon="Logout" />
+          <NavItem content="Logout" icon="Logout" url="/admin/logout" />
         </div>
       </Box>
     </Box>

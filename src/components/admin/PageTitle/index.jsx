@@ -26,7 +26,7 @@ function PageTitle(props) {
     }
   }, [themeSeleted]);
   return (
-    <Box className="page-title" sx={{ mb: 2 }}>
+    <Box className="page-title" sx={{ mb: 2, height: "58px" }}>
       <h3>{title}</h3>
       <p>{description}</p>
     </Box>

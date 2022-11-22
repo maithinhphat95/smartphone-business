@@ -29,6 +29,7 @@ import Profile from "./pages/admin/Profile";
 import SettingPage from "./pages/admin/SettingPage";
 import AdminPages from "./pages/admin/AdminPages";
 import "./App.css";
+import ProductCreate from "./pages/admin/ProductCreate";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ function App() {
             path="/admin/product/:brand/:productId"
             element={<ProductDetail />}
           />
+          <Route path="/admin/product/create" element={<ProductCreate />} />
         </Route>
       </Routes>
     </>

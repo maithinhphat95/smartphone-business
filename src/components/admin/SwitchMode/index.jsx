@@ -1,5 +1,5 @@
 import React from "react";
-import { FormGroup, Switch, Typography, Stack } from "@mui/material";
+import { FormGroup, Switch, Typography, Stack, FormLabel } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { themeSelect } from "../../../redux/admin/adminReducer";
 
@@ -23,7 +23,7 @@ function SwitchMode(props) {
         alignItems="center"
         gap={1}
       >
-        <Typography>Dark Mode:</Typography>
+        <Typography>Dark Mode: </Typography>
         <Switch
           value={""}
           checked={theme === "dark"}

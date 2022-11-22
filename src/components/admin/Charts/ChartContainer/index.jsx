@@ -28,6 +28,7 @@ function ChartContainer(props) {
     <Box
       sx={{
         width: "100%",
+        // maxHeight: "410px",
         display: "flex",
         flexDirection: "column",
         backgroundColor: theme.itemBackground,

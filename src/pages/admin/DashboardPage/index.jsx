@@ -19,8 +19,8 @@ function DashboardPage(props) {
         <Box
           sx={{
             display: "flex",
-            gap: 2,
-            justifyContent: "center",
+            gap: 3,
+            justifyContent: { xs: "center", md: "space-between" },
             flexDirection: "row",
             flexWrap: { xs: "wrap", md: "nowrap" },
           }}

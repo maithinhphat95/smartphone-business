@@ -5,6 +5,7 @@ import useFetch from "../../../components/customize/fetch";
 import { ToastContainer, toast } from "react-toastify";
 import ThemeContext from "../../../components/customer/Context/ThemeContext";
 import "./CarouselPhone.scss";
+import { Box } from "@mui/material";
 
 function CarouselPhone(props) {
   let params = useParams();
@@ -137,7 +138,20 @@ function CarouselPhone(props) {
                 return (
                   <div key={index} className="color-item">
                     <a className="">
-                      <p>{item}</p>
+                      <Box
+                        sx={{
+                          backgroundColor: item.code,
+                          border: "1px solid black",
+                          borderRadius: 4,
+                          padding: "4px",
+                          width: "80px",
+                          textAlign: "center",
+                          textTransform: "capitalize",
+                          color: item.code === "black" && "white",
+                        }}
+                      >
+                        {item.name}
+                      </Box>
                     </a>
                   </div>
                 );

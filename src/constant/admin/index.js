@@ -45,7 +45,8 @@ export const yearlyRevenue = [
 export const adminColorLight = {
   primary: "#919090",
   secondary: "#d9d9d9",
-  background: "#f0f0f0",
+  // background: "#f0f0f0",
+  background: "#dedede",
   itemBackground: "white",
   shadow: "#ccc",
   textColor: "black",
@@ -64,7 +65,9 @@ export const adminColorLight = {
   xiaomi: "#ff6700",
   oppo: "#1d9e63",
   vivo: "#cd3c99",
-  nokia: "#f3d522",
+  // nokia: "#f3d522",
+  nokia: "#b18e41",
+
   // highlight1: "#0842A0",
   highlight1: "#ff6800",
   highlight2: "#2e6713",
@@ -91,7 +94,8 @@ export const adminColorDark = {
   xiaomi: "#ff6700",
   oppo: "#1d9e63",
   vivo: "#cd3c99",
-  nokia: "#f3d522",
+  // nokia: "#f3d522",
+  nokia: "#b18e41",
   // highlight1: "#78acff",
   highlight1: "orange",
   highlight2: "#93ff60",
@@ -101,6 +105,15 @@ export const orderStatus = {
   delivery: "Delevering",
   received: "Received",
 };
+
+export const phoneColor = [
+  { name: "trắng", code: "white" },
+  { name: "đen", code: "black" },
+  { name: "đỏ", code: "red" },
+  { name: "lam", code: "blue" },
+  { name: "lục", code: "green" },
+  { name: "vàng", code: "yellow" },
+];
 
 // Create fake order item function
 function FakeOrderItem(no, id, user, date, subtotal, bonus, total, status) {

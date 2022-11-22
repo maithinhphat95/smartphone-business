@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Box,
   Table,
@@ -21,21 +21,85 @@ import {
   FormControl,
   MenuItem,
   Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
 } from "@mui/material";
+import { toast, ToastContainer } from "react-toastify";
 import { Delete, Edit, Search, ViewList } from "@mui/icons-material";
 import {
   adminColorDark,
   adminColorLight,
   tableHead,
 } from "../../../../constant/admin";
-import "./style.scss";
 import Label from "../../Label";
+import { deleteProductRequest } from "../../../../redux/common/productReducer";
+import "./style.scss";
+
+function DeleteDialog(props) {
+  const { id, open, onClose } = props;
+  const dispatch = useDispatch();
+  // Handle Close Dialog
+  const handleClose = async () => {
+    onClose();
+  };
+  const handleDelete = () => {
+    dispatch(deleteProductRequest(id));
+    toast("Delete Product Successfully", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    onClose();
+    return;
+  };
+  return (
+    <Dialog
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">
+        Do you want to delete this product?
+      </DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+          If you click the Agree button, you have to be responsible for the data
+          loss of this product.
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button variant="contained" color="error" onClick={handleClose}>
+          Cancel
+        </Button>
+        <Button
+          variant="contained"
+          color="success"
+          onClick={handleDelete}
+          autoFocus
+        >
+          Agree
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+}
 
 // Function show each row of tablebody (order item)
 function Row(props) {
   const { row } = props;
   const [theme, setTheme] = useState(adminColorLight);
   const themeSeleted = useSelector((state) => state.admin.theme);
+  const [openDialog, setOpenDialog] = useState(false);
+  const navigate = useNavigate();
   // Update themse color
   useEffect(() => {
     switch (themeSeleted) {
@@ -50,6 +114,18 @@ function Row(props) {
         break;
     }
   }, [themeSeleted]);
+
+  // Request open Delete Dialog
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+  // Request Close Delete Dialog
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+    navigate("/admin/inventory");
+    // window.location.reload(false);
+  };
+
   return (
     <>
       <TableRow className="product-table-row">
@@ -72,28 +148,54 @@ function Row(props) {
           <TableCell>
             <Label
               content={row.brand}
-              textColor={theme.textColor}
               backgroundColor={theme[`${row.brand.toLocaleLowerCase()}`]}
             />
           </TableCell>
           <TableCell align="center">
             <Stack spacing={1} direction="row">
               {row.color?.map((e, index) => (
-                <Typography key={index} variant="p">
-                  {e}
-                </Typography>
+                <Label
+                  key={index}
+                  content={e.name}
+                  backgroundColor={e.code}
+                  borderColor="black"
+                />
               ))}
             </Stack>
           </TableCell>
           <TableCell>
-            <Box>
-              {/* <Typography>{`${row.priceOld.toLocaleString()} VND`}</Typography> */}
-              <Typography>{`${row.priceNew.toLocaleString()} VND`}</Typography>
-            </Box>
+            <Box color={"darkblue"} fontWeight="500">{`${Number(
+              row.priceNew
+            ).toLocaleString()} VND`}</Box>
           </TableCell>
-          <TableCell>{row.memory ? `${row.memory} GB` : "No Data"}</TableCell>
-          <TableCell>{`${row.stock} pcs`}</TableCell>
-          <TableCell>{`${row.sold} pcs`}</TableCell>
+          <TableCell>
+            {row.memory ? (
+              <Label
+                content={row.memory + " GB"}
+                borderColor={theme[`${row.brand.toLocaleLowerCase()}`]}
+                backgroundColor="white"
+                width="80px"
+              />
+            ) : (
+              "No Data"
+            )}
+          </TableCell>
+          <TableCell>
+            <Label
+              content={row.stock + " pcs"}
+              borderColor={theme[`${row.brand.toLocaleLowerCase()}`]}
+              backgroundColor="white"
+              width="80px"
+            />
+          </TableCell>
+          <TableCell>
+            <Label
+              content={row.sold + " pcs"}
+              borderColor={theme[`${row.brand.toLocaleLowerCase()}`]}
+              backgroundColor="white"
+              width="80px"
+            />
+          </TableCell>
         </>
 
         <TableCell>
@@ -123,10 +225,19 @@ function Row(props) {
               variant="outlined"
               color="error"
               sx={{ padding: 0.5, minWidth: 0, width: "50%" }}
+              onClick={() => {
+                handleOpenDialog();
+              }}
             >
               <Delete />
             </Button>
+            <DeleteDialog
+              open={openDialog}
+              onClose={handleCloseDialog}
+              id={row.id}
+            />
           </Stack>
+          <ToastContainer />
         </TableCell>
       </TableRow>
     </>
@@ -201,7 +312,7 @@ export default function ProductTable(props) {
         return { ...e, no: index + 1 };
       })
     );
-  }, [dec]);
+  }, [dec, productList]);
 
   // Handle request sort by category
   const requestSort = (category) => {
@@ -254,35 +365,47 @@ export default function ProductTable(props) {
         >
           <ViewList /> {data.title}
         </Typography>
-
-        {/* Search Box */}
-        <Box
-          component={"form"}
-          sx={{ m: 1, display: "flex", alignItems: "center" }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmitSearch();
-          }}
-        >
-          <TextField
-            id="standard-basic"
-            variant="standard"
-            placeholder={`Search by ${data.searchBy}`}
-            onChange={(e) => {
-              handleInputSearch(e.target.value);
+        <Stack direction={"row"}>
+          {/* Search Box */}
+          <Box
+            component={"form"}
+            sx={{ m: 1, display: "flex", alignItems: "center" }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmitSearch();
             }}
-          />
-          <IconButton
-            size="medium"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2, ml: 1 }}
-            type="submit"
           >
-            <Search />
-          </IconButton>
-        </Box>
+            <TextField
+              id="standard-basic"
+              variant="standard"
+              placeholder={`Search by ${data.searchBy}`}
+              onChange={(e) => {
+                handleInputSearch(e.target.value);
+              }}
+            />
+            <IconButton
+              size="medium"
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              sx={{ ml: 1 }}
+              type="submit"
+            >
+              <Search />
+            </IconButton>
+          </Box>
+          {/* Add Product Button */}
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{
+              margin: "8px 16px",
+              "& a": { color: "white", textDecoration: "none" },
+            }}
+          >
+            <Link to={"/admin/product/create"}>Add Product</Link>
+          </Button>
+        </Stack>
       </Stack>
       {/* Table */}
       <TableContainer component={Paper} width={"100%"} sx={{ borderRadius: 0 }}>
@@ -328,7 +451,7 @@ export default function ProductTable(props) {
           <TableBody>
             {dataSorted
               ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              ?.map((row, index) => (
+              ?.map((row) => (
                 <Row key={row.id} row={row} />
               ))}
           </TableBody>

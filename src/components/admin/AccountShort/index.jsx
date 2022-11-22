@@ -20,7 +20,7 @@ function AccountShort(props) {
       }}
     >
       <Avatar
-        alt="Remy Sharp"
+        alt="Mai Thinh Phat"
         src={currentUser.img || "https://mui.com/static/images/avatar/1.jpg"}
         sx={{
           width: 80,

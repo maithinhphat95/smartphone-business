@@ -3,7 +3,7 @@ import { yearlyRevenue } from "../../constant/admin";
 const initialState = {
   showMenu: false,
   yearlyData: yearlyRevenue,
-  theme: "dark",
+  theme: "light",
 };
 // Admin action
 export const showMenu = () => {

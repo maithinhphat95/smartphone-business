@@ -2,6 +2,7 @@ import productApi from "../../apis/productApi";
 // initial state
 const initialState = {
   productList: [],
+  selectedProduct: {},
 };
 // Product Action----------------------------------------------------
 // Get All
@@ -12,7 +13,7 @@ export const getProductList = (data) => {
   };
 };
 // Get Product List Request
-export const getProductListRequest = (data) => {
+export const getProductListRequest = () => {
   return (dispatch) => {
     (async () => {
       try {
@@ -37,7 +38,7 @@ export const getProductRequest = (id) => {
   return (dispatch) => {
     (async () => {
       try {
-        const data = await productApi.get(id);
+        const data = await productApi.getProduct(id);
         dispatch(getProduct(data));
       } catch (error) {
         console.log(error);
@@ -53,13 +54,27 @@ export const addProduct = (data) => {
     payload: data,
   };
 };
-// Add Request, update Order List
+// Add Request, update product List
 export const addProductRequest = (data) => {
   return (dispatch) => {
     (async () => {
       try {
         await productApi.add(data);
         dispatch(addProduct(data));
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+};
+
+// Update product Request
+export const updateProductRequest = (id, data) => {
+  return (dispatch) => {
+    (async () => {
+      try {
+        await productApi.put(id, data);
+        dispatch(getProductListRequest());
       } catch (error) {
         console.log(error);
       }
@@ -75,12 +90,12 @@ export const deleteProduct = (id) => {
   };
 };
 // Delete Product Item Request
-export const deletesProductRequest = (id) => {
+export const deleteProductRequest = (id) => {
   return (dispatch) => {
     (async () => {
       try {
         const response = await productApi.delete(id);
-        dispatch(deleteProduct(id));
+        dispatch(getProductListRequest());
       } catch (error) {
         console.log(error);
       }
@@ -92,16 +107,24 @@ export const deletesProductRequest = (id) => {
 export const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case "GET_PRODUCT_LIST":
-      localStorage.setItem("productList", JSON.stringify(action.payload));
+      // localStorage.setItem("productList", JSON.stringify(action.payload));
       return {
         ...state,
         productList: action.payload,
+      };
+    case "GET_PRODUCT":
+      // localStorage.setItem("selectedProduct", JSON.stringify(action.payload));
+      return {
+        ...state,
+        selectedProduct: action.payload,
       };
     case "ADD_PRODUCT":
       return {
         ...state,
         productList: [...state.productList, action.payload],
       };
+    // case "DELETE_PRODUCT":
+    //   return {};
     default:
       return { ...state };
   }

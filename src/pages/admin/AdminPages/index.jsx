@@ -12,28 +12,29 @@ import SettingPage from "../SettingPage";
 
 AdminPages.propTypes = {};
 
+export const renderPage = (page) => {
+  switch (page) {
+    case "dashboard":
+      return <DashboardPage />;
+    case "revenue":
+      return <RevenuePage />;
+    case "sale":
+      return <SaleRatingPage />;
+    case "inventory":
+      return <InventoryPage />;
+    case "customers":
+      return <CustomerManager />;
+    case "profile":
+      return <Profile />;
+    case "setting":
+      return <SettingPage />;
+    default:
+      return <NotFoundPage />;
+  }
+};
+
 function AdminPages(props) {
   const params = useParams();
-  const renderPage = (page) => {
-    switch (page) {
-      case "dashboard":
-        return <DashboardPage />;
-      case "revenue":
-        return <RevenuePage />;
-      case "sale":
-        return <SaleRatingPage />;
-      case "inventory":
-        return <InventoryPage />;
-      case "customers":
-        return <CustomerManager />;
-      case "profile":
-        return <Profile />;
-      case "setting":
-        return <SettingPage />;
-      default:
-        return <NotFoundPage />;
-    }
-  };
   return renderPage(params.page);
 }
 

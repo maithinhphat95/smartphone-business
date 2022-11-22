@@ -75,9 +75,23 @@ function SaleRatingChart(props) {
     scales: {
       x: {
         stacked: true,
+        grid: { color: theme.primary },
+        ticks: { color: theme.primary },
       },
       y: {
         stacked: true,
+        grid: { color: theme.primary },
+        ticks: { color: theme.primary },
+      },
+    },
+    plugins: {
+      datalabels: {
+        display: true,
+        color: themeSeleted == "dark" ? "white" : "black",
+      },
+      legend: {
+        position: "top",
+        labels: { color: theme.primary },
       },
     },
   };

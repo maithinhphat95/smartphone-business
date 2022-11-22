@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { toast, ToastContainer } from "react-toastify";
 import {
   Typography,
   Box,
@@ -13,34 +12,40 @@ import {
   FormControl,
   Paper,
 } from "@mui/material";
-import { ModeEdit, Restore } from "@mui/icons-material";
 import {
+  adminColorDark,
+  adminColorLight,
+  phoneColor,
+} from "../../../constant/admin";
+import {
+  addProductRequest,
   getProductRequest,
   updateProductRequest,
 } from "../../../redux/common/productReducer";
 import PageTitle from "../../../components/admin/PageTitle";
-import Label from "../../../components/admin/Label";
-import { adminColorDark, adminColorLight } from "../../../constant/admin";
 import "./style.scss";
-ProductDetail.propTypes = {};
+import { ModeEdit, Restore } from "@mui/icons-material";
+import Label from "../../../components/admin/Label";
+import { toast, ToastContainer } from "react-toastify";
+ProductCreate.propTypes = {};
 
-function ProductDetail(props) {
-  const { brand, productId } = useParams();
+function ProductCreate(props) {
   const dispatch = useDispatch();
   const selectedProduct = useSelector((state) => state.product.selectedProduct);
   const [data, setData] = useState(selectedProduct);
   const [isLoading, setLoading] = useState(true);
   const [theme, setTheme] = useState(adminColorLight);
   const themeSeleted = useSelector((state) => state.admin.theme);
-  const [showImg, setShowImgInput] = useState(false);
-  const [imgUrl, setImgUrl] = useState(data.img);
+  const [showImg, setShowImg] = useState(false);
   const [defaultValue, setDefaultValue] = useState({});
+  const defaultImg =
+    "https://www.freeiconspng.com/thumbs/phone-icon/phone-icon-by-minduka--a-simple-phone-icon-22.png";
+  const [imgUrl, setImgUrl] = useState(defaultImg);
   const {
     register,
     handleSubmit,
     formState: { errors },
     getValues,
-    reset,
     resetField,
   } = useForm();
 
@@ -68,25 +73,34 @@ function ProductDetail(props) {
   }, [themeSeleted]);
 
   // Handle show picture img
-  const handleShowInput = () => {
-    setShowImgInput(!showImg);
+  const handleShowImg = () => {
+    setShowImg(!showImg);
   };
 
   // Handle Apply the img url
   const handleApplyChangeImg = (url) => {
     setImgUrl(url);
   };
+
   const handleResetImg = () => {
-    setImgUrl(data.img);
-    resetField("img", { defaultValue: data.img });
+    setImgUrl(defaultImg);
+    resetField("img", {
+      defaultValue: defaultImg,
+    });
   };
 
   // Handle submit update
-  const onHandleSubmit = (object, e) => {
-    const updateData = { ...object, color: data.color };
-    dispatch(updateProductRequest(productId, updateData));
-
-    toast("Update Successfully", {
+  const onHandleSubmit = (data, e) => {
+    const colorArray = data.color.map((item) => {
+      for (const element of phoneColor) {
+        if (element.name === item) {
+          return element;
+        }
+      }
+    });
+    const newProduct = { ...data, color: colorArray };
+    dispatch(addProductRequest(newProduct));
+    toast("Add New Product Successfully", {
       position: "top-right",
       autoClose: 2000,
       hideProgressBar: false,
@@ -104,17 +118,6 @@ function ProductDetail(props) {
     console.log(error);
   };
 
-  // Handle reset default
-  const handleReset = () => {
-    reset(defaultValue);
-  };
-
-  // Fetch Data
-  useEffect(() => {
-    setLoading(true);
-    dispatch(getProductRequest(productId));
-  }, []);
-
   // Update data state
   useEffect(() => {
     setData(selectedProduct);
@@ -126,8 +129,8 @@ function ProductDetail(props) {
     <>
       <ToastContainer />
       <PageTitle
-        title="Product Information"
-        description="View detail and update product information"
+        title="Product Create Form"
+        description="Create a new product for your store"
       />
       <Paper
         sx={{
@@ -169,11 +172,8 @@ function ProductDetail(props) {
                     {/* Picture */}
                     <CardMedia
                       component="img"
-                      alt={data.name}
-                      src={
-                        imgUrl ||
-                        "https://www.freeiconspng.com/thumbs/phone-icon/phone-icon-by-minduka--a-simple-phone-icon-22.png"
-                      }
+                      alt={"Product Image"}
+                      src={imgUrl || defaultImg}
                       sx={{
                         width: 200,
                         height: 200,
@@ -196,7 +196,7 @@ function ProductDetail(props) {
                               color: theme.textColor,
                             },
                           }}
-                          onClick={handleShowInput}
+                          onClick={handleShowImg}
                         >
                           <ModeEdit
                             sx={{
@@ -226,7 +226,7 @@ function ProductDetail(props) {
                           </Button>
                         )}
                       </FormControl>
-
+                      {/* Input img box */}
                       <FormControl
                         className={`mt-8 form-control ${!showImg && "hidden"}`}
                         fullWidth
@@ -236,8 +236,8 @@ function ProductDetail(props) {
                           type="text"
                           title="Img Url"
                           name="img"
-                          defaultValue={data.img}
-                          {...register("img")}
+                          defaultValue={defaultImg}
+                          {...register("img", { required: true })}
                         />
                         <Button
                           className="item-right"
@@ -256,6 +256,12 @@ function ProductDetail(props) {
                           Apply
                         </Button>
                       </FormControl>
+
+                      {errors.img?.type === "required" && (
+                        <Typography color="red" alignSelf={"flex-end"}>
+                          * Please input correct image link
+                        </Typography>
+                      )}
                     </Box>
                   </Box>
                   {/* center column */}
@@ -269,10 +275,16 @@ function ProductDetail(props) {
                         className="form-input-text"
                         type="text"
                         name="name"
-                        defaultValue={data.name}
+                        defaultValue={""}
+                        style={errors.name && { borderColor: "red" }}
                         {...register("name", { required: true })}
                       />
                     </Stack>
+                    {errors.name?.type === "required" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please input product name
+                      </Typography>
+                    )}
                     {/* Brand of Product */}
                     <Stack className="form-row">
                       <Typography className="form-label" variant="h6">
@@ -282,24 +294,36 @@ function ProductDetail(props) {
                         className="form-input-text"
                         type="text"
                         name="brand"
-                        defaultValue={data.brand}
+                        style={errors.brand && { borderColor: "red" }}
+                        defaultValue={""}
                         {...register("brand", { required: true })}
                       />
                     </Stack>
+                    {errors.brand?.type === "required" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please input product brand
+                      </Typography>
+                    )}
                     {/* Id of Product */}
                     <Stack className="form-row">
                       <Typography className="form-label" variant="h6">
                         ID code:
                       </Typography>
-                      <div className="form-input-text">{data.id}</div>
-                      {/* <input
+                      {/* <div className="form-input-text">{data.id}</div> */}
+                      <input
                         className="form-input-text"
                         type="text"
                         name="id"
-                        defaultValue={data.id}
+                        style={errors.id && { borderColor: "red" }}
+                        defaultValue={""}
                         {...register("id", { required: true })}
-                      /> */}
+                      />
                     </Stack>
+                    {errors.id?.type === "required" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please input product ID
+                      </Typography>
+                    )}
                     {/* PriceOld of Product */}
                     <Stack className="form-row">
                       <Typography className="form-label" variant="h6">
@@ -310,12 +334,21 @@ function ProductDetail(props) {
                           className="form-input-text"
                           type="number"
                           name="priceOld"
-                          defaultValue={data.priceOld}
-                          {...register("priceOld", { required: true })}
+                          style={errors.priceOld && { borderColor: "red" }}
+                          defaultValue={""}
+                          {...register("priceOld", {
+                            required: true,
+                            minLength: 6,
+                          })}
                         />
                         <Typography className="unit">VND</Typography>
                       </div>
                     </Stack>
+                    {errors.priceOld && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please input correct old price
+                      </Typography>
+                    )}
                     {/* priceNew of Product */}
                     <Stack className="form-row" position="relative">
                       <Typography className="form-label" variant="h6">
@@ -325,14 +358,22 @@ function ProductDetail(props) {
                         <input
                           className="form-input-text"
                           type="number"
+                          style={errors.priceNew && { borderColor: "red" }}
                           name="priceNew"
-                          defaultValue={data.priceNew}
-                          {...register("priceNew", { required: true })}
+                          defaultValue={""}
+                          {...register("priceNew", {
+                            required: true,
+                            minLength: 6,
+                          })}
                         />
                         <Typography className="unit">VND</Typography>
                       </div>
                     </Stack>
-
+                    {errors.priceNew && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please input correct new price
+                      </Typography>
+                    )}
                     {/* memory of Product */}
                     <Stack className="form-row" position="relative">
                       <Typography className="form-label" variant="h6">
@@ -341,7 +382,8 @@ function ProductDetail(props) {
                       <select
                         className="form-input-text"
                         name="memory"
-                        defaultValue={data.memory}
+                        style={errors.memory && { borderColor: "red" }}
+                        defaultValue={""}
                         {...register("memory", { required: true })}
                       >
                         <option value="32">32GB</option>
@@ -351,26 +393,42 @@ function ProductDetail(props) {
                         <option value="512">512 GB</option>
                       </select>
                     </Stack>
-
+                    {errors.memory?.type === "required" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please select product memory
+                      </Typography>
+                    )}
                     {/* Color of Product */}
                     <Stack className="form-row" position="relative">
                       <Typography className="form-label" variant="h6">
                         Colors:
                       </Typography>
-                      <Stack direction={"row"} gap={2}>
-                        {data.color.map((item, index) => {
+                      <Stack direction={"row"} flexWrap="wrap" gap={2}>
+                        {phoneColor.map((item, index) => {
                           return (
-                            <Label
-                              key={index}
-                              content={item.name}
-                              backgroundColor={item.code}
-                              borderColor={"black"}
-                            />
+                            <div key={index}>
+                              <Label
+                                content={item.name}
+                                backgroundColor={item.code}
+                                borderColor={"black"}
+                                width="100px"
+                              >
+                                <input
+                                  type="checkbox"
+                                  {...register("color", { required: true })}
+                                  value={item.name}
+                                />
+                              </Label>
+                            </div>
                           );
                         })}
                       </Stack>
                     </Stack>
-
+                    {errors.color?.type === "required" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please select product color
+                      </Typography>
+                    )}
                     {/* Description of Product */}
                     <Stack className="form-row" position="relative">
                       <Typography className="form-label" variant="h6">
@@ -379,12 +437,17 @@ function ProductDetail(props) {
                       <textarea
                         className="form-input-text"
                         type="text"
+                        style={errors.description && { borderColor: "red" }}
                         name="description"
-                        defaultValue={data.description}
+                        defaultValue={""}
                         {...register("description", { required: true })}
                       />
                     </Stack>
-
+                    {errors.description?.type === "required" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please input description of product
+                      </Typography>
+                    )}
                     {/* Description Price of Product */}
                     <Stack className="form-row" position="relative">
                       <Typography className="form-label" variant="h6">
@@ -392,8 +455,11 @@ function ProductDetail(props) {
                       </Typography>
                       <select
                         className="form-input-text"
+                        style={
+                          errors.descriptionPrice && { borderColor: "red" }
+                        }
                         name="descriptionPrice"
-                        defaultValue={data.descriptionPrice}
+                        defaultValue={"duoi-2-trieu"}
                         {...register("descriptionPrice", { required: true })}
                       >
                         <option value="duoi-2-trieu">Dưới 2 triệu</option>
@@ -403,6 +469,11 @@ function ProductDetail(props) {
                         <option value="tren-13-trieu">Trên 13 triệu</option>
                       </select>
                     </Stack>
+                    {errors.descriptionPrice?.type === "required" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please select product color
+                      </Typography>
+                    )}
                     {/* Stock of Product */}
                     <Stack className="form-row" position="relative">
                       <Typography className="form-label" variant="h6">
@@ -412,13 +483,19 @@ function ProductDetail(props) {
                         <input
                           className="form-input-text"
                           type="number"
+                          style={errors.stock && { borderColor: "red" }}
                           name="stock"
-                          defaultValue={data.stock}
+                          defaultValue={""}
                           {...register("stock", { required: true })}
                         />
                         <Typography className="unit">PCS</Typography>
                       </div>
                     </Stack>
+                    {errors.stock?.type === "required" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please input quantity stock in store
+                      </Typography>
+                    )}
                     {/* Sold of Product */}
                     <Stack className="form-row" position="relative">
                       <Typography className="form-label" variant="h6">
@@ -428,24 +505,31 @@ function ProductDetail(props) {
                         <input
                           className="form-input-text"
                           type="number"
+                          style={errors.sold && { borderColor: "red" }}
                           name="sold"
-                          defaultValue={data.sold}
+                          defaultValue={""}
                           {...register("sold", { required: true })}
                         />
                         <Typography className="unit">PCS</Typography>
                       </div>
                     </Stack>
+                    {errors.sold?.type === "required" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Please input quantity sold
+                      </Typography>
+                    )}
                     {/* Form Action */}
                     <Stack className="form-row form-action">
                       <Button
                         variant="contained"
                         color="error"
-                        onClick={handleReset}
+                        // onClick={handleReset}
+                        type="reset"
                       >
                         Reset
                       </Button>
                       <Button variant="contained" color="success" type="submit">
-                        Update & Save
+                        ADD PRODUCT
                       </Button>
                     </Stack>
                   </Box>
@@ -489,4 +573,4 @@ function ProductDetail(props) {
   );
 }
 
-export default ProductDetail;
+export default ProductCreate;

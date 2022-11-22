@@ -366,9 +366,9 @@ export default function OrderTable(props) {
         borderRadius: 2,
         boxShadow: `4px 4px 4px ${theme.shadow}`,
         width: "100%",
-        backgroundColor: theme.itemBackground,
+        // backgroundColor: theme.itemBackground,
         "& *": {
-          color: theme.textColor,
+          // color: theme.textColor,
         },
       }}
     >
@@ -445,7 +445,6 @@ export default function OrderTable(props) {
                             : "asc"
                           : "desc"
                       }
-                      sx={{ color: theme.textColor }}
                     >
                       {item}
                     </TableSortLabel>

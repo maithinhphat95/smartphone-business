@@ -63,7 +63,7 @@ function Register(props) {
   };
 
   //Toast noti
-  const onHandleSubmit = async (data) => {
+  const onHandleSubmit = (data) => {
     // Check existing account
     const checkExist = userList.some(
       (element) => element.account === data.account

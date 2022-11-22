@@ -1,3 +1,4 @@
+import axios from "axios";
 import axiosClient from "./axiosClient";
 
 const productApi = {
@@ -12,6 +13,11 @@ const productApi = {
   async add(data) {
     const url = `/productList`;
     const response = await axiosClient.post(url, data);
+    return response;
+  },
+  async put(id, data) {
+    const url = `/productList/${id}`;
+    const response = await axiosClient.put(url, data);
     return response;
   },
   async delete(id) {

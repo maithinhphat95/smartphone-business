@@ -70,7 +70,7 @@ function BrandRatingChart(props) {
   };
 
   return (
-    <ChartContainer maxWidth="350px">
+    <ChartContainer maxWidth="450px">
       <ChartHeader chartName="Brands Sold Percentage 2022 (%)" />
       <ChartCover>
         <Box
