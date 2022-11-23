@@ -1,27 +1,63 @@
-import {Container,Grid,IconButton,InputBase,Paper,Typography,} from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  Badge,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  InputBase,
+  Paper,
+  Typography,
+  Box,
+  Icon,
+} from "@mui/material";
+
+import {
+  LocalShippingOutlined,
+  ShoppingCartOutlined,
+  AccountCircleOutlined,
+  Search,
+  Logout,
+  AccountBox,
+  Leaderboard,
+} from "@mui/icons-material";
+import ThemeContext from "../../../components/customer/Context/ThemeContext";
+import { login, logout } from "../../../redux/common/userReducer";
 import "./Header.scss";
-import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import SearchIcon from "@mui/icons-material/Search";
-import { Link } from "react-router-dom";
-import { Box } from "@mui/system";
-import Flip from "react-reveal/Flip";
+import { useEffect } from "react";
 function Header(props) {
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = (e) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isLogin, currentUser } = useSelector((state) => state.user);
+  const localLogin = JSON.parse(localStorage.getItem("userData")) || {};
 
-  //   setOpen(true);
-  // }
-  // const handleClose = () => setOpen(false);
-  // const history = useNavigate();
-  // const onClickSearch = (e) =>{
-  //   e.preventdefault();
-  //   history("/search");
-  //
+  const { setSearchTerm, myCart } = useContext(ThemeContext);
+  // Check login from local
+  useEffect(() => {
+    if (localLogin?.isLogin) {
+      dispatch(login(localLogin.currentUser));
+      navigate("/");
+    }
+  }, [localLogin.isLogin]);
 
-  // }
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate("/search");
+  };
+
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+    navigate("/search");
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.clear();
+    navigate("/");
+  };
+
   return (
     <Container
       maxWidth="xl"
@@ -38,48 +74,101 @@ function Header(props) {
             </Link>
           </Grid>
           <Grid item={true} sm={12} xs={12} md={5}>
+            {/* <form className='search-form' > */}
             <Paper component="form" sx={{ display: "flex", marginTop: 2.5 }}>
               {" "}
               <InputBase
                 sx={{ ml: 1, flex: 1 }}
-                placeholder="Nhập tên điện thoại ... cần tìm"
-                inputProps={{
-                  "aria-label": "Nhập tên điện thoại ... cần tìm",
-                }}
                 type="search"
+                placeholder="Nhập tên điện thoại ... cần tìm"
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
-              <Link to="/search" className="text-link">
-                <IconButton type="submit" aria-label="search">
-                  <SearchIcon fontSize="medium" />
-                </IconButton>
-              </Link>
+              <IconButton
+                type="submit"
+                aria-label="search"
+                onClick={(e) => handleSearch(e)}
+              >
+                <Search fontSize="medium" />
+              </IconButton>
             </Paper>
+            {/* </form> */}
           </Grid>
           <Grid item={true} sm={12} xs={12} md={5}>
             <Box>
-              <Flip cascade>
+              <div>
                 <ul className="header-ul ">
                   <li>
                     <Link to="/checkorder" href="#" className="header-link">
-                      <LocalShippingOutlinedIcon color="" fontSize="large" />{" "}
+                      <LocalShippingOutlined color="" fontSize="large" />{" "}
                       <p className="d-none d-sm-block">Kiểm tra đơn hàng</p>
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/login" className="header-link">
-                      <AccountCircleOutlinedIcon color="" fontSize="large" />
-                      <p className="d-none d-sm-block">Tài khoản của tôi</p>
-                    </Link>
-                  </li>
-                  {/* {open && <Login handleClose={setOpen}/>} */}
+                  {!isLogin ? (
+                    <li>
+                      <Link to="/login" className="header-link">
+                        <AccountCircleOutlined color="" fontSize="large" />
+                        <p className="d-none d-sm-block">Tài khoản của tôi</p>
+                      </Link>
+                    </li>
+                  ) : (
+                    <div className="dropdown">
+                      <div className="nav-item dropdown">
+                        <a
+                          className=" dropdown-toggle"
+                          href="#"
+                          role="button"
+                          id="dropdownMenuLink"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          <img
+                            src={currentUser.img}
+                            color=""
+                            style={{
+                              height: "50px",
+                              borderRadius: "180px",
+                            }}
+                          />{" "}
+                          {currentUser.account}
+                        </a>
+                        <div
+                          className="dropdown-menu account-action"
+                          aria-labelledby="dropdownMenuLink"
+                        >
+                          <Button className="dropdown-item item-color" href="#">
+                            <AccountBox /> Profile
+                          </Button>
+                          {currentUser.isAdmin && (
+                            <Link
+                              to={"/admin/dashboard"}
+                              target="_blank"
+                              className="dropdown-item item-color"
+                            >
+                              <Leaderboard /> Admin Dashboard
+                            </Link>
+                          )}
+                          <Button
+                            onClick={() => handleLogout()}
+                            className="dropdown-item item-color"
+                          >
+                            <Logout /> Log out
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   <li>
                     <Link to="/cart" className="header-link">
-                      <ShoppingCartOutlinedIcon color="" fontSize="large" />
+                      <ShoppingCartOutlined color="" fontSize="large" />
+                      <Badge>{myCart.length}</Badge>
                       <p className="d-none d-sm-block">Giỏ hàng</p>
                     </Link>
                   </li>
                 </ul>
-              </Flip>
+              </div>
             </Box>
           </Grid>
         </Grid>

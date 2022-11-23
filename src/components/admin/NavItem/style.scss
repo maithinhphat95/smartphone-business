@@ -1,0 +1,23 @@
+.nav-link {
+  color: black;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 2px;
+  text-decoration: none;
+  text-transform: capitalize;
+  background-color: #d9d9d9;
+  border-radius: 8px;
+  overflow: hidden;
+  &-item {
+    height: 32px;
+    display: flex;
+    align-items: center;
+  }
+  & * {
+    padding: 8px;
+  }
+  &:hover {
+    background-color: #a0a0a0;
+    color: white;
+  }
+}
