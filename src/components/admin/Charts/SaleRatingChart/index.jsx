@@ -135,7 +135,7 @@ function SaleRatingChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <ChartHeader chartName="Monthly Sold Percentage 2022 (%)" />
+      <ChartHeader chartName="Monthly Sold Quantity 2022 (%)" />
       {/* Body of chart */}
       <ChartCover>
         {/* Chart of revenue summary */}

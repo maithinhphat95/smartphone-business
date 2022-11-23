@@ -56,7 +56,8 @@ const ExtraTable = (props) => {
             <Table
               size="small"
               sx={{
-                backgroundColor: adminColorLight.primary,
+                backgroundColor: adminColorLight.background,
+                border: "1px solid black",
                 borderRadius: 2,
                 "& td, th": { padding: "8px 16px" },
                 margin: "8px",
