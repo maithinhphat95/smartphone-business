@@ -95,13 +95,13 @@ function RevenueSummaryChart(props) {
     labels: yearAxis,
     datasets: [
       {
-        label: "Target",
+        label: "Target (USD)",
         data: fakeData.target,
         backgroundColor: theme.chartColor1,
         borderColor: theme.chartColor1,
       },
       {
-        label: "Actual",
+        label: "Actual (USD)",
         data: fakeData.actual,
         backgroundColor: theme.chartColor2,
         borderColor: theme.chartColor2,
