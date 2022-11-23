@@ -46,9 +46,10 @@ export const adminColorLight = {
   primary: "#919090",
   secondary: "#d9d9d9",
   // background: "#f0f0f0",
-  background: "#dedede",
+  // background: "#dedede",
+  background: "#f4d0ff",
   itemBackground: "white",
-  shadow: "#ccc",
+  shadow: "#bd6af9",
   textColor: "black",
   chartColor1: "#ff6384", //Light Pink
   chartColor2: "#35a2eb", //Light Blue
