@@ -1,6 +1,29 @@
 {
   "productList": [
     {
+      "img": "https://cdn.tgdd.vn/Products/Images/42/285696/samsung-galaxy-z-flip4-5g-512gb-thumb-xanh-600x600.jpg",
+      "name": "Samsung Galaxy Z Flip4 512GB",
+      "brand": "Samsung",
+      "id": "0",
+      "priceOld": "24990000",
+      "priceNew": "24990000",
+      "memory": "32",
+      "color": [
+        {
+          "name": "trắng",
+          "code": "white"
+        },
+        {
+          "name": "lam",
+          "code": "blue"
+        }
+      ],
+      "description": "Sang",
+      "descriptionPrice": "tren-13-trieu",
+      "stock": "23",
+      "sold": "11"
+    },
+    {
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/4/25/637864980285944519_iphone-13-pro-dd-2-128-256-512gb.jpg",
       "name": "iPhone13",
       "brand": "Apple",
@@ -38,8 +61,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/1/637686973775896947_ip-12-dd.jpg",
-      "priceNew": 16000000,
-      "priceOld": 19000000,
+      "priceNew": "16000000",
+      "priceOld": "19000000",
       "memory": 128,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tren-13-trieu",
@@ -62,8 +85,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/10/26/637393169370871358_ip-11-dd.png",
-      "priceNew": 11490000,
-      "priceOld": 14900000,
+      "priceNew": "11490000",
+      "priceOld": "14900000",
       "memory": 128,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-7-13-trieu",
@@ -85,8 +108,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/8/22/637652432564767587_samsung-a03s-xanh-dd.jpg",
-      "priceNew": 3190000,
-      "priceOld": 3600000,
+      "priceNew": "3190000",
+      "priceOld": "3600000",
       "memory": 128,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-2-4-trieu",
@@ -109,8 +132,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/22/637994555957667673_samsung-galaxy-s22-bora-purple-dd-docquyen.jpg",
-      "priceNew": 15900000,
-      "priceOld": 21900000,
+      "priceNew": "15900000",
+      "priceOld": "21900000",
       "memory": 128,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tren-13-trieu",
@@ -133,8 +156,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/4/25/637864982144816513_iphone-13-pro-max-dd-2-128-256-512-1tb.jpg",
-      "priceNew": 2700000,
-      "priceOld": 3000000,
+      "priceNew": "2700000",
+      "priceOld": "3000000",
       "memory": 128,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-2-4-trieu",
@@ -156,8 +179,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/10/637957287880226317_oppo-reno8-z-dd-icon.jpg",
-      "priceNew": 10049000,
-      "priceOld": 12490000,
+      "priceNew": "10049000",
+      "priceOld": "12490000",
       "memory": 256,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-7-13-trieu",
@@ -179,8 +202,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/7/1/637607682248137712_nokia-105-4g-den-dd.jpg",
-      "priceNew": 750000,
-      "priceOld": 850000,
+      "priceNew": "750000",
+      "priceOld": "850000",
       "memory": 256,
       "description": "Sang xịn mịn",
       "descriptionPrice": "duoi-2-trieu",
@@ -202,8 +225,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/7/21/637939995401683559_vivo-t1x-xanh-dd.jpg",
-      "priceNew": 490000,
-      "priceOld": 690000,
+      "priceNew": "490000",
+      "priceOld": "690000",
       "memory": 256,
       "description": "Sang xịn mịn",
       "descriptionPrice": "duoi-2-trieu",
@@ -225,8 +248,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/8/18/637649063877578070_nokia-c30-xanh-dd.jpg",
-      "priceNew": 2900000,
-      "priceOld": 4900000,
+      "priceNew": "2900000",
+      "priceOld": "4900000",
       "memory": null,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-2-4-trieu",
@@ -248,8 +271,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/8/637982295034143124_oppo-find-x5-pro-dd.jpg",
-      "priceNew": 27900000,
-      "priceOld": 30000000,
+      "priceNew": "27900000",
+      "priceOld": "30000000",
       "memory": null,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tren-13-trieu",
@@ -271,8 +294,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/5/4/637872590554647546_oppo-reno7-4g-dd.jpg",
-      "priceNew": 7490000,
-      "priceOld": 7990000,
+      "priceNew": "7490000",
+      "priceOld": "7990000",
       "memory": null,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-7-13-trieu",
@@ -294,8 +317,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/8/10/637957287880226317_oppo-reno8-4g-dd-icon.jpg",
-      "priceNew": 6990000,
-      "priceOld": 7990000,
+      "priceNew": "6990000",
+      "priceOld": "7990000",
       "memory": null,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-4-7-trieu",
@@ -318,8 +341,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2020/11/13/637408832230600670_nokia-215-xanh-dd.png",
-      "priceNew": 950000,
-      "priceOld": 1000000,
+      "priceNew": "950000",
+      "priceOld": " 1000000",
       "memory": null,
       "description": "Sang xịn mịn",
       "descriptionPrice": "duoi-2-trieu",
@@ -341,8 +364,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/3/15/637829405985657624_vivo-y33s-vang-dd.jpg",
-      "priceNew": 2900000,
-      "priceOld": 4900000,
+      "priceNew": " 2900000",
+      "priceOld": " 4900000",
       "memory": null,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-2-4-trieu",
@@ -365,8 +388,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/6/27/637919434798579438_oppo-a57-dd.jpg",
-      "priceNew": 6900000,
-      "priceOld": 7900000,
+      "priceNew": " 6900000",
+      "priceOld": " 7900000",
       "memory": null,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-4-7-trieu",
@@ -388,8 +411,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/2/28/637816731075634766_xiaomi-redmi-note-11s-xam-dd-2.jpg",
-      "priceNew": 5900000,
-      "priceOld": 6190000,
+      "priceNew": " 5900000",
+      "priceOld": " 6190000",
       "memory": null,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-4-7-trieu",
@@ -411,8 +434,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/10/25/637707822857432352_00779950-vivo-y15s-trang-xanh-dd.jpg",
-      "priceNew": 2900000,
-      "priceOld": 3900000,
+      "priceNew": " 2900000",
+      "priceOld": " 3900000",
       "memory": null,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-2-4-trieu",
@@ -435,8 +458,8 @@
         }
       ],
       "img": "https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2022/9/9/637983398315589960_vivo-y22s-xanh-dd.jpg",
-      "priceNew": 5900000,
-      "priceOld": 6900000,
+      "priceNew": " 5900000",
+      "priceOld": " 6900000",
       "memory": null,
       "description": "Sang xịn mịn",
       "descriptionPrice": "tu-4-7-trieu",
@@ -469,29 +492,6 @@
         }
       ],
       "id": "21"
-    },
-    {
-      "img": "https://cdn.tgdd.vn/Products/Images/42/285696/samsung-galaxy-z-flip4-5g-512gb-thumb-xanh-600x600.jpg",
-      "name": "Samsung Galaxy Z Flip4 512GB",
-      "brand": "Samsung",
-      "id": "0",
-      "priceOld": "24990000",
-      "priceNew": "24990000",
-      "memory": "32",
-      "color": [
-        {
-          "name": "trắng",
-          "code": "white"
-        },
-        {
-          "name": "lam",
-          "code": "blue"
-        }
-      ],
-      "description": "Sang",
-      "descriptionPrice": "tren-13-trieu",
-      "stock": "23",
-      "sold": "11"
     }
   ],
   "userList": [
