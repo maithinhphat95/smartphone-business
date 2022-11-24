@@ -117,21 +117,20 @@ export const phoneColor = [
 ];
 
 // Create fake order item function
-function FakeOrderItem(no, id, user, date, subtotal, bonus, total, status) {
+function FakeOrderItem(no, id, user, orderDate, completeDate, total, status) {
   return {
     no,
     id,
     user,
-    date,
-    subtotal,
-    bonus,
+    orderDate,
+    completeDate,
     total,
     status,
     purchasedList: [
-      { id: 1, productId: "1", coupon: "abc", quantity: 2 },
-      { id: 2, productId: "2", coupon: "def", quantity: 1 },
-      { id: 3, productId: "3", coupon: "123", quantity: 3 },
-      { id: 4, productId: "4", coupon: "abc", quantity: 1 },
+      { id: 1, productId: "1", quantity: 2 },
+      { id: 2, productId: "2", quantity: 1 },
+      { id: 3, productId: "3", quantity: 3 },
+      { id: 4, productId: "4", quantity: 1 },
     ],
   };
 }
@@ -146,9 +145,8 @@ export const tableRows = {
       }),
       "phat",
       faker.date.past(2).toLocaleString(),
+      faker.date.past(2).toLocaleString(),
       2450,
-      -20,
-      2380,
       orderStatus.delivery
     ),
     FakeOrderItem(
@@ -158,9 +156,8 @@ export const tableRows = {
       }),
       "phat",
       faker.date.past(2).toLocaleString(),
+      faker.date.past(2).toLocaleString(),
       2200,
-      -20,
-      2380,
       orderStatus.prepare
     ),
     FakeOrderItem(
@@ -170,9 +167,8 @@ export const tableRows = {
       }),
       "phat",
       faker.date.past(2).toLocaleString(),
+      faker.date.past(2).toLocaleString(),
       2410,
-      -20,
-      2380,
       orderStatus.delivery
     ),
     FakeOrderItem(
@@ -182,9 +178,8 @@ export const tableRows = {
       }),
       "phat",
       faker.date.past(2).toLocaleString(),
+      faker.date.past(2).toLocaleString(),
       2120,
-      -20,
-      2480,
       orderStatus.received
     ),
     FakeOrderItem(
@@ -193,10 +188,9 @@ export const tableRows = {
         casing: "mixed",
       }),
       "phat",
+      faker.date.past(2).toLocaleString(),
       faker.date.past(2).toLocaleString(),
       2420,
-      -20,
-      2280,
       orderStatus.received
     ),
     FakeOrderItem(
@@ -205,10 +199,9 @@ export const tableRows = {
         casing: "mixed",
       }),
       "phat",
+      faker.date.past(2).toLocaleString(),
       faker.date.past(2).toLocaleString(),
       2402,
-      -20,
-      2220,
       orderStatus.received
     ),
     FakeOrderItem(
@@ -217,10 +210,9 @@ export const tableRows = {
         casing: "mixed",
       }),
       "phat",
+      faker.date.past(2).toLocaleString(),
       faker.date.past(2).toLocaleString(),
       2440,
-      -10,
-      2380,
       orderStatus.received
     ),
     FakeOrderItem(
@@ -230,9 +222,8 @@ export const tableRows = {
       }),
       "phat",
       faker.date.past(2).toLocaleString(),
+      faker.date.past(2).toLocaleString(),
       2400,
-      -20,
-      2380,
       orderStatus.received
     ),
     FakeOrderItem(
@@ -242,9 +233,8 @@ export const tableRows = {
       }),
       "phat",
       faker.date.past(2).toLocaleString(),
+      faker.date.past(2).toLocaleString(),
       2400,
-      -20,
-      2380,
       orderStatus.received
     ),
     FakeOrderItem(
@@ -254,9 +244,8 @@ export const tableRows = {
       }),
       "phat",
       faker.date.past(2).toLocaleString(),
+      faker.date.past(2).toLocaleString(),
       2400,
-      -20,
-      2380,
       orderStatus.received
     ),
     FakeOrderItem(
@@ -266,25 +255,24 @@ export const tableRows = {
       }),
       "phat",
       faker.date.past(2).toLocaleString(),
+      faker.date.past(2).toLocaleString(),
       2400,
-      -20,
-      2380,
       orderStatus.received
     ),
   ],
 };
 export const tableHead = {
-  order: ["NO", "ID", "USER", "DATE", "SUBTOTAL", "BONUS", "TOTAL", "STATUS"],
-  purchased: [
-    "No",
-    "Product",
-    "Quantity",
-    "Price",
-    "Subtotal",
-    "Coupon",
-    "Bonus",
-    "Total",
+  order: [
+    "NO",
+    "ID",
+    "USER",
+    "ORDER DATE",
+    "COMPLETE DATE",
+    "TOTAL",
+    "STATUS",
+    "ACTION",
   ],
+  purchased: ["No", "Product", "Quantity", "Price", "Total"],
   product: [
     "NO",
     "ITEM ID",

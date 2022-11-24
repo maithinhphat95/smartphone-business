@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   adminColorDark,
   adminColorLight,
-  couponList,
   productList,
   tableHead,
   tableRows,
@@ -21,7 +20,6 @@ import {
   Paper,
   CardMedia,
   TextField,
-  TableSortLabel,
   Pagination,
   Stack,
   Select,
@@ -39,6 +37,9 @@ import {
 import "./style.scss";
 import { useSelector } from "react-redux";
 import SortIcon from "../../SortIcon";
+import { useNavigate } from "react-router-dom";
+import DeleteDialog from "../DeleteDialog";
+
 const ExtraTable = (props) => {
   const { row, extraData, isOpen } = props;
   return (
@@ -64,6 +65,7 @@ const ExtraTable = (props) => {
                 margin: "8px",
               }}
             >
+              {/* Head */}
               <TableHead
                 sx={{
                   borderBottom: "1px solid black",
@@ -78,6 +80,7 @@ const ExtraTable = (props) => {
                   ))}
                 </TableRow>
               </TableHead>
+              {/* Body */}
               <TableBody
                 sx={{
                   "& tr": { borderBottom: "1px solid white" },
@@ -88,22 +91,12 @@ const ExtraTable = (props) => {
                   let currentProduct = productList.find(
                     (product) => product.id === purchasedItem.productId
                   );
-                  let currentCoupon = couponList.find(
-                    (coupon) => coupon.name === purchasedItem.coupon
-                  );
-                  const bonus =
-                    currentCoupon.type === "direct"
-                      ? currentCoupon.value
-                      : currentCoupon.type === "percent"
-                      ? (currentProduct.price *
-                          purchasedItem.quantity *
-                          currentCoupon.value) /
-                        100
-                      : 0;
 
                   return (
                     <TableRow key={purchasedItem.productId}>
+                      {/* No */}
                       <TableCell align="center">{index + 1}</TableCell>
+                      {/* Name */}
                       <TableCell
                         align="left"
                         sx={{ display: "flex", alignItems: "center" }}
@@ -119,30 +112,21 @@ const ExtraTable = (props) => {
                           {currentProduct.name}
                         </Typography>
                       </TableCell>
+
+                      {/* Quantity */}
                       <TableCell align="center">
                         {purchasedItem.quantity.toLocaleString()}
                       </TableCell>
+
+                      {/* Price */}
                       <TableCell align="right">
                         {`$${currentProduct.price.toLocaleString()}`}
                       </TableCell>
+
+                      {/* Total */}
                       <TableCell align="right">
                         {`$${(
                           currentProduct.price * purchasedItem.quantity
-                        ).toLocaleString()}`}
-                      </TableCell>
-                      <TableCell align="center">
-                        {purchasedItem.coupon}{" "}
-                        {currentCoupon.type === "direct"
-                          ? `($${currentCoupon.value.toLocaleString()})`
-                          : currentCoupon.type === "percent"
-                          ? `(${currentCoupon.value.toLocaleString()}%)`
-                          : ""}
-                      </TableCell>
-                      <TableCell align="right">{`- $${bonus}`}</TableCell>
-                      <TableCell align="right">
-                        {`$${(
-                          currentProduct.price * purchasedItem.quantity -
-                          bonus
                         ).toLocaleString()}`}
                       </TableCell>
                     </TableRow>
@@ -161,6 +145,19 @@ const ExtraTable = (props) => {
 function Row(props) {
   const { row, extraData, isControl, category } = props;
   const [isOpen, setIsOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
+  const navigate = useNavigate();
+
+  // Request open Delete Dialog
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  // Request Close Delete Dialog
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+    navigate("/admin/revenue");
+  };
   return (
     <>
       <TableRow
@@ -184,47 +181,52 @@ function Row(props) {
             if (item !== "purchasedList") {
               return (
                 <TableCell key={index} align="center">
-                  {`${
-                    item === "subtotal" || item === "bonus" || item === "total"
-                      ? "$"
-                      : ""
-                  } ${row[item].toLocaleString()}`}
+                  {`${item === "total" ? "$" : ""} ${row[item]}`}
                 </TableCell>
               );
             }
             return "";
           })}
 
-        {isControl && (
-          <TableCell>
-            <Stack
-              sx={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
-                flexWrap: "wrap",
-                gap: 1,
+        <TableCell>
+          <Stack
+            sx={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              // flexWrap: "wrap",
+              gap: 1,
+            }}
+          >
+            <Button
+              title="Done"
+              className="action-button"
+              variant="contained"
+              color="info"
+              sx={{ padding: 0.5, minWidth: 0 }}
+            >
+              <Edit />
+            </Button>
+            <Button
+              title="Delete Order"
+              className="action-button"
+              variant="outlined"
+              color="error"
+              sx={{ padding: 0.5, minWidth: 0, width: "50%" }}
+              onClick={() => {
+                // handleOpenDialog();
               }}
             >
-              <Button
-                className="action-button"
-                variant="contained"
-                color="info"
-                startIcon={<Edit />}
-              >
-                Edit
-              </Button>
-              <Button
-                className="action-button"
-                variant="outlined"
-                color="error"
-                startIcon={<Delete />}
-              >
-                Delete
-              </Button>
-            </Stack>
-          </TableCell>
-        )}
+              <Delete />
+            </Button>
+            <DeleteDialog
+              open={openDialog}
+              onClose={handleCloseDialog}
+              id={row.id}
+            />
+          </Stack>
+          {/* <ToastContainer /> */}
+        </TableCell>
       </TableRow>
       {/* The table of purchasing list of order item */}
       {extraData.isExtra && (
@@ -288,7 +290,6 @@ export default function OrderTable(props) {
     setData({ ...data1, body: orderList });
     // setDataSorted([...data1.body.reverse()]);
   }, [orderList]);
-  console.log(data1.body);
 
   // Use Effect Sort page
   useEffect(() => {

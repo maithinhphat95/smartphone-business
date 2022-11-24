@@ -509,30 +509,6 @@
         }
       ],
       "id": 21
-    },
-    {
-      "img": "https://cdn.mobilecity.vn/mobilecity-vn/images/2021/10/w300/iphone-13-xanh.jpg.webp",
-      "name": "iPhone 13 Chính hãng VN/A",
-      "brand": "Apple",
-      "productId": "i13",
-      "priceOld": "28000000",
-      "priceNew": "28000000",
-      "memory": "32",
-      "description": "aaa",
-      "descriptionPrice": "tren-13-trieu",
-      "stock": "123",
-      "sold": "2",
-      "color": [
-        {
-          "name": "trắng",
-          "code": "white"
-        },
-        {
-          "name": "lam",
-          "code": "blue"
-        }
-      ],
-      "id": 22
     }
   ],
   "userList": [
@@ -633,9 +609,18 @@
       "status": "received",
       "completeDate": "10/22/2018, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -649,9 +634,18 @@
       "status": "received",
       "completeDate": "10/22/2018, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -665,9 +659,18 @@
       "status": "received",
       "completeDate": "10/22/2018, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -681,9 +684,18 @@
       "status": "received",
       "completeDate": "10/22/2019, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -697,9 +709,18 @@
       "status": "received",
       "completeDate": "10/22/2019, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -713,9 +734,18 @@
       "status": "received",
       "completeDate": "10/22/2019, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -729,9 +759,18 @@
       "status": "received",
       "completeDate": "10/22/2020, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -745,9 +784,18 @@
       "status": "received",
       "completeDate": "10/22/2020, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -761,9 +809,18 @@
       "status": "received",
       "completeDate": "10/22/2020, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -777,9 +834,18 @@
       "status": "received",
       "completeDate": "10/22/2021, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -793,9 +859,18 @@
       "status": "received",
       "completeDate": "10/22/2021, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -809,9 +884,18 @@
       "status": "received",
       "completeDate": "10/22/2021, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
@@ -824,7 +908,11 @@
       "total": 39800000,
       "status": "received",
       "completeDate": "1/22/2022, 11:38:44 AM",
-      "productList": ["1", "2", "3"]
+      "productList": [
+        "1",
+        "2",
+        "3"
+      ]
     },
     {
       "id": 13,
@@ -836,7 +924,11 @@
       "total": 39800000,
       "status": "received",
       "completeDate": "2/22/2022, 11:38:44 AM",
-      "productList": ["1", "2", "3"]
+      "productList": [
+        "1",
+        "2",
+        "3"
+      ]
     },
     {
       "id": 14,
@@ -848,7 +940,11 @@
       "total": 39800000,
       "status": "received",
       "completeDate": "3/22/2022, 11:38:44 AM",
-      "productList": ["1", "2", "3"]
+      "productList": [
+        "1",
+        "2",
+        "3"
+      ]
     },
     {
       "id": 15,
@@ -860,7 +956,11 @@
       "total": 39800000,
       "status": "received",
       "completeDate": "4/22/2022, 11:38:44 AM",
-      "productList": ["1", "2", "3"]
+      "productList": [
+        "1",
+        "2",
+        "3"
+      ]
     },
     {
       "id": 16,
@@ -872,7 +972,11 @@
       "total": 39800000,
       "status": "received",
       "completeDate": "5/22/2022, 11:38:44 AM",
-      "productList": ["1", "2", "3"]
+      "productList": [
+        "1",
+        "2",
+        "3"
+      ]
     },
     {
       "id": 17,
@@ -884,7 +988,11 @@
       "total": 39800000,
       "status": "received",
       "completeDate": "6/22/2022, 11:38:44 AM",
-      "productList": ["1", "2", "3"]
+      "productList": [
+        "1",
+        "2",
+        "3"
+      ]
     },
     {
       "id": 18,
@@ -896,7 +1004,11 @@
       "total": 39800000,
       "status": "received",
       "completeDate": "7/22/2022, 11:38:44 AM",
-      "productList": ["1", "2", "3"]
+      "productList": [
+        "1",
+        "2",
+        "3"
+      ]
     },
     {
       "id": 19,
@@ -908,7 +1020,11 @@
       "total": 39800000,
       "status": "received",
       "completeDate": "8/22/2022, 11:38:44 AM",
-      "productList": ["1", "2", "3"]
+      "productList": [
+        "1",
+        "2",
+        "3"
+      ]
     },
     {
       "id": 20,
@@ -921,9 +1037,18 @@
       "status": "received",
       "completeDate": "9/22/2022, 11:38:44 AM",
       "productList": [
-        { "productId": "1", "quantity": 1 },
-        { "productId": "2", "quantity": 1 },
-        { "productId": "3", "quantity": 1 }
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     }
   ]

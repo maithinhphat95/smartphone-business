@@ -37,66 +37,7 @@ import Label from "../../Label";
 import { deleteProductRequest } from "../../../../redux/common/productReducer";
 import SortIcon from "../../SortIcon";
 import "./style.scss";
-
-function DeleteDialog(props) {
-  const { id, open, onClose } = props;
-  const dispatch = useDispatch();
-  // Handle Close Dialog
-  const handleClose = async () => {
-    onClose();
-  };
-  const handleDelete = () => {
-    dispatch(deleteProductRequest(id));
-    toast("Delete Product Successfully", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-    // onClose();
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        onClose();
-        resolve(true);
-      }, 3000);
-    });
-  };
-  return (
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-    >
-      <DialogTitle id="alert-dialog-title">
-        Do you want to delete this product?
-      </DialogTitle>
-      <DialogContent>
-        <DialogContentText id="alert-dialog-description">
-          If you click the Agree button, you have to be responsible for the data
-          loss of this product.
-        </DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button variant="contained" color="error" onClick={handleClose}>
-          Cancel
-        </Button>
-        <Button
-          variant="contained"
-          color="success"
-          onClick={handleDelete}
-          autoFocus
-        >
-          Agree
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
-}
+import DeleteDialog from "../DeleteDialog";
 
 // Function show each row of tablebody (order item)
 function Row(props) {
@@ -241,6 +182,7 @@ function Row(props) {
               open={openDialog}
               onClose={handleCloseDialog}
               id={row.id}
+              category="product"
             />
           </Stack>
           <ToastContainer />

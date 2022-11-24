@@ -44,6 +44,19 @@ export const addOrderRequest = (data) => {
     })();
   };
 };
+// Get Request
+export const deleteOrderRequest = (data) => {
+  return (dispatch) => {
+    (async () => {
+      try {
+        const orderList = await orderApi.getAll();
+        dispatch(getOrderList(orderList));
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+};
 
 // customer Reducer
 export const orderReducer = (state = initialState, action) => {
