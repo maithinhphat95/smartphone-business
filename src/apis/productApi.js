@@ -12,12 +12,12 @@ const productApi = {
   },
   async add(data) {
     const url = `/productList`;
-    const response = await axiosClient.post(url, data);
+    const response = await axiosClient.post(url, JSON.stringify(data));
     return response;
   },
   async put(id, data) {
     const url = `/productList/${id}`;
-    const response = await axiosClient.put(url, data);
+    const response = await axiosClient.put(url, JSON.stringify(data));
     return response;
   },
   async delete(id) {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import { useForm } from "react-hook-form";
 import {
   Typography,
@@ -17,27 +17,22 @@ import {
   adminColorLight,
   phoneColor,
 } from "../../../constant/admin";
-import {
-  addProductRequest,
-  getProductRequest,
-  updateProductRequest,
-} from "../../../redux/common/productReducer";
+import { addProductRequest } from "../../../redux/common/productReducer";
 import PageTitle from "../../../components/admin/PageTitle";
-import "./style.scss";
 import { ModeEdit, Restore } from "@mui/icons-material";
 import Label from "../../../components/admin/Label";
-import { toast, ToastContainer } from "react-toastify";
+// import "./style.scss";
 ProductCreate.propTypes = {};
 
 function ProductCreate(props) {
   const dispatch = useDispatch();
   const selectedProduct = useSelector((state) => state.product.selectedProduct);
+  const productList = useSelector((state) => state.product.productList);
+  const themeSeleted = useSelector((state) => state.admin.theme);
   const [data, setData] = useState(selectedProduct);
   const [isLoading, setLoading] = useState(true);
   const [theme, setTheme] = useState(adminColorLight);
-  const themeSeleted = useSelector((state) => state.admin.theme);
   const [showImg, setShowImg] = useState(false);
-  const [defaultValue, setDefaultValue] = useState({});
   const defaultImg =
     "https://www.freeiconspng.com/thumbs/phone-icon/phone-icon-by-minduka--a-simple-phone-icon-22.png";
   const [imgUrl, setImgUrl] = useState(defaultImg);
@@ -89,6 +84,19 @@ function ProductCreate(props) {
     });
   };
 
+  // Function check existing id
+  const checkId = (id) => {
+    return productList.some((e) => {
+      return e.productId === id;
+    });
+  };
+  // Function check existing name
+  const checkName = (name) => {
+    return productList.some((e) => {
+      return e.name.toLowerCase() === name.toLowerCase();
+    });
+  };
+
   // Handle submit update
   const onHandleSubmit = (data, e) => {
     const colorArray = data.color.map((item) => {
@@ -121,7 +129,6 @@ function ProductCreate(props) {
   // Update data state
   useEffect(() => {
     setData(selectedProduct);
-    setDefaultValue(data);
     setImgUrl(data.img);
   }, [selectedProduct]);
 
@@ -259,7 +266,7 @@ function ProductCreate(props) {
 
                       {errors.img?.type === "required" && (
                         <Typography color="red" alignSelf={"flex-end"}>
-                          * Please input correct image link
+                          * Please input a image link
                         </Typography>
                       )}
                     </Box>
@@ -277,7 +284,10 @@ function ProductCreate(props) {
                         name="name"
                         defaultValue={""}
                         style={errors.name && { borderColor: "red" }}
-                        {...register("name", { required: true })}
+                        {...register("name", {
+                          required: true,
+                          validate: { exist: (v) => !checkName(v) },
+                        })}
                       />
                     </Stack>
                     {errors.name?.type === "required" && (
@@ -285,19 +295,30 @@ function ProductCreate(props) {
                         * Please input product name
                       </Typography>
                     )}
+                    {errors.name?.type === "exist" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Existing, please input other name
+                      </Typography>
+                    )}
                     {/* Brand of Product */}
                     <Stack className="form-row">
                       <Typography className="form-label" variant="h6">
                         Brand:
                       </Typography>
-                      <input
+                      <select
                         className="form-input-text"
-                        type="text"
                         name="brand"
                         style={errors.brand && { borderColor: "red" }}
-                        defaultValue={""}
+                        defaultValue={"Apple"}
                         {...register("brand", { required: true })}
-                      />
+                      >
+                        <option value="Apple">Apple</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Oppo">Oppo</option>
+                        <option value="Vivo">Vivo</option>
+                        <option value="Nokia">Nokia</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                      </select>
                     </Stack>
                     {errors.brand?.type === "required" && (
                       <Typography color="red" alignSelf={"flex-end"}>
@@ -313,15 +334,23 @@ function ProductCreate(props) {
                       <input
                         className="form-input-text"
                         type="text"
-                        name="id"
+                        name="productId"
                         style={errors.id && { borderColor: "red" }}
                         defaultValue={""}
-                        {...register("id", { required: true })}
+                        {...register("productId", {
+                          required: true,
+                          validate: { exist: (v) => !checkId(v) },
+                        })}
                       />
                     </Stack>
-                    {errors.id?.type === "required" && (
+                    {errors.productId?.type === "required" && (
                       <Typography color="red" alignSelf={"flex-end"}>
                         * Please input product ID
+                      </Typography>
+                    )}
+                    {errors.productId?.type === "exist" && (
+                      <Typography color="red" alignSelf={"flex-end"}>
+                        * Existing, please input other ID
                       </Typography>
                     )}
                     {/* PriceOld of Product */}
@@ -346,9 +375,10 @@ function ProductCreate(props) {
                     </Stack>
                     {errors.priceOld && (
                       <Typography color="red" alignSelf={"flex-end"}>
-                        * Please input correct old price
+                        * Please input number &gt; 99,000 VND
                       </Typography>
                     )}
+
                     {/* priceNew of Product */}
                     <Stack className="form-row" position="relative">
                       <Typography className="form-label" variant="h6">
@@ -371,7 +401,7 @@ function ProductCreate(props) {
                     </Stack>
                     {errors.priceNew && (
                       <Typography color="red" alignSelf={"flex-end"}>
-                        * Please input correct new price
+                        * Please input number &gt; 99,000 VND
                       </Typography>
                     )}
                     {/* memory of Product */}
@@ -383,7 +413,7 @@ function ProductCreate(props) {
                         className="form-input-text"
                         name="memory"
                         style={errors.memory && { borderColor: "red" }}
-                        defaultValue={""}
+                        defaultValue={"32"}
                         {...register("memory", { required: true })}
                       >
                         <option value="32">32GB</option>

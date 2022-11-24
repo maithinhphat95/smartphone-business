@@ -49,7 +49,7 @@ export const adminColorLight = {
   background: "#dec9d2",
   header: "",
   itemBackground: "white",
-  shadow: "#bd6af9",
+  shadow: "#9b4cd4",
   textColor: "black",
   chartColor1: "#ff6384", //Light Pink
   chartColor2: "#35a2eb", //Light Blue
@@ -272,32 +272,6 @@ export const tableRows = {
       orderStatus.received
     ),
   ],
-  product: [
-    {
-      id: "1",
-      name: "Iphone 13 Pro Max",
-      picture:
-        "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/1051159192.jpeg",
-      color: ["red", "green"],
-      priceOld: 24000000,
-      priceNew: 20000000,
-      memory: 250,
-      stock: 10,
-      sold: 20,
-    },
-    {
-      id: "2",
-      name: "Iphone 13 Pro Max",
-      picture:
-        "https://cdn1.viettelstore.vn/images/Product/ProductImage/medium/1051159192.jpeg",
-      color: ["red", "green"],
-      priceOld: 24000000,
-      priceNew: 20000000,
-      memory: 128,
-      stock: 10,
-      sold: 20,
-    },
-  ],
 };
 export const tableHead = {
   order: ["NO", "ID", "USER", "DATE", "SUBTOTAL", "BONUS", "TOTAL", "STATUS"],
@@ -313,11 +287,11 @@ export const tableHead = {
   ],
   product: [
     "NO",
-    "ID",
+    "ITEM ID",
     "NAME",
     "BRAND",
     "COLOR",
-    "PRICENEW",
+    "PRICE",
     "MEMORY",
     "STOCK",
     "SOLD",

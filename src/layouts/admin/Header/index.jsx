@@ -16,7 +16,6 @@ Header.propTypes = {};
 
 function Header(props) {
   const dispatch = useDispatch();
-
   const handleClickMenu = () => {
     dispatch(toggleMenu());
   };
@@ -50,6 +49,7 @@ function Header(props) {
             >
               <MenuIcon sx={{ fontSize: 30 }} />
             </IconButton>
+
             <Typography
               variant="h6"
               component="div"
@@ -57,6 +57,7 @@ function Header(props) {
             >
               TPSmartPhone
             </Typography>
+            <SwitchMode />
             <IconButton
               edge="start"
               color="inherit"
@@ -68,7 +69,6 @@ function Header(props) {
                 <NotificationsIcon sx={{ fontSize: 30 }} />
               </Badge>
             </IconButton>
-            <SwitchMode />
           </Toolbar>
         </AppBar>
       </Box>

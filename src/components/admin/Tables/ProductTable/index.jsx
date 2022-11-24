@@ -14,7 +14,6 @@ import {
   Paper,
   CardMedia,
   TextField,
-  TableSortLabel,
   Pagination,
   Stack,
   Select,
@@ -36,6 +35,7 @@ import {
 } from "../../../../constant/admin";
 import Label from "../../Label";
 import { deleteProductRequest } from "../../../../redux/common/productReducer";
+import SortIcon from "../../SortIcon";
 import "./style.scss";
 
 function DeleteDialog(props) {
@@ -57,8 +57,13 @@ function DeleteDialog(props) {
       progress: undefined,
       theme: "light",
     });
-    onClose();
-    return;
+    // onClose();
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        onClose();
+        resolve(true);
+      }, 3000);
+    });
   };
   return (
     <Dialog
@@ -100,6 +105,7 @@ function Row(props) {
   const themeSeleted = useSelector((state) => state.admin.theme);
   const [openDialog, setOpenDialog] = useState(false);
   const navigate = useNavigate();
+
   // Update themse color
   useEffect(() => {
     switch (themeSeleted) {
@@ -119,11 +125,11 @@ function Row(props) {
   const handleOpenDialog = () => {
     setOpenDialog(true);
   };
+
   // Request Close Delete Dialog
   const handleCloseDialog = () => {
     setOpenDialog(false);
     navigate("/admin/inventory");
-    // window.location.reload(false);
   };
 
   return (
@@ -131,9 +137,9 @@ function Row(props) {
       <TableRow className="product-table-row">
         <>
           <TableCell align="center">{row.no}</TableCell>
-          <TableCell align="center">{row.id}</TableCell>
+          <TableCell align="center">{row.productId}</TableCell>
           <TableCell align="left">
-            <Stack direction={"row"} alignItems="center">
+            <Stack className="img-name" direction={"row"} alignItems="center">
               <CardMedia
                 component="img"
                 image={row.img}
@@ -243,32 +249,48 @@ function Row(props) {
     </>
   );
 }
+
 // -------------------------------------------------------------------------------------------------------
 // Component Product Table
-
 export default function ProductTable(props) {
+  const [theme, setTheme] = useState(adminColorLight);
+  const themeSeleted = useSelector((state) => state.admin.theme);
+  const productList = useSelector((state) => state.product.productList);
   const [page, setPageIndex] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [dec, setDec] = useState(true);
-  const [sortDesc, setSortDesc] = useState(false);
-  const [sortBy, setSortBy] = useState("");
-  const [sortArrow, setSortArrow] = useState(false);
-  const productList = useSelector((state) => state.product.productList);
-
+  const [isUpdate, setIsUpdate] = useState(true);
+  const [sortDesc, setSortDesc] = useState(true);
+  const [sortBy, setSortBy] = useState("ID");
+  const [category, setCategory] = useState(sortBy);
   const [data, setData] = useState({
     title: "Product List",
     head: tableHead.product,
     body: productList,
     searchBy: "name",
   });
-
-  const [dataSorted, setDataSorted] = useState(data.body);
+  const [dataSorted, setDataSorted] = useState([...data.body.reverse()]);
   const [searchValue, setSearchValue] = useState("");
   const [selectedData, setSelectedData] = useState(data?.body || []);
+
+  // Update themse color
+  useEffect(() => {
+    switch (themeSeleted) {
+      case "light":
+        setTheme(adminColorLight);
+        break;
+      case "dark":
+        setTheme(adminColorDark);
+        break;
+      default:
+        setTheme(theme);
+        break;
+    }
+  }, [themeSeleted]);
 
   // Update the product list
   useEffect(() => {
     setData({ ...data, body: productList });
+    setDataSorted([...data.body.reverse()]);
   }, [productList]);
 
   // Set max page for pagination
@@ -288,19 +310,39 @@ export default function ProductTable(props) {
     setPageIndex(0);
   };
 
+  // Update category
+  useEffect(() => {
+    switch (sortBy) {
+      case "ITEM ID":
+        setCategory("productId");
+        break;
+      case "PRICE":
+        setCategory("priceNew");
+        break;
+      default:
+        setCategory(sortBy.toLowerCase());
+        break;
+    }
+  }, [sortBy, category]);
+
   // Use Effect Sort page
   useEffect(() => {
     let currentData = [];
-    if (
-      selectedData.length > 0 &&
-      selectedData[0].hasOwnProperty(sortBy.toLocaleLowerCase())
-    ) {
+    if (selectedData.length > 0 && selectedData[0].hasOwnProperty(category)) {
       currentData = [
         ...selectedData.sort((a, b) => {
-          if (a[sortBy.toLowerCase()] < b[sortBy.toLowerCase()]) {
-            return sortDesc ? 1 : -1;
-          } else if (a[sortBy.toLowerCase()] > b[sortBy.toLowerCase()]) {
-            return sortDesc ? -1 : 1;
+          if (category === "name") {
+            if (a[category].toLowerCase() < b[category].toLowerCase()) {
+              return sortDesc ? 1 : -1;
+            } else if (a[category].toLowerCase() > b[category].toLowerCase()) {
+              return sortDesc ? -1 : 1;
+            }
+          } else {
+            if (a[category] < b[category]) {
+              return sortDesc ? 1 : -1;
+            } else if (a[category] > b[category]) {
+              return sortDesc ? -1 : 1;
+            }
           }
           return 0;
         }),
@@ -312,18 +354,17 @@ export default function ProductTable(props) {
         return { ...e, no: index + 1 };
       })
     );
-  }, [dec, productList]);
+  }, [isUpdate, productList, category, sortBy]);
 
   // Handle request sort by category
-  const requestSort = (category) => {
-    setSortArrow(true);
-    if (sortBy === category) {
+  const requestSort = (item) => {
+    if (sortBy === item) {
       setSortDesc(!sortDesc);
     } else {
       setSortDesc(false);
-      setSortBy(category);
+      setSortBy(item);
     }
-    setDec(!dec);
+    setIsUpdate(!isUpdate);
   };
 
   // Handle Input Search
@@ -343,12 +384,16 @@ export default function ProductTable(props) {
               .includes(searchValue.trim().toLocaleLowerCase());
           });
     setSelectedData(searchArray);
-    setDec(!dec);
+    setIsUpdate(!isUpdate);
   };
 
   return (
     <Paper
-      sx={{ borderRadius: 2, boxShadow: "4px 4px 4px #ccc", width: "100%" }}
+      sx={{
+        borderRadius: 2,
+        boxShadow: `4px 4px 4px ${theme.shadow}`,
+        width: "100%",
+      }}
     >
       <Stack
         direction={"row"}
@@ -419,7 +464,7 @@ export default function ProductTable(props) {
             <TableRow sx={{ "& th": { padding: 1.5 } }}>
               {data.head?.map((item, index) => (
                 <TableCell
-                  style={{ minWidth: "20px" }}
+                  style={{ minWidth: "20px", textOverflow: "clip" }}
                   key={index}
                   align="center"
                   onClick={() => {
@@ -427,22 +472,12 @@ export default function ProductTable(props) {
                   }}
                   sx={{ cursor: "pointer" }}
                 >
-                  {sortArrow ? (
-                    <TableSortLabel
-                      active={sortBy === item.toLocaleString()}
-                      direction={
-                        sortBy === item.toLocaleString()
-                          ? sortDesc
-                            ? "desc"
-                            : "asc"
-                          : "desc"
-                      }
-                    >
-                      {item}
-                    </TableSortLabel>
-                  ) : (
-                    item
-                  )}
+                  <Stack direction={"row"} gap={1} justifyContent="center">
+                    {item != "NO" && (
+                      <SortIcon sortDesc={sortDesc} isSort={sortBy == item} />
+                    )}
+                    <Box sx={{ whiteSpace: "nowrap" }}>{item}</Box>
+                  </Stack>
                 </TableCell>
               ))}
             </TableRow>

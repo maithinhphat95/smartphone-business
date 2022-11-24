@@ -16,7 +16,7 @@ export const getOrderListRequest = (data) => {
   return (dispatch) => {
     (async () => {
       try {
-        const orderList = await orderApi.getAll().data;
+        const orderList = await orderApi.getAll();
         dispatch(getOrderList(orderList));
       } catch (error) {
         console.log(error);

@@ -38,6 +38,7 @@ import {
 } from "@mui/icons-material";
 import "./style.scss";
 import { useSelector } from "react-redux";
+import SortIcon from "../../SortIcon";
 const ExtraTable = (props) => {
   const { row, extraData, isOpen } = props;
   return (
@@ -234,7 +235,7 @@ function Row(props) {
 }
 
 export default function OrderTable(props) {
-  // Fake Data
+  // // Fake Data
   const data = {
     title: "Order List",
     category: "order",
@@ -249,15 +250,21 @@ export default function OrderTable(props) {
   };
   const [theme, setTheme] = useState(adminColorLight);
   const themeSeleted = useSelector((state) => state.admin.theme);
+  const orderList = useSelector((state) => state.order.orderList);
   const [page, setPageIndex] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [dec, setDec] = useState(true);
-  const [sortArrow, setSortArrow] = useState(false);
   const [sortDesc, setSortDesc] = useState(false);
   const [sortBy, setSortBy] = useState("");
   const [dataSorted, setDataSorted] = useState([...data.body]);
   const [searchValue, setSearchValue] = useState("");
   const [selectedData, setSelectedData] = useState(data.body);
+  const [data1, setData] = useState({
+    title: "Order List",
+    head: tableHead.order,
+    body: orderList,
+    searchBy: "id",
+  });
 
   // Set max page for pagination
   const maxPage =
@@ -275,6 +282,14 @@ export default function OrderTable(props) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPageIndex(0);
   };
+
+  // Update the order list
+  useEffect(() => {
+    setData({ ...data1, body: orderList });
+    // setDataSorted([...data1.body.reverse()]);
+  }, [orderList]);
+  console.log(data1.body);
+
   // Use Effect Sort page
   useEffect(() => {
     let currentData = [];
@@ -316,7 +331,6 @@ export default function OrderTable(props) {
 
   // Handle request sort by category
   const requestSort = (category) => {
-    setSortArrow(true);
     if (sortBy === category) {
       setSortDesc(!sortDesc);
     } else {
@@ -367,10 +381,6 @@ export default function OrderTable(props) {
         borderRadius: 2,
         boxShadow: `4px 4px 4px ${theme.shadow}`,
         width: "100%",
-        // backgroundColor: theme.itemBackground,
-        "& *": {
-          // color: theme.textColor,
-        },
       }}
     >
       <Stack
@@ -436,22 +446,12 @@ export default function OrderTable(props) {
                   }}
                   sx={{ cursor: "pointer" }}
                 >
-                  {sortArrow ? (
-                    <TableSortLabel
-                      active={sortBy === item.toLocaleString()}
-                      direction={
-                        sortBy === item.toLocaleString()
-                          ? sortDesc
-                            ? "desc"
-                            : "asc"
-                          : "desc"
-                      }
-                    >
-                      {item}
-                    </TableSortLabel>
-                  ) : (
-                    item
-                  )}
+                  <Stack direction={"row"} gap={1} justifyContent="center">
+                    {item != "NO" && (
+                      <SortIcon sortDesc={sortDesc} isSort={sortBy == item} />
+                    )}
+                    <Box sx={{ whiteSpace: "nowrap" }}>{item}</Box>
+                  </Stack>
                 </TableCell>
               ))}
             </TableRow>

@@ -19,17 +19,10 @@ import Cart from "./pages/customer/Cart";
 import ProductitemListSearch from "./pages/customer/SearchItem/ProductitemListSearch";
 import CustomerSite from "./pages/customer/CustomerSite";
 import AdminSite from "./pages/admin/AdminSite";
-import DashboardPage from "./pages/admin/DashboardPage";
-import RevenuePage from "./pages/admin/RevenuePage";
-import SaleRatingPage from "./pages/admin/SaleRatingPage";
-import InventoryPage from "./pages/admin/InventoryPage";
-import CustomerManager from "./pages/admin/CustomerManager";
 import ProductDetail from "./pages/admin/ProductDetail";
-import Profile from "./pages/admin/Profile";
-import SettingPage from "./pages/admin/SettingPage";
 import AdminPages from "./pages/admin/AdminPages";
-import "./App.css";
 import ProductCreate from "./pages/admin/ProductCreate";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
