@@ -45,9 +45,9 @@ export const yearlyRevenue = [
 export const adminColorLight = {
   primary: "#919090",
   secondary: "#d9d9d9",
-  // background: "#f0f0f0",
-  // background: "#dedede",
-  background: "#f4d0ff",
+  // background: "#f7cbf0",
+  background: "#dec9d2",
+  header: "",
   itemBackground: "white",
   shadow: "#bd6af9",
   textColor: "black",

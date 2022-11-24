@@ -50,7 +50,13 @@ function Header(props) {
             >
               <MenuIcon sx={{ fontSize: 30 }} />
             </IconButton>
-
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, mr: 2, textAlign: "left" }}
+            >
+              TPSmartPhone
+            </Typography>
             <IconButton
               edge="start"
               color="inherit"
@@ -63,13 +69,6 @@ function Header(props) {
               </Badge>
             </IconButton>
             <SwitchMode />
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, mr: 2, textAlign: "right" }}
-            >
-              TPSmartPhone
-            </Typography>
           </Toolbar>
         </AppBar>
       </Box>
