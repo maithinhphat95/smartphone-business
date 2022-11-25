@@ -53,6 +53,7 @@ function DeleteDialog(props) {
     return new Promise((resolve) => {
       setTimeout(() => {
         onClose();
+        // window.location.reload(true);
         resolve(true);
       }, 3000);
     });

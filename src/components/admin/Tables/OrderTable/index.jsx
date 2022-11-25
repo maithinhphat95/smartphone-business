@@ -212,21 +212,24 @@ function Row(props) {
           <Box
             color={"darkblue"}
             fontWeight="500"
+            textAlign={"right"}
           >{`${row.total.toLocaleString()} VND`}</Box>
         </TableCell>
         <TableCell>
-          <Label
-            content={row.status}
-            backgroundColor={
-              row.status == "done"
-                ? "green"
-                : row.status == "delevering"
-                ? "blue"
-                : "red"
-            }
-            textColor="white"
-            width="80px"
-          />
+          <Stack direction={"row"} justifyContent={"center"}>
+            <Label
+              content={row.status}
+              backgroundColor={
+                row.status == "done"
+                  ? "green"
+                  : row.status == "delevering"
+                  ? "blue"
+                  : "red"
+              }
+              textColor="white"
+              width="80px"
+            />
+          </Stack>
         </TableCell>
         <TableCell>
           <Stack
