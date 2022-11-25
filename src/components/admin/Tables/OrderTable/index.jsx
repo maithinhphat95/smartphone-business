@@ -285,15 +285,6 @@ function Row(props) {
 }
 
 export default function OrderTable(props) {
-  // // Fake Data
-  const data1 = {
-    title: "Order List",
-    category: "order",
-    head: tableHead.order,
-    body: tableRows.order,
-    isControl: false,
-    searchBy: "id",
-  };
   const orderList = useSelector((state) => state.order.orderList);
   const [data, setData] = useState({
     title: "Order List",
@@ -303,7 +294,6 @@ export default function OrderTable(props) {
   });
   const [theme, setTheme] = useState(adminColorLight);
   const themeSeleted = useSelector((state) => state.admin.theme);
-  const productList = useSelector((state) => state.product.productList);
   const [page, setPageIndex] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [isUpdate, setIsUpdate] = useState(true);

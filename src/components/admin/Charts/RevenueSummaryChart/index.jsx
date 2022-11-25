@@ -40,6 +40,52 @@ function RevenueSummaryChart(props) {
   );
   const [theme, setTheme] = useState(adminColorLight);
   const themeSeleted = useSelector((state) => state.admin.theme);
+  const orderList = useSelector((state) => state.order.orderList);
+  const [data1, setData] = useState([...orderList]);
+  const [yearArray, setYearArray] = useState([]);
+  const [targetData, setTargetData] = useState([5000, 5500, 6000, 6000, 8000]);
+  const [actualData, setActualData] = useState([]);
+  // Function get the year array
+  const getYearArray = () => {
+    for (let element of data1) {
+      const year = new Date(element.completeDate).getFullYear();
+      if (!yearArray.includes(year)) {
+        setYearArray([...yearArray, year].sort((a, b) => a - b));
+      }
+    }
+  };
+  // Get the data for chart
+  const getChartData = () => {
+    const dataList = yearArray.map((item) => {
+      let sum = 0;
+      const sumData = data1.forEach((element, index) => {
+        const year = new Date(element.completeDate).getFullYear();
+        if (year === item) {
+          sum += element.total;
+        }
+      });
+      return Math.round(sum / 25000);
+    });
+
+    return dataList;
+  };
+
+  // Update the order list
+  useEffect(() => {
+    setData([...orderList]);
+    getYearArray();
+  }, [orderList, yearArray]);
+
+  // Update the Year list
+  useEffect(() => {
+    getYearArray();
+  }, [orderList, data1]);
+
+  // Update the actual chart Data
+  useEffect(() => {
+    setActualData(getChartData());
+  }, [yearArray]);
+
   // Update themse color
   useEffect(() => {
     switch (themeSeleted) {
@@ -54,11 +100,19 @@ function RevenueSummaryChart(props) {
         break;
     }
   }, [themeSeleted]);
+
   // Fake Data
   const fakeData = {
     target: yearAxis.map(() => faker.datatype.number({ min: 200, max: 220 })),
     actual: yearAxis.map(() => faker.datatype.number({ min: 150, max: 260 })),
   };
+
+  // Real Data
+  const realData = {
+    target: targetData,
+    actual: actualData,
+  };
+
   const goalData = "64.5";
   // Config option
   const options = {
@@ -69,8 +123,8 @@ function RevenueSummaryChart(props) {
         ticks: { color: theme.primary },
       },
       y: {
-        min: 0,
-        max: 300,
+        // min: 0,
+        // max: 300,
         stepSize: 100,
         grid: { color: theme.primary },
         ticks: { color: theme.primary },
@@ -86,23 +140,25 @@ function RevenueSummaryChart(props) {
       },
       legend: {
         position: "top",
-        labels: { color: theme.primary },
+        labels: { color: theme.textColor },
       },
     },
   };
   // Get the data of chart: include 2 column target and actual
   const data = {
-    labels: yearAxis,
+    labels: yearArray,
     datasets: [
       {
         label: "Target (USD)",
-        data: fakeData.target,
+        // data: fakeData.target,
+        data: realData.target,
         backgroundColor: theme.chartColor1,
         borderColor: theme.chartColor1,
       },
       {
         label: "Actual (USD)",
-        data: fakeData.actual,
+        // data: fakeData.actual,
+        data: realData.actual,
         backgroundColor: theme.chartColor2,
         borderColor: theme.chartColor2,
       },
@@ -112,7 +168,7 @@ function RevenueSummaryChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <ChartHeader chartName="Revenue Summary" goalData={goalData} />
+      <ChartHeader chartName="Income Overview" goalData={goalData} />
       {/* Body of chart */}
       <ChartCover>
         {/* Sale result */}
@@ -137,7 +193,7 @@ function RevenueSummaryChart(props) {
                 margin: "0 auto",
               }}
             >
-              Annual Target
+              Target current year
             </Typography>
             <Box
               sx={{
@@ -148,11 +204,11 @@ function RevenueSummaryChart(props) {
                 textAlign: "center",
               }}
             >
-              <Typography variant="h6" sx={{ color: theme.highlight1 }}>
+              {/* <Typography variant="h6" sx={{ color: theme.highlight1 }}>
                 {Number(2400).toLocaleString()} pcs
-              </Typography>
+              </Typography> */}
               <Typography variant="h6" sx={{ color: theme.highlight2 }}>
-                $ {Number(2500000).toLocaleString()}
+                $ {targetData[targetData.length - 1]?.toLocaleString()}
               </Typography>
             </Box>
           </Box>
@@ -170,7 +226,7 @@ function RevenueSummaryChart(props) {
                 textAlign: "center",
               }}
             >
-              Actual 2022
+              Actual current year
             </Typography>
             <Box
               sx={{
@@ -181,11 +237,11 @@ function RevenueSummaryChart(props) {
                 textAlign: "center",
               }}
             >
-              <Typography variant="h6" sx={{ color: theme.highlight1 }}>
+              {/* <Typography variant="h6" sx={{ color: theme.highlight1 }}>
                 {Number(1300).toLocaleString()} pcs
-              </Typography>
+              </Typography> */}
               <Typography variant="h6" sx={{ color: theme.highlight2 }}>
-                $ {Number(1500000).toLocaleString()}
+                $ {actualData[actualData.length - 1]?.toLocaleString()}
               </Typography>
             </Box>
           </Box>

@@ -71,7 +71,7 @@ function BrandRatingChart(props) {
 
   return (
     <ChartContainer maxWidth="450px">
-      <ChartHeader chartName="Brands Sold Percentage 2022 (%)" />
+      <ChartHeader chartName="Income Percentage / Brand (%)" />
       <ChartCover>
         <Box
           sx={{
