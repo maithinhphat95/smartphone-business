@@ -46,31 +46,38 @@ import Label from "../../Label";
 const ExtraTable = (props) => {
   const { row, isOpen } = props;
   const productList = useSelector((state) => state.product.productList);
-  const [productData, setProductData] = useState([...productList]);
-  const [extraData, setExtraData] = useState([]);
+  const [productData, setProductData] = useState([]);
 
   // Update the product list
   useEffect(() => {
     setProductData([...productList]);
+  }, [productList]);
 
-    // Build the extraData Array from orderItem.productList
+  const [extraData, setExtraData] = useState([]);
+  // Funtion get extra data from ordered product list
+  const getTableData = () => {
     let newData = row.productList.map((item, index) => {
       for (let element of productData) {
         if (element.productId.toString() === item.productId.toString()) {
           return {
             ...item,
             no: index + 1,
-            img: element.img,
-            name: element.name,
-            price: element.priceNew,
-            total: element.priceNew * item.quantity,
+            img: element?.img,
+            name: element?.name,
+            price: element?.priceNew,
+            total: element?.priceNew * item.quantity,
           };
         }
       }
     });
+    return newData;
+  };
 
-    setExtraData(newData);
-  }, [productList]);
+  // Update the extra table data
+  useEffect(() => {
+    // console.log(getTableData());
+    setExtraData(getTableData());
+  }, [productData]);
 
   return (
     <TableRow>
@@ -118,43 +125,44 @@ const ExtraTable = (props) => {
                   "& td": { border: "none" },
                 }}
               >
-                {extraData.map((item, index) => {
-                  return (
-                    <TableRow key={index}>
-                      {/* No */}
-                      <TableCell align="center">{index + 1}</TableCell>
-                      {/* Name */}
-                      <TableCell
-                        align="left"
-                        sx={{ display: "flex", alignItems: "center" }}
-                      >
-                        <CardMedia
-                          component="img"
-                          // height="100px"
-                          image={item?.img}
-                          alt={item.name}
-                          sx={{ width: "40px", marginRight: "10px" }}
-                        />
-                        <Typography variant="p">{item?.name}</Typography>
-                      </TableCell>
+                {extraData.length > 0 &&
+                  extraData.map((item, index) => {
+                    return (
+                      <TableRow key={index}>
+                        {/* No */}
+                        <TableCell align="center">{index + 1}</TableCell>
+                        {/* Name */}
+                        <TableCell
+                          align="left"
+                          sx={{ display: "flex", alignItems: "center" }}
+                        >
+                          <CardMedia
+                            component="img"
+                            // height="100px"
+                            image={item?.img}
+                            alt={item?.name}
+                            sx={{ width: "40px", marginRight: "10px" }}
+                          />
+                          <Typography variant="p">{item?.name}</Typography>
+                        </TableCell>
 
-                      {/* Quantity */}
-                      <TableCell align="center">
-                        {item?.quantity.toLocaleString()}
-                      </TableCell>
+                        {/* Quantity */}
+                        <TableCell align="center">
+                          {item?.quantity.toLocaleString()}
+                        </TableCell>
 
-                      {/* Price */}
-                      <TableCell align="right">
-                        {`$${item?.price.toLocaleString()}`}
-                      </TableCell>
+                        {/* Price */}
+                        <TableCell align="right">
+                          {`$${item?.price.toLocaleString()}`}
+                        </TableCell>
 
-                      {/* Total */}
-                      <TableCell align="right">
-                        {`$${item?.total.toLocaleString()}`}
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
+                        {/* Total */}
+                        <TableCell align="right">
+                          {`$${item?.total.toLocaleString()}`}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
               </TableBody>
             </Table>
           </Box>

@@ -41,7 +41,7 @@ function ChartHeader(props) {
       >
         {chartName}
       </Typography>
-      {/* {goalData && (
+      {goalData && (
         <Typography
           variant="p"
           component="p"
@@ -59,7 +59,7 @@ function ChartHeader(props) {
             {goalData}%
           </Typography>
         </Typography>
-      )} */}
+      )}
     </Box>
   );
 }

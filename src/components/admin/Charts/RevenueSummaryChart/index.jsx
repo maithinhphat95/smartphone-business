@@ -41,13 +41,13 @@ function RevenueSummaryChart(props) {
   const [theme, setTheme] = useState(adminColorLight);
   const themeSeleted = useSelector((state) => state.admin.theme);
   const orderList = useSelector((state) => state.order.orderList);
-  const [data1, setData] = useState([...orderList]);
+  const [listData, setData] = useState([...orderList]);
   const [yearArray, setYearArray] = useState([]);
   const [targetData, setTargetData] = useState([5000, 5500, 6000, 6000, 8000]);
   const [actualData, setActualData] = useState([]);
   // Function get the year array
   const getYearArray = () => {
-    for (let element of data1) {
+    for (let element of listData) {
       const year = new Date(element.completeDate).getFullYear();
       if (!yearArray.includes(year)) {
         setYearArray([...yearArray, year].sort((a, b) => a - b));
@@ -58,7 +58,7 @@ function RevenueSummaryChart(props) {
   const getChartData = () => {
     const dataList = yearArray.map((item) => {
       let sum = 0;
-      const sumData = data1.forEach((element, index) => {
+      listData.forEach((element, index) => {
         const year = new Date(element.completeDate).getFullYear();
         if (year === item) {
           sum += element.total;
@@ -79,7 +79,7 @@ function RevenueSummaryChart(props) {
   // Update the Year list
   useEffect(() => {
     getYearArray();
-  }, [orderList, data1]);
+  }, [orderList, listData]);
 
   // Update the actual chart Data
   useEffect(() => {
@@ -113,7 +113,6 @@ function RevenueSummaryChart(props) {
     actual: actualData,
   };
 
-  const goalData = "64.5";
   // Config option
   const options = {
     responsive: true,
@@ -168,7 +167,14 @@ function RevenueSummaryChart(props) {
   return (
     <ChartContainer maxWidth="800px">
       {/* Header of chart */}
-      <ChartHeader chartName="Income Overview" goalData={goalData} />
+      <ChartHeader
+        chartName="Income Overview"
+        goalData={
+          (actualData[actualData.length - 1] /
+            targetData[targetData.length - 1]) *
+          100
+        }
+      />
       {/* Body of chart */}
       <ChartCover>
         {/* Sale result */}
@@ -245,25 +251,6 @@ function RevenueSummaryChart(props) {
               </Typography>
             </Box>
           </Box>
-          {goalData && (
-            <Typography
-              variant="p"
-              component="p"
-              sx={{
-                textAlign: "center",
-                fontStyle: "italic",
-                display: { sm: "none" },
-              }}
-            >
-              Goal this year:{" "}
-              <Typography
-                component="span"
-                sx={{ color: "red", fontWeight: "bold", fontStyle: "normal" }}
-              >
-                {goalData}%
-              </Typography>
-            </Typography>
-          )}
         </Box>
         {/* Chart of revenue summary */}
         <ChartBox>
