@@ -39,9 +39,39 @@ import { useSelector } from "react-redux";
 import SortIcon from "../../SortIcon";
 import { useNavigate } from "react-router-dom";
 import DeleteDialog from "../DeleteDialog";
+import EditDialog from "../EditDialog";
+import { ToastContainer } from "react-toastify";
+import Label from "../../Label";
 
 const ExtraTable = (props) => {
-  const { row, extraData, isOpen } = props;
+  const { row, isOpen } = props;
+  const productList = useSelector((state) => state.product.productList);
+  const [productData, setProductData] = useState([...productList]);
+  const [extraData, setExtraData] = useState([]);
+
+  // Update the product list
+  useEffect(() => {
+    setProductData([...productList]);
+
+    // Build the extraData Array from orderItem.productList
+    let newData = row.productList.map((item, index) => {
+      for (let element of productData) {
+        if (element.productId.toString() === item.productId.toString()) {
+          return {
+            ...item,
+            no: index + 1,
+            img: element.img,
+            name: element.name,
+            price: element.priceNew,
+            total: element.priceNew * item.quantity,
+          };
+        }
+      }
+    });
+
+    setExtraData(newData);
+  }, [productList]);
+
   return (
     <TableRow>
       <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={9}>
@@ -49,7 +79,7 @@ const ExtraTable = (props) => {
           <Box
             sx={{
               margin: 1,
-              padding: 1,
+              // padding: 1,
             }}
           >
             <Typography variant="h6" gutterBottom component="div">
@@ -58,11 +88,11 @@ const ExtraTable = (props) => {
             <Table
               size="small"
               sx={{
-                backgroundColor: adminColorLight.background,
-                border: "1px solid black",
-                borderRadius: 2,
+                backgroundColor: adminColorLight.secondary,
+                "& *": { backgroundColor: "transparent" },
+                borderRadius: "8px",
                 "& td, th": { padding: "8px 16px" },
-                margin: "8px",
+                // margin: "8px",
               }}
             >
               {/* Head */}
@@ -73,7 +103,7 @@ const ExtraTable = (props) => {
                 }}
               >
                 <TableRow>
-                  {extraData.extraHead.map((item, index) => (
+                  {tableHead.purchased.map((item, index) => (
                     <TableCell key={index} align="center">
                       {item}
                     </TableCell>
@@ -84,16 +114,13 @@ const ExtraTable = (props) => {
               <TableBody
                 sx={{
                   "& tr": { borderBottom: "1px solid white" },
+                  "& tr:last-child": { borderBottom: "none" },
                   "& td": { border: "none" },
                 }}
               >
-                {row.purchasedList.map((purchasedItem, index) => {
-                  let currentProduct = productList.find(
-                    (product) => product.id === purchasedItem.productId
-                  );
-
+                {extraData.map((item, index) => {
                   return (
-                    <TableRow key={purchasedItem.productId}>
+                    <TableRow key={index}>
                       {/* No */}
                       <TableCell align="center">{index + 1}</TableCell>
                       {/* Name */}
@@ -104,30 +131,26 @@ const ExtraTable = (props) => {
                         <CardMedia
                           component="img"
                           // height="100px"
-                          image={currentProduct.picture}
-                          alt={currentProduct.name}
+                          image={item?.img}
+                          alt={item.name}
                           sx={{ width: "40px", marginRight: "10px" }}
                         />
-                        <Typography variant="p">
-                          {currentProduct.name}
-                        </Typography>
+                        <Typography variant="p">{item?.name}</Typography>
                       </TableCell>
 
                       {/* Quantity */}
                       <TableCell align="center">
-                        {purchasedItem.quantity.toLocaleString()}
+                        {item?.quantity.toLocaleString()}
                       </TableCell>
 
                       {/* Price */}
                       <TableCell align="right">
-                        {`$${currentProduct.price.toLocaleString()}`}
+                        {`$${item?.price.toLocaleString()}`}
                       </TableCell>
 
                       {/* Total */}
                       <TableCell align="right">
-                        {`$${(
-                          currentProduct.price * purchasedItem.quantity
-                        ).toLocaleString()}`}
+                        {`$${item?.total.toLocaleString()}`}
                       </TableCell>
                     </TableRow>
                   );
@@ -143,19 +166,25 @@ const ExtraTable = (props) => {
 
 // Function show each row of tablebody (order item)
 function Row(props) {
-  const { row, extraData, isControl, category } = props;
+  const { row } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
   const navigate = useNavigate();
 
   // Request open Delete Dialog
   const handleOpenDialog = () => {
     setOpenDialog(true);
   };
+  // Request open Edit Dialog
+  const handleOpenEdit = () => {
+    setOpenEdit(true);
+  };
 
   // Request Close Delete Dialog
   const handleCloseDialog = () => {
     setOpenDialog(false);
+    setOpenEdit(false);
     navigate("/admin/revenue");
   };
   return (
@@ -165,29 +194,40 @@ function Row(props) {
           "& > *": { borderBottom: "unset", "& td": { borderBottom: "none" } },
         }}
       >
-        {extraData.isExtra && (
-          <TableCell>
-            <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-            </IconButton>
-          </TableCell>
-        )}
-        {category === "order" &&
-          Object.keys(row).map((item, index) => {
-            if (item !== "purchasedList") {
-              return (
-                <TableCell key={index} align="center">
-                  {`${item === "total" ? "$" : ""} ${row[item]}`}
-                </TableCell>
-              );
+        <TableCell>
+          <IconButton
+            aria-label="expand row"
+            size="small"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+          </IconButton>
+        </TableCell>
+        <TableCell align="center">{row.no}</TableCell>
+        <TableCell align="center">{row.orderId}</TableCell>
+        <TableCell align="center">{row.userName}</TableCell>
+        <TableCell align="center">{row.createDate}</TableCell>
+        <TableCell align="center">{row.completeDate}</TableCell>
+        <TableCell>
+          <Box
+            color={"darkblue"}
+            fontWeight="500"
+          >{`${row.total.toLocaleString()} VND`}</Box>
+        </TableCell>
+        <TableCell>
+          <Label
+            content={row.status}
+            backgroundColor={
+              row.status == "done"
+                ? "green"
+                : row.status == "delevering"
+                ? "blue"
+                : "red"
             }
-            return "";
-          })}
-
+            textColor="white"
+            width="80px"
+          />
+        </TableCell>
         <TableCell>
           <Stack
             sx={{
@@ -204,6 +244,7 @@ function Row(props) {
               variant="contained"
               color="info"
               sx={{ padding: 0.5, minWidth: 0 }}
+              onClick={handleOpenEdit}
             >
               <Edit />
             </Button>
@@ -214,59 +255,61 @@ function Row(props) {
               color="error"
               sx={{ padding: 0.5, minWidth: 0, width: "50%" }}
               onClick={() => {
-                // handleOpenDialog();
+                handleOpenDialog();
               }}
             >
               <Delete />
             </Button>
+            <EditDialog
+              open={openEdit}
+              onClose={handleCloseDialog}
+              order={row}
+            />
             <DeleteDialog
               open={openDialog}
               onClose={handleCloseDialog}
               id={row.id}
+              category="order"
             />
           </Stack>
           {/* <ToastContainer /> */}
         </TableCell>
       </TableRow>
       {/* The table of purchasing list of order item */}
-      {extraData.isExtra && (
-        <ExtraTable row={row} extraData={extraData} isOpen={isOpen} />
-      )}
+      <ExtraTable row={row} isOpen={isOpen} />
     </>
   );
 }
 
 export default function OrderTable(props) {
   // // Fake Data
-  const data = {
+  const data1 = {
     title: "Order List",
     category: "order",
     head: tableHead.order,
     body: tableRows.order,
-    extra: {
-      isExtra: true,
-      extraHead: tableHead.purchased,
-    },
     isControl: false,
     searchBy: "id",
   };
-  const [theme, setTheme] = useState(adminColorLight);
-  const themeSeleted = useSelector((state) => state.admin.theme);
   const orderList = useSelector((state) => state.order.orderList);
-  const [page, setPageIndex] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [dec, setDec] = useState(true);
-  const [sortDesc, setSortDesc] = useState(false);
-  const [sortBy, setSortBy] = useState("");
-  const [dataSorted, setDataSorted] = useState([...data.body]);
-  const [searchValue, setSearchValue] = useState("");
-  const [selectedData, setSelectedData] = useState(data.body);
-  const [data1, setData] = useState({
+  const [data, setData] = useState({
     title: "Order List",
     head: tableHead.order,
     body: orderList,
     searchBy: "id",
   });
+  const [theme, setTheme] = useState(adminColorLight);
+  const themeSeleted = useSelector((state) => state.admin.theme);
+  const productList = useSelector((state) => state.product.productList);
+  const [page, setPageIndex] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [isUpdate, setIsUpdate] = useState(true);
+  const [sortDesc, setSortDesc] = useState(true);
+  const [sortBy, setSortBy] = useState("ORDER DATE");
+  const [category, setCategory] = useState("");
+  const [dataSorted, setDataSorted] = useState([...data.body]);
+  const [searchValue, setSearchValue] = useState("");
+  const [selectedData, setSelectedData] = useState(data.body);
 
   // Set max page for pagination
   const maxPage =
@@ -287,18 +330,38 @@ export default function OrderTable(props) {
 
   // Update the order list
   useEffect(() => {
-    setData({ ...data1, body: orderList });
-    // setDataSorted([...data1.body.reverse()]);
+    setData({ ...data, body: orderList });
   }, [orderList]);
+
+  // Update category
+  useEffect(() => {
+    switch (sortBy) {
+      case "ID":
+        setCategory("orderId");
+        break;
+      case "USER":
+        setCategory("userName");
+        break;
+      case "ORDER DATE":
+        setCategory("createDate");
+        break;
+      case "COMPLETE DATE":
+        setCategory("completeDate");
+        break;
+      default:
+        setCategory(sortBy.toLowerCase());
+        break;
+    }
+  }, [sortBy, category]);
 
   // Use Effect Sort page
   useEffect(() => {
     let currentData = [];
-    if (sortBy === "DATE") {
+    if (category === "createDate" || category === "completeDate") {
       currentData = [
         ...selectedData.sort((a, b) => {
-          let aDate = new Date(a.date);
-          let bDate = new Date(b.date);
+          let aDate = new Date(a[category]);
+          let bDate = new Date(b[category]);
           if (aDate < bDate) {
             return sortDesc ? 1 : -1;
           } else if (aDate > bDate) {
@@ -308,16 +371,24 @@ export default function OrderTable(props) {
         }),
       ];
     } else {
-      if (
-        selectedData.length > 0 &&
-        selectedData[0].hasOwnProperty(sortBy.toLocaleLowerCase())
-      ) {
+      // if (selectedData.length > 0 && selectedData[0].hasOwnProperty(category)) {
+      if (selectedData.length > 0) {
         currentData = [
           ...selectedData.sort((a, b) => {
-            if (a[sortBy.toLowerCase()] < b[sortBy.toLowerCase()]) {
-              return sortDesc ? 1 : -1;
-            } else if (a[sortBy.toLowerCase()] > b[sortBy.toLowerCase()]) {
-              return sortDesc ? -1 : 1;
+            if (category === "userName") {
+              if (a[category]?.toLowerCase() < b[category]?.toLowerCase()) {
+                return sortDesc ? 1 : -1;
+              } else if (
+                a[category].toLowerCase() > b[category].toLowerCase()
+              ) {
+                return sortDesc ? -1 : 1;
+              }
+            } else {
+              if (a[category] < b[category]) {
+                return sortDesc ? 1 : -1;
+              } else if (a[category] > b[category]) {
+                return sortDesc ? -1 : 1;
+              }
             }
             return 0;
           }),
@@ -328,17 +399,17 @@ export default function OrderTable(props) {
       return { ...e, no: index + 1 };
     });
     setDataSorted(updateData);
-  }, [dec]);
+  }, [isUpdate, orderList, category, sortBy]);
 
   // Handle request sort by category
-  const requestSort = (category) => {
-    if (sortBy === category) {
+  const requestSort = (item) => {
+    if (sortBy === item) {
       setSortDesc(!sortDesc);
     } else {
       setSortDesc(false);
-      setSortBy(category);
+      setSortBy(item);
     }
-    setDec(!dec);
+    setIsUpdate(!isUpdate);
   };
 
   // Handle Input Search
@@ -354,11 +425,12 @@ export default function OrderTable(props) {
         ? data.body
         : data.body.filter((element) => {
             return element[data.searchBy]
+              .toString()
               .toLocaleLowerCase()
               .includes(searchValue.trim().toLocaleLowerCase());
           });
     setSelectedData(searchArray);
-    setDec(!dec);
+    setIsUpdate(!isUpdate);
   };
 
   // Update themse color
@@ -384,6 +456,7 @@ export default function OrderTable(props) {
         width: "100%",
       }}
     >
+      <ToastContainer />
       <Stack
         direction={"row"}
         justifyContent="space-between"
@@ -436,7 +509,7 @@ export default function OrderTable(props) {
             }}
           >
             <TableRow>
-              {data.extra.isExtra && <TableCell align="center" width="10px" />}
+              <TableCell align="center" width="10px" />
               {data.head.map((item, index) => (
                 <TableCell
                   style={{ minWidth: "50px", overflow: "visible" }}
@@ -462,13 +535,7 @@ export default function OrderTable(props) {
             {dataSorted
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => (
-                <Row
-                  key={row.id}
-                  row={row}
-                  extraData={data.extra}
-                  isControl={data.isControl}
-                  category={data.category}
-                />
+                <Row key={row.id} row={row} />
               ))}
           </TableBody>
         </Table>

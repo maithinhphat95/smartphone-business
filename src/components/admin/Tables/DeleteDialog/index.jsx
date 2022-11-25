@@ -36,7 +36,7 @@ function DeleteDialog(props) {
         theme: "light",
       });
       // onClose();
-    } else {
+    } else if (category == "order") {
       dispatch(deleteOrderRequest(id));
       toast("Delete Order Successfully", {
         position: "top-right",
@@ -65,12 +65,12 @@ function DeleteDialog(props) {
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">
-        Do you want to delete this product?
+        {`Do you want to delete this ${category}?`}
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          If you click the Agree button, you have to be responsible for the data
-          loss of this product.
+          If you click the Agree button, you have to be responsible for data
+          loss.
         </DialogContentText>
       </DialogContent>
       <DialogActions>

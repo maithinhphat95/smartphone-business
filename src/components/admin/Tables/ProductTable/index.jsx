@@ -20,11 +20,6 @@ import {
   FormControl,
   MenuItem,
   Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
 } from "@mui/material";
 import { toast, ToastContainer } from "react-toastify";
 import { Delete, Edit, Search, ViewList } from "@mui/icons-material";
@@ -34,10 +29,9 @@ import {
   tableHead,
 } from "../../../../constant/admin";
 import Label from "../../Label";
-import { deleteProductRequest } from "../../../../redux/common/productReducer";
 import SortIcon from "../../SortIcon";
-import "./style.scss";
 import DeleteDialog from "../DeleteDialog";
+import "./style.scss";
 
 // Function show each row of tablebody (order item)
 function Row(props) {
@@ -418,7 +412,13 @@ export default function ProductTable(props) {
                     {item != "NO" && (
                       <SortIcon sortDesc={sortDesc} isSort={sortBy == item} />
                     )}
-                    <Box sx={{ whiteSpace: "nowrap" }}>{item}</Box>
+                    <Box
+                      sx={{
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {item}
+                    </Box>
                   </Stack>
                 </TableCell>
               ))}

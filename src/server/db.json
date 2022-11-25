@@ -600,13 +600,14 @@
   "orderList": [
     {
       "id": 0,
+      "orderId": 0,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2018, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2018, 11:38:44 AM",
       "productList": [
         {
@@ -625,13 +626,14 @@
     },
     {
       "id": 1,
+      "orderId": 1,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2018, 11:38:44 AM",
       "subtotal": 30000000,
       "bonus": 100000,
       "total": 29900000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2018, 11:38:44 AM",
       "productList": [
         {
@@ -650,13 +652,14 @@
     },
     {
       "id": 2,
+      "orderId": 2,
       "userId": 1,
       "userName": "Thien",
       "createDate": "10/21/2018, 11:38:44 AM",
       "subtotal": 20000000,
       "bonus": 200000,
       "total": 19800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2018, 11:38:44 AM",
       "productList": [
         {
@@ -675,13 +678,14 @@
     },
     {
       "id": 3,
+      "orderId": 3,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2019, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2019, 11:38:44 AM",
       "productList": [
         {
@@ -700,13 +704,14 @@
     },
     {
       "id": 4,
+      "orderId": 4,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2019, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 0,
       "total": 40000000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2019, 11:38:44 AM",
       "productList": [
         {
@@ -725,13 +730,14 @@
     },
     {
       "id": 5,
+      "orderId": 5,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2019, 11:38:44 AM",
       "subtotal": 20000000,
       "bonus": 0,
       "total": 20000000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2019, 11:38:44 AM",
       "productList": [
         {
@@ -750,13 +756,14 @@
     },
     {
       "id": 6,
+      "orderId": 6,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2020, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2020, 11:38:44 AM",
       "productList": [
         {
@@ -775,13 +782,14 @@
     },
     {
       "id": 7,
+      "orderId": 7,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2020, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2020, 11:38:44 AM",
       "productList": [
         {
@@ -800,13 +808,14 @@
     },
     {
       "id": 8,
+      "orderId": 8,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2020, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2020, 11:38:44 AM",
       "productList": [
         {
@@ -825,13 +834,14 @@
     },
     {
       "id": 9,
+      "orderId": 9,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2021, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2021, 11:38:44 AM",
       "productList": [
         {
@@ -850,13 +860,14 @@
     },
     {
       "id": 10,
+      "orderId": 10,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2021, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2021, 11:38:44 AM",
       "productList": [
         {
@@ -875,13 +886,14 @@
     },
     {
       "id": 11,
+      "orderId": 11,
       "userId": 2,
       "userName": "Phat",
       "createDate": "10/21/2021, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "10/22/2021, 11:38:44 AM",
       "productList": [
         {
@@ -900,141 +912,222 @@
     },
     {
       "id": 12,
+      "orderId": 12,
       "userId": 2,
       "userName": "Phat",
       "createDate": "1/21/2022, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "1/22/2022, 11:38:44 AM",
       "productList": [
-        "1",
-        "2",
-        "3"
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
       "id": 13,
+      "orderId": 13,
       "userId": 2,
       "userName": "Phat",
       "createDate": "2/21/2022, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "2/22/2022, 11:38:44 AM",
       "productList": [
-        "1",
-        "2",
-        "3"
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
       "id": 14,
+      "orderId": 14,
       "userId": 2,
       "userName": "Phat",
       "createDate": "3/21/2022, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "3/22/2022, 11:38:44 AM",
       "productList": [
-        "1",
-        "2",
-        "3"
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
       "id": 15,
+      "orderId": 15,
       "userId": 2,
       "userName": "Phat",
       "createDate": "4/21/2022, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "4/22/2022, 11:38:44 AM",
       "productList": [
-        "1",
-        "2",
-        "3"
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
       "id": 16,
+      "orderId": 16,
       "userId": 2,
       "userName": "Phat",
       "createDate": "5/21/2022, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "5/22/2022, 11:38:44 AM",
       "productList": [
-        "1",
-        "2",
-        "3"
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
       "id": 17,
+      "orderId": 17,
       "userId": 2,
       "userName": "Phat",
       "createDate": "6/21/2022, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "6/22/2022, 11:38:44 AM",
       "productList": [
-        "1",
-        "2",
-        "3"
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
       "id": 18,
+      "orderId": 18,
       "userId": 2,
       "userName": "Phat",
       "createDate": "7/21/2022, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "done",
       "completeDate": "7/22/2022, 11:38:44 AM",
       "productList": [
-        "1",
-        "2",
-        "3"
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
       "id": 19,
+      "orderId": 19,
       "userId": 2,
       "userName": "Phat",
       "createDate": "8/21/2022, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "preparing",
       "completeDate": "8/22/2022, 11:38:44 AM",
       "productList": [
-        "1",
-        "2",
-        "3"
+        {
+          "productId": "1",
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "quantity": 1
+        }
       ]
     },
     {
       "id": 20,
+      "orderId": 20,
       "userId": 2,
       "userName": "Phat",
       "createDate": "9/21/2022, 11:38:44 AM",
       "subtotal": 40000000,
       "bonus": 200000,
       "total": 39800000,
-      "status": "received",
+      "status": "delevering",
       "completeDate": "9/22/2022, 11:38:44 AM",
       "productList": [
         {

@@ -14,6 +14,16 @@ const orderApi = {
     const response = await axiosClient.post(url, data);
     return response;
   },
+  async put(id, data) {
+    const url = `/orderList/${id}`;
+    const response = await axiosClient.put(url, JSON.stringify(data));
+    return response;
+  },
+  async delete(id) {
+    const url = `/orderList/${id}`;
+    const response = await axiosClient.delete(url);
+    return response;
+  },
 };
 
 export default orderApi;

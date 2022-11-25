@@ -31,6 +31,21 @@ export const addOrder = (data) => {
     payload: data,
   };
 };
+
+// Update Order Request
+export const updateOrderRequest = (id, data) => {
+  return (dispatch) => {
+    (async () => {
+      try {
+        await orderApi.put(id, data);
+        dispatch(getOrderListRequest());
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+};
+
 // Add Request, update Order List
 export const addOrderRequest = (data) => {
   return (dispatch) => {
@@ -44,13 +59,14 @@ export const addOrderRequest = (data) => {
     })();
   };
 };
-// Get Request
-export const deleteOrderRequest = (data) => {
+
+// Delete Order Request
+export const deleteOrderRequest = (id) => {
   return (dispatch) => {
     (async () => {
       try {
-        const orderList = await orderApi.getAll();
-        dispatch(getOrderList(orderList));
+        const response = await orderApi.delete(id);
+        dispatch(getOrderListRequest());
       } catch (error) {
         console.log(error);
       }
