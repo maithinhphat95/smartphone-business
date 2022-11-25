@@ -35,13 +35,14 @@ import {
   Search,
 } from "@mui/icons-material";
 import "./style.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SortIcon from "../../SortIcon";
 import { useNavigate } from "react-router-dom";
 import DeleteDialog from "../DeleteDialog";
 import EditDialog from "../EditDialog";
 import { ToastContainer } from "react-toastify";
 import Label from "../../Label";
+import { getOrderListRequest } from "../../../../redux/common/orderReducer";
 
 const ExtraTable = (props) => {
   const { row, isOpen } = props;
@@ -293,6 +294,7 @@ function Row(props) {
 }
 
 export default function OrderTable(props) {
+  const dispatch = useDispatch();
   const orderList = useSelector((state) => state.order.orderList);
   const [data, setData] = useState({
     title: "Order List",
@@ -448,6 +450,11 @@ export default function OrderTable(props) {
         break;
     }
   }, [themeSeleted]);
+
+  // Fetch Data
+  useEffect(() => {
+    dispatch(getOrderListRequest());
+  }, []);
 
   return (
     <Paper
