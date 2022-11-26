@@ -595,6 +595,20 @@
       "isAdmin": true,
       "registerDate": "11/23/2022, 7:55:52 PM",
       "id": 6
+    },
+    {
+      "account": "admin2",
+      "password": "11111111",
+      "name": "Mai Thinh Phat",
+      "email": "maithinhphat.tdh@gmail.com",
+      "phone": "0964084328",
+      "gender": "male",
+      "birthday": "1995-07-28",
+      "address": "Đà Nẵng",
+      "img": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/599e3b95636919.5eb96c0445ea7.jpg",
+      "isAdmin": true,
+      "registerDate": "11/26/2022, 7:58:49 AM",
+      "id": 7
     }
   ],
   "orderList": [

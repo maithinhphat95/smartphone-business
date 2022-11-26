@@ -149,7 +149,7 @@ function Register(props) {
                                 name="password"
                                 {...register("password", {
                                   required: true,
-                                  minLength: 3,
+                                  minLength: 8,
                                   // pattern:
                                   // /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/,
                                 })}
